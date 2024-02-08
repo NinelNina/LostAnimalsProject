@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{7D81FB50-156C-471B-8CC2-A543C603FD90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A62FA465-453F-4E77-8EF4-7A1650A6FD55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{61B833AD-569A-4A9E-AAB2-BB855DC6DB65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Systems", "Systems", "{FBAFE448-0448-47C8-BCFF-4D1D7BBB40D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{03B55FAB-D0DE-4BE6-A6FF-80489003C10B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Api", "Systems\Api\LostAnimals.Api\LostAnimals.Api.csproj", "{631DE38C-914D-4485-93FD-0AADE737CE33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{631DE38C-914D-4485-93FD-0AADE737CE33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{631DE38C-914D-4485-93FD-0AADE737CE33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{631DE38C-914D-4485-93FD-0AADE737CE33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{631DE38C-914D-4485-93FD-0AADE737CE33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03B55FAB-D0DE-4BE6-A6FF-80489003C10B} = {FBAFE448-0448-47C8-BCFF-4D1D7BBB40D8}
+		{631DE38C-914D-4485-93FD-0AADE737CE33} = {03B55FAB-D0DE-4BE6-A6FF-80489003C10B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B603206-9CF4-4C60-A951-D2297EA46217}
+	EndGlobalSection
+EndGlobal
