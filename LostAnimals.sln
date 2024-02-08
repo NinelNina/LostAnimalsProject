@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{03B55FAB-D0D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Api", "Systems\Api\LostAnimals.Api\LostAnimals.Api.csproj", "{631DE38C-914D-4485-93FD-0AADE737CE33}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Services.Settings", "Services\LostAnimals.Services.Settings\LostAnimals.Services.Settings.csproj", "{640451DD-2A27-4811-A27A-D8DF3D70C5B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Common", "Shared\LostAnimals.Common\LostAnimals.Common.csproj", "{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{631DE38C-914D-4485-93FD-0AADE737CE33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{631DE38C-914D-4485-93FD-0AADE737CE33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{631DE38C-914D-4485-93FD-0AADE737CE33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{640451DD-2A27-4811-A27A-D8DF3D70C5B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{640451DD-2A27-4811-A27A-D8DF3D70C5B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{640451DD-2A27-4811-A27A-D8DF3D70C5B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{640451DD-2A27-4811-A27A-D8DF3D70C5B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +44,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{03B55FAB-D0DE-4BE6-A6FF-80489003C10B} = {FBAFE448-0448-47C8-BCFF-4D1D7BBB40D8}
 		{631DE38C-914D-4485-93FD-0AADE737CE33} = {03B55FAB-D0DE-4BE6-A6FF-80489003C10B}
+		{640451DD-2A27-4811-A27A-D8DF3D70C5B7} = {A62FA465-453F-4E77-8EF4-7A1650A6FD55}
+		{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B} = {61B833AD-569A-4A9E-AAB2-BB855DC6DB65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B603206-9CF4-4C60-A951-D2297EA46217}
