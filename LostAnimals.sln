@@ -13,11 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Systems", "Systems", "{FBAF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{03B55FAB-D0DE-4BE6-A6FF-80489003C10B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Api", "Systems\Api\LostAnimals.Api\LostAnimals.Api.csproj", "{631DE38C-914D-4485-93FD-0AADE737CE33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Api", "Systems\Api\LostAnimals.Api\LostAnimals.Api.csproj", "{631DE38C-914D-4485-93FD-0AADE737CE33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Services.Settings", "Services\LostAnimals.Services.Settings\LostAnimals.Services.Settings.csproj", "{640451DD-2A27-4811-A27A-D8DF3D70C5B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Services.Settings", "Services\LostAnimals.Services.Settings\LostAnimals.Services.Settings.csproj", "{640451DD-2A27-4811-A27A-D8DF3D70C5B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Common", "Shared\LostAnimals.Common\LostAnimals.Common.csproj", "{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Common", "Shared\LostAnimals.Common\LostAnimals.Common.csproj", "{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Services.Logger", "Services\LostAnimals.Services.Logger\LostAnimals.Services.Logger.csproj", "{8281AE9E-6BB1-41DF-A818-C98E46977A77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8281AE9E-6BB1-41DF-A818-C98E46977A77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8281AE9E-6BB1-41DF-A818-C98E46977A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8281AE9E-6BB1-41DF-A818-C98E46977A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8281AE9E-6BB1-41DF-A818-C98E46977A77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{631DE38C-914D-4485-93FD-0AADE737CE33} = {03B55FAB-D0DE-4BE6-A6FF-80489003C10B}
 		{640451DD-2A27-4811-A27A-D8DF3D70C5B7} = {A62FA465-453F-4E77-8EF4-7A1650A6FD55}
 		{6DF10DF7-31B9-4225-BF1D-E27EE826FE9B} = {61B833AD-569A-4A9E-AAB2-BB855DC6DB65}
+		{8281AE9E-6BB1-41DF-A818-C98E46977A77} = {A62FA465-453F-4E77-8EF4-7A1650A6FD55}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B603206-9CF4-4C60-A951-D2297EA46217}

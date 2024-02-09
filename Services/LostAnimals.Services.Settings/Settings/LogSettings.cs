@@ -8,24 +8,25 @@
         public string FileRollingInterval { get; private set; }
         public string FileRollingSize { get; private set; }
 
-        public enum LogLevel
-        {
-            Verbose, 
-            Debug, 
-            Information, 
-            Warning, 
-            Error, 
-            Fatal
-        }
-
-        public enum LogRollingInterval
-        {
-            Infinite, 
-            Year, 
-            Month, 
-            Day, 
-            Hour, 
-            Minute
-        }
     }
+    public enum LogLevel
+    {
+        Verbose,
+        Debug,
+        Information,
+        Warning,
+        Error,
+        Fatal
+    }
+
+    public enum LogRollingInterval
+    {
+        Infinite,
+        Year,
+        Month,
+        Day,
+        Hour,
+        Minute
+    }
+
 }
