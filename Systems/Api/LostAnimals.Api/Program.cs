@@ -14,11 +14,15 @@ builder.AddAppLogger(mainSettings, logSettings);
 
 var services = builder.Services;
 
+services.AddAppHealthChecks();
+
 services.AddAppSwagger(mainSettings, swaggerSettings);
 
 services.RegisterServices(builder.Configuration);
 
 var app = builder.Build();
+
+app.UseAppHealthChecks();
 
 app.UseAppSwagger();
 

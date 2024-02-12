@@ -1,13 +1,12 @@
-﻿namespace LostAnimals.Services.Logger
-{
-    using Microsoft.Extensions.DependencyInjection;
+﻿namespace LostAnimals.Services.Logger;
 
-    public static class Bootstrapper
+using Microsoft.Extensions.DependencyInjection;
+
+public static class Bootstrapper
+{
+    public static IServiceCollection AddAppLogger(this IServiceCollection services)
     {
-        public static IServiceCollection AddAppLogger(this IServiceCollection services)
-        {
-            return services
-                .AddSingleton<IAppLogger, AppLogger>();
-        }
+        return services
+            .AddSingleton<IAppLogger, AppLogger>();
     }
 }
