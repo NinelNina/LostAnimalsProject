@@ -14,17 +14,33 @@ builder.AddAppLogger(mainSettings, logSettings);
 
 var services = builder.Services;
 
+services.AddHttpContextAccessor();
+
+services.AddAppCors();
+
 services.AddAppHealthChecks();
 
+services.AddAppVersioning();
+
 services.AddAppSwagger(mainSettings, swaggerSettings);
+
+services.AddAppAutoMappers();
+
+services.AddAppValidator();
+
+services.AddAppControllerAndViews();
 
 services.RegisterServices(builder.Configuration);
 
 var app = builder.Build();
 
+app.UseAppCors();
+
 app.UseAppHealthChecks();
 
 app.UseAppSwagger();
+
+app.UseAppControllerAndViews();
 
 var logger = app.Services.GetRequiredService<IAppLogger>();
 
