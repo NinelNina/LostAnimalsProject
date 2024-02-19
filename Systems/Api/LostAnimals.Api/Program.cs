@@ -3,6 +3,7 @@ using LostAnimals.Api.Configuration;
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.Settings;
 using LostAnimals.Settings;
+using LostAnimals.Context;
 
 var mainSettings = Settings.Load<MainSettings>("Main");
 var logSettings = Settings.Load<LogSettings>("Log");
@@ -15,6 +16,8 @@ builder.AddAppLogger(mainSettings, logSettings);
 var services = builder.Services;
 
 services.AddHttpContextAccessor();
+
+services.AddAppDbContext(builder.Configuration);
 
 services.AddAppCors();
 
@@ -34,6 +37,8 @@ services.RegisterServices(builder.Configuration);
 
 var app = builder.Build();
 
+var logger = app.Services.GetRequiredService<IAppLogger>();
+
 app.UseAppCors();
 
 app.UseAppHealthChecks();
@@ -42,7 +47,7 @@ app.UseAppSwagger();
 
 app.UseAppControllerAndViews();
 
-var logger = app.Services.GetRequiredService<IAppLogger>();
+DbInitializer.Execute(app.Services);
 
 logger.Information("LostAnimals.API has started");
 

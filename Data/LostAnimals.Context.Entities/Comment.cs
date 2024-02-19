@@ -8,7 +8,8 @@
 
         public int AttributeID { get; set; }
         public virtual CommentAttribute Attribute { get; set; }
-        
+
+        public int? ParentCommentId { get; set; }
         public virtual Comment? ParentComment { get; set; }
         
         public string Content { get; set; }

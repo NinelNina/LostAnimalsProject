@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="appsettings.context.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.1" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.6.13" />
@@ -26,6 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Data\LostAnimals.Context.Entities\LostAnimals.Context.Entities.csproj" />
+    <ProjectReference Include="..\..\..\Data\LostAnimals.Context\LostAnimals.Context.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Logger\LostAnimals.Services.Logger.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Settings\LostAnimals.Services.Settings.csproj" />
     <ProjectReference Include="..\..\..\Shared\LostAnimals.Common\LostAnimals.Common.csproj" />
