@@ -1,0 +1,1333 @@
+[22:22:57:671 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:22:57:707 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:22:57:709 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:22:57:711 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:22:57:712 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:22:57:799 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:22:57:841 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:22:57:946 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:22:58:487 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:22:58:685 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.MSSQL MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:22:58:701 DBG ()] Creating DbConnection.
+[22:22:58:717 DBG ()] Created DbConnection. (14ms).
+[22:22:58:720 DBG ()] Migrating using database '' on server ''.
+[22:22:58:726 DBG ()] Opening connection to database '' on server ''.
+[22:22:58:823 DBG ()] An error occurred using the connection to database '' on server ''.
+[22:33:13:341 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:33:13:385 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:33:13:386 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:33:13:387 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:33:13:388 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:33:13:473 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:33:13:515 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:33:13:620 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:33:14:054 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:33:14:194 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.MSSQL MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:33:14:206 DBG ()] Creating DbConnection.
+[22:34:10:542 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:34:10:584 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:34:10:585 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:34:10:586 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:34:10:588 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:34:10:677 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:34:10:714 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:34:10:820 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:34:11:250 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:34:11:394 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.MSSQL MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:34:11:407 DBG ()] Creating DbConnection.
+[22:34:11:465 DBG ()] Created DbConnection. (55ms).
+[22:34:11:469 DBG ()] Migrating using database 'LostAnimals' on server 'localhost'.
+[22:34:11:474 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:34:34:380 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:34:58:815 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:34:58:859 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:34:58:860 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:34:58:861 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:34:58:862 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:34:58:988 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:34:59:040 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:34:59:175 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:34:59:665 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:34:59:819 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.MSSQL MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:34:59:833 DBG ()] Creating DbConnection.
+[22:34:59:859 DBG ()] Created DbConnection. (23ms).
+[22:34:59:862 DBG ()] Migrating using database 'LostAnimals' on server 'localhost'.
+[22:34:59:867 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:00:087 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:25:691 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:35:25:726 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:35:25:728 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:35:25:729 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:35:25:730 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:35:25:820 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:35:25:858 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:35:25:961 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:35:26:371 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:35:26:514 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.MSSQL MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:35:26:528 DBG ()] Creating DbConnection.
+[22:35:26:553 DBG ()] Created DbConnection. (23ms).
+[22:35:26:557 DBG ()] Migrating using database 'LostAnimals' on server 'localhost'.
+[22:35:26:563 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:26:733 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:27:240 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:27:258 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:27:775 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:27:793 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:28:304 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:28:324 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:28:828 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:28:847 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:29:361 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:29:378 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:29:892 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:29:911 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:30:419 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:30:436 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:30:943 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:30:964 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:31:471 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:31:489 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:32:004 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:32:021 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:32:533 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:32:551 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:33:063 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:33:080 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:33:591 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:33:608 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:34:117 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:34:135 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:34:647 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:34:667 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:35:174 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:35:192 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:35:703 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:35:722 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:36:229 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:36:248 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:36:754 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:36:773 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:37:281 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:37:299 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:37:810 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:37:828 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:38:336 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:38:356 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:38:865 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:38:883 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:39:392 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:39:410 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:39:918 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:39:935 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:40:442 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:40:460 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:40:965 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:40:982 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:41:494 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:41:511 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:42:028 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:42:046 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:42:556 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:42:575 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:43:088 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:43:108 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:43:616 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:43:636 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:44:145 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:44:165 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:44:673 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:44:692 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:45:201 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:45:219 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:45:726 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:45:746 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:46:255 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:46:273 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:46:783 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:46:802 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:47:309 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:47:326 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:47:840 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:47:858 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:48:368 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:48:386 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:48:896 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:48:915 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:49:427 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:49:445 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:49:956 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:49:974 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:50:481 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:50:500 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:51:007 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:51:024 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:51:535 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:51:553 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:52:068 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:52:087 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:52:601 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:52:619 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:53:127 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:53:146 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:53:656 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:53:674 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:54:183 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:54:201 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:54:712 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:54:729 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:55:241 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:55:259 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:35:55:769 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:35:55:787 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:44:979 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:41:45:017 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:41:45:018 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:41:45:019 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:41:45:020 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:41:45:106 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:41:45:162 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:41:45:315 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:41:45:744 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:41:45:882 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.MSSQL MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:41:45:894 DBG ()] Creating DbConnection.
+[22:41:45:919 DBG ()] Created DbConnection. (22ms).
+[22:41:45:922 DBG ()] Migrating using database 'LostAnimals' on server 'localhost'.
+[22:41:45:928 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:46:090 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:46:604 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:46:623 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:47:135 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:47:155 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:47:661 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:47:679 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:48:187 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:48:205 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:48:718 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:48:736 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:49:244 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:49:263 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:49:772 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:49:790 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:50:298 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:50:317 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:50:826 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:50:844 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:51:354 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:51:374 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:51:885 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:51:903 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:52:410 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:52:429 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:52:936 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:52:964 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:41:53:477 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:41:53:502 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:15:970 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:42:16:013 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:42:16:015 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:42:16:016 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:42:16:017 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:42:16:122 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:42:16:164 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:42:16:369 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:42:16:794 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:42:16:939 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.MSSQL MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:42:16:952 DBG ()] Creating DbConnection.
+[22:42:16:976 DBG ()] Created DbConnection. (22ms).
+[22:42:16:980 DBG ()] Migrating using database 'LostAnimals' on server 'localhost'.
+[22:42:16:984 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:17:159 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:17:670 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:17:688 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:18:199 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:18:217 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:18:724 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:18:744 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:19:246 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:19:264 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:19:774 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:19:793 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:20:299 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:20:318 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:20:832 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:20:850 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:21:357 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:21:375 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:21:886 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:21:904 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:22:416 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:22:435 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:22:943 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:22:961 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:23:467 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:23:485 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:23:993 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:24:011 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:24:519 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:24:537 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:25:049 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:25:068 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:25:579 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:25:599 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:26:105 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:26:122 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:26:630 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:26:649 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:27:156 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:27:173 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:42:27:680 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:42:27:698 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:44:39:644 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:44:39:679 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:44:39:682 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:44:39:684 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:44:39:685 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:44:39:769 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:44:39:806 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:44:39:921 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:44:40:348 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:44:40:490 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.MSSQL MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:44:40:509 DBG ()] Creating DbConnection.
+[22:44:40:535 DBG ()] Created DbConnection. (24ms).
+[22:44:40:539 DBG ()] Migrating using database 'LostAnimals' on server 'localhost'.
+[22:44:40:543 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:44:40:708 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:44:40:709 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:44:40:711 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:44:40:817 DBG ()] Creating DbConnection.
+[22:44:40:818 DBG ()] Created DbConnection. (1ms).
+[22:44:40:819 DBG ()] Opening connection to database 'master' on server 'localhost'.
+[22:44:40:843 DBG ()] Opened connection to database 'master' on server 'localhost'.
+[22:44:40:847 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:40:868 DBG ()] Created DbCommand for 'ExecuteNonQuery' (3ms).
+[22:44:40:871 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (24ms).
+[22:44:40:876 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE DATABASE [LostAnimals];
+[22:44:41:100 INF ()] Executed DbCommand (222ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE DATABASE [LostAnimals];
+[22:44:41:103 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:104 DBG ()] Created DbCommand for 'ExecuteNonQuery' (0ms).
+[22:44:41:106 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:107 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [LostAnimals] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+[22:44:41:224 INF ()] Executed DbCommand (117ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [LostAnimals] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+[22:44:41:228 DBG ()] Closing connection to database 'master' on server 'localhost'.
+[22:44:41:234 DBG ()] Closed connection to database 'master' on server 'localhost' (5ms).
+[22:44:41:238 DBG ()] Disposing connection to database 'master' on server 'localhost'.
+[22:44:41:239 DBG ()] Disposed connection to database '' on server '' (1ms).
+[22:44:41:241 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:256 DBG ()] Opened connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:258 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:259 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:260 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:262 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT 1
+[22:44:41:269 INF ()] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT 1
+[22:44:41:271 DBG ()] Closing connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:272 DBG ()] Closed connection to database 'LostAnimals' on server 'localhost' (1ms).
+[22:44:41:318 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:320 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:325 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (6ms).
+[22:44:41:328 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:331 DBG ()] Opened connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:333 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [_migrations] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK__migrations] PRIMARY KEY ([MigrationId])
+);
+[22:44:41:350 INF ()] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [_migrations] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK__migrations] PRIMARY KEY ([MigrationId])
+);
+[22:44:41:354 DBG ()] Closing connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:355 DBG ()] Closed connection to database 'LostAnimals' on server 'localhost' (1ms).
+[22:44:41:358 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:360 DBG ()] Opened connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:362 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:363 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:364 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:368 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT 1
+[22:44:41:371 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT 1
+[22:44:41:374 DBG ()] Closing connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:375 DBG ()] Closed connection to database 'LostAnimals' on server 'localhost' (1ms).
+[22:44:41:379 DBG ()] Creating DbCommand for 'ExecuteScalar'.
+[22:44:41:380 DBG ()] Created DbCommand for 'ExecuteScalar' (0ms).
+[22:44:41:382 DBG ()] Initialized DbCommand for 'ExecuteScalar' (3ms).
+[22:44:41:384 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:385 DBG ()] Opened connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:386 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT OBJECT_ID(N'[_migrations]');
+[22:44:41:398 INF ()] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT OBJECT_ID(N'[_migrations]');
+[22:44:41:400 DBG ()] Closing connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:401 DBG ()] Closed connection to database 'LostAnimals' on server 'localhost' (1ms).
+[22:44:41:404 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:405 DBG ()] Opened connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:406 DBG ()] Creating DbCommand for 'ExecuteReader'.
+[22:44:41:407 DBG ()] Created DbCommand for 'ExecuteReader' (1ms).
+[22:44:41:408 DBG ()] Initialized DbCommand for 'ExecuteReader' (2ms).
+[22:44:41:409 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT [MigrationId], [ProductVersion]
+FROM [_migrations]
+ORDER BY [MigrationId];
+[22:44:41:424 INF ()] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT [MigrationId], [ProductVersion]
+FROM [_migrations]
+ORDER BY [MigrationId];
+[22:44:41:427 DBG ()] Closing data reader to 'LostAnimals' on server 'localhost'.
+[22:44:41:430 DBG ()] A data reader for 'LostAnimals' on server 'localhost' is being disposed after spending 3ms reading results.
+[22:44:41:432 DBG ()] Closing connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:433 DBG ()] Closed connection to database 'LostAnimals' on server 'localhost' (1ms).
+[22:44:41:441 INF ()] Applying migration '20240219183750_init'.
+[22:44:41:484 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:485 DBG ()] Opened connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:488 DBG ()] Beginning transaction with isolation level 'Unspecified'.
+[22:44:41:494 DBG ()] Began transaction with isolation level 'ReadCommitted'.
+[22:44:41:496 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:497 DBG ()] Created DbCommand for 'ExecuteNonQuery' (0ms).
+[22:44:41:499 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:500 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [animal_kinds] (
+    [Id] int NOT NULL IDENTITY,
+    [AnimalKindName] nvarchar(100) NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_animal_kinds] PRIMARY KEY ([Id])
+);
+[22:44:41:505 INF ()] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [animal_kinds] (
+    [Id] int NOT NULL IDENTITY,
+    [AnimalKindName] nvarchar(100) NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_animal_kinds] PRIMARY KEY ([Id])
+);
+[22:44:41:507 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:508 DBG ()] Created DbCommand for 'ExecuteNonQuery' (0ms).
+[22:44:41:509 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:510 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [comment_attributes] (
+    [Id] int NOT NULL IDENTITY,
+    [AttributeName] nvarchar(100) NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_comment_attributes] PRIMARY KEY ([Id])
+);
+[22:44:41:514 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [comment_attributes] (
+    [Id] int NOT NULL IDENTITY,
+    [AttributeName] nvarchar(100) NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_comment_attributes] PRIMARY KEY ([Id])
+);
+[22:44:41:517 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:519 DBG ()] Created DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:521 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (3ms).
+[22:44:41:522 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [note_categories] (
+    [Id] int NOT NULL IDENTITY,
+    [CategoryName] nvarchar(100) NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_note_categories] PRIMARY KEY ([Id])
+);
+[22:44:41:526 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [note_categories] (
+    [Id] int NOT NULL IDENTITY,
+    [CategoryName] nvarchar(100) NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_note_categories] PRIMARY KEY ([Id])
+);
+[22:44:41:528 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:529 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:530 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:532 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [photo_gallery] (
+    [Id] int NOT NULL IDENTITY,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_photo_gallery] PRIMARY KEY ([Id])
+);
+[22:44:41:538 INF ()] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [photo_gallery] (
+    [Id] int NOT NULL IDENTITY,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_photo_gallery] PRIMARY KEY ([Id])
+);
+[22:44:41:540 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:541 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:542 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:544 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [breeds] (
+    [Id] int NOT NULL IDENTITY,
+    [BreedName] nvarchar(max) NOT NULL,
+    [AnimalKindID] int NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_breeds] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_breeds_animal_kinds_AnimalKindID] FOREIGN KEY ([AnimalKindID]) REFERENCES [animal_kinds] ([Id]) ON DELETE CASCADE
+);
+[22:44:41:549 INF ()] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [breeds] (
+    [Id] int NOT NULL IDENTITY,
+    [BreedName] nvarchar(max) NOT NULL,
+    [AnimalKindID] int NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_breeds] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_breeds_animal_kinds_AnimalKindID] FOREIGN KEY ([AnimalKindID]) REFERENCES [animal_kinds] ([Id]) ON DELETE CASCADE
+);
+[22:44:41:553 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:554 DBG ()] Created DbCommand for 'ExecuteNonQuery' (0ms).
+[22:44:41:556 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:557 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [photo_storage] (
+    [Id] int NOT NULL IDENTITY,
+    [PhotoFullName] nvarchar(max) NOT NULL,
+    [PhotoGalleryID] int NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_photo_storage] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_photo_storage_photo_gallery_PhotoGalleryID] FOREIGN KEY ([PhotoGalleryID]) REFERENCES [photo_gallery] ([Id]) ON DELETE CASCADE
+);
+[22:44:41:562 INF ()] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [photo_storage] (
+    [Id] int NOT NULL IDENTITY,
+    [PhotoFullName] nvarchar(max) NOT NULL,
+    [PhotoGalleryID] int NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_photo_storage] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_photo_storage_photo_gallery_PhotoGalleryID] FOREIGN KEY ([PhotoGalleryID]) REFERENCES [photo_gallery] ([Id]) ON DELETE CASCADE
+);
+[22:44:41:567 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:568 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:569 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:570 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [notes] (
+    [Id] int NOT NULL IDENTITY,
+    [CategoryID] int NOT NULL,
+    [Title] nvarchar(250) NOT NULL,
+    [AnimalName] nvarchar(max) NULL,
+    [BreedID] int NOT NULL,
+    [PhotoGalleryID] int NULL,
+    [Content] nvarchar(max) NOT NULL,
+    [Latitude] float NULL,
+    [Longtitude] float NULL,
+    [LastSeenDate] date NOT NULL,
+    [CreatedDate] datetime2 NOT NULL DEFAULT '2024-02-19T21:37:49.9067256+03:00',
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_notes] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_notes_breeds_BreedID] FOREIGN KEY ([BreedID]) REFERENCES [breeds] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_notes_note_categories_CategoryID] FOREIGN KEY ([CategoryID]) REFERENCES [note_categories] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_notes_photo_gallery_PhotoGalleryID] FOREIGN KEY ([PhotoGalleryID]) REFERENCES [photo_gallery] ([Id]) ON DELETE NO ACTION
+);
+[22:44:41:576 INF ()] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [notes] (
+    [Id] int NOT NULL IDENTITY,
+    [CategoryID] int NOT NULL,
+    [Title] nvarchar(250) NOT NULL,
+    [AnimalName] nvarchar(max) NULL,
+    [BreedID] int NOT NULL,
+    [PhotoGalleryID] int NULL,
+    [Content] nvarchar(max) NOT NULL,
+    [Latitude] float NULL,
+    [Longtitude] float NULL,
+    [LastSeenDate] date NOT NULL,
+    [CreatedDate] datetime2 NOT NULL DEFAULT '2024-02-19T21:37:49.9067256+03:00',
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_notes] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_notes_breeds_BreedID] FOREIGN KEY ([BreedID]) REFERENCES [breeds] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_notes_note_categories_CategoryID] FOREIGN KEY ([CategoryID]) REFERENCES [note_categories] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_notes_photo_gallery_PhotoGalleryID] FOREIGN KEY ([PhotoGalleryID]) REFERENCES [photo_gallery] ([Id]) ON DELETE NO ACTION
+);
+[22:44:41:582 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:583 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:585 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:586 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [comments] (
+    [Id] int NOT NULL IDENTITY,
+    [NoteID] int NOT NULL,
+    [AttributeID] int NOT NULL,
+    [ParentCommentId] int NULL,
+    [Content] nvarchar(max) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL DEFAULT '2024-02-19T21:37:49.9057597+03:00',
+    [PhotoGalleryID] int NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_comments] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_comments_comment_attributes_AttributeID] FOREIGN KEY ([AttributeID]) REFERENCES [comment_attributes] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_comments_comments_ParentCommentId] FOREIGN KEY ([ParentCommentId]) REFERENCES [comments] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_comments_notes_NoteID] FOREIGN KEY ([NoteID]) REFERENCES [notes] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_comments_photo_gallery_PhotoGalleryID] FOREIGN KEY ([PhotoGalleryID]) REFERENCES [photo_gallery] ([Id]) ON DELETE NO ACTION
+);
+[22:44:41:593 INF ()] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE [comments] (
+    [Id] int NOT NULL IDENTITY,
+    [NoteID] int NOT NULL,
+    [AttributeID] int NOT NULL,
+    [ParentCommentId] int NULL,
+    [Content] nvarchar(max) NOT NULL,
+    [CreatedDate] datetime2 NOT NULL DEFAULT '2024-02-19T21:37:49.9057597+03:00',
+    [PhotoGalleryID] int NOT NULL,
+    [Uid] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_comments] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_comments_comment_attributes_AttributeID] FOREIGN KEY ([AttributeID]) REFERENCES [comment_attributes] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_comments_comments_ParentCommentId] FOREIGN KEY ([ParentCommentId]) REFERENCES [comments] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_comments_notes_NoteID] FOREIGN KEY ([NoteID]) REFERENCES [notes] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_comments_photo_gallery_PhotoGalleryID] FOREIGN KEY ([PhotoGalleryID]) REFERENCES [photo_gallery] ([Id]) ON DELETE NO ACTION
+);
+[22:44:41:598 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:599 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:601 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:602 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_animal_kinds_Uid] ON [animal_kinds] ([Uid]);
+[22:44:41:605 INF ()] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_animal_kinds_Uid] ON [animal_kinds] ([Uid]);
+[22:44:41:607 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:608 DBG ()] Created DbCommand for 'ExecuteNonQuery' (0ms).
+[22:44:41:609 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:612 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_breeds_AnimalKindID] ON [breeds] ([AnimalKindID]);
+[22:44:41:615 INF ()] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_breeds_AnimalKindID] ON [breeds] ([AnimalKindID]);
+[22:44:41:618 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:619 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:620 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:621 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_breeds_Uid] ON [breeds] ([Uid]);
+[22:44:41:625 INF ()] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_breeds_Uid] ON [breeds] ([Uid]);
+[22:44:41:629 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:630 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:632 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:633 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_comment_attributes_Uid] ON [comment_attributes] ([Uid]);
+[22:44:41:638 INF ()] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_comment_attributes_Uid] ON [comment_attributes] ([Uid]);
+[22:44:41:642 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:643 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:644 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:645 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_comments_AttributeID] ON [comments] ([AttributeID]);
+[22:44:41:649 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_comments_AttributeID] ON [comments] ([AttributeID]);
+[22:44:41:651 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:652 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:653 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:654 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_comments_NoteID] ON [comments] ([NoteID]);
+[22:44:41:660 INF ()] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_comments_NoteID] ON [comments] ([NoteID]);
+[22:44:41:662 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:663 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:665 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:667 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_comments_ParentCommentId] ON [comments] ([ParentCommentId]) WHERE [ParentCommentId] IS NOT NULL;
+[22:44:41:671 INF ()] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_comments_ParentCommentId] ON [comments] ([ParentCommentId]) WHERE [ParentCommentId] IS NOT NULL;
+[22:44:41:675 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:676 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:677 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:679 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_comments_PhotoGalleryID] ON [comments] ([PhotoGalleryID]);
+[22:44:41:682 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_comments_PhotoGalleryID] ON [comments] ([PhotoGalleryID]);
+[22:44:41:684 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:685 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:688 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (3ms).
+[22:44:41:689 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_comments_Uid] ON [comments] ([Uid]);
+[22:44:41:693 INF ()] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_comments_Uid] ON [comments] ([Uid]);
+[22:44:41:695 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:696 DBG ()] Created DbCommand for 'ExecuteNonQuery' (0ms).
+[22:44:41:697 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:698 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_note_categories_Uid] ON [note_categories] ([Uid]);
+[22:44:41:702 INF ()] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_note_categories_Uid] ON [note_categories] ([Uid]);
+[22:44:41:705 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:707 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:708 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:709 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_notes_BreedID] ON [notes] ([BreedID]);
+[22:44:41:713 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_notes_BreedID] ON [notes] ([BreedID]);
+[22:44:41:715 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:716 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:717 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:721 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_notes_CategoryID] ON [notes] ([CategoryID]);
+[22:44:41:724 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_notes_CategoryID] ON [notes] ([CategoryID]);
+[22:44:41:726 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:728 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:729 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:730 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_notes_PhotoGalleryID] ON [notes] ([PhotoGalleryID]);
+[22:44:41:734 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_notes_PhotoGalleryID] ON [notes] ([PhotoGalleryID]);
+[22:44:41:736 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:737 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:738 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:740 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_notes_Uid] ON [notes] ([Uid]);
+[22:44:41:743 INF ()] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_notes_Uid] ON [notes] ([Uid]);
+[22:44:41:745 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:746 DBG ()] Created DbCommand for 'ExecuteNonQuery' (0ms).
+[22:44:41:747 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:748 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_photo_gallery_Uid] ON [photo_gallery] ([Uid]);
+[22:44:41:755 INF ()] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_photo_gallery_Uid] ON [photo_gallery] ([Uid]);
+[22:44:41:757 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:759 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:760 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:761 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_photo_storage_PhotoGalleryID] ON [photo_storage] ([PhotoGalleryID]);
+[22:44:41:765 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE INDEX [IX_photo_storage_PhotoGalleryID] ON [photo_storage] ([PhotoGalleryID]);
+[22:44:41:768 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:769 DBG ()] Created DbCommand for 'ExecuteNonQuery' (1ms).
+[22:44:41:770 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:44:41:771 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_photo_storage_Uid] ON [photo_storage] ([Uid]);
+[22:44:41:775 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE UNIQUE INDEX [IX_photo_storage_Uid] ON [photo_storage] ([Uid]);
+[22:44:41:777 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:44:41:778 DBG ()] Created DbCommand for 'ExecuteNonQuery' (0ms).
+[22:44:41:780 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (3ms).
+[22:44:41:782 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+INSERT INTO [_migrations] ([MigrationId], [ProductVersion])
+VALUES (N'20240219183750_init', N'8.0.2');
+[22:44:41:792 INF ()] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+INSERT INTO [_migrations] ([MigrationId], [ProductVersion])
+VALUES (N'20240219183750_init', N'8.0.2');
+[22:44:41:795 DBG ()] Committing transaction.
+[22:44:41:803 DBG ()] Committed transaction.
+[22:44:41:805 DBG ()] Disposing transaction.
+[22:44:41:806 DBG ()] Closing connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:807 DBG ()] Closed connection to database 'LostAnimals' on server 'localhost' (1ms).
+[22:44:41:810 DBG ()] 'MainDbContext' disposed.
+[22:44:41:812 DBG ()] Disposing connection to database 'LostAnimals' on server 'localhost'.
+[22:44:41:814 DBG ()] Disposed connection to database '' on server '' (1ms).
+[22:44:41:816 INF ()] [LostAnimals] LostAnimals.API has started
+[22:44:41:819 DBG ()] Hosting starting
+[22:44:41:827 DBG ()] Reading data from file 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys\key-bd5d4aa8-4e26-426b-bfaa-ebb8c234f66f.xml'.
+[22:44:41:847 DBG ()] Found key {bd5d4aa8-4e26-426b-bfaa-ebb8c234f66f}.
+[22:44:41:859 DBG ()] Considering key {bd5d4aa8-4e26-426b-bfaa-ebb8c234f66f} with expiration date 2024-04-10 13:11:29Z as default key.
+[22:44:41:863 DBG ()] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+[22:44:41:865 DBG ()] Decrypting secret element using Windows DPAPI.
+[22:44:41:867 DBG ()] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+[22:44:41:870 DBG ()] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+[22:44:41:871 DBG ()] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+[22:44:41:874 DBG ()] Using key {bd5d4aa8-4e26-426b-bfaa-ebb8c234f66f} as the default key.
+[22:44:41:877 DBG ()] Key ring with default key {bd5d4aa8-4e26-426b-bfaa-ebb8c234f66f} was loaded during application startup.
+[22:44:42:241 DBG ()] Connection id "0HN1HGCROVBPI" accepted.
+[22:44:42:242 DBG ()] Connection id "0HN1HGCROVBPJ" accepted.
+[22:44:42:243 DBG ()] Connection id "0HN1HGCROVBPI" started.
+[22:44:42:243 DBG ()] Connection id "0HN1HGCROVBPJ" started.
+[22:44:42:244 INF ()] Now listening on: http://localhost:5024
+[22:44:42:249 DBG ()] Loaded hosting startup assembly LostAnimals.Api
+[22:44:42:251 DBG ()] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+[22:44:42:252 DBG ()] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+[22:44:42:254 DBG ()] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+[22:44:42:257 DBG ()] Connection id "0HN1HGCROVBPI" received FIN.
+[22:44:42:257 DBG ()] Connection id "0HN1HGCROVBPJ" received FIN.
+[22:44:42:269 DBG ()] Connection id "0HN1HGCROVBPI" sending FIN because: "The Socket transport's send loop completed gracefully."
+[22:44:42:271 DBG ()] Connection id "0HN1HGCROVBPJ" sending FIN because: "The Socket transport's send loop completed gracefully."
+[22:44:42:275 DBG ()] Connection id "0HN1HGCROVBPI" disconnecting.
+[22:44:42:281 DBG ()] Connection id "0HN1HGCROVBPJ" disconnecting.
+[22:44:42:290 DBG ()] Connection id "0HN1HGCROVBPI" stopped.
+[22:44:42:290 DBG ()] Connection id "0HN1HGCROVBPJ" stopped.
+[22:44:42:314 INF ()] Application started. Press Ctrl+C to shut down.
+[22:44:42:315 INF ()] Hosting environment: Development
+[22:44:42:316 INF ()] Content root path: I:\Programming\CSharp\LostAnimalsProject\Systems\Api\LostAnimals.Api
+[22:44:42:318 DBG ()] Hosting started
+[22:44:42:460 DBG ()] Connection id "0HN1HGCROVBPK" accepted.
+[22:44:42:462 DBG ()] Connection id "0HN1HGCROVBPK" started.
+[22:44:42:462 DBG ()] Connection id "0HN1HGCROVBPL" accepted.
+[22:44:42:472 DBG ()] Connection id "0HN1HGCROVBPL" started.
+[22:44:42:523 INF (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Request starting HTTP/1.1 GET http://localhost:5024/ - null null
+[22:44:42:663 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Wildcard detected, all requests with hosts will be allowed.
+[22:44:42:680 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] 1 candidate(s) found for the request path '/'
+[22:44:42:685 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Endpoint '/Index' with route pattern '' is valid for the request path '/'
+[22:44:42:690 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Request matched endpoint '/Index'
+[22:44:42:758 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Static files was skipped as the request already matched an endpoint.
+[22:44:42:760 INF (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Executing endpoint '/Index'
+[22:44:42:810 INF (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Route matched with {page = "/Index"}. Executing page /Index
+[22:44:42:814 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Execution plan of authorization filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.AutoValidateAntiforgeryTokenAuthorizationFilter"]
+[22:44:42:818 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter"]
+[22:44:42:821 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Asp.Versioning.ReportApiVersionsAttribute (Order: 0)"]
+[22:44:42:823 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Execution plan of exception filters (in the following order): ["None"]
+[22:44:42:825 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter","Asp.Versioning.ReportApiVersionsAttribute (Order: 0)"]
+[22:44:42:833 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Executing page model factory for page LostAnimals.Api.Pages.Pages_Index (LostAnimals.Api)
+[22:44:42:835 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Executed page model factory for page LostAnimals.Api.Pages.Pages_Index (LostAnimals.Api)
+[22:44:42:843 INF (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Executing handler method LostAnimals.Api.Pages.IndexModel.OnGet - ModelState is "Valid"
+[22:44:42:845 INF (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Executed handler method OnGet, returned result .
+[22:44:42:848 INF (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Executing an implicit handler method - ModelState is "Valid"
+[22:44:42:849 INF (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+[22:44:42:867 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] View lookup cache miss for view '_Layout' in controller 'null'.
+[22:44:42:924 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Found the endpoints ["/Index"] for address (area=[],page=[/Index])
+[22:44:42:931 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Successfully processed template  for /Index resulting in  and 
+[22:44:42:934 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Link generation succeeded for endpoints ["/Index"] with result /
+[22:44:42:939 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Found the endpoints ["/Index"] for address (area=[],page=[/Index])
+[22:44:42:942 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Successfully processed template  for /Index resulting in  and 
+[22:44:42:944 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Link generation succeeded for endpoints ["/Index"] with result /
+[22:44:42:947 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] No endpoints found for address (area=[],page=[/Privacy])
+[22:44:42:950 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] No endpoints found for address (area=[],page=[/Privacy])
+[22:44:42:977 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Response markup is scheduled to include Browser Link script injection.
+[22:44:42:982 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Response markup is scheduled to include browser refresh script injection.
+[22:44:42:990 INF (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Executed page /Index in 158.713ms
+[22:44:42:992 INF (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Executed endpoint '/Index'
+[22:44:42:994 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Response markup was updated to include Browser Link script injection.
+[22:44:42:996 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Response markup was updated to include browser refresh script injection.
+[22:44:42:998 DBG (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Connection id "0HN1HGCROVBPK" completed keep alive response.
+[22:44:43:003 INF (1dd194ec-62cc-4d64-b84b-d524ac87d9e6)] Request finished HTTP/1.1 GET http://localhost:5024/ - 200 null text/html; charset=utf-8 484.3711ms
+[22:44:43:004 DBG ()] Connection id "0HN1HGCROVBPM" accepted.
+[22:44:43:005 INF (a14557e1-8762-4425-a3bd-0e1d7cc6661d)] Request starting HTTP/1.1 GET http://localhost:5024/css/site.css?v=pAGv4ietcJNk_EwsQZ5BN9-K4MuNYS2a9wl4Jw-q9D0 - null null
+[22:44:43:008 INF (aaa01e26-6702-40f6-9418-130f0bed7f02)] Request starting HTTP/1.1 GET http://localhost:5024/lib/bootstrap/dist/css/bootstrap.min.css - null null
+[22:44:43:009 DBG ()] Connection id "0HN1HGCROVBPN" accepted.
+[22:44:43:008 DBG ()] Connection id "0HN1HGCROVBPM" started.
+[22:44:43:014 DBG (aaa01e26-6702-40f6-9418-130f0bed7f02)] No candidates found for the request path '/lib/bootstrap/dist/css/bootstrap.min.css'
+[22:44:43:017 DBG ()] Connection id "0HN1HGCROVBPN" started.
+[22:44:43:013 DBG (a14557e1-8762-4425-a3bd-0e1d7cc6661d)] No candidates found for the request path '/css/site.css'
+[22:44:43:017 DBG ()] Connection id "0HN1HGCROVBPO" accepted.
+[22:44:43:023 INF (df76613b-e4eb-4c21-ad59-14bf86950d4f)] Request starting HTTP/1.1 GET http://localhost:5024/LostAnimals.Api.styles.css?v=IIwV3cAoE483U2pM2mWQVqDwIGdz7Ol5mA4RUU1X2d8 - null null
+[22:44:43:024 DBG (aaa01e26-6702-40f6-9418-130f0bed7f02)] Request did not match any endpoints
+[22:44:43:027 DBG ()] Connection id "0HN1HGCROVBPO" started.
+[22:44:43:025 INF (24ec01ff-00ba-4f4e-a186-718cb134e39d)] Request starting HTTP/1.1 GET http://localhost:5024/_framework/aspnetcore-browser-refresh.js - null null
+[22:44:43:026 DBG (a14557e1-8762-4425-a3bd-0e1d7cc6661d)] Request did not match any endpoints
+[22:44:43:028 DBG ()] Connection id "0HN1HGCROVBPP" accepted.
+[22:44:43:035 INF (0ac57046-a76c-49de-aa66-ff7eb5076671)] Request starting HTTP/1.1 GET http://localhost:5024/lib/jquery/dist/jquery.min.js - null null
+[22:44:43:037 DBG (aaa01e26-6702-40f6-9418-130f0bed7f02)] The request path  does not match the path filter
+[22:44:43:036 DBG (df76613b-e4eb-4c21-ad59-14bf86950d4f)] No candidates found for the request path '/LostAnimals.Api.styles.css'
+[22:44:43:039 DBG (24ec01ff-00ba-4f4e-a186-718cb134e39d)] Connection id "0HN1HGCROVBPN" completed keep alive response.
+[22:44:43:040 DBG ()] Connection id "0HN1HGCROVBPP" started.
+[22:44:43:040 DBG (a14557e1-8762-4425-a3bd-0e1d7cc6661d)] The request path  does not match the path filter
+[22:44:43:043 DBG (0ac57046-a76c-49de-aa66-ff7eb5076671)] No candidates found for the request path '/lib/jquery/dist/jquery.min.js'
+[22:44:43:044 DBG (aaa01e26-6702-40f6-9418-130f0bed7f02)] Connection id "0HN1HGCROVBPK" completed keep alive response.
+[22:44:43:047 DBG (df76613b-e4eb-4c21-ad59-14bf86950d4f)] Request did not match any endpoints
+[22:44:43:048 INF (24ec01ff-00ba-4f4e-a186-718cb134e39d)] Request finished HTTP/1.1 GET http://localhost:5024/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 23.1507ms
+[22:44:43:050 INF (f8deb78b-7d99-4153-a2c3-98aaab01c96d)] Request starting HTTP/1.1 GET http://localhost:5024/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+[22:44:43:051 DBG (a14557e1-8762-4425-a3bd-0e1d7cc6661d)] Connection id "0HN1HGCROVBPL" completed keep alive response.
+[22:44:43:052 DBG (0ac57046-a76c-49de-aa66-ff7eb5076671)] Request did not match any endpoints
+[22:44:43:054 INF (aaa01e26-6702-40f6-9418-130f0bed7f02)] Request finished HTTP/1.1 GET http://localhost:5024/lib/bootstrap/dist/css/bootstrap.min.css - 404 0 null 46.2057ms
+[22:44:43:055 DBG (df76613b-e4eb-4c21-ad59-14bf86950d4f)] The request path  does not match the path filter
+[22:44:43:058 INF (2dd06c0b-8266-4059-ab4e-477eb48e89ff)] Request starting HTTP/1.1 GET http://localhost:5024/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo - null null
+[22:44:43:060 DBG (f8deb78b-7d99-4153-a2c3-98aaab01c96d)] No candidates found for the request path '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'
+[22:44:43:063 INF (a14557e1-8762-4425-a3bd-0e1d7cc6661d)] Request finished HTTP/1.1 GET http://localhost:5024/css/site.css?v=pAGv4ietcJNk_EwsQZ5BN9-K4MuNYS2a9wl4Jw-q9D0 - 404 0 null 58.9064ms
+[22:44:43:064 DBG (0ac57046-a76c-49de-aa66-ff7eb5076671)] The request path  does not match the path filter
+[22:44:43:068 INF (aaa01e26-6702-40f6-9418-130f0bed7f02)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/lib/bootstrap/dist/css/bootstrap.min.css, Response status code: 404
+[22:44:43:068 DBG (df76613b-e4eb-4c21-ad59-14bf86950d4f)] Connection id "0HN1HGCROVBPM" completed keep alive response.
+[22:44:43:071 DBG (2dd06c0b-8266-4059-ab4e-477eb48e89ff)] No candidates found for the request path '/js/site.js'
+[22:44:43:072 DBG (f8deb78b-7d99-4153-a2c3-98aaab01c96d)] Request did not match any endpoints
+[22:44:43:075 INF (a14557e1-8762-4425-a3bd-0e1d7cc6661d)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/css/site.css, Response status code: 404
+[22:44:43:076 DBG (0ac57046-a76c-49de-aa66-ff7eb5076671)] Connection id "0HN1HGCROVBPO" completed keep alive response.
+[22:44:43:080 INF (4f17dd84-ed3f-4385-ba0a-1bca38a4a283)] Request starting HTTP/1.1 GET http://localhost:5024/_vs/browserLink - null null
+[22:44:43:081 INF (df76613b-e4eb-4c21-ad59-14bf86950d4f)] Request finished HTTP/1.1 GET http://localhost:5024/LostAnimals.Api.styles.css?v=IIwV3cAoE483U2pM2mWQVqDwIGdz7Ol5mA4RUU1X2d8 - 404 0 null 58.4549ms
+[22:44:43:082 DBG (2dd06c0b-8266-4059-ab4e-477eb48e89ff)] Request did not match any endpoints
+[22:44:43:086 INF (0ac57046-a76c-49de-aa66-ff7eb5076671)] Request finished HTTP/1.1 GET http://localhost:5024/lib/jquery/dist/jquery.min.js - 404 0 null 51.048ms
+[22:44:43:092 INF (df76613b-e4eb-4c21-ad59-14bf86950d4f)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/LostAnimals.Api.styles.css, Response status code: 404
+[22:44:43:096 DBG (2dd06c0b-8266-4059-ab4e-477eb48e89ff)] The request path  does not match the path filter
+[22:44:43:099 INF (0ac57046-a76c-49de-aa66-ff7eb5076671)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/lib/jquery/dist/jquery.min.js, Response status code: 404
+[22:44:43:103 DBG (2dd06c0b-8266-4059-ab4e-477eb48e89ff)] Connection id "0HN1HGCROVBPN" completed keep alive response.
+[22:44:43:083 DBG (f8deb78b-7d99-4153-a2c3-98aaab01c96d)] The request path  does not match the path filter
+[22:44:43:107 INF (2dd06c0b-8266-4059-ab4e-477eb48e89ff)] Request finished HTTP/1.1 GET http://localhost:5024/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo - 404 0 null 49.0554ms
+[22:44:43:111 DBG (f8deb78b-7d99-4153-a2c3-98aaab01c96d)] Connection id "0HN1HGCROVBPP" completed keep alive response.
+[22:44:43:114 INF (2dd06c0b-8266-4059-ab4e-477eb48e89ff)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/js/site.js, Response status code: 404
+[22:44:43:116 INF (f8deb78b-7d99-4153-a2c3-98aaab01c96d)] Request finished HTTP/1.1 GET http://localhost:5024/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 404 0 null 66.2937ms
+[22:44:43:127 INF (f8deb78b-7d99-4153-a2c3-98aaab01c96d)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/lib/bootstrap/dist/js/bootstrap.bundle.min.js, Response status code: 404
+[22:44:43:128 DBG (4f17dd84-ed3f-4385-ba0a-1bca38a4a283)] Connection id "0HN1HGCROVBPK" completed keep alive response.
+[22:44:43:132 INF (4f17dd84-ed3f-4385-ba0a-1bca38a4a283)] Request finished HTTP/1.1 GET http://localhost:5024/_vs/browserLink - 200 null text/javascript; charset=UTF-8 51.7671ms
+[22:44:43:163 INF (2162bf07-a68d-48c2-b03f-57159d3fe5bf)] Request starting HTTP/1.1 GET http://localhost:5024/favicon.ico - null null
+[22:44:43:166 DBG (2162bf07-a68d-48c2-b03f-57159d3fe5bf)] No candidates found for the request path '/favicon.ico'
+[22:44:43:168 DBG (2162bf07-a68d-48c2-b03f-57159d3fe5bf)] Request did not match any endpoints
+[22:44:43:169 DBG (2162bf07-a68d-48c2-b03f-57159d3fe5bf)] The request path  does not match the path filter
+[22:44:43:170 DBG (2162bf07-a68d-48c2-b03f-57159d3fe5bf)] Connection id "0HN1HGCROVBPK" completed keep alive response.
+[22:44:43:172 INF (2162bf07-a68d-48c2-b03f-57159d3fe5bf)] Request finished HTTP/1.1 GET http://localhost:5024/favicon.ico - 404 0 null 9.2529ms
+[22:44:43:175 INF (2162bf07-a68d-48c2-b03f-57159d3fe5bf)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/favicon.ico, Response status code: 404
+[22:47:06:890 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:47:06:923 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:47:06:924 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:47:06:925 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:47:06:926 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:47:07:005 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:47:07:046 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:47:07:163 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:47:07:575 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:47:07:723 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.MSSQL MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:47:07:736 DBG ()] Creating DbConnection.
+[22:47:07:761 DBG ()] Created DbConnection. (22ms).
+[22:47:07:765 DBG ()] Migrating using database 'LostAnimals' on server 'localhost'.
+[22:47:07:770 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:07:950 DBG ()] Opened connection to database 'LostAnimals' on server 'localhost'.
+[22:47:07:955 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:47:07:960 DBG ()] Created DbCommand for 'ExecuteNonQuery' (3ms).
+[22:47:07:963 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (8ms).
+[22:47:07:968 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT 1
+[22:47:07:989 INF ()] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT 1
+[22:47:07:994 DBG ()] Closing connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:001 DBG ()] Closed connection to database 'LostAnimals' on server 'localhost' (4ms).
+[22:47:08:004 DBG ()] Creating DbCommand for 'ExecuteScalar'.
+[22:47:08:005 DBG ()] Created DbCommand for 'ExecuteScalar' (0ms).
+[22:47:08:006 DBG ()] Initialized DbCommand for 'ExecuteScalar' (2ms).
+[22:47:08:007 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:009 DBG ()] Opened connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:011 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT OBJECT_ID(N'[_migrations]');
+[22:47:08:024 INF ()] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT OBJECT_ID(N'[_migrations]');
+[22:47:08:026 DBG ()] Closing connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:027 DBG ()] Closed connection to database 'LostAnimals' on server 'localhost' (1ms).
+[22:47:08:030 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:031 DBG ()] Opened connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:032 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:47:08:033 DBG ()] Created DbCommand for 'ExecuteNonQuery' (0ms).
+[22:47:08:034 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+[22:47:08:036 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT 1
+[22:47:08:039 INF ()] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT 1
+[22:47:08:041 DBG ()] Closing connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:042 DBG ()] Closed connection to database 'LostAnimals' on server 'localhost' (1ms).
+[22:47:08:045 DBG ()] Creating DbCommand for 'ExecuteScalar'.
+[22:47:08:047 DBG ()] Created DbCommand for 'ExecuteScalar' (1ms).
+[22:47:08:048 DBG ()] Initialized DbCommand for 'ExecuteScalar' (2ms).
+[22:47:08:050 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:051 DBG ()] Opened connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:052 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT OBJECT_ID(N'[_migrations]');
+[22:47:08:055 INF ()] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT OBJECT_ID(N'[_migrations]');
+[22:47:08:057 DBG ()] Closing connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:058 DBG ()] Closed connection to database 'LostAnimals' on server 'localhost' (1ms).
+[22:47:08:070 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:071 DBG ()] Opened connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:072 DBG ()] Creating DbCommand for 'ExecuteReader'.
+[22:47:08:073 DBG ()] Created DbCommand for 'ExecuteReader' (1ms).
+[22:47:08:076 DBG ()] Initialized DbCommand for 'ExecuteReader' (3ms).
+[22:47:08:078 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT [MigrationId], [ProductVersion]
+FROM [_migrations]
+ORDER BY [MigrationId];
+[22:47:08:081 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT [MigrationId], [ProductVersion]
+FROM [_migrations]
+ORDER BY [MigrationId];
+[22:47:08:085 DBG ()] Closing data reader to 'LostAnimals' on server 'localhost'.
+[22:47:08:087 DBG ()] A data reader for 'LostAnimals' on server 'localhost' is being disposed after spending 2ms reading results.
+[22:47:08:088 DBG ()] Closing connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:091 DBG ()] Closed connection to database 'LostAnimals' on server 'localhost' (2ms).
+[22:47:08:099 INF ()] No migrations were applied. The database is already up to date.
+[22:47:08:101 DBG ()] 'MainDbContext' disposed.
+[22:47:08:103 DBG ()] Disposing connection to database 'LostAnimals' on server 'localhost'.
+[22:47:08:104 DBG ()] Disposed connection to database '' on server '' (1ms).
+[22:47:08:107 INF ()] [LostAnimals] LostAnimals.API has started
+[22:47:08:111 DBG ()] Hosting starting
+[22:47:08:118 DBG ()] Reading data from file 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys\key-bd5d4aa8-4e26-426b-bfaa-ebb8c234f66f.xml'.
+[22:47:08:124 DBG ()] Found key {bd5d4aa8-4e26-426b-bfaa-ebb8c234f66f}.
+[22:47:08:131 DBG ()] Considering key {bd5d4aa8-4e26-426b-bfaa-ebb8c234f66f} with expiration date 2024-04-10 13:11:29Z as default key.
+[22:47:08:134 DBG ()] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+[22:47:08:137 DBG ()] Decrypting secret element using Windows DPAPI.
+[22:47:08:138 DBG ()] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+[22:47:08:141 DBG ()] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+[22:47:08:143 DBG ()] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+[22:47:08:146 DBG ()] Using key {bd5d4aa8-4e26-426b-bfaa-ebb8c234f66f} as the default key.
+[22:47:08:147 DBG ()] Key ring with default key {bd5d4aa8-4e26-426b-bfaa-ebb8c234f66f} was loaded during application startup.
+[22:47:08:241 INF ()] Now listening on: http://localhost:5024
+[22:47:08:243 DBG ()] Loaded hosting startup assembly LostAnimals.Api
+[22:47:08:244 DBG ()] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+[22:47:08:245 DBG ()] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+[22:47:08:246 DBG ()] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+[22:47:08:271 INF ()] Application started. Press Ctrl+C to shut down.
+[22:47:08:272 INF ()] Hosting environment: Development
+[22:47:08:273 INF ()] Content root path: I:\Programming\CSharp\LostAnimalsProject\Systems\Api\LostAnimals.Api
+[22:47:08:275 DBG ()] Hosting started
+[22:47:08:330 DBG ()] Connection id "0HN1HGE7A6AGP" accepted.
+[22:47:08:330 DBG ()] Connection id "0HN1HGE7A6AGQ" accepted.
+[22:47:08:332 DBG ()] Connection id "0HN1HGE7A6AGP" started.
+[22:47:08:332 DBG ()] Connection id "0HN1HGE7A6AGQ" started.
+[22:47:08:356 DBG ()] Connection id "0HN1HGE7A6AGQ" received FIN.
+[22:47:08:356 DBG ()] Connection id "0HN1HGE7A6AGP" received FIN.
+[22:47:08:364 DBG ()] Connection id "0HN1HGE7A6AGP" disconnecting.
+[22:47:08:363 DBG ()] Connection id "0HN1HGE7A6AGQ" sending FIN because: "The Socket transport's send loop completed gracefully."
+[22:47:08:369 DBG ()] Connection id "0HN1HGE7A6AGP" sending FIN because: "The Socket transport's send loop completed gracefully."
+[22:47:08:372 DBG ()] Connection id "0HN1HGE7A6AGQ" disconnecting.
+[22:47:08:377 DBG ()] Connection id "0HN1HGE7A6AGP" stopped.
+[22:47:08:378 DBG ()] Connection id "0HN1HGE7A6AGQ" stopped.
+[22:47:08:589 DBG ()] Connection id "0HN1HGE7A6AGR" accepted.
+[22:47:08:591 DBG ()] Connection id "0HN1HGE7A6AGR" started.
+[22:47:08:591 DBG ()] Connection id "0HN1HGE7A6AGS" accepted.
+[22:47:08:601 DBG ()] Connection id "0HN1HGE7A6AGS" started.
+[22:47:08:626 INF (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Request starting HTTP/1.1 GET http://localhost:5024/ - null null
+[22:47:08:698 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Wildcard detected, all requests with hosts will be allowed.
+[22:47:08:710 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] 1 candidate(s) found for the request path '/'
+[22:47:08:713 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Endpoint '/Index' with route pattern '' is valid for the request path '/'
+[22:47:08:716 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Request matched endpoint '/Index'
+[22:47:08:737 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Static files was skipped as the request already matched an endpoint.
+[22:47:08:740 INF (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Executing endpoint '/Index'
+[22:47:08:756 INF (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Route matched with {page = "/Index"}. Executing page /Index
+[22:47:08:759 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Execution plan of authorization filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.AutoValidateAntiforgeryTokenAuthorizationFilter"]
+[22:47:08:761 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter"]
+[22:47:08:763 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Asp.Versioning.ReportApiVersionsAttribute (Order: 0)"]
+[22:47:08:766 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Execution plan of exception filters (in the following order): ["None"]
+[22:47:08:768 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter","Asp.Versioning.ReportApiVersionsAttribute (Order: 0)"]
+[22:47:08:778 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Executing page model factory for page LostAnimals.Api.Pages.Pages_Index (LostAnimals.Api)
+[22:47:08:780 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Executed page model factory for page LostAnimals.Api.Pages.Pages_Index (LostAnimals.Api)
+[22:47:08:786 INF (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Executing handler method LostAnimals.Api.Pages.IndexModel.OnGet - ModelState is "Valid"
+[22:47:08:788 INF (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Executed handler method OnGet, returned result .
+[22:47:08:791 INF (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Executing an implicit handler method - ModelState is "Valid"
+[22:47:08:793 INF (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+[22:47:08:810 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] View lookup cache miss for view '_Layout' in controller 'null'.
+[22:47:08:850 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Found the endpoints ["/Index"] for address (area=[],page=[/Index])
+[22:47:08:859 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Successfully processed template  for /Index resulting in  and 
+[22:47:08:863 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Link generation succeeded for endpoints ["/Index"] with result /
+[22:47:08:867 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Found the endpoints ["/Index"] for address (area=[],page=[/Index])
+[22:47:08:869 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Successfully processed template  for /Index resulting in  and 
+[22:47:08:870 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Link generation succeeded for endpoints ["/Index"] with result /
+[22:47:08:873 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] No endpoints found for address (area=[],page=[/Privacy])
+[22:47:08:874 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] No endpoints found for address (area=[],page=[/Privacy])
+[22:47:08:882 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Response markup is scheduled to include Browser Link script injection.
+[22:47:08:887 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Response markup is scheduled to include browser refresh script injection.
+[22:47:08:894 INF (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Executed page /Index in 119.9393ms
+[22:47:08:896 INF (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Executed endpoint '/Index'
+[22:47:08:898 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Response markup was updated to include Browser Link script injection.
+[22:47:08:900 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Response markup was updated to include browser refresh script injection.
+[22:47:08:902 DBG (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Connection id "0HN1HGE7A6AGR" completed keep alive response.
+[22:47:08:905 INF (51c0c0f0-ca7b-4d2f-8d2a-50f729974390)] Request finished HTTP/1.1 GET http://localhost:5024/ - 200 null text/html; charset=utf-8 284.0683ms
+[22:47:08:906 DBG ()] Connection id "0HN1HGE7A6AGT" accepted.
+[22:47:08:906 INF (8f3b5813-8d4d-4ed7-91d2-5b949d112592)] Request starting HTTP/1.1 GET http://localhost:5024/css/site.css?v=pAGv4ietcJNk_EwsQZ5BN9-K4MuNYS2a9wl4Jw-q9D0 - null null
+[22:47:08:912 INF (e0bce1a2-9ad7-4ca2-b460-322427f3e165)] Request starting HTTP/1.1 GET http://localhost:5024/lib/bootstrap/dist/css/bootstrap.min.css - null null
+[22:47:08:913 DBG ()] Connection id "0HN1HGE7A6AGT" started.
+[22:47:08:914 DBG ()] Connection id "0HN1HGE7A6AGU" accepted.
+[22:47:08:917 DBG (8f3b5813-8d4d-4ed7-91d2-5b949d112592)] No candidates found for the request path '/css/site.css'
+[22:47:08:918 DBG (e0bce1a2-9ad7-4ca2-b460-322427f3e165)] No candidates found for the request path '/lib/bootstrap/dist/css/bootstrap.min.css'
+[22:47:08:919 INF (606c4bff-ae8f-471c-b014-ddb080903df9)] Request starting HTTP/1.1 GET http://localhost:5024/LostAnimals.Api.styles.css?v=IIwV3cAoE483U2pM2mWQVqDwIGdz7Ol5mA4RUU1X2d8 - null null
+[22:47:08:920 DBG ()] Connection id "0HN1HGE7A6AGU" started.
+[22:47:08:925 DBG ()] Connection id "0HN1HGE7A6AGV" accepted.
+[22:47:08:927 DBG (8f3b5813-8d4d-4ed7-91d2-5b949d112592)] Request did not match any endpoints
+[22:47:08:929 DBG (e0bce1a2-9ad7-4ca2-b460-322427f3e165)] Request did not match any endpoints
+[22:47:08:933 DBG (606c4bff-ae8f-471c-b014-ddb080903df9)] No candidates found for the request path '/LostAnimals.Api.styles.css'
+[22:47:08:934 DBG ()] Connection id "0HN1HGE7A6AGV" started.
+[22:47:08:933 INF (b197eb5c-c722-4d8c-be22-11aa9b674af3)] Request starting HTTP/1.1 GET http://localhost:5024/_framework/aspnetcore-browser-refresh.js - null null
+[22:47:08:935 DBG ()] Connection id "0HN1HGE7A6AH0" accepted.
+[22:47:08:942 DBG (e0bce1a2-9ad7-4ca2-b460-322427f3e165)] The request path  does not match the path filter
+[22:47:08:943 DBG (606c4bff-ae8f-471c-b014-ddb080903df9)] Request did not match any endpoints
+[22:47:08:944 INF (2faa9d70-6ab2-4ecf-b582-f5c46d81e326)] Request starting HTTP/1.1 GET http://localhost:5024/lib/jquery/dist/jquery.min.js - null null
+[22:47:08:942 DBG (8f3b5813-8d4d-4ed7-91d2-5b949d112592)] The request path  does not match the path filter
+[22:47:08:948 DBG ()] Connection id "0HN1HGE7A6AH0" started.
+[22:47:08:948 DBG (b197eb5c-c722-4d8c-be22-11aa9b674af3)] Connection id "0HN1HGE7A6AGU" completed keep alive response.
+[22:47:08:949 DBG (e0bce1a2-9ad7-4ca2-b460-322427f3e165)] Connection id "0HN1HGE7A6AGR" completed keep alive response.
+[22:47:08:950 DBG (606c4bff-ae8f-471c-b014-ddb080903df9)] The request path  does not match the path filter
+[22:47:08:953 DBG (2faa9d70-6ab2-4ecf-b582-f5c46d81e326)] No candidates found for the request path '/lib/jquery/dist/jquery.min.js'
+[22:47:08:956 DBG (8f3b5813-8d4d-4ed7-91d2-5b949d112592)] Connection id "0HN1HGE7A6AGS" completed keep alive response.
+[22:47:08:957 INF (cac8f201-9b1e-4bc3-b505-7dff68100aee)] Request starting HTTP/1.1 GET http://localhost:5024/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+[22:47:08:958 INF (b197eb5c-c722-4d8c-be22-11aa9b674af3)] Request finished HTTP/1.1 GET http://localhost:5024/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 25.2716ms
+[22:47:08:960 INF (e0bce1a2-9ad7-4ca2-b460-322427f3e165)] Request finished HTTP/1.1 GET http://localhost:5024/lib/bootstrap/dist/css/bootstrap.min.css - 404 0 null 48.0213ms
+[22:47:08:962 DBG (606c4bff-ae8f-471c-b014-ddb080903df9)] Connection id "0HN1HGE7A6AGT" completed keep alive response.
+[22:47:08:963 DBG (2faa9d70-6ab2-4ecf-b582-f5c46d81e326)] Request did not match any endpoints
+[22:47:08:964 INF (8f3b5813-8d4d-4ed7-91d2-5b949d112592)] Request finished HTTP/1.1 GET http://localhost:5024/css/site.css?v=pAGv4ietcJNk_EwsQZ5BN9-K4MuNYS2a9wl4Jw-q9D0 - 404 0 null 58.0266ms
+[22:47:08:967 DBG (cac8f201-9b1e-4bc3-b505-7dff68100aee)] No candidates found for the request path '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'
+[22:47:08:972 INF (e4118fe5-ea0b-4591-9f06-bd1068456a1c)] Request starting HTTP/1.1 GET http://localhost:5024/_vs/browserLink - null null
+[22:47:08:976 INF (e0bce1a2-9ad7-4ca2-b460-322427f3e165)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/lib/bootstrap/dist/css/bootstrap.min.css, Response status code: 404
+[22:47:08:977 INF (606c4bff-ae8f-471c-b014-ddb080903df9)] Request finished HTTP/1.1 GET http://localhost:5024/LostAnimals.Api.styles.css?v=IIwV3cAoE483U2pM2mWQVqDwIGdz7Ol5mA4RUU1X2d8 - 404 0 null 57.3926ms
+[22:47:08:989 INF (0103d388-90ab-423e-b598-55d6044f129b)] Request starting HTTP/1.1 GET http://localhost:5024/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo - null null
+[22:47:08:998 INF (606c4bff-ae8f-471c-b014-ddb080903df9)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/LostAnimals.Api.styles.css, Response status code: 404
+[22:47:08:978 DBG (2faa9d70-6ab2-4ecf-b582-f5c46d81e326)] The request path  does not match the path filter
+[22:47:09:002 DBG (0103d388-90ab-423e-b598-55d6044f129b)] No candidates found for the request path '/js/site.js'
+[22:47:08:980 INF (8f3b5813-8d4d-4ed7-91d2-5b949d112592)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/css/site.css, Response status code: 404
+[22:47:09:009 DBG (0103d388-90ab-423e-b598-55d6044f129b)] Request did not match any endpoints
+[22:47:09:007 DBG (2faa9d70-6ab2-4ecf-b582-f5c46d81e326)] Connection id "0HN1HGE7A6AGV" completed keep alive response.
+[22:47:08:982 DBG (cac8f201-9b1e-4bc3-b505-7dff68100aee)] Request did not match any endpoints
+[22:47:09:014 DBG (0103d388-90ab-423e-b598-55d6044f129b)] The request path  does not match the path filter
+[22:47:09:018 DBG (e4118fe5-ea0b-4591-9f06-bd1068456a1c)] Connection id "0HN1HGE7A6AGU" completed keep alive response.
+[22:47:09:018 INF (2faa9d70-6ab2-4ecf-b582-f5c46d81e326)] Request finished HTTP/1.1 GET http://localhost:5024/lib/jquery/dist/jquery.min.js - 404 0 null 74.0396ms
+[22:47:09:020 DBG (cac8f201-9b1e-4bc3-b505-7dff68100aee)] The request path  does not match the path filter
+[22:47:09:021 DBG (0103d388-90ab-423e-b598-55d6044f129b)] Connection id "0HN1HGE7A6AGR" completed keep alive response.
+[22:47:09:022 INF (e4118fe5-ea0b-4591-9f06-bd1068456a1c)] Request finished HTTP/1.1 GET http://localhost:5024/_vs/browserLink - 200 null text/javascript; charset=UTF-8 50.2204ms
+[22:47:09:026 INF (2faa9d70-6ab2-4ecf-b582-f5c46d81e326)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/lib/jquery/dist/jquery.min.js, Response status code: 404
+[22:47:09:028 DBG (cac8f201-9b1e-4bc3-b505-7dff68100aee)] Connection id "0HN1HGE7A6AH0" completed keep alive response.
+[22:47:09:029 INF (0103d388-90ab-423e-b598-55d6044f129b)] Request finished HTTP/1.1 GET http://localhost:5024/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo - 404 0 null 39.895ms
+[22:47:09:038 INF (cac8f201-9b1e-4bc3-b505-7dff68100aee)] Request finished HTTP/1.1 GET http://localhost:5024/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 404 0 null 80.9509ms
+[22:47:09:041 INF (0103d388-90ab-423e-b598-55d6044f129b)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/js/site.js, Response status code: 404
+[22:47:09:047 INF (cac8f201-9b1e-4bc3-b505-7dff68100aee)] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/lib/bootstrap/dist/js/bootstrap.bundle.min.js, Response status code: 404
+[22:47:44:423 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:47:44:463 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:47:44:465 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:47:44:466 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:47:44:467 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:47:44:550 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:47:44:589 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:47:44:695 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:47:45:119 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:47:45:270 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.MSSQL MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:47:45:286 DBG ()] Creating DbConnection.
+[22:47:45:311 DBG ()] Created DbConnection. (23ms).
+[22:47:45:315 DBG ()] Migrating using database 'LostAnimals' on server 'localhost'.
+[22:47:45:320 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:45:485 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:45:996 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:46:013 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:46:518 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:46:537 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:47:046 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:47:066 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:47:570 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:47:587 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:48:095 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:48:113 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:48:621 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:48:640 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:49:146 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:49:166 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:49:671 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:49:689 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:50:197 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:50:215 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:50:721 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:50:740 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:51:245 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:51:264 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:51:773 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:51:790 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:52:296 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:52:316 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:52:823 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:52:841 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:53:351 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:53:372 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:53:879 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:53:897 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:47:54:408 DBG ()] Opening connection to database 'LostAnimals' on server 'localhost'.
+[22:47:54:427 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'localhost'.
+[22:49:35:420 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:49:35:463 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:49:35:464 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:49:35:465 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:49:35:465 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:49:35:564 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:49:35:613 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:49:35:778 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:49:36:223 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:49:36:374 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.2+5a671b9769f2d00a75b0ba42ce30c444a12407e3' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.PgSql MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:49:36:387 DBG ()] Creating DbConnection.
+[22:49:36:453 DBG ()] Created DbConnection. (63ms).
+[22:49:36:460 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:36:520 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:36:523 DBG ()] Migrating using database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:36:525 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:36:535 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:36:537 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:36:546 DBG ()] An error occurred using the connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:36:599 DBG ()] Creating DbConnection.
+[22:49:36:601 DBG ()] Created DbConnection. (1ms).
+[22:49:36:602 DBG ()] Opening connection to database 'postgres' on server 'tcp://localhost:5432'.
+[22:49:36:761 DBG ()] Opened connection to database 'postgres' on server 'tcp://localhost:5432'.
+[22:49:36:765 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:49:36:771 DBG ()] Created DbCommand for 'ExecuteNonQuery' (3ms).
+[22:49:36:773 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (8ms).
+[22:49:36:778 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE DATABASE "LostAnimals";
+[22:49:36:927 INF ()] Executed DbCommand (147ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE DATABASE "LostAnimals";
+[22:49:36:931 DBG ()] Closing connection to database 'postgres' on server 'tcp://localhost:5432'.
+[22:49:36:937 DBG ()] Closed connection to database 'postgres' on server 'tcp://localhost:5432' (4ms).
+[22:49:36:939 DBG ()] Disposing connection to database 'postgres' on server 'tcp://localhost:5432'.
+[22:49:36:943 DBG ()] Disposed connection to database 'postgres' on server 'tcp://localhost:5432' (3ms).
+[22:49:36:944 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:36:962 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:36:963 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:36:964 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (1ms).
+[22:49:37:012 DBG ()] Creating DbCommand for 'ExecuteNonQuery'.
+[22:49:37:014 DBG ()] Created DbCommand for 'ExecuteNonQuery' (2ms).
+[22:49:37:015 DBG ()] Initialized DbCommand for 'ExecuteNonQuery' (3ms).
+[22:49:37:017 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:037 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:040 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE _migrations (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK__migrations" PRIMARY KEY ("MigrationId")
+);
+[22:49:37:051 INF ()] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+CREATE TABLE _migrations (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK__migrations" PRIMARY KEY ("MigrationId")
+);
+[22:49:37:054 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:056 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (2ms).
+[22:49:37:058 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:068 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:070 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:071 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (1ms).
+[22:49:37:074 DBG ()] Creating DbCommand for 'ExecuteScalar'.
+[22:49:37:075 DBG ()] Created DbCommand for 'ExecuteScalar' (0ms).
+[22:49:37:076 DBG ()] Initialized DbCommand for 'ExecuteScalar' (1ms).
+[22:49:37:077 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:078 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:080 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='_migrations'
+)
+[22:49:37:112 INF ()] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='_migrations'
+)
+[22:49:37:114 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:116 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (1ms).
+[22:49:37:119 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:120 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:121 DBG ()] Creating DbCommand for 'ExecuteReader'.
+[22:49:37:122 DBG ()] Created DbCommand for 'ExecuteReader' (1ms).
+[22:49:37:124 DBG ()] Initialized DbCommand for 'ExecuteReader' (2ms).
+[22:49:37:125 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM _migrations
+ORDER BY "MigrationId";
+[22:49:37:128 INF ()] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM _migrations
+ORDER BY "MigrationId";
+[22:49:37:131 DBG ()] Closing data reader to 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:136 DBG ()] A data reader for 'LostAnimals' on server 'tcp://localhost:5432' is being disposed after spending 4ms reading results.
+[22:49:37:137 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:49:37:138 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (1ms).
+[22:49:37:146 INF ()] Applying migration '20240219194421_init'.
+[22:56:11:545 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Index.cshtml'.
+[22:56:11:580 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+[22:56:11:582 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+[22:56:11:583 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+[22:56:11:584 DBG ()] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+[22:56:11:670 DBG ()] Registered model binder providers, in the following order: ["Asp.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+[22:56:11:713 INF ()] User profile is available. Using 'C:\Users\Nina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[22:56:11:835 DBG ()] An 'IServiceProvider' was created for internal use by Entity Framework.
+[22:56:12:319 WRN ()] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[22:56:12:457 DBG ()] Entity Framework Core 8.0.2 initialized 'MainDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.2+5a671b9769f2d00a75b0ba42ce30c444a12407e3' with options: SensitiveDataLoggingEnabled CommandTimeout=600 MigrationsAssembly=LostAnimals.Context.Migrations.PgSql MigrationsHistoryTable=_migrations using lazy loading proxies 
+[22:56:12:469 DBG ()] Creating DbConnection.
+[22:56:12:501 DBG ()] Created DbConnection. (31ms).
+[22:56:12:507 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:586 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:589 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:597 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (5ms).
+[22:56:12:602 DBG ()] Creating DbCommand for 'ExecuteScalar'.
+[22:56:12:606 DBG ()] Created DbCommand for 'ExecuteScalar' (3ms).
+[22:56:12:608 DBG ()] Initialized DbCommand for 'ExecuteScalar' (7ms).
+[22:56:12:609 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:629 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:637 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='_migrations'
+)
+[22:56:12:685 INF ()] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='_migrations'
+)
+[22:56:12:689 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:692 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (2ms).
+[22:56:12:703 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:704 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:705 DBG ()] Creating DbCommand for 'ExecuteReader'.
+[22:56:12:706 DBG ()] Created DbCommand for 'ExecuteReader' (0ms).
+[22:56:12:709 DBG ()] Initialized DbCommand for 'ExecuteReader' (3ms).
+[22:56:12:710 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM _migrations
+ORDER BY "MigrationId";
+[22:56:12:714 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM _migrations
+ORDER BY "MigrationId";
+[22:56:12:718 DBG ()] Closing data reader to 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:719 DBG ()] A data reader for 'LostAnimals' on server 'tcp://localhost:5432' is being disposed after spending 2ms reading results.
+[22:56:12:721 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:722 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (1ms).
+[22:56:12:725 DBG ()] Migrating using database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:727 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:736 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:738 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:739 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (1ms).
+[22:56:12:742 DBG ()] Creating DbCommand for 'ExecuteScalar'.
+[22:56:12:743 DBG ()] Created DbCommand for 'ExecuteScalar' (0ms).
+[22:56:12:744 DBG ()] Initialized DbCommand for 'ExecuteScalar' (2ms).
+[22:56:12:745 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:746 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:747 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='_migrations'
+)
+[22:56:12:750 INF ()] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='_migrations'
+)
+[22:56:12:752 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:753 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (1ms).
+[22:56:12:755 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:766 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:767 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:768 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (1ms).
+[22:56:12:769 DBG ()] Creating DbCommand for 'ExecuteScalar'.
+[22:56:12:770 DBG ()] Created DbCommand for 'ExecuteScalar' (0ms).
+[22:56:12:773 DBG ()] Initialized DbCommand for 'ExecuteScalar' (3ms).
+[22:56:12:774 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:776 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:777 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='_migrations'
+)
+[22:56:12:781 INF ()] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='_migrations'
+)
+[22:56:12:785 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:786 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (1ms).
+[22:56:12:790 DBG ()] Opening connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:791 DBG ()] Opened connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:792 DBG ()] Creating DbCommand for 'ExecuteReader'.
+[22:56:12:793 DBG ()] Created DbCommand for 'ExecuteReader' (0ms).
+[22:56:12:794 DBG ()] Initialized DbCommand for 'ExecuteReader' (2ms).
+[22:56:12:795 DBG ()] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM _migrations
+ORDER BY "MigrationId";
+[22:56:12:798 INF ()] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='600']
+SELECT "MigrationId", "ProductVersion"
+FROM _migrations
+ORDER BY "MigrationId";
+[22:56:12:800 DBG ()] Closing data reader to 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:801 DBG ()] A data reader for 'LostAnimals' on server 'tcp://localhost:5432' is being disposed after spending 1ms reading results.
+[22:56:12:803 DBG ()] Closing connection to database 'LostAnimals' on server 'tcp://localhost:5432'.
+[22:56:12:806 DBG ()] Closed connection to database 'LostAnimals' on server 'tcp://localhost:5432' (3ms).
+[22:56:12:814 INF ()] Applying migration '20240219194421_init'.

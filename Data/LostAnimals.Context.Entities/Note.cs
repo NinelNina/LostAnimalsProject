@@ -21,6 +21,6 @@
         public DateOnly LastSeenDate { get; set; }
         public DateTime CreatedDate { get; set; }
 
-        public ICollection<Comment>? Comments { get; set; }
+        public virtual ICollection<Comment>? Comments { get; set; }
     }
 }

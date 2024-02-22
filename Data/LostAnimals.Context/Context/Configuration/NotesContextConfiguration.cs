@@ -21,8 +21,7 @@ public static class NotesContextConfiguration
 
         modelBuilder.Entity<Note>()
             .Property(x => x.CreatedDate)
-            .IsRequired()
-            .HasDefaultValue(DateTime.Now);
+            .IsRequired();
         
         modelBuilder.Entity<Note>()
             .Property(x => x.LastSeenDate)

@@ -4,6 +4,6 @@
     {
         public string AnimalKindName { get; set; }
 
-        public ICollection<Breed> Breeds { get; set; }
+        public virtual ICollection<Breed> Breeds { get; set; }
     }
 }

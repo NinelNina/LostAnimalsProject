@@ -37,6 +37,8 @@ services.RegisterServices(builder.Configuration);
 
 var app = builder.Build();
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 var logger = app.Services.GetRequiredService<IAppLogger>();
 
 app.UseAppCors();
@@ -48,6 +50,8 @@ app.UseAppSwagger();
 app.UseAppControllerAndViews();
 
 DbInitializer.Execute(app.Services);
+
+//AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 logger.Information("LostAnimals.API has started");
 
