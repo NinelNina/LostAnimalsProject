@@ -2,7 +2,9 @@
 {
     public class Note : BaseEntity
     {
-        //public virtual User User { get; set; }
+        public int UserID { get; set; }
+        public virtual User User { get; set; }
+
         public int CategoryID { get; set; }
         public virtual NoteCategory Category { get; set; }
         
@@ -18,7 +20,7 @@
         public virtual string Content { get; set;}
         public double? Latitude { get; set; }
         public double? Longtitude { get; set; }
-        public DateOnly LastSeenDate { get; set; }
+        public DateOnly? LastSeenDate { get; set; }
         public DateTime CreatedDate { get; set; }
 
         public virtual ICollection<Comment>? Comments { get; set; }

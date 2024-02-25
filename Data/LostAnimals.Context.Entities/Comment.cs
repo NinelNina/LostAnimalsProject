@@ -2,7 +2,9 @@
 {
     public class Comment : BaseEntity
     {
-        //public virtual User User { get; set; }
+        public int UserID { get; set; }
+        public virtual User User { get; set; }
+
         public int NoteID { get; set; }
         public virtual Note Note { get; set; }
 
