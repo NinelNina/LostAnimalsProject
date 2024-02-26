@@ -28,6 +28,10 @@ public static class NotesContextConfiguration
             .IsRequired();
         
         modelBuilder.Entity<Note>()
+            .Property(x => x.IsActive)
+            .IsRequired();
+        
+        modelBuilder.Entity<Note>()
             .HasOne(x => x.Category)
             .WithMany(x => x.Notes)
             .HasForeignKey(x => x.CategoryID)
@@ -47,5 +51,13 @@ public static class NotesContextConfiguration
             .HasForeignKey(x => x.PhotoGalleryID)
             .OnDelete(DeleteBehavior.Restrict)
             .IsRequired(false);
+        
+        modelBuilder.Entity<Note>()
+            .HasOne(x => x.User)
+            .WithMany(x => x.Notes)
+            .HasForeignKey(x => x.UserID)
+            .HasPrincipalKey(x => x.Id)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
     }
 }

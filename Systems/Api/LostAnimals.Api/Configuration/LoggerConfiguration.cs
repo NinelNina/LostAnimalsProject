@@ -64,7 +64,7 @@ public static class LoggerConfiguration
 
             var fileName = $"_.log";
 
-            loggerConfiguration.WriteTo.File($"%logs/{fileName})",
+            loggerConfiguration.WriteTo.File($"%logs/{fileName}",
                 serilogLevel, 
                 logItemTemplate, 
                 rollingInterval: serilogInterval,

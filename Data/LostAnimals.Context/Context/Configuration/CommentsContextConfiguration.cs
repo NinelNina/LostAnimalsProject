@@ -39,10 +39,10 @@ public static class CommentsContextConfiguration
             .IsRequired(false);
 
         modelBuilder.Entity<Comment>()
-            .HasOne(x => x.Attribute)
+            .HasOne(x => x.User)
             .WithMany(x => x.Comments)
-            .HasForeignKey(x => x.AttributeID)
-            .OnDelete(DeleteBehavior.Restrict)
-            .IsRequired(true);
+            .HasForeignKey(x => x.UserID)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
     }
 }

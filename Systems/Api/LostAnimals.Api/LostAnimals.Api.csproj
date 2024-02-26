@@ -43,4 +43,8 @@
     <ProjectReference Include="..\..\..\Shared\LostAnimals.Common\LostAnimals.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="%25logs\" />
+  </ItemGroup>
+
 </Project>

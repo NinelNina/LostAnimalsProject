@@ -23,13 +23,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Services.Logger
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Context.Entities", "Data\LostAnimals.Context.Entities\LostAnimals.Context.Entities.csproj", "{EF363EF7-B0AB-41F8-AC84-2F783DFA5C53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Context", "Data\LostAnimals.Context\LostAnimals.Context.csproj", "{BB65320F-CB1D-4783-8CDB-4ECA79D6241B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Context", "Data\LostAnimals.Context\LostAnimals.Context.csproj", "{BB65320F-CB1D-4783-8CDB-4ECA79D6241B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LostAnimals.Context.Migrations", "LostAnimals.Context.Migrations", "{DF8059C6-0F6A-46EE-AD6E-7C6EFF0B950C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Context.Migrations.MSSQL", "Data\LostAnimals.Context.Migrations\LostAnimals.Context.Migrations.MSSQL\LostAnimals.Context.Migrations.MSSQL.csproj", "{C83D52FD-CB80-484E-9FD6-EC2FF53E42D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Context.Migrations.MSSQL", "Data\LostAnimals.Context.Migrations\LostAnimals.Context.Migrations.MSSQL\LostAnimals.Context.Migrations.MSSQL.csproj", "{C83D52FD-CB80-484E-9FD6-EC2FF53E42D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Context.Migrations.PgSql", "Data\LostAnimals.Context.Migrations\LostAnimals.Context.Migrations.PgSql\LostAnimals.Context.Migrations.PgSql.csproj", "{9AFF74E6-3FC9-412C-82C8-84A25DE8DEBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Context.Migrations.PgSql", "Data\LostAnimals.Context.Migrations\LostAnimals.Context.Migrations.PgSql\LostAnimals.Context.Migrations.PgSql.csproj", "{9AFF74E6-3FC9-412C-82C8-84A25DE8DEBF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{BB0BE46F-DE03-4D6D-82B6-FF7634A38231}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Identity", "Systems\Identity\LostAnimals.Identity\LostAnimals.Identity.csproj", "{F7F3D012-43E2-4AF5-842F-2CDF691AA970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Services.Notes", "Services\LostAnimals.Services.Notes\LostAnimals.Services.Notes.csproj", "{86101DBC-1D78-441E-A2D0-13775C3049D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +75,14 @@ Global
 		{9AFF74E6-3FC9-412C-82C8-84A25DE8DEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AFF74E6-3FC9-412C-82C8-84A25DE8DEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AFF74E6-3FC9-412C-82C8-84A25DE8DEBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7F3D012-43E2-4AF5-842F-2CDF691AA970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7F3D012-43E2-4AF5-842F-2CDF691AA970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7F3D012-43E2-4AF5-842F-2CDF691AA970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7F3D012-43E2-4AF5-842F-2CDF691AA970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86101DBC-1D78-441E-A2D0-13775C3049D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86101DBC-1D78-441E-A2D0-13775C3049D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86101DBC-1D78-441E-A2D0-13775C3049D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86101DBC-1D78-441E-A2D0-13775C3049D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +98,9 @@ Global
 		{DF8059C6-0F6A-46EE-AD6E-7C6EFF0B950C} = {7D81FB50-156C-471B-8CC2-A543C603FD90}
 		{C83D52FD-CB80-484E-9FD6-EC2FF53E42D7} = {DF8059C6-0F6A-46EE-AD6E-7C6EFF0B950C}
 		{9AFF74E6-3FC9-412C-82C8-84A25DE8DEBF} = {DF8059C6-0F6A-46EE-AD6E-7C6EFF0B950C}
+		{BB0BE46F-DE03-4D6D-82B6-FF7634A38231} = {FBAFE448-0448-47C8-BCFF-4D1D7BBB40D8}
+		{F7F3D012-43E2-4AF5-842F-2CDF691AA970} = {BB0BE46F-DE03-4D6D-82B6-FF7634A38231}
+		{86101DBC-1D78-441E-A2D0-13775C3049D0} = {A62FA465-453F-4E77-8EF4-7A1650A6FD55}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B603206-9CF4-4C60-A951-D2297EA46217}

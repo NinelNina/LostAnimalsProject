@@ -85,9 +85,6 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AttributeID")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("text");
@@ -95,7 +92,7 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 2, 22, 20, 41, 52, 546, DateTimeKind.Local).AddTicks(731));
+                        .HasDefaultValue(new DateTime(2024, 2, 26, 23, 2, 32, 435, DateTimeKind.Local).AddTicks(905));
 
                     b.Property<int>("NoteID")
                         .HasColumnType("integer");
@@ -109,9 +106,10 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<Guid>("Uid")
                         .HasColumnType("uuid");
 
-                    b.HasKey("Id");
+                    b.Property<int>("UserID")
+                        .HasColumnType("integer");
 
-                    b.HasIndex("AttributeID");
+                    b.HasKey("Id");
 
                     b.HasIndex("NoteID");
 
@@ -123,31 +121,9 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.HasIndex("Uid")
                         .IsUnique();
 
+                    b.HasIndex("UserID");
+
                     b.ToTable("comments", (string)null);
-                });
-
-            modelBuilder.Entity("LostAnimals.Context.Entities.CommentAttribute", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AttributeName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<Guid>("Uid")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Uid")
-                        .IsUnique();
-
-                    b.ToTable("comment_attributes", (string)null);
                 });
 
             modelBuilder.Entity("LostAnimals.Context.Entities.Note", b =>
@@ -175,7 +151,14 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateOnly>("LastSeenDate")
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateOnly?>("LastEditDate")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly?>("LastSeenDate")
+                        .IsRequired()
                         .HasColumnType("date");
 
                     b.Property<double?>("Latitude")
@@ -183,6 +166,10 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
 
                     b.Property<double?>("Longtitude")
                         .HasColumnType("double precision");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int?>("PhotoGalleryID")
                         .HasColumnType("integer");
@@ -195,6 +182,9 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<Guid>("Uid")
                         .HasColumnType("uuid");
 
+                    b.Property<int>("UserID")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BreedID");
@@ -205,6 +195,8 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
 
                     b.HasIndex("Uid")
                         .IsUnique();
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("notes", (string)null);
                 });
@@ -280,6 +272,65 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.ToTable("photo_storage", (string)null);
                 });
 
+            modelBuilder.Entity("LostAnimals.Context.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("LostAnimals.Context.Entities.Breed", b =>
                 {
                     b.HasOne("LostAnimals.Context.Entities.AnimalKind", "AnimalKind")
@@ -293,12 +344,6 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
 
             modelBuilder.Entity("LostAnimals.Context.Entities.Comment", b =>
                 {
-                    b.HasOne("LostAnimals.Context.Entities.CommentAttribute", "Attribute")
-                        .WithMany("Comments")
-                        .HasForeignKey("AttributeID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("LostAnimals.Context.Entities.Note", "Note")
                         .WithMany("Comments")
                         .HasForeignKey("NoteID")
@@ -316,13 +361,19 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Attribute");
+                    b.HasOne("LostAnimals.Context.Entities.User", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Note");
 
                     b.Navigation("ParentComment");
 
                     b.Navigation("PhotoGallery");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("LostAnimals.Context.Entities.Note", b =>
@@ -344,11 +395,19 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                         .HasForeignKey("PhotoGalleryID")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("LostAnimals.Context.Entities.User", "User")
+                        .WithMany("Notes")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Breed");
 
                     b.Navigation("Category");
 
                     b.Navigation("PhotoGallery");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("LostAnimals.Context.Entities.PhotoStorage", b =>
@@ -372,11 +431,6 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Navigation("Notes");
                 });
 
-            modelBuilder.Entity("LostAnimals.Context.Entities.CommentAttribute", b =>
-                {
-                    b.Navigation("Comments");
-                });
-
             modelBuilder.Entity("LostAnimals.Context.Entities.Note", b =>
                 {
                     b.Navigation("Comments");
@@ -394,6 +448,13 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Navigation("Notes");
 
                     b.Navigation("PhotoStorages");
+                });
+
+            modelBuilder.Entity("LostAnimals.Context.Entities.User", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Notes");
                 });
 #pragma warning restore 612, 618
         }

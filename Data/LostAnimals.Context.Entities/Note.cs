@@ -11,7 +11,7 @@
         public string Title { get; set; }
         public string? AnimalName { get; set; }
         
-        public int? BreedID { get; set; }
+        public int BreedID { get; set; }
         public virtual Breed Breed { get; set; }
 
         public int? PhotoGalleryID { get; set; }
@@ -21,7 +21,12 @@
         public double? Latitude { get; set; }
         public double? Longtitude { get; set; }
         public DateOnly? LastSeenDate { get; set; }
+        public DateOnly? LastEditDate { get; set; }
         public DateTime CreatedDate { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public string PhoneNumber { get; set; }
 
         public virtual ICollection<Comment>? Comments { get; set; }
     }
