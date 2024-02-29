@@ -11,6 +11,8 @@ public class UpdateNoteModel
 
     public string Text { get; set; }
 
+    public Guid PhotoGalleryID { get; set; }
+
     public double? Latitude { get; set; }
     public double? Longitude { get; set; }
 

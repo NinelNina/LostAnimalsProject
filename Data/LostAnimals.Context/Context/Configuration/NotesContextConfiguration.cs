@@ -54,9 +54,9 @@ public static class NotesContextConfiguration
         
         modelBuilder.Entity<Note>()
             .HasOne(x => x.User)
-            .WithMany(x => x.Notes)
+            .WithMany(u => u.Notes)
             .HasForeignKey(x => x.UserID)
-            .HasPrincipalKey(x => x.Id)
+            .HasPrincipalKey(u => u.UserID)
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
     }

@@ -40,8 +40,9 @@ public static class CommentsContextConfiguration
 
         modelBuilder.Entity<Comment>()
             .HasOne(x => x.User)
-            .WithMany(x => x.Comments)
+            .WithMany(u => u.Comments)
             .HasForeignKey(x => x.UserID)
+            .HasPrincipalKey(u => u.UserID)
             .OnDelete(DeleteBehavior.Cascade)
             .IsRequired();
     }

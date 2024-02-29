@@ -1,10 +1,12 @@
 ﻿using LostAnimals.Context.Configuration;
 using LostAnimals.Context.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LostAnimals.Context;
 
-public class MainDbContext : DbContext
+public class MainDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
     public DbSet<Note> Notes {  get; set; }
     public DbSet<NoteCategory> NoteCategories { get; set; }
@@ -27,5 +29,6 @@ public class MainDbContext : DbContext
         modelBuilder.ConfigureNotesCategories();
         modelBuilder.ConfigurePhotoStorage();
         modelBuilder.ConfigurePhotoGallery();
+        modelBuilder.ConfigureUsers();
     }
 }

@@ -39,6 +39,7 @@
     <ProjectReference Include="..\..\..\Data\LostAnimals.Context.Migrations\LostAnimals.Context.Migrations.PgSql\LostAnimals.Context.Migrations.PgSql.csproj" />
     <ProjectReference Include="..\..\..\Data\LostAnimals.Context\LostAnimals.Context.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Logger\LostAnimals.Services.Logger.csproj" />
+    <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Notes\LostAnimals.Services.Notes.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Settings\LostAnimals.Services.Settings.csproj" />
     <ProjectReference Include="..\..\..\Shared\LostAnimals.Common\LostAnimals.Common.csproj" />
   </ItemGroup>
