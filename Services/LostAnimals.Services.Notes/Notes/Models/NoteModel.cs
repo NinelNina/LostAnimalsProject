@@ -24,11 +24,13 @@ public class NoteModel
     public string AnimalBreed { get; set; }
     public string Text { get; set; }
 
-    public Guid PhotoGalleryID { get; set; }
-    public string PhotoName { get; set; }
+    public Guid? PhotoGalleryID { get; set; }
+    public ICollection<PhotoStorage>? PhotoStorages { get; set; }
 
     public string PhoneNumber { get; set; }
 
+    public string Region { get; set; }
+    public string City { get; set; }
     public double? Latitude { get; set; }
     public double? Longitude { get; set; }
 
@@ -37,7 +39,6 @@ public class NoteModel
     public DateTime? LastEditDate { get; set; }
 }
 
-//TODO: добавить маппер
 public class NoteModelProfile : Profile
 {
     public NoteModelProfile()
@@ -57,6 +58,8 @@ public class NoteModelProfile : Profile
                 .Include(x => x.User)
                 .Include(x => x.Category)
                 .Include(x => x.Comments)
+                .Include(x => x.PhotoGallery)
+                .ThenInclude(x => x.PhotoStorages)
                 .FirstOrDefault(x => x.Id == source.Id);
 
             destination.Id = note.Uid;
@@ -64,7 +67,8 @@ public class NoteModelProfile : Profile
             destination.Username = note.User.UserName;
             destination.CategoryId = note.Category.Uid;
             destination.CategoryName = note.Category.CategoryName;
-
+            destination.PhotoGalleryID = note.PhotoGallery.Uid;
+            destination.PhotoStorages = note.PhotoGallery.PhotoStorages;
         }
     }
 }

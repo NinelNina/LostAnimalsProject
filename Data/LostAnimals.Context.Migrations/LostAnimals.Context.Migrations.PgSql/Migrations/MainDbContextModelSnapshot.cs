@@ -92,7 +92,7 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 2, 27, 22, 36, 11, 82, DateTimeKind.Local).AddTicks(6151));
+                        .HasDefaultValue(new DateTime(2024, 3, 13, 18, 35, 31, 136, DateTimeKind.Local).AddTicks(2691));
 
                     b.Property<int>("NoteID")
                         .HasColumnType("integer");
@@ -143,6 +143,10 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<int>("CategoryID")
                         .HasColumnType("integer");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("text");
@@ -172,6 +176,10 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
 
                     b.Property<int?>("PhotoGalleryID")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Region")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -280,6 +288,10 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
@@ -317,6 +329,10 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("Region")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");

@@ -35,7 +35,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{BB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Identity", "Systems\Identity\LostAnimals.Identity\LostAnimals.Identity.csproj", "{F7F3D012-43E2-4AF5-842F-2CDF691AA970}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Services.Notes", "Services\LostAnimals.Services.Notes\LostAnimals.Services.Notes.csproj", "{86101DBC-1D78-441E-A2D0-13775C3049D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Services.Notes", "Services\LostAnimals.Services.Notes\LostAnimals.Services.Notes.csproj", "{86101DBC-1D78-441E-A2D0-13775C3049D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Services.Comments", "Services\LostAnimals.Services.Comments\LostAnimals.Services.Comments.csproj", "{BE6EB645-9D23-423A-9647-39AF14D29ED5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Services.Breeds", "Services\LostAnimals.Services.Breeds\LostAnimals.Services.Breeds.csproj", "{EB13BD38-62F1-4074-8356-C7DE9098854D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Services.AnimalKinds", "Services\LostAnimals.Services.AnimalKinds\LostAnimals.Services.AnimalKinds.csproj", "{5F1C01DC-FE9C-4BD7-B4F5-8B391987804F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +89,18 @@ Global
 		{86101DBC-1D78-441E-A2D0-13775C3049D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86101DBC-1D78-441E-A2D0-13775C3049D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86101DBC-1D78-441E-A2D0-13775C3049D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE6EB645-9D23-423A-9647-39AF14D29ED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE6EB645-9D23-423A-9647-39AF14D29ED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE6EB645-9D23-423A-9647-39AF14D29ED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE6EB645-9D23-423A-9647-39AF14D29ED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB13BD38-62F1-4074-8356-C7DE9098854D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB13BD38-62F1-4074-8356-C7DE9098854D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB13BD38-62F1-4074-8356-C7DE9098854D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB13BD38-62F1-4074-8356-C7DE9098854D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F1C01DC-FE9C-4BD7-B4F5-8B391987804F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F1C01DC-FE9C-4BD7-B4F5-8B391987804F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F1C01DC-FE9C-4BD7-B4F5-8B391987804F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F1C01DC-FE9C-4BD7-B4F5-8B391987804F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +119,9 @@ Global
 		{BB0BE46F-DE03-4D6D-82B6-FF7634A38231} = {FBAFE448-0448-47C8-BCFF-4D1D7BBB40D8}
 		{F7F3D012-43E2-4AF5-842F-2CDF691AA970} = {BB0BE46F-DE03-4D6D-82B6-FF7634A38231}
 		{86101DBC-1D78-441E-A2D0-13775C3049D0} = {A62FA465-453F-4E77-8EF4-7A1650A6FD55}
+		{BE6EB645-9D23-423A-9647-39AF14D29ED5} = {A62FA465-453F-4E77-8EF4-7A1650A6FD55}
+		{EB13BD38-62F1-4074-8356-C7DE9098854D} = {A62FA465-453F-4E77-8EF4-7A1650A6FD55}
+		{5F1C01DC-FE9C-4BD7-B4F5-8B391987804F} = {A62FA465-453F-4E77-8EF4-7A1650A6FD55}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B603206-9CF4-4C60-A951-D2297EA46217}

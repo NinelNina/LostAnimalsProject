@@ -1,7 +1,6 @@
-﻿using LostAnimals.Services.Notes;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace LostAnimals.Services.Books;
+namespace LostAnimals.Services.Notes;
 
 public static class Bootstrapper
 {

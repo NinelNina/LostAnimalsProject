@@ -1,6 +1,7 @@
 ﻿namespace LostAnimals.Api;
 
-using LostAnimals.Services.Books;
+using LostAnimals.Services.Notes;
+using LostAnimals.Services.AnimalKinds;
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.Settings;
 
@@ -13,7 +14,8 @@ public static class Bootstrapper
             .AddLogSettings()
             .AddSwaggerSettings()
             .AddAppLogger()
-            .AddNoteService();
+            .AddNoteService()
+            .AddAnimalKindService();
 
         return service;
     }

@@ -14,9 +14,5 @@
 		<ProjectReference Include="..\..\LostAnimals.Context\LostAnimals.Context.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Migrations\" />
-	</ItemGroup>
-
 
 </Project>
