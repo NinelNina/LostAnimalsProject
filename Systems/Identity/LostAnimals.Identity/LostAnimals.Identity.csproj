@@ -17,4 +17,9 @@
     <PackageReference Include="Serilog.Expressions" Version="4.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Settings\LostAnimals.Services.Settings.csproj" />
+    <ProjectReference Include="..\..\..\Shared\LostAnimals.Common\LostAnimals.Common.csproj" />
+  </ItemGroup>
+
 </Project>
