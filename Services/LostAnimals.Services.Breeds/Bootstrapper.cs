@@ -1,6 +1,12 @@
-﻿namespace LostAnimals.Services.Breeds;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-public class Bootstrapper
+namespace LostAnimals.Services.Breeds;
+
+public static class Bootstrapper
 {
-
+    public static IServiceCollection AddBreedService(this IServiceCollection services)
+    {
+        return services
+            .AddSingleton<IBreedService, BreedService>();
+    }
 }

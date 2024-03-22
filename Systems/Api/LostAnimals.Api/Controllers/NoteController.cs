@@ -7,7 +7,7 @@ using LostAnimals.Services.Logger;
 
 [ApiController]
 [ApiVersion("1.0")]
-[ApiExplorerSettings(GroupName = "Product")]
+[ApiExplorerSettings(GroupName = "Note")]
 [Route("v{version:apiVersion}/[controller]")]
 public class NoteController : ControllerBase
 {

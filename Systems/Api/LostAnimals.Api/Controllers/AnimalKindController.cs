@@ -2,13 +2,12 @@
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.AnimalKinds;
 using Microsoft.AspNetCore.Mvc;
-using LostAnimals.Services.Notes;
 
 namespace LostAnimals.Api.Controllers;
 
 [ApiController]
 [ApiVersion("1.0")]
-[ApiExplorerSettings(GroupName = "Product")]
+[ApiExplorerSettings(GroupName = "AnimalKind")]
 [Route("v{version:apiVersion}/[controller]")]
 public class AnimalKindController : ControllerBase
 {
