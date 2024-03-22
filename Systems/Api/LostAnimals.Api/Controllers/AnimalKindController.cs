@@ -7,7 +7,7 @@ namespace LostAnimals.Api.Controllers;
 
 [ApiController]
 [ApiVersion("1.0")]
-[ApiExplorerSettings(GroupName = "AnimalKind")]
+[ApiExplorerSettings(GroupName = "LostAnimals.API")]
 [Route("v{version:apiVersion}/[controller]")]
 public class AnimalKindController : ControllerBase
 {

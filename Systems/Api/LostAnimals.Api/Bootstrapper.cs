@@ -5,6 +5,7 @@ using LostAnimals.Services.AnimalKinds;
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.Settings;
 using LostAnimals.Services.Breeds;
+using LostAnimals.Services.NoteCategories;
 
 public static class Bootstrapper
 {
@@ -17,7 +18,8 @@ public static class Bootstrapper
             .AddAppLogger()
             .AddNoteService()
             .AddAnimalKindService()
-            .AddBreedService();
+            .AddBreedService()
+            .AddNoteCategoryService();
 
         return service;
     }

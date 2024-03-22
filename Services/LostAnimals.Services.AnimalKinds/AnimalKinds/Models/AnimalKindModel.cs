@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using LostAnimals.Context;
 using LostAnimals.Context.Entities;
-using LostAnimals.Services.Breeds.Models;
+using LostAnimals.Services.Breeds;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -23,7 +23,6 @@ public class AnimalKindModelProfile : Profile
         CreateMap<AnimalKind, AnimalKindModel>()
             .BeforeMap<AnimalKindModelActions>()
             .ForMember(dest => dest.Id, opt => opt.Ignore());
-            //.ForMember(dest => dest.Breeds, opt => opt.Ignore());
     }
 
     public class AnimalKindModelActions : IMappingAction<AnimalKind, AnimalKindModel>
@@ -40,11 +39,9 @@ public class AnimalKindModelProfile : Profile
             using var db = contextFactory.CreateDbContext();
 
             var animalKind = db.AnimalKinds
-                //.Include(x => x.Breeds)
                 .FirstOrDefault(x => x.Id == source.Id);
 
             destination.Id = animalKind.Uid;
-            //destination.Breeds = animalKind.Breeds;
         }
     }
 }

@@ -2,15 +2,14 @@
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.Breeds;
 using Microsoft.AspNetCore.Mvc;
-using LostAnimals.Services.Breeds.Models;
 
 namespace LostAnimals.Api.Controllers;
 
 [ApiController]
 [ApiVersion("1.0")]
-[ApiExplorerSettings(GroupName = "Breed")]
+[ApiExplorerSettings(GroupName = "LostAnimals.API")]
 [Route("v{version:apiVersion}/[controller]")]
-public class BreedController : Controller
+public class BreedController : ControllerBase
 {
     private readonly IAppLogger logger;
     private readonly IBreedService breedService;

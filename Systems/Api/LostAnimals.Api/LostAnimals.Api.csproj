@@ -42,6 +42,7 @@
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Breeds\LostAnimals.Services.Breeds.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Comments\LostAnimals.Services.Comments.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Logger\LostAnimals.Services.Logger.csproj" />
+    <ProjectReference Include="..\..\..\Services\LostAnimals.Services.NoteCategory\LostAnimals.Services.NoteCategories.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Notes\LostAnimals.Services.Notes.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Settings\LostAnimals.Services.Settings.csproj" />
     <ProjectReference Include="..\..\..\Shared\LostAnimals.Common\LostAnimals.Common.csproj" />

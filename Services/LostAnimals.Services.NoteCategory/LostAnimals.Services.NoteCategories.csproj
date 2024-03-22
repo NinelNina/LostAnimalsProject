@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\LostAnimals.Context.Entities\LostAnimals.Context.Entities.csproj" />
+    <ProjectReference Include="..\..\Data\LostAnimals.Context\LostAnimals.Context.csproj" />
+    <ProjectReference Include="..\LostAnimals.Services.Notes\LostAnimals.Services.Notes.csproj" />
+  </ItemGroup>
+
+</Project>

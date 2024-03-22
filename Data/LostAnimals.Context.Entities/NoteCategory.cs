@@ -1,8 +1,7 @@
-﻿namespace LostAnimals.Context.Entities
+﻿namespace LostAnimals.Context.Entities;
+
+public class NoteCategory : BaseEntity
 {
-    public class NoteCategory : BaseEntity
-    {
-        public string CategoryName { get; set; }
-        public virtual ICollection<Note> Notes { get; set;}
-    }
+    public string CategoryName { get; set; }
+    public virtual ICollection<Note>? Notes { get; set;}
 }
