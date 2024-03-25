@@ -1,4 +1,6 @@
-﻿namespace LostAnimals.Identity;
+﻿using LostAnimals.Services.Settings;
+
+namespace LostAnimals.Identity;
 
 public static class Bootstrapper
 {
@@ -6,7 +8,9 @@ public static class Bootstrapper
     {
         services
             .AddMainSettings()
+            .AddLogSettings()
             ;
+
         return services;
     }
 }

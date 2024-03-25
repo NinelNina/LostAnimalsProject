@@ -1,17 +1,42 @@
+using LostAnimals.Identity;
+using LostAnimals.Identity.Configuration;
+using LostAnimals.Context;
+using LostAnimals.Services.Settings;
+using LostAnimals.Settings;
+
+var logSettings = Settings.Load<LogSettings>("Log");
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.AddAppLogger(logSettings);
 
-builder.Services.AddControllers();
+// Configure services
+var services = builder.Services;
 
-var app = builder.Build();
+services.AddAppCors();
+
+services.AddHttpContextAccessor();
+
+services.AddAppDbContext(builder.Configuration);
+
+services.AddAppHealthChecks();
+
+services.RegisterAppServices();
+
+services.AddIS4();
+
 
 // Configure the HTTP request pipeline.
 
-app.UseHttpsRedirection();
+var app = builder.Build();
 
-app.UseAuthorization();
+app.UseAppCors();
 
-app.MapControllers();
+app.UseAppHealthChecks();
+
+app.UseIS4();
+
+
+// Run app
 
 app.Run();

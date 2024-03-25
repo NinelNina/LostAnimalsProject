@@ -18,6 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Data\LostAnimals.Context.Entities\LostAnimals.Context.Entities.csproj" />
+    <ProjectReference Include="..\..\..\Data\LostAnimals.Context\LostAnimals.Context.csproj" />
+    <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Logger\LostAnimals.Services.Logger.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Settings\LostAnimals.Services.Settings.csproj" />
     <ProjectReference Include="..\..\..\Shared\LostAnimals.Common\LostAnimals.Common.csproj" />
   </ItemGroup>
