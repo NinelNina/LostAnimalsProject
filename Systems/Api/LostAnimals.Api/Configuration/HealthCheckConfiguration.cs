@@ -3,7 +3,6 @@
 using LostAnimals.Api.HealthChecks;
 using LostAnimals.Common;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using NetSchool.Common;
 
 public static class HealthCheckConfiguration
 {

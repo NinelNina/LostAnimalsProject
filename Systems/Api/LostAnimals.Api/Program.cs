@@ -31,6 +31,8 @@ services.AddAppAutoMappers();
 
 services.AddAppValidator();
 
+services.AddAppAuth();
+
 services.AddAppControllerAndViews();
 
 services.RegisterServices(builder.Configuration);
@@ -47,11 +49,11 @@ app.UseAppHealthChecks();
 
 app.UseAppSwagger();
 
+app.UseAppAuth();
+
 app.UseAppControllerAndViews();
 
 DbInitializer.Execute(app.Services);
-
-//AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 logger.Information("LostAnimals.API has started");
 

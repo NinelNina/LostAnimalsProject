@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.0.0" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -34,7 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Data\LostAnimals.Context.Entities\LostAnimals.Context.Entities.csproj" />
     <ProjectReference Include="..\..\..\Data\LostAnimals.Context.Migrations\LostAnimals.Context.Migrations.MSSQL\LostAnimals.Context.Migrations.MSSQL.csproj" />
     <ProjectReference Include="..\..\..\Data\LostAnimals.Context.Migrations\LostAnimals.Context.Migrations.PgSql\LostAnimals.Context.Migrations.PgSql.csproj" />
     <ProjectReference Include="..\..\..\Data\LostAnimals.Context\LostAnimals.Context.csproj" />
@@ -45,7 +45,9 @@
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.NoteCategory\LostAnimals.Services.NoteCategories.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Notes\LostAnimals.Services.Notes.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Settings\LostAnimals.Services.Settings.csproj" />
+    <ProjectReference Include="..\..\..\Services\LostAnimals.Services.UserAccount\LostAnimals.Services.UserAccount.csproj" />
     <ProjectReference Include="..\..\..\Shared\LostAnimals.Common\LostAnimals.Common.csproj" />
+    <ProjectReference Include="..\LostAnimals.ApiSpecialSettings\LostAnimals.ApiSpecialSettings.csproj" />
   </ItemGroup>
 
   <ItemGroup>

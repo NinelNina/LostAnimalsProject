@@ -92,7 +92,7 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 13, 18, 35, 31, 136, DateTimeKind.Local).AddTicks(2691));
+                        .HasDefaultValue(new DateTime(2024, 3, 26, 16, 15, 52, 242, DateTimeKind.Local).AddTicks(9360));
 
                     b.Property<int>("NoteID")
                         .HasColumnType("integer");
@@ -288,10 +288,6 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
@@ -302,10 +298,6 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -329,10 +321,6 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("Region")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
