@@ -8,6 +8,10 @@ public interface IUserAccountService
     /// <returns></returns>
     Task<bool> IsEmpty();
 
+    Task<IEnumerable<UserAccountModel>> GetAll();
+
+    Task<UserAccountModel> GetById(Guid id);
+
     /// <summary>
     /// Create user account
     /// </summary>

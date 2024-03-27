@@ -4,12 +4,14 @@ using LostAnimals.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Logging;
 using IdentityServer4.AccessTokenValidation;
+using Microsoft.IdentityModel.Tokens;
+using LostAnimals.Services.Settings;
 
 namespace LostAnimals.Api.Configuration;
 
 public static class AuthConfiguration
 {
-    public static IServiceCollection AddAppAuth(this IServiceCollection services/*, IdentitySettings settings*/)
+    public static IServiceCollection AddAppAuth(this IServiceCollection services, IdentitySettings settings)
     {
         IdentityModelEventSource.ShowPII = true;
 
@@ -26,7 +28,7 @@ public static class AuthConfiguration
             .AddUserManager<UserManager<User>>()
             .AddDefaultTokenProviders();
 
-        /*services.AddAuthentication(options =>
+        services.AddAuthentication(options =>
         {
             options.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
@@ -51,19 +53,19 @@ public static class AuthConfiguration
 
         services.AddAuthorization(options =>
         {
-            options.AddPolicy(AppScopes.BooksRead, policy => policy.RequireClaim("scope", AppScopes.BooksRead));
-            options.AddPolicy(AppScopes.BooksWrite, policy => policy.RequireClaim("scope", AppScopes.BooksWrite));
+            options.AddPolicy(AppScopes.AnimalKindsRead, policy => policy.RequireClaim("scope", AppScopes.AnimalKindsRead));
+            options.AddPolicy(AppScopes.AnimalKindsWrite, policy => policy.RequireClaim("scope", AppScopes.AnimalKindsWrite));
         });
-        */
+
         return services;
     }
     
     public static IApplicationBuilder UseAppAuth(this IApplicationBuilder app)
-    {/*
+    {
         app.UseAuthentication();
 
         app.UseAuthorization();
-        */
+
         return app;
     }
 }

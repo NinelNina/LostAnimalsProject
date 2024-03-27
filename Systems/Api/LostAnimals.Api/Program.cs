@@ -8,6 +8,7 @@ using LostAnimals.Context;
 var mainSettings = Settings.Load<MainSettings>("Main");
 var logSettings = Settings.Load<LogSettings>("Log");
 var swaggerSettings = Settings.Load<SwaggerSettings>("Swagger");
+var identitySettings = Settings.Load<IdentitySettings>("Identity");
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,13 +26,13 @@ services.AddAppHealthChecks();
 
 services.AddAppVersioning();
 
-services.AddAppSwagger(mainSettings, swaggerSettings);
+services.AddAppSwagger(mainSettings, swaggerSettings, identitySettings);
 
 services.AddAppAutoMappers();
 
 services.AddAppValidator();
 
-services.AddAppAuth();
+services.AddAppAuth(identitySettings);
 
 services.AddAppControllerAndViews();
 

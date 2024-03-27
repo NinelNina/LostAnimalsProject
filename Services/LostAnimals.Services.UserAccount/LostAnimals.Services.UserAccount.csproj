@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\LostAnimals.Context.Entities\LostAnimals.Context.Entities.csproj" />
+    <ProjectReference Include="..\..\Data\LostAnimals.Context\LostAnimals.Context.csproj" />
     <ProjectReference Include="..\..\Shared\LostAnimals.Common\LostAnimals.Common.csproj" />
   </ItemGroup>
 
