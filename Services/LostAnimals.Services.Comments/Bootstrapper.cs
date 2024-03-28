@@ -1,6 +1,12 @@
-﻿namespace LostAnimals.Services.Comments;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-public class Bootstrapper
+namespace LostAnimals.Services.Comments;
+
+public static class Bootstrapper
 {
-
+    public static IServiceCollection AddCommentService(this IServiceCollection services)
+    {
+        return services
+            .AddSingleton<ICommentService, CommentService>();
+    }
 }

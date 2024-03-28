@@ -1,11 +1,10 @@
-﻿namespace NetSchool.Common;
-
-using LostAnimals.Common;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+
+namespace LostAnimals.Common;
 
 public static class HealthCheckHelper
 {

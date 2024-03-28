@@ -17,15 +17,15 @@
         public int? PhotoGalleryID { get; set; }
         public virtual PhotoGallery? PhotoGallery { get; set; }
         
-        public virtual string Content { get; set;}
+        public string Content { get; set;}
 
         public string Region { get; set; }
         public string City { get; set; }
         public double? Latitude { get; set; }
         public double? Longtitude { get; set; }
 
-        public DateOnly? LastSeenDate { get; set; }
-        public DateOnly? LastEditDate { get; set; }
+        public DateTime? LastSeenDate { get; set; }
+        public DateTime? LastEditDate { get; set; }
         public DateTime CreatedDate { get; set; }
 
         public bool IsActive { get; set; }

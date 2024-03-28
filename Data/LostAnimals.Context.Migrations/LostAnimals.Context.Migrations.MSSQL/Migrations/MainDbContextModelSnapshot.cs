@@ -92,7 +92,7 @@ namespace LostAnimals.Context.Migrations.MSSQL.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 2, 27, 22, 36, 37, 808, DateTimeKind.Local).AddTicks(7096));
+                        .HasDefaultValue(new DateTime(2024, 3, 28, 15, 21, 25, 311, DateTimeKind.Local).AddTicks(1782));
 
                     b.Property<int>("NoteID")
                         .HasColumnType("int");
@@ -100,7 +100,7 @@ namespace LostAnimals.Context.Migrations.MSSQL.Migrations
                     b.Property<int?>("ParentCommentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PhotoGalleryID")
+                    b.Property<int?>("PhotoGalleryID")
                         .HasColumnType("int");
 
                     b.Property<Guid>("Uid")
@@ -144,6 +144,10 @@ namespace LostAnimals.Context.Migrations.MSSQL.Migrations
                     b.Property<int>("CategoryID")
                         .HasColumnType("int");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -154,12 +158,12 @@ namespace LostAnimals.Context.Migrations.MSSQL.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<DateOnly?>("LastEditDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("LastEditDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateOnly?>("LastSeenDate")
+                    b.Property<DateTime?>("LastSeenDate")
                         .IsRequired()
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.Property<double?>("Latitude")
                         .HasColumnType("float");
@@ -173,6 +177,10 @@ namespace LostAnimals.Context.Migrations.MSSQL.Migrations
 
                     b.Property<int?>("PhotoGalleryID")
                         .HasColumnType("int");
+
+                    b.Property<string>("Region")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -291,10 +299,6 @@ namespace LostAnimals.Context.Migrations.MSSQL.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -506,8 +510,7 @@ namespace LostAnimals.Context.Migrations.MSSQL.Migrations
                     b.HasOne("LostAnimals.Context.Entities.PhotoGallery", "PhotoGallery")
                         .WithMany("Comments")
                         .HasForeignKey("PhotoGalleryID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("LostAnimals.Context.Entities.User", "User")
                         .WithMany("Comments")

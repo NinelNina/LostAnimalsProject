@@ -1,6 +1,7 @@
 ﻿namespace LostAnimals.Api.Configuration;
 
 using Asp.Versioning.ApiExplorer;
+using LostAnimals.Common.Security;
 using LostAnimals.Services.Settings;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
@@ -12,7 +13,10 @@ public static class SwaggerConfiguration
 {
     private static string AppTitle = "Lost Animals API";
 
-    public static IServiceCollection AddAppSwagger(this IServiceCollection services, MainSettings mainSettings, SwaggerSettings swaggerSettings)
+    public static IServiceCollection AddAppSwagger(this IServiceCollection services, 
+        MainSettings mainSettings, 
+        SwaggerSettings swaggerSettings,
+        IdentitySettings identitySettings)
     {
         if (!swaggerSettings.Enabled)
         {
@@ -52,13 +56,57 @@ public static class SwaggerConfiguration
                 options.IncludeXmlComments(xmlPath);
             }
 
+            options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+            {
+                Name = "Bearer",
+                Type = SecuritySchemeType.OAuth2,
+                Scheme = "oauth2",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Flows = new OpenApiOAuthFlows
+                {
+                    ClientCredentials = new OpenApiOAuthFlow
+                    {
+                        TokenUrl = new Uri($"{identitySettings.Url}/connect/token"),
+                        Scopes = new Dictionary<string, string>
+                        {
+                            { AppScopes.AnimalKindsRead, "Read" },
+                            { AppScopes.AnimalKindsWrite, "Write" }
+                        }
+                    },
+
+                    Password = new OpenApiOAuthFlow
+                    {
+                        TokenUrl = new Uri($"{identitySettings.Url}/connect/token"),
+                        Scopes = new Dictionary<string, string>
+                        {
+                            { AppScopes.AnimalKindsRead, "Read" },
+                            { AppScopes.AnimalKindsWrite, "Write" }
+                        }
+                    }
+                }
+            });
+
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "oauth2"
+                        }
+                    },
+                    new List<string>()
+                }
+            });
+
             options.UseOneOfForPolymorphism();
 
             options.EnableAnnotations(true, true);
 
             options.UseAllOfForInheritance();
-
-            options.UseOneOfForPolymorphism();
 
             options.SelectSubTypesUsing(baseType =>
                 typeof(Program).Assembly.GetTypes().Where(type => type.IsSubclassOf(baseType)));

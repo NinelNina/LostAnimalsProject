@@ -6,6 +6,9 @@ using LostAnimals.Services.Logger;
 using LostAnimals.Services.Settings;
 using LostAnimals.Services.Breeds;
 using LostAnimals.Services.NoteCategories;
+using LostAnimals.Services.UserAccount;
+using LostAnimals.Api.Settings;
+using LostAnimals.Services.Comments;
 
 public static class Bootstrapper
 {
@@ -13,13 +16,17 @@ public static class Bootstrapper
     {
         service
             .AddMainSettings()
+            .AddApiSpecialSettings()
             .AddLogSettings()
             .AddSwaggerSettings()
+            .AddIdentitySettings()
             .AddAppLogger()
             .AddNoteService()
+            .AddCommentService()
             .AddAnimalKindService()
             .AddBreedService()
-            .AddNoteCategoryService();
+            .AddNoteCategoryService()
+            .AddUserAccountService();
 
         return service;
     }

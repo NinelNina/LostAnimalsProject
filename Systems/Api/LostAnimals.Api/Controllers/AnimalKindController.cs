@@ -2,9 +2,12 @@
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.AnimalKinds;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using LostAnimals.Common.Security;
 
 namespace LostAnimals.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [ApiVersion("1.0")]
 [ApiExplorerSettings(GroupName = "LostAnimals.API")]
@@ -21,6 +24,7 @@ public class AnimalKindController : ControllerBase
     }
 
     [HttpGet("")]
+    [AllowAnonymous]
     public async Task<IEnumerable<AnimalKindModel>> GetAll()
     {
         var result = await animalKindService.GetAll();
@@ -29,6 +33,7 @@ public class AnimalKindController : ControllerBase
     }
 
     [HttpGet("{id:Guid}")]
+    [AllowAnonymous]
     public async Task<IActionResult> Get([FromRoute] Guid id)
     {
         var result = await animalKindService.GetById(id);
@@ -40,6 +45,7 @@ public class AnimalKindController : ControllerBase
     }
 
     [HttpPost("")]
+    [Authorize(AppScopes.AnimalKindsWrite)]
     public async Task<AnimalKindModel> Create(CreateAnimalKindModel request)
     {
         var result = await animalKindService.Create(request);
@@ -48,12 +54,14 @@ public class AnimalKindController : ControllerBase
     }
 
     [HttpPut("{id:Guid}")]
+    [Authorize(AppScopes.AnimalKindsWrite)]
     public async Task Update([FromRoute] Guid id, UpdateAnimalKindModel request)
     {
         await animalKindService.Update(id, request);
     }
 
     [HttpDelete("{id:Guid}")]
+    [Authorize(AppScopes.AnimalKindsWrite)]
     public async Task Delete([FromRoute] Guid id)
     {
         await animalKindService.Delete(id);
