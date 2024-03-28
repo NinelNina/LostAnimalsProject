@@ -92,15 +92,15 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 26, 16, 15, 52, 242, DateTimeKind.Local).AddTicks(9360));
+                        .HasDefaultValue(new DateTime(2024, 3, 28, 21, 19, 23, 504, DateTimeKind.Local).AddTicks(6881));
 
                     b.Property<int>("NoteID")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("ParentCommentId")
+                    b.Property<int?>("ParentCommentID")
                         .HasColumnType("integer");
 
-                    b.Property<int>("PhotoGalleryID")
+                    b.Property<int?>("PhotoGalleryID")
                         .HasColumnType("integer");
 
                     b.Property<Guid>("Uid")
@@ -113,7 +113,7 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
 
                     b.HasIndex("NoteID");
 
-                    b.HasIndex("ParentCommentId")
+                    b.HasIndex("ParentCommentID")
                         .IsUnique();
 
                     b.HasIndex("PhotoGalleryID");
@@ -157,12 +157,12 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
-                    b.Property<DateOnly?>("LastEditDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("LastEditDate")
+                        .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateOnly?>("LastSeenDate")
+                    b.Property<DateTime?>("LastSeenDate")
                         .IsRequired()
-                        .HasColumnType("date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<double?>("Latitude")
                         .HasColumnType("double precision");
@@ -501,14 +501,13 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
 
                     b.HasOne("LostAnimals.Context.Entities.Comment", "ParentComment")
                         .WithOne()
-                        .HasForeignKey("LostAnimals.Context.Entities.Comment", "ParentCommentId")
+                        .HasForeignKey("LostAnimals.Context.Entities.Comment", "ParentCommentID")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("LostAnimals.Context.Entities.PhotoGallery", "PhotoGallery")
                         .WithMany("Comments")
                         .HasForeignKey("PhotoGalleryID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("LostAnimals.Context.Entities.User", "User")
                         .WithMany("Comments")

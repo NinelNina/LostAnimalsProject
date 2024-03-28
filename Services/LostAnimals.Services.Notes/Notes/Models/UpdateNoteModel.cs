@@ -7,12 +7,11 @@ public class UpdateNoteModel
 {
     public Guid CategoryId { get; set; }
     public string Title { get; set; }
-    public string Description { get; set; }
     public string? AnimalName { get; set; }
 
     public Guid BreedId { get; set; }
 
-    public string Text { get; set; }
+    public string Content { get; set; }
 
     public Guid PhotoGalleryID { get; set; }
 

@@ -34,7 +34,7 @@ public static class CommentsContextConfiguration
         modelBuilder.Entity<Comment>()
             .HasOne(x => x.ParentComment)
             .WithOne()
-            .HasForeignKey<Comment>(x => x.ParentCommentId)
+            .HasForeignKey<Comment>(x => x.ParentCommentID)
             .OnDelete(DeleteBehavior.Restrict)
             .IsRequired(false);
 

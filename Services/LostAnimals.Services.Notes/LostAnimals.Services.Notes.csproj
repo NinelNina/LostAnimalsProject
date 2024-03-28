@@ -14,6 +14,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Data\LostAnimals.Context\LostAnimals.Context.csproj" />
+	  <ProjectReference Include="..\LostAnimals.Services.Comments\LostAnimals.Services.Comments.csproj" />
 	  <ProjectReference Include="..\LostAnimals.Services.Logger\LostAnimals.Services.Logger.csproj" />
 	</ItemGroup>
 
