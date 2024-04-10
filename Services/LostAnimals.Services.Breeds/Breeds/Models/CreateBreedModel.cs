@@ -7,8 +7,8 @@ namespace LostAnimals.Services.Breeds;
 
 public class CreateBreedModel
 {
-    public string BreedName { get; set; }
     public Guid AnimalKindID { get; set; }
+    public string BreedName { get; set; }
 }
 
 public class CreateBreedModelProfile : Profile

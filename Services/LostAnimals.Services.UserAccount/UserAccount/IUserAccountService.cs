@@ -8,8 +8,17 @@ public interface IUserAccountService
     /// <returns></returns>
     Task<bool> IsEmpty();
 
+    /// <summary>
+    /// Get all users
+    /// </summary>
+    /// <returns></returns>
     Task<IEnumerable<UserAccountModel>> GetAll();
 
+    /// <summary>
+    /// Get user by id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     Task<UserAccountModel> GetById(Guid id);
 
     /// <summary>
@@ -18,4 +27,6 @@ public interface IUserAccountService
     /// <param name="model"></param>
     /// <returns></returns>
     Task<UserAccountModel> Create(RegisterUserAccountModel model);
+
+    Task<string?> GenerateEmailConfirmationToken(Guid id);
 }

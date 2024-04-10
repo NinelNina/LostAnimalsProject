@@ -54,6 +54,8 @@ public class NoteService : INoteService
         var notes = await context.Notes
                 .Include(x => x.User)
                 .Include(x => x.Category)
+                .Include(x => x.Breed)
+                .ThenInclude(x => x.AnimalKind)
                 .Include(x => x.Comments)
                 .Include(x => x.PhotoGallery)
                 .ThenInclude(x => x.PhotoStorages)
@@ -71,6 +73,8 @@ public class NoteService : INoteService
         var note = context.Notes
                 .Include(x => x.User)
                 .Include(x => x.Category)
+                .Include(x => x.Breed)
+                .ThenInclude(x => x.AnimalKind)
                 .Include(x => x.Comments)
                 .Include(x => x.PhotoGallery)
                 .ThenInclude(x => x.PhotoStorages)

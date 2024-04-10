@@ -40,4 +40,12 @@ public static class Bootstrapper
         
         return services;
     }
+    
+    public static IServiceCollection AddEmailSenderSettings(this IServiceCollection services)
+    {
+        var settings = Settings.Load<EmailSenderSettings>("EmailSender");
+        services.AddSingleton(settings);
+        
+        return services;
+    }
 }

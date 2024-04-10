@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+
+  lostanimals_postgresql:
+    image: postgres:14.1
+    
+  lostanimals_api:
+    image: ${DOCKER_REGISTRY-}lostanimalsapi
+    build:
+      context: .
+      dockerfile: Systems/Api/LostAnimals.Api/Dockerfile
+    depends_on:
+      - lostanimals_postgresql
+ 
+  lostanimals_identity:
+    image: ${DOCKER_REGISTRY-}lostanimalsidentity
+    build:
+      context: .
+      dockerfile: Systems/Identity/LostAnimals.Identity/Dockerfile
+    depends_on:
+      - lostanimals_postgresql
+      - lostanimals_api

@@ -19,8 +19,6 @@ public class CreateNoteModel
 
     public Guid? PhotoGalleryId { get; set; }
 
-    public string Region { get; set; }
-    public string City { get; set; }
     public double? Latitude { get; set; }
     public double? Longitude { get; set; }
 
@@ -31,7 +29,6 @@ public class CreateNoteModel
     public DateTime LastSeenDate { get; set; }
     public DateTime CreatedDate { get; set; }
 }
-
 
 public class CreateNoteModelProfile : Profile
 {

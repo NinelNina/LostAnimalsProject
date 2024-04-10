@@ -24,7 +24,7 @@ public class NoteModel
     public string Title { get; set; }
     public string? AnimalName { get; set; }
 
-    //public string AnimalKind { get; set; }
+    public string AnimalKind { get; set; }
 
     public Guid BreedId { get; set; }
     public string AnimalBreed { get; set; }
@@ -34,18 +34,16 @@ public class NoteModel
     public Guid? PhotoGalleryId { get; set; }
     //public ICollection<PhotoStorage>? PhotoStorages { get; set; }
 
-    public ICollection<CommentModel>? comments { get; set; }
-
     public string PhoneNumber { get; set; }
 
-    public string Region { get; set; }
-    public string City { get; set; }
     public double? Latitude { get; set; }
     public double? Longitude { get; set; }
 
     public DateTime LastSeenDate { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime? LastEditDate { get; set; }
+
+    public ICollection<CommentModel>? comments { get; set; }
 }
 
 public class NoteModelProfile : Profile
@@ -79,6 +77,7 @@ public class NoteModelProfile : Profile
                 .Include(x => x.Category)
                 //.Include(x => x.Comments)
                 .Include(x => x.Breed)
+                .ThenInclude(x => x.AnimalKind)
                 .Include(x => x.PhotoGallery)
                 //.ThenInclude(x => x.PhotoStorages)
                 .FirstOrDefault(x => x.Id == source.Id);
@@ -90,6 +89,7 @@ public class NoteModelProfile : Profile
             destination.CategoryName = note.Category.CategoryName;
             destination.BreedId = note.Breed.Uid;
             destination.AnimalBreed = note.Breed.BreedName;
+            destination.AnimalKind = note.Breed.AnimalKind.AnimalKindName;
 
             if (note.PhotoGallery != null)
             {

@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  lostanimals_postgresql:
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Passw0rd
+    ports:
+      - "45432:5432"
+    networks:
+      - shared_lostanimals_net
+    volumes:      
+      - ~/.docker-conf/postgresql/data/:/var/lib/postgresql/data
+
+  lostanimals_api:
+    ports:
+      - "10000:8080"
+    networks:
+      - shared_lostanimals_net
+    env_file:
+      - env.api
+
+  lostanimals_identity:
+    ports:
+      - "10001:8080"
+    networks:
+      - shared_lostanimals_net
+    env_file:
+      - env.identity
+
+networks:
+  shared_lostanimals_net:
+    name: lostanimals
+    driver: bridge

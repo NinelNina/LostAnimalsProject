@@ -9,6 +9,7 @@ var mainSettings = Settings.Load<MainSettings>("Main");
 var logSettings = Settings.Load<LogSettings>("Log");
 var swaggerSettings = Settings.Load<SwaggerSettings>("Swagger");
 var identitySettings = Settings.Load<IdentitySettings>("Identity");
+var emailSenderSettings = Settings.Load<EmailSenderSettings>("EmailSender");
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -4,6 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>9fe30e1d-86ca-443c-ae52-0d8b3116de81</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +22,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.1" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.6.13" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Serilog" Version="3.1.1" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
@@ -41,9 +45,12 @@
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.AnimalKinds\LostAnimals.Services.AnimalKinds.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Breeds\LostAnimals.Services.Breeds.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Comments\LostAnimals.Services.Comments.csproj" />
+    <ProjectReference Include="..\..\..\Services\LostAnimals.Services.EmailSender\LostAnimals.Services.EmailSender.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Logger\LostAnimals.Services.Logger.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.NoteCategory\LostAnimals.Services.NoteCategories.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Notes\LostAnimals.Services.Notes.csproj" />
+    <ProjectReference Include="..\..\..\Services\LostAnimals.Services.PhotoGallery\LostAnimals.Services.PhotoGalleries.csproj" />
+    <ProjectReference Include="..\..\..\Services\LostAnimals.Services.PhotoStorage\LostAnimals.Services.PhotoStorages.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Settings\LostAnimals.Services.Settings.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.UserAccount\LostAnimals.Services.UserAccount.csproj" />
     <ProjectReference Include="..\..\..\Shared\LostAnimals.Common\LostAnimals.Common.csproj" />

@@ -1,12 +1,17 @@
 ﻿using AutoMapper;
+using Azure.Core;
 using LostAnimals.Common.Exceptions;
 using LostAnimals.Common.Validator;
 using LostAnimals.Context;
 using LostAnimals.Context.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Text;
 
-namespace LostAnimals.Services.UserAccount.UserAccount;
+namespace LostAnimals.Services.UserAccount;
 
 public class UserAccountService : IUserAccountService
 {
@@ -46,7 +51,7 @@ public class UserAccountService : IUserAccountService
         {
             UserName = model.UserName,
             Email = model.Email,
-            EmailConfirmed = true, //TODO: подтверждение почты
+            EmailConfirmed = false, //TODO: подтверждение почты
             PhoneNumber = null,
             PhoneNumberConfirmed = false
             // ... Также здесь есть еще интересные свойства. Посмотрите в документации.
@@ -83,5 +88,30 @@ public class UserAccountService : IUserAccountService
         var result = mapper.Map<UserAccountModel>(user);
 
         return result;
+    }
+
+    public async Task<string?> GenerateEmailConfirmationToken(Guid id)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var user = context.Users
+                .FirstOrDefault(x => x.Id == id);
+
+        if (user == null)
+        {
+            return null;
+        }
+
+        if (!user.EmailConfirmed)
+        {
+            var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
+            token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
+
+            return token;
+        }
+        else
+        {
+            return null;
+        }
     }
 }
