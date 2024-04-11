@@ -4,7 +4,6 @@ using LostAnimals.Services.EmailSender;
 using LostAnimals.Services.UserAccount;
 using LostAnimals.Services.Logger;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 
 namespace LostAnimals.Api.Controllers;
 
@@ -31,6 +30,9 @@ public class AccountsController : ControllerBase
     public async Task<UserAccountModel> Register([FromQuery] RegisterUserAccountModel request)
     {
         var user = await userAccountService.Create(request);
+
+        await SendConfirmationLink(user.Id);
+
         return user;
     }
 
@@ -51,19 +53,10 @@ public class AccountsController : ControllerBase
             return NotFound();
 
         return Ok(result);
-    }
-
-    [HttpGet("sendMessage")]
-    public async Task<IActionResult> SendMessage()
-    {
-        var message = new Message(new string[] { "mailsenderapp@yandex.ru" }, "Test email", "This is the content from our email.");
-        await emailSenderService.SendEmail(message);
-
-        return Ok(message);
-    }
-
-    [HttpPost("ConfirmEmail/{id:Guid}")]
-    public async Task<IActionResult> ConfirmEmail([FromRoute] Guid id)
+    }  
+    
+    [HttpPost("SendConfirmationLink/{id:Guid}")]
+    public async Task<IActionResult> SendConfirmationLink([FromRoute] Guid id)
     {
         var user = await userAccountService.GetById(id);
 
@@ -74,15 +67,46 @@ public class AccountsController : ControllerBase
 
         if (token != null)
         {
-            //var confirmationLink = Url.Action(nameof(ConfirmEmail), "Accounts", new { token, email = user.Email }, Request.Scheme);
-            var confirmationLink = $"{Request.Scheme}://{Request.Host}/Account/ConfirmEmail?token={token}&email={user.Email}";
+            var confirmationLink = Url.Action(nameof(ConfirmEmail), "Accounts", new { token, email = user.Email }, Request.Scheme);
 
-            var message = new Message(new string[] { user.Email }, "User confirmation mail", $"To confirm your account on the Lost Animals website, follow the link below:\n{confirmationLink}");
-            await emailSenderService.SendEmail(message);
+            var to = user.Email;
+            var subject = "Lost Animals sent user confirmation link";
+            var content = $"To confirm your account on the Lost Animals website, follow the link below. The link will be awailable for one day:\n{confirmationLink}";
+
+            var message = new Message(new string[] { to }, subject, content);
+            try
+            {
+                await emailSenderService.SendEmail(message);
+            }
+            catch (Exception e)
+            {
+                logger.Error("Error. Message not sent. ", e);
+
+                return BadRequest();
+            }
 
             return Ok(message);
         }
 
         return BadRequest();
+    }
+
+    [HttpGet("ConfirmEmail")]
+    public async Task<IActionResult> ConfirmEmail(string token, string email)
+    {
+        var result = await userAccountService.ConfirmEmailAsync(email, token);
+        if (result.Succeeded)
+        {
+            logger.Information($"User email {email} is confirmed.");
+
+            return Ok("User email is confirmed.");
+        }
+        else
+        {
+            logger.Error($"User email {email} is not confirmed.");
+            logger.Error($"Errors: {string.Join(", ", result.Errors)}");
+
+            return BadRequest();
+        }
     }
 }

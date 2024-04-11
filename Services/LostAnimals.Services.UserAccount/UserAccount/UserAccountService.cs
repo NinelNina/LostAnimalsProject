@@ -39,22 +39,19 @@ public class UserAccountService : IUserAccountService
     {
         registerUserAccountModelValidator.Check(model);
 
-        // Find user by email
         var user = await userManager.FindByEmailAsync(model.Email);
         if (user != null)
         {
             throw new ProcessException($"User account with email {model.Email} already exist.");
         }
 
-        // Create user account
         user = new User()
         {
             UserName = model.UserName,
             Email = model.Email,
-            EmailConfirmed = false, //TODO: подтверждение почты
+            EmailConfirmed = false,
             PhoneNumber = null,
             PhoneNumberConfirmed = false
-            // ... Также здесь есть еще интересные свойства. Посмотрите в документации.
         };
 
         var result = await userManager.CreateAsync(user, model.Password);
@@ -105,9 +102,38 @@ public class UserAccountService : IUserAccountService
         if (!user.EmailConfirmed)
         {
             var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
-            token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
 
             return token;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public async Task<UserAccountModel> FindByEmail(string email)
+    {
+        var user = await userManager.FindByEmailAsync(email);
+
+        var result = mapper.Map<UserAccountModel>(user);
+
+        return result;
+    }
+
+    public async Task<IdentityResult> ConfirmEmailAsync(string email, string token)
+    {
+        var user = await userManager.FindByEmailAsync(email);
+
+        if (user == null)
+        {
+            return null;
+        }
+
+        if (!user.EmailConfirmed)
+        {
+            var result = await userManager.ConfirmEmailAsync(user, token);
+
+            return result;
         }
         else
         {

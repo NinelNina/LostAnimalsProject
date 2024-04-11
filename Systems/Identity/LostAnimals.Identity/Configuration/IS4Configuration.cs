@@ -18,6 +18,8 @@ public static class IS4Configuration
                 opt.Password.RequireLowercase = false;
                 opt.Password.RequireUppercase = false;
                 opt.Password.RequireNonAlphanumeric = false;
+                opt.User.RequireUniqueEmail = true;
+                opt.SignIn.RequireConfirmedEmail = true;
             })
             .AddEntityFrameworkStores<MainDbContext>()
             .AddUserManager<UserManager<User>>()

@@ -1,4 +1,6 @@
-﻿namespace LostAnimals.Services.UserAccount;
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace LostAnimals.Services.UserAccount;
 
 public interface IUserAccountService
 {
@@ -27,6 +29,26 @@ public interface IUserAccountService
     /// <param name="model"></param>
     /// <returns></returns>
     Task<UserAccountModel> Create(RegisterUserAccountModel model);
-
+    
+    /// <summary>
+    /// Generate email confirmation token 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     Task<string?> GenerateEmailConfirmationToken(Guid id);
+    
+    /// <summary>
+    /// Find user by email
+    /// </summary>
+    /// <param name="email"></param>
+    /// <returns></returns>
+    Task<UserAccountModel> FindByEmail(string email);
+    
+    /// <summary>
+    /// Confirm user account
+    /// </summary>
+    /// <param name="email"></param>
+    /// <param name="token"></param>
+    /// <returns></returns>
+    Task<IdentityResult> ConfirmEmailAsync(string email, string token);
 }

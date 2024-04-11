@@ -3,6 +3,7 @@ using LostAnimals.Identity.Configuration;
 using LostAnimals.Context;
 using LostAnimals.Services.Settings;
 using LostAnimals.Settings;
+using Microsoft.AspNetCore.Identity;
 
 var logSettings = Settings.Load<LogSettings>("Log");
 
@@ -12,6 +13,9 @@ builder.AddAppLogger(logSettings);
 
 // Configure services
 var services = builder.Services;
+
+services.Configure<DataProtectionTokenProviderOptions>(opt =>
+   opt.TokenLifespan = TimeSpan.FromDays(1));
 
 services.AddAppCors();
 
