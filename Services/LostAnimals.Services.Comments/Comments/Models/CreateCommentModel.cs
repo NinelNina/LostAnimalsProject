@@ -15,9 +15,9 @@ public class CreateCommentModel
 
     public string Content { get; set; }
 
-    public DateTime CreatedDate { get; set; }
-
     public Guid? PhotoGalleryId { get; set; }
+
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
 }
 
 public class CreateCommentModelProfile : Profile

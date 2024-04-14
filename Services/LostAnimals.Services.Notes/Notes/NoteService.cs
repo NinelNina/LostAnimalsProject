@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace LostAnimals.Services.Notes;
 
 public class NoteService : INoteService
-{ 
+{
     private readonly IDbContextFactory<MainDbContext> dbContextFactory;
     private readonly IMapper mapper;
     private readonly IPhotoService photoService;
@@ -92,8 +92,16 @@ public class NoteService : INoteService
     public async Task Update(Guid id, UpdateNoteModel model)
     {
         using var context = await dbContextFactory.CreateDbContextAsync();
-       
-        var note = await context.Notes.Where(x => x.Uid == id).FirstOrDefaultAsync();
+
+        var note = await context.Notes
+            .Include(x => x.User)
+            .Include(x => x.Category)
+            .Include(x => x.Breed)
+            .ThenInclude(x => x.AnimalKind)
+            .Include(x => x.Comments)
+            .Include(x => x.PhotoGallery)
+            .ThenInclude(x => x.PhotoStorages)
+            .Where(x => x.Uid == id).FirstOrDefaultAsync();
 
         note = mapper.Map(model, note);
 
@@ -106,7 +114,15 @@ public class NoteService : INoteService
     {
         using var context = await dbContextFactory.CreateDbContextAsync();
 
-        var note = await context.Notes.FindAsync(id);
+        var note = await context.Notes
+            .Include(x => x.User)
+            .Include(x => x.Category)
+            .Include(x => x.Breed)
+            .ThenInclude(x => x.AnimalKind)
+            .Include(x => x.Comments)
+            .Include(x => x.PhotoGallery)
+            .ThenInclude(x => x.PhotoStorages)
+            .Where(x => x.Uid == id).FirstOrDefaultAsync();
 
         if (note == null)
         {
@@ -114,15 +130,15 @@ public class NoteService : INoteService
         }
 
         var model = mapper.Map<UpdateNoteModel>(note);
-        
-        var photoGalleryID = await photoService.UploadPhoto(file, model.PhotoGalleryID);
+
+        var photoGalleryID = await photoService.UploadPhoto(file, model.PhotoGalleryId);
 
         if (photoGalleryID != null)
         {
 
-            if (model.PhotoGalleryID == null)
+            if (model.PhotoGalleryId == null)
             {
-                model.PhotoGalleryID = photoGalleryID;
+                model.PhotoGalleryId = photoGalleryID;
             }
 
             note = mapper.Map(model, note);
@@ -132,5 +148,8 @@ public class NoteService : INoteService
             await context.SaveChangesAsync();
         }
     }
+
+    //TODO: получение фото
+    //TODO: загрузка фото для комментариев
 }
 

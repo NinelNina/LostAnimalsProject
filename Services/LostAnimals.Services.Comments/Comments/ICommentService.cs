@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,4 +35,12 @@ public interface ICommentService
     /// <param name="id"></param>
     /// <returns></returns>
     Task Delete(Guid id);
+
+    /// <summary>
+    /// Upload photo to note
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="file"></param>
+    /// <returns></returns>
+    Task UploadPhoto(Guid id, IFormFile file);
 }

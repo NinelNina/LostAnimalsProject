@@ -3,6 +3,8 @@ using LostAnimals.Common.Exceptions;
 using LostAnimals.Context.Entities;
 using LostAnimals.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using LostAnimals.Services.PhotoService;
 
 namespace LostAnimals.Services.Comments;
 
@@ -10,11 +12,13 @@ public class CommentService : ICommentService
 {
     private readonly IDbContextFactory<MainDbContext> dbContextFactory;
     private readonly IMapper mapper;
+    private readonly IPhotoService photoService;
 
-    public CommentService(IDbContextFactory<MainDbContext> dbContextFactory, IMapper mapper)
+    public CommentService(IDbContextFactory<MainDbContext> dbContextFactory, IMapper mapper, IPhotoService photoService)
     {
         this.dbContextFactory = dbContextFactory;
         this.mapper = mapper;
+        this.photoService = photoService;
     }
 
     public async Task<CommentModel> Create(CreateCommentModel model)
@@ -76,5 +80,41 @@ public class CommentService : ICommentService
         var result = mapper.Map<CommentModel>(comment);
 
         return result;
+    }
+
+    public async Task UploadPhoto(Guid id, IFormFile file)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var comment = await context.Comments
+            .Include(x => x.User)
+            .Include(x => x.Note)
+            .Include(x => x.ParentComment)
+            .Include(x => x.PhotoGallery)
+            .Where(x => x.Uid == id).FirstOrDefaultAsync();
+
+        if (comment == null)
+        {
+            throw new ProcessException($"Comment (ID = {id}) not found.");
+        }
+
+        var model = mapper.Map<UpdateCommentModel>(comment);
+
+        var photoGalleryID = await photoService.UploadPhoto(file, model.PhotoGalleryId);
+
+        if (photoGalleryID != null)
+        {
+
+            if (model.PhotoGalleryId == null)
+            {
+                model.PhotoGalleryId = photoGalleryID;
+            }
+
+            comment = mapper.Map(model, comment);
+
+            context.Comments.Update(comment);
+
+            await context.SaveChangesAsync();
+        }
     }
 }

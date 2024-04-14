@@ -13,7 +13,6 @@ public class CommentModel
     public string UserName { get; set; }
 
     public Guid NoteId { get; set; }
-    //public Note Note { get; set; }
 
     public Guid? ParentCommentId { get; set; }
     //public Comment? ParentComment { get; set; }

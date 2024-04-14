@@ -66,9 +66,9 @@ public class NoteController : ControllerBase
         return Ok();
     }
 
-    [HttpGet("{id:Guid}/photos")]
+    /*[HttpGet("{id:Guid}/photos")]
     public async Task<IActionResult> GetPhotos([FromRoute] Guid id)
     {
         return Ok();
-    }
+    }*/
 }

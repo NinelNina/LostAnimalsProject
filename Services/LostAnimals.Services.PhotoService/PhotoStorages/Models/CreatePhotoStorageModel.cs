@@ -16,13 +16,14 @@ public class CreatePhotoStorageModelProfile : Profile
 {
     public CreatePhotoStorageModelProfile()
     {
-        CreateMap<CreatePhotoStorageModel, PhotoStorage>();
-            //.ForMember(dest => dest.PhotoGalleryID, opt => opt.Ignore())
-            //.AfterMap<CreatePhotoStorageModelActions>();
+        CreateMap<CreatePhotoStorageModel, PhotoStorage>()
+        .ForMember(dest => dest.Id, opt => opt.Ignore())
+        .ForMember(dest => dest.PhotoGalleryID, opt => opt.Ignore())
+        .AfterMap<CreatePhotoStorageModelActions>();
     }
 }
 
-/*public class CreatePhotoStorageModelActions : IMappingAction<CreatePhotoStorageModel, Context.Entities.PhotoStorage>
+public class CreatePhotoStorageModelActions : IMappingAction<CreatePhotoStorageModel, PhotoStorage>
 {
     private readonly IDbContextFactory<MainDbContext> contextFactory;
 
@@ -31,12 +32,13 @@ public class CreatePhotoStorageModelProfile : Profile
         this.contextFactory = contextFactory;
     }
 
-    public void Process(CreatePhotoStorageModel source, Context.Entities.PhotoStorage destination, ResolutionContext context)
+    public void Process(CreatePhotoStorageModel source, PhotoStorage destination, ResolutionContext context)
     {
         using var db = contextFactory.CreateDbContext();
 
-        var photoGallery = db.PhotoGallery.FirstOrDefault(x => x.Uid == source.PhotoGalleryId);
+        destination.Uid = source.Id;
 
+        var photoGallery = db.PhotoGallery.FirstOrDefault(x => x.Uid == source.PhotoGalleryId);
         destination.PhotoGalleryID = photoGallery.Id;
     }
-}*/
+}

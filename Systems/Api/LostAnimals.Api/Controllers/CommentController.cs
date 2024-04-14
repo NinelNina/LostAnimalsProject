@@ -1,6 +1,7 @@
 ﻿using Asp.Versioning;
 using LostAnimals.Services.Comments;
 using LostAnimals.Services.Logger;
+using LostAnimals.Services.Notes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LostAnimals.Api.Controllers;
@@ -51,5 +52,12 @@ public class CommentController : ControllerBase
     public async Task Delete([FromRoute] Guid id)
     {
         await commentService.Delete(id);
+    }
+
+    [HttpPost("{id:Guid}/photos/upload")]
+    public async Task<IActionResult> UploadNotePhoto([FromRoute] Guid id, IFormFile file)
+    {
+        await commentService.UploadPhoto(id, file);
+        return Ok();
     }
 }
