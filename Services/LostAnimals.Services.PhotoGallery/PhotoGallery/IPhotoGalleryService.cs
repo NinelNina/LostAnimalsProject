@@ -20,7 +20,7 @@ public interface IPhotoGalleryService
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
-    Task<PhotoGalleryModel> Create(CreatePhotoGalleryModel model);
+    Task<PhotoGalleryModel> Create(Guid id);
 
     /// <summary>
     /// Delete PhotoGallery

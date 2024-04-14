@@ -1,22 +1,22 @@
 ﻿using AutoMapper;
 using LostAnimals.Context;
 using LostAnimals.Context.Entities;
-using LostAnimals.Services.PhotoStorages;
+using LostAnimals.Services.PhotoService.PhotoStorages;
 using Microsoft.EntityFrameworkCore;
 
-namespace LostAnimals.Services.PhotoGalleries;
+namespace LostAnimals.Services.PhotoService.PhotoGalleries;
 
 public class PhotoGalleryModel
 {
     public Guid Id { get; set; }
-    public ICollection<PhotoStorage> photoStorages { get; set; }
+    public ICollection<PhotoStorageModel> photoStorages { get; set; }
 }
 
 public class PhotoGalleryModelProfile : Profile
 {
     public PhotoGalleryModelProfile() 
     {
-        CreateMap<PhotoGalleryModel, PhotoGalleryModel>()
+        CreateMap<PhotoGallery, PhotoGalleryModel>()
             .BeforeMap<PhotoGalleryModelActions>()
             .ForMember(dest => dest.Id, opt => opt.Ignore());
     }

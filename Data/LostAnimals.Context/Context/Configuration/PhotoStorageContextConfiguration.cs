@@ -11,7 +11,7 @@ namespace LostAnimals.Context.Configuration
             ToTable("photo_storage");
 
             modelBuilder.Entity<PhotoStorage>()
-                .Property(x => x.PhotoFullName)
+                .Property(x => x.PhotoName)
                 .IsRequired();
 
             modelBuilder.Entity<PhotoStorage>()

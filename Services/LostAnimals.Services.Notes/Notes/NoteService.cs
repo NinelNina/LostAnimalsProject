@@ -2,6 +2,8 @@
 using LostAnimals.Common.Exceptions;
 using LostAnimals.Context;
 using LostAnimals.Context.Entities;
+using LostAnimals.Services.PhotoService;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -11,11 +13,13 @@ public class NoteService : INoteService
 { 
     private readonly IDbContextFactory<MainDbContext> dbContextFactory;
     private readonly IMapper mapper;
+    private readonly IPhotoService photoService;
 
-    public NoteService(IDbContextFactory<MainDbContext> dbContextFactory, IMapper mapper)
+    public NoteService(IDbContextFactory<MainDbContext> dbContextFactory, IMapper mapper, IPhotoService photoService)
     {
         this.dbContextFactory = dbContextFactory;
         this.mapper = mapper;
+        this.photoService = photoService;
     }
 
     public async Task<NoteModel> Create(CreateNoteModel model)
@@ -96,6 +100,37 @@ public class NoteService : INoteService
         context.Notes.Update(note);
 
         await context.SaveChangesAsync();
+    }
+
+    public async Task UploadPhoto(Guid id, IFormFile file)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var note = await context.Notes.FindAsync(id);
+
+        if (note == null)
+        {
+            throw new ProcessException($"Note (ID = {id}) not found.");
+        }
+
+        var model = mapper.Map<UpdateNoteModel>(note);
+        
+        var photoGalleryID = await photoService.UploadPhoto(file, model.PhotoGalleryID);
+
+        if (photoGalleryID != null)
+        {
+
+            if (model.PhotoGalleryID == null)
+            {
+                model.PhotoGalleryID = photoGalleryID;
+            }
+
+            note = mapper.Map(model, note);
+
+            context.Notes.Update(note);
+
+            await context.SaveChangesAsync();
+        }
     }
 }
 

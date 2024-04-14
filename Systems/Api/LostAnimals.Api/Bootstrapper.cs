@@ -9,8 +9,6 @@ using LostAnimals.Services.NoteCategories;
 using LostAnimals.Services.UserAccount;
 using LostAnimals.Api.Settings;
 using LostAnimals.Services.Comments;
-using LostAnimals.Services.PhotoGalleries;
-using LostAnimals.Services.PhotoStorages;
 using LostAnimals.Services.EmailSender;
 
 public static class Bootstrapper
@@ -32,8 +30,7 @@ public static class Bootstrapper
             .AddBreedService()
             .AddNoteCategoryService()
             .AddUserAccountService()
-            .AddPhotoGalleryService()
-            .AddPhotoStorageService();
+            .AddPhotoService();
 
         return service;
     }

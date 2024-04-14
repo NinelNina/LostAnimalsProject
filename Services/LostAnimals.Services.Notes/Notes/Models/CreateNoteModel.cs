@@ -27,7 +27,7 @@ public class CreateNoteModel
     public string PhoneNumber { get; set; }
 
     public DateTime LastSeenDate { get; set; }
-    public DateTime CreatedDate { get; set; }
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
 }
 
 public class CreateNoteModelProfile : Profile

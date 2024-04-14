@@ -71,7 +71,7 @@ public class AccountsController : ControllerBase
 
             var to = user.Email;
             var subject = "Lost Animals sent user confirmation link";
-            var content = $"To confirm your account on the Lost Animals website, follow the link below. The link will be awailable for one day:\n{confirmationLink}";
+            var content = $"To confirm your account on the Lost Animals website, follow the link below. The link will be available for one day:\n{confirmationLink}";
 
             var message = new Message(new string[] { to }, subject, content);
             try

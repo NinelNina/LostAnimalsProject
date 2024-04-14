@@ -17,11 +17,15 @@ public class PhotoGalleryService : IPhotoGalleryService
         this.mapper = mapper;
     }
 
-    public async Task<PhotoGalleryModel> Create(CreatePhotoGalleryModel model)
+    public async Task<PhotoGalleryModel> Create(Guid id)
     {
         using var context = await dbContextFactory.CreateDbContextAsync();
+        
+        CreatePhotoGalleryModel model = new CreatePhotoGalleryModel(id);
 
-        var photoGallery = mapper.Map<PhotoGallery>(model);
+        var photoGallery = mapper.Map<Context.Entities.PhotoGallery>(model);
+        
+        //TODO: upload files
 
         await context.PhotoGallery.AddAsync(photoGallery);
 

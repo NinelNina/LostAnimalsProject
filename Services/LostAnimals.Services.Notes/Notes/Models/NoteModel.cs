@@ -7,8 +7,6 @@ using Microsoft.EntityFrameworkCore;
 namespace LostAnimals.Services.Notes;
 
 //TODO: создать модель для слоя представления в API
-//TODO: добавить получение AnimalKind
-//TODO: добавить комментарии
 //TODO: добавить фото
 
 public class NoteModel
@@ -43,7 +41,7 @@ public class NoteModel
     public DateTime CreatedDate { get; set; }
     public DateTime? LastEditDate { get; set; }
 
-    public ICollection<CommentModel>? comments { get; set; }
+    public ICollection<CommentModel>? Comments { get; set; }
 }
 
 public class NoteModelProfile : Profile

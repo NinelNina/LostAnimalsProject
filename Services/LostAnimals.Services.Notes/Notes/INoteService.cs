@@ -1,4 +1,6 @@
-﻿namespace LostAnimals.Services.Notes;
+﻿using Microsoft.AspNetCore.Http;
+
+namespace LostAnimals.Services.Notes;
 
 public interface INoteService
 {
@@ -36,4 +38,12 @@ public interface INoteService
     /// <param name="id"></param>
     /// <returns></returns>
     Task Delete(Guid id);
+
+    /// <summary>
+    /// Upload photo to note
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="file"></param>
+    /// <returns></returns>
+    Task UploadPhoto(Guid id, IFormFile file);
 }

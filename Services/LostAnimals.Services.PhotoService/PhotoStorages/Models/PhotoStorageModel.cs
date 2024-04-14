@@ -3,7 +3,8 @@ using LostAnimals.Context;
 using LostAnimals.Context.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace LostAnimals.Services.PhotoStorages;
+namespace LostAnimals.Services.PhotoService.PhotoStorages;
+
 
 public class PhotoStorageModel
 {
@@ -29,7 +30,7 @@ public class PhotoStorageModelProfile : Profile
             this.dbContextFactory = dbContextFactory;
         }
 
-        public void Process(PhotoStorage source, PhotoStorageModel destination, ResolutionContext context)
+        public void Process(Context.Entities.PhotoStorage source, PhotoStorageModel destination, ResolutionContext context)
         {
             using var db = dbContextFactory.CreateDbContext();
 

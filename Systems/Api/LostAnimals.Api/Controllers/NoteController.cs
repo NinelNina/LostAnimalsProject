@@ -58,4 +58,17 @@ public class NoteController : ControllerBase
     {
         await noteService.Delete(id);
     }
+
+    [HttpPost("{id:Guid}/photos/upload")]
+    public async Task<IActionResult> UploadNotePhoto([FromRoute] Guid id, IFormFile file)
+    {
+        await noteService.UploadPhoto(id, file);
+        return Ok();
+    }
+
+    [HttpGet("{id:Guid}/photos")]
+    public async Task<IActionResult> GetPhotos([FromRoute] Guid id)
+    {
+        return Ok();
+    }
 }
