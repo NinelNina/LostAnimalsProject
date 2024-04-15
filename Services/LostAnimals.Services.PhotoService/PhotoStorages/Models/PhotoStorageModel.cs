@@ -9,7 +9,7 @@ namespace LostAnimals.Services.PhotoService.PhotoStorages;
 public class PhotoStorageModel
 {
     public Guid Id { get; set; }
-    public string PhotoFullName { get; set; }
+    public string PhotoName { get; set; }
 }
 
 public class PhotoStorageModelProfile : Profile
@@ -30,7 +30,7 @@ public class PhotoStorageModelProfile : Profile
             this.dbContextFactory = dbContextFactory;
         }
 
-        public void Process(Context.Entities.PhotoStorage source, PhotoStorageModel destination, ResolutionContext context)
+        public void Process(PhotoStorage source, PhotoStorageModel destination, ResolutionContext context)
         {
             using var db = dbContextFactory.CreateDbContext();
 

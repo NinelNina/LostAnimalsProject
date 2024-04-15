@@ -26,8 +26,10 @@ public interface IPhotoService
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task<PhotoGalleryModel> GetPhotoGalleryById(Guid id);
+    //Task<PhotoGalleryModel> GetPhotoGalleryById(Guid id);
 
     //Task<Guid> UploadPhoto(IFormFile file);
     Task<Guid?> UploadPhoto(IFormFile file, Guid? photoGalleryId);
+
+    Task<List<PhotoStorageModel>> GetPhotosByGalleryId(Guid galleryId);
 }

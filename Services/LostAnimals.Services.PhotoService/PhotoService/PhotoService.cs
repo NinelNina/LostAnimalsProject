@@ -39,6 +39,11 @@ public class PhotoService : IPhotoService
                     galleryId = Guid.NewGuid();
                     path = Path.Combine(webHostEnvironment.WebRootPath, "images", galleryId.ToString());
                     Directory.CreateDirectory(path);
+
+                    var galleryModel = new CreatePhotoGalleryModel { Id = galleryId };
+                    var photoGallery = mapper.Map<PhotoGallery>(galleryModel);
+                    await context.PhotoGallery.AddAsync(photoGallery);
+                    await context.SaveChangesAsync();
                 }
                 else
                 {
@@ -47,7 +52,7 @@ public class PhotoService : IPhotoService
                 }
 
                 var photoId = Guid.NewGuid();
-                var photoName = photoId + Path.GetExtension(file.FileName);
+                var photoName = path + "\\" + photoId + Path.GetExtension(file.FileName);
                 path = Path.Combine(path, photoName);
 
                 using (var stream = new FileStream(path, FileMode.Create))
@@ -57,11 +62,6 @@ public class PhotoService : IPhotoService
 
                 try
                 {
-                    var galleryModel = new CreatePhotoGalleryModel { Id = galleryId };
-                    var photoGallery = mapper.Map<PhotoGallery>(galleryModel);
-                    await context.PhotoGallery.AddAsync(photoGallery);
-                    await context.SaveChangesAsync();
-
                     var photoStorageModel = new CreatePhotoStorageModel { Id = photoId, PhotoName = photoName, PhotoGalleryId = galleryId };
                     var photoStorage = mapper.Map<PhotoStorage>(photoStorageModel);
                     await context.PhotoStorage.AddAsync(photoStorage);
@@ -84,12 +84,25 @@ public class PhotoService : IPhotoService
         }
     }
 
-    public async Task<PhotoGalleryModel> GetPhotoGalleryById(Guid id)
+    public async Task<List<PhotoStorageModel>> GetPhotosByGalleryId(Guid galleryId)
     {
         var context = await dbContextFactory.CreateDbContextAsync();
 
-        var photoGallery = await context.PhotoGallery.FindAsync(id);
+        var photoGallery = context.PhotoGallery
+            .Include(x => x.PhotoStorages)
+            .FirstOrDefault(x => x.Uid == galleryId);
 
-        return mapper.Map<PhotoGalleryModel>(photoGallery);
+        var photoStorages = photoGallery.PhotoStorages.ToList();
+
+        Console.WriteLine("photoGallery.PhotoStorages: " + photoGallery.PhotoStorages.Count);
+        Console.WriteLine("photoStorages.Count: " + photoStorages.Count);
+
+        List<PhotoStorageModel> models = new List<PhotoStorageModel>();
+
+        photoStorages.ForEach(x => models.Add(mapper.Map<PhotoStorageModel>(x)));
+
+        //foreach (var photo in photoStorages)
+
+        return models;
     }
 }

@@ -1,5 +1,6 @@
-﻿/*using Asp.Versioning;
+﻿using Asp.Versioning;
 using LostAnimals.Context.Entities;
+using LostAnimals.Services.Notes;
 using LostAnimals.Services.PhotoService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,40 +20,11 @@ namespace LostAnimals.Api.Controllers
             this.photoService = photoService;
         }
 
-        [HttpPost("")]
-        public async Task<IActionResult> CreatePhotoGallery()
+        [HttpGet("{galleryId:Guid}/photos")]
+        public async Task<IActionResult> GetPhotosByGalleryId([FromRoute] Guid galleryId)
         {
-            var gallery = await photoService.CreatePhotoGallery();
-            return Ok(gallery);
-        }
-
-        [HttpPost("{galleryId}/photos")]
-        public async Task<IActionResult> UploadPhoto([FromRoute] Guid galleryId, IFormFile file)
-        {
-            if (file.Length > 0)
-            {
-                var photo = await photoService.SavePhoto(galleryId, file);
-
-                return Ok(photo);
-            } 
-            else
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpGet("{id:Guid}")]
-        public async Task<IActionResult> GetPhotoGallery([FromRoute] Guid id)
-        {
-            var gallery = await photoService.GetPhotoGalleryById(id);
-
-            if (gallery == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(gallery);
+            var photos = await photoService.GetPhotosByGalleryId(galleryId);
+            return Ok(photos);
         }
     }
 }
-*/
