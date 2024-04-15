@@ -4,6 +4,8 @@ using LostAnimals.Services.EmailSender;
 using LostAnimals.Services.UserAccount;
 using LostAnimals.Services.Logger;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using LostAnimals.Common.Security;
 
 namespace LostAnimals.Api.Controllers;
 
@@ -37,6 +39,7 @@ public class AccountsController : ControllerBase
     }
 
     [HttpGet("")]
+    [Authorize(AppScopes.UsersRead)]
     public async Task<IEnumerable<UserAccountModel>> GetAll()
     {
         var result = await userAccountService.GetAll();

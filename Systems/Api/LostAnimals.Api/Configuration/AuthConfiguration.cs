@@ -53,8 +53,13 @@ public static class AuthConfiguration
 
         services.AddAuthorization(options =>
         {
-            options.AddPolicy(AppScopes.AnimalKindsRead, policy => policy.RequireClaim("scope", AppScopes.AnimalKindsRead));
             options.AddPolicy(AppScopes.AnimalKindsWrite, policy => policy.RequireClaim("scope", AppScopes.AnimalKindsWrite));
+            options.AddPolicy(AppScopes.BreedsWrite, policy => policy.RequireClaim("scope", AppScopes.BreedsWrite));
+            options.AddPolicy(AppScopes.NotesWrite, policy => policy.RequireClaim("scope", AppScopes.NotesWrite));
+            options.AddPolicy(AppScopes.NoteCategoriesWrite, policy => policy.RequireClaim("scope", AppScopes.NoteCategoriesWrite));
+            options.AddPolicy(AppScopes.CommentsWrite, policy => policy.RequireClaim("scope", AppScopes.CommentsWrite));
+            options.AddPolicy(AppScopes.PhotosWrite, policy => policy.RequireClaim("scope", AppScopes.PhotosWrite));
+            options.AddPolicy(AppScopes.UsersRead, policy => policy.RequireClaim("scope", AppScopes.UsersRead));
         });
 
         return services;

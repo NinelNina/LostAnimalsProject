@@ -1,5 +1,7 @@
 ﻿using Asp.Versioning;
+using LostAnimals.Common.Security;
 using LostAnimals.Services.PhotoService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LostAnimals.Api.Controllers
@@ -17,7 +19,7 @@ namespace LostAnimals.Api.Controllers
             this.photoService = photoService;
         }
 
-        [HttpGet("{galleryId:Guid}/photos")]
+        [HttpGet("{galleryId:Guid}")]
         public async Task<IActionResult> GetPhotosByGalleryId([FromRoute] Guid galleryId)
         {
             var photos = await photoService.GetPhotosByGalleryId(galleryId);
@@ -25,6 +27,7 @@ namespace LostAnimals.Api.Controllers
         }
 
         [HttpDelete("deletePhoto/{photoId:Guid}")]
+        [Authorize(AppScopes.PhotosWrite)]
         public async Task DeletePhoto([FromRoute] Guid photoId)
         {
             await photoService.DeletePhoto(photoId);

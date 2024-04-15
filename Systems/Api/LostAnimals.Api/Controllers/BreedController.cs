@@ -2,6 +2,8 @@
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.Breeds;
 using Microsoft.AspNetCore.Mvc;
+using LostAnimals.Common.Security;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LostAnimals.Api.Controllers;
 
@@ -40,6 +42,7 @@ public class BreedController : ControllerBase
     }
 
     [HttpPost("")]
+    [Authorize(AppScopes.BreedsWrite)]
     public async Task<BreedModel> Create(CreateBreedModel request)
     {
         var result = await breedService.Create(request);
@@ -48,12 +51,14 @@ public class BreedController : ControllerBase
     }
 
     [HttpPut("{id:Guid}")]
+    [Authorize(AppScopes.BreedsWrite)]
     public async Task Update([FromRoute] Guid id, UpdateBreedModel request)
     {
         await breedService.Update(id, request);
     }
 
     [HttpDelete("{id:Guid}")]
+    [Authorize(AppScopes.BreedsWrite)]
     public async Task Delete([FromRoute] Guid id)
     {
         await breedService.Delete(id);

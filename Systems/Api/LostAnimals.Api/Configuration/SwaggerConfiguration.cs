@@ -70,8 +70,13 @@ public static class SwaggerConfiguration
                         TokenUrl = new Uri($"{identitySettings.Url}/connect/token"),
                         Scopes = new Dictionary<string, string>
                         {
-                            { AppScopes.AnimalKindsRead, "Read" },
-                            { AppScopes.AnimalKindsWrite, "Write" }
+                            { AppScopes.AnimalKindsWrite, "AnimalKindsWrite" },
+                            { AppScopes.BreedsWrite, "BreedsWrite" },
+                            { AppScopes.NotesWrite, "NotesWrite" },
+                            { AppScopes.PhotosWrite, "PhotosWrite" },
+                            { AppScopes.NoteCategoriesWrite, "NoteCategoriesWrite" },
+                            { AppScopes.CommentsWrite, "CommentsWrite" },
+                            { AppScopes.UsersRead, "UsersRead" }
                         }
                     },
 
@@ -80,8 +85,13 @@ public static class SwaggerConfiguration
                         TokenUrl = new Uri($"{identitySettings.Url}/connect/token"),
                         Scopes = new Dictionary<string, string>
                         {
-                            { AppScopes.AnimalKindsRead, "Read" },
-                            { AppScopes.AnimalKindsWrite, "Write" }
+                            { AppScopes.AnimalKindsWrite, "AnimalKindsWrite" },
+                            { AppScopes.BreedsWrite, "BreedsWrite" },
+                            { AppScopes.NotesWrite, "NotesWrite" },
+                            { AppScopes.PhotosWrite, "PhotosWrite" },
+                            { AppScopes.NoteCategoriesWrite, "NoteCategoriesWrite" },
+                            { AppScopes.CommentsWrite, "CommentsWrite" },
+                            { AppScopes.UsersRead, "UsersRead" }
                         }
                     }
                 }

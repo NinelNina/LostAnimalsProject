@@ -1,7 +1,8 @@
 ﻿using Asp.Versioning;
+using LostAnimals.Common.Security;
 using LostAnimals.Services.Comments;
 using LostAnimals.Services.Logger;
-using LostAnimals.Services.Notes;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LostAnimals.Api.Controllers;
@@ -41,6 +42,7 @@ public class CommentController : ControllerBase
     }
 
     [HttpPost("")]
+    [Authorize(AppScopes.CommentsWrite)]
     public async Task<CommentModel> Create(CreateCommentModel request)
     {
         var result = await commentService.Create(request);
@@ -49,12 +51,14 @@ public class CommentController : ControllerBase
     }
 
     [HttpDelete("{id:Guid}")]
+    [Authorize(AppScopes.CommentsWrite)]
     public async Task Delete([FromRoute] Guid id)
     {
         await commentService.Delete(id);
     }
 
     [HttpPost("{id:Guid}/photos/upload")]
+    [Authorize(AppScopes.CommentsWrite)]
     public async Task<IActionResult> UploadNotePhoto([FromRoute] Guid id, IFormFile file)
     {
         await commentService.UploadPhoto(id, file);

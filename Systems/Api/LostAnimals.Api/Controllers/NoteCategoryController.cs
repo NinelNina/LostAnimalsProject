@@ -1,7 +1,9 @@
 ﻿using Asp.Versioning;
+using LostAnimals.Common.Security;
 using LostAnimals.Services.AnimalKinds;
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.NoteCategories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,6 +44,7 @@ namespace LostAnimals.Api.Controllers
         }
 
         [HttpPost("")]
+        [Authorize(AppScopes.NoteCategoriesWrite)]
         public async Task<NoteCategoryModel> Create(CreateNoteCategoryModel request)
         {
             var result = await noteCategoryService.Create(request);
@@ -50,12 +53,14 @@ namespace LostAnimals.Api.Controllers
         }
 
         [HttpPut("{id:Guid}")]
+        [Authorize(AppScopes.NoteCategoriesWrite)]
         public async Task Update([FromRoute] Guid id, UpdateNoteCategoryModel request)
         {
             await noteCategoryService.Update(id, request);
         }
 
         [HttpDelete("{id:Guid}")]
+        [Authorize(AppScopes.NoteCategoriesWrite)]
         public async Task Delete([FromRoute] Guid id)
         {
             await noteCategoryService.Delete(id);

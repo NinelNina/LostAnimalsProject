@@ -4,6 +4,8 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using LostAnimals.Services.Notes;
 using LostAnimals.Services.Logger;
+using Microsoft.AspNetCore.Authorization;
+using LostAnimals.Common.Security;
 
 [ApiController]
 [ApiVersion("1.0")]
@@ -40,6 +42,7 @@ public class NoteController : ControllerBase
     }
 
     [HttpPost("")]
+    [Authorize(AppScopes.NotesWrite)]
     public async Task<NoteModel> Create(CreateNoteModel request)
     {
         var result = await noteService.Create(request);
@@ -48,18 +51,21 @@ public class NoteController : ControllerBase
     }
 
     [HttpPut("{id:Guid}")]
+    [Authorize(AppScopes.NotesWrite)]
     public async Task Update([FromRoute] Guid id, UpdateNoteModel request)
     {
         await noteService.Update(id, request);
     }
 
     [HttpDelete("{id:Guid}")]
+    [Authorize(AppScopes.NotesWrite)]
     public async Task Delete([FromRoute] Guid id)
     {
         await noteService.Delete(id);
     }
 
-    [HttpPost("{id:Guid}/photos/upload")]
+    [HttpPost("{id:Guid}/Photo/upload")]
+    [Authorize(AppScopes.NotesWrite)]
     public async Task<IActionResult> UploadNotePhoto([FromRoute] Guid id, IFormFile file)
     {
         await noteService.UploadPhoto(id, file);
