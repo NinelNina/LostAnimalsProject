@@ -65,10 +65,4 @@ public class NoteController : ControllerBase
         await noteService.UploadPhoto(id, file);
         return Ok();
     }
-
-    /*[HttpGet("{id:Guid}/photos")]
-    public async Task<IActionResult> GetPhotos([FromRoute] Guid id)
-    {
-        return Ok();
-    }*/
 }

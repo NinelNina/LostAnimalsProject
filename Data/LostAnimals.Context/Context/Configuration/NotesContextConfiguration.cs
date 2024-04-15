@@ -49,7 +49,7 @@ public static class NotesContextConfiguration
             .HasOne(x => x.PhotoGallery)
             .WithMany(x => x.Notes)
             .HasForeignKey(x => x.PhotoGalleryID)
-            .OnDelete(DeleteBehavior.Restrict)
+            .OnDelete(DeleteBehavior.SetNull)
             .IsRequired(false);
         
         modelBuilder.Entity<Note>()

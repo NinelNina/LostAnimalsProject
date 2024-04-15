@@ -1,8 +1,5 @@
 ﻿using Asp.Versioning;
-using LostAnimals.Context.Entities;
-using LostAnimals.Services.Notes;
 using LostAnimals.Services.PhotoService;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LostAnimals.Api.Controllers
@@ -25,6 +22,12 @@ namespace LostAnimals.Api.Controllers
         {
             var photos = await photoService.GetPhotosByGalleryId(galleryId);
             return Ok(photos);
+        }
+
+        [HttpDelete("deletePhoto/{photoId:Guid}")]
+        public async Task DeletePhoto([FromRoute] Guid photoId)
+        {
+            await photoService.DeletePhoto(photoId);
         }
     }
 }

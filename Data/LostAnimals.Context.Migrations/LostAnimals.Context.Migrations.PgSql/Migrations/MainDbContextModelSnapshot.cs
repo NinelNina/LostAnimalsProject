@@ -92,7 +92,7 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 4, 14, 12, 13, 51, 392, DateTimeKind.Local).AddTicks(1774));
+                        .HasDefaultValue(new DateTime(2024, 4, 15, 21, 21, 22, 174, DateTimeKind.Local).AddTicks(837));
 
                     b.Property<int>("NoteID")
                         .HasColumnType("integer");
@@ -499,7 +499,7 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.HasOne("LostAnimals.Context.Entities.PhotoGallery", "PhotoGallery")
                         .WithMany("Comments")
                         .HasForeignKey("PhotoGalleryID")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("LostAnimals.Context.Entities.User", "User")
                         .WithMany("Comments")
@@ -534,7 +534,7 @@ namespace LostAnimals.Context.Migrations.PgSql.Migrations
                     b.HasOne("LostAnimals.Context.Entities.PhotoGallery", "PhotoGallery")
                         .WithMany("Notes")
                         .HasForeignKey("PhotoGalleryID")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("LostAnimals.Context.Entities.User", "User")
                         .WithMany("Notes")

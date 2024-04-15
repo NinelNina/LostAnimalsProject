@@ -148,8 +148,5 @@ public class NoteService : INoteService
             await context.SaveChangesAsync();
         }
     }
-
-    //TODO: получение фото
-    //TODO: загрузка фото для комментариев
 }
 

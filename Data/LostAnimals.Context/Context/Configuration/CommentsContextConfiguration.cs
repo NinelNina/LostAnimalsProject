@@ -29,7 +29,7 @@ public static class CommentsContextConfiguration
             .HasOne(x => x.PhotoGallery)
             .WithMany(x => x.Comments)
             .HasForeignKey(x => x.PhotoGalleryID)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.SetNull);
 
         modelBuilder.Entity<Comment>()
             .HasOne(x => x.ParentComment)

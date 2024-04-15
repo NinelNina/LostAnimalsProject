@@ -92,17 +92,63 @@ public class PhotoService : IPhotoService
             .Include(x => x.PhotoStorages)
             .FirstOrDefault(x => x.Uid == galleryId);
 
-        var photoStorages = photoGallery.PhotoStorages.ToList();
+        if (photoGallery == null)
+        {
+            throw new ProcessException($"PhotoGallery (ID = {galleryId}) not found.");
+        }
 
-        Console.WriteLine("photoGallery.PhotoStorages: " + photoGallery.PhotoStorages.Count);
-        Console.WriteLine("photoStorages.Count: " + photoStorages.Count);
+        var photoStorages = photoGallery.PhotoStorages.ToList();
 
         List<PhotoStorageModel> models = new List<PhotoStorageModel>();
 
         photoStorages.ForEach(x => models.Add(mapper.Map<PhotoStorageModel>(x)));
 
-        //foreach (var photo in photoStorages)
-
         return models;
+    }
+
+    public async Task DeletePhoto(Guid photoId)
+    {
+        var context = await dbContextFactory.CreateDbContextAsync();
+
+        var photoStorage = await context.PhotoStorage
+            .Include(x => x.PhotoGallery)
+            .FirstOrDefaultAsync(x => x.Uid == photoId);
+
+        if (photoStorage == null)
+        {
+            throw new ProcessException($"PhotoStorage (ID = {photoId}) not found.");
+        }
+
+        var galleryId = photoStorage.PhotoGallery.Uid;
+
+        var imagePath = Path.Combine(webHostEnvironment.WebRootPath, "images", photoStorage.PhotoGallery.Uid.ToString(), photoStorage.PhotoName);
+
+        if (File.Exists(imagePath))
+        {
+            File.Delete(imagePath);
+        }
+
+        context.PhotoStorage.Remove(photoStorage);
+        await context.SaveChangesAsync();
+
+        var photoGallery = await context.PhotoGallery
+            .Include(x => x.PhotoStorages)
+            .Where(x => x.Uid == galleryId)
+            .FirstOrDefaultAsync();
+
+        if (photoGallery == null)
+        {
+            throw new ProcessException($"PhotoGallery (ID = {galleryId}) not found.");
+        }
+
+        if (photoGallery.PhotoStorages.Count == 0)
+        {
+            context.PhotoGallery.Remove(photoGallery);
+
+            await context.SaveChangesAsync();
+
+            var path = Path.Combine(webHostEnvironment.WebRootPath, "images", galleryId.ToString());
+            Directory.Delete(path);
+        }
     }
 }
