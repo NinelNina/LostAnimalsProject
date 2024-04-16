@@ -58,6 +58,7 @@
 
   <ItemGroup>
     <Folder Include="%25logs\" />
+    <Folder Include="Controllers\ViewModels\Photo\" />
   </ItemGroup>
 
 </Project>
