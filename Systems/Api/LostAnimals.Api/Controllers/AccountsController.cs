@@ -6,6 +6,10 @@ using LostAnimals.Services.Logger;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using LostAnimals.Common.Security;
+using LostAnimals.Api.Controllers.Models.Account;
+using LostAnimals.Services.Breeds;
+using LostAnimals.Api.Controllers.Models.Breed;
+using LostAnimals.Context.Entities;
 
 namespace LostAnimals.Api.Controllers;
 
@@ -29,20 +33,26 @@ public class AccountsController : ControllerBase
     }
 
     [HttpPost("")]
-    public async Task<UserAccountModel> Register([FromQuery] RegisterUserAccountModel request)
+    public async Task<UserAccountViewModel> Register([FromQuery] RegisterUserAccountViewModel request)
     {
-        var user = await userAccountService.Create(request);
+        var requestModel = mapper.Map<RegisterUserAccountModel>(request);
 
-        await SendConfirmationLink(user.Id);
+        var result = await userAccountService.Create(requestModel);
+
+        await SendConfirmationLink(result.Id);
+
+        var user = mapper.Map<UserAccountViewModel>(result);
 
         return user;
     }
 
     [HttpGet("")]
     [Authorize(AppScopes.UsersRead)]
-    public async Task<IEnumerable<UserAccountModel>> GetAll()
+    public async Task<IEnumerable<UserAccountViewModel>> GetAll()
     {
-        var result = await userAccountService.GetAll();
+        var users = await userAccountService.GetAll();
+
+        IEnumerable<UserAccountViewModel> result = users.Select(mapper.Map<UserAccountViewModel>);
 
         return result;
     }
@@ -50,10 +60,12 @@ public class AccountsController : ControllerBase
     [HttpGet("{id:Guid}")]
     public async Task<IActionResult> Get([FromRoute] Guid id)
     {
-        var result = await userAccountService.GetById(id);
+        var user = await userAccountService.GetById(id);
 
-        if (result == null)
+        if (user == null)
             return NotFound();
+
+        var result = mapper.Map<UserAccountViewModel>(user);
 
         return Ok(result);
     }  
