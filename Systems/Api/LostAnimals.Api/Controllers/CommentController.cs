@@ -2,6 +2,7 @@
 using AutoMapper;
 using LostAnimals.Api.Controllers.Models.Comment;
 using LostAnimals.Common.Security;
+using LostAnimals.Common.Validator;
 using LostAnimals.Services.Comments;
 using LostAnimals.Services.Logger;
 using Microsoft.AspNetCore.Authorization;
@@ -18,12 +19,15 @@ public class CommentController : ControllerBase
     private readonly IAppLogger logger;
     private readonly ICommentService commentService;
     private readonly IMapper mapper;
+    private readonly IModelValidator<CreateCommentViewModel> createCommentModelValidator;
 
-    public CommentController(IAppLogger logger, ICommentService commentService, IMapper mapper)
+    public CommentController(IAppLogger logger, ICommentService commentService, IMapper mapper,
+        IModelValidator<CreateCommentViewModel> createCommentModelValidator)
     {
         this.logger = logger;
         this.commentService = commentService;
         this.mapper = mapper;
+        this.createCommentModelValidator = createCommentModelValidator;
     }
 
     [HttpGet("")]
@@ -53,6 +57,8 @@ public class CommentController : ControllerBase
     [Authorize(AppScopes.CommentsWrite)]
     public async Task<CommentViewModel> Create(CreateCommentViewModel request)
     {
+        createCommentModelValidator.Check(request);
+
         var requestModel = mapper.Map<CreateCommentModel>(request);
 
         var result = await commentService.Create(requestModel);

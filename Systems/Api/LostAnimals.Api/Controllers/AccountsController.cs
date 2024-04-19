@@ -2,6 +2,7 @@
 using AutoMapper;
 using LostAnimals.Api.Controllers.Models.Account;
 using LostAnimals.Common.Security;
+using LostAnimals.Common.Validator;
 using LostAnimals.Services.EmailSender;
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.UserAccount;
@@ -20,18 +21,23 @@ public class AccountsController : ControllerBase
     private readonly IAppLogger logger;
     private readonly IUserAccountService userAccountService;
     private readonly IEmailSenderService emailSenderService;
+    private readonly IModelValidator<RegisterUserAccountViewModel> registerUserAccountModelValidator;
 
-    public AccountsController(IMapper mapper, IAppLogger logger, IUserAccountService userAccountService, IEmailSenderService emailSenderService)
+    public AccountsController(IMapper mapper, IAppLogger logger, IUserAccountService userAccountService, IEmailSenderService emailSenderService,
+        IModelValidator<RegisterUserAccountViewModel> registerUserAccountModelValidator)
     {
         this.mapper = mapper;
         this.logger = logger;
         this.userAccountService = userAccountService;
         this.emailSenderService = emailSenderService;
+        this.registerUserAccountModelValidator = registerUserAccountModelValidator;
     }
 
     [HttpPost("")]
     public async Task<UserAccountViewModel> Register([FromQuery] RegisterUserAccountViewModel request)
     {
+        registerUserAccountModelValidator.Check(request);
+
         var requestModel = mapper.Map<RegisterUserAccountModel>(request);
 
         var result = await userAccountService.Create(requestModel);

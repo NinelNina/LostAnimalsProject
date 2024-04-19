@@ -4,6 +4,7 @@ using Asp.Versioning;
 using AutoMapper;
 using LostAnimals.Api.Controllers.Models.Note;
 using LostAnimals.Common.Security;
+using LostAnimals.Common.Validator;
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.Notes;
 using Microsoft.AspNetCore.Authorization;
@@ -18,12 +19,15 @@ public class NoteController : ControllerBase
     private readonly IAppLogger logger;
     private readonly INoteService noteService;
     private readonly IMapper mapper;
+    private readonly IModelValidator<CreateNoteViewModel> createNoteModelValidator;
 
-    public NoteController(IAppLogger logger, INoteService noteService, IMapper mapper)
+    public NoteController(IAppLogger logger, INoteService noteService, IMapper mapper,
+        IModelValidator<CreateNoteViewModel> createNoteModelValidator)
     {
         this.logger = logger;
         this.noteService = noteService;
         this.mapper = mapper;
+        this.createNoteModelValidator = createNoteModelValidator;
     }
 
     [HttpGet("")]
@@ -53,6 +57,8 @@ public class NoteController : ControllerBase
     [Authorize(AppScopes.NotesWrite)]
     public async Task<NoteViewModel> Create(CreateNoteViewModel request)
     {
+        createNoteModelValidator.Check(request);
+
         var requestModel = mapper.Map<CreateNoteModel>(request);
 
         var result = await noteService.Create(requestModel);

@@ -13,16 +13,12 @@ public class UserAccountService : IUserAccountService
     private readonly IDbContextFactory<MainDbContext> dbContextFactory;
     private readonly IMapper mapper;
     private readonly UserManager<User> userManager;
-    private readonly IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator;
 
-    public UserAccountService(IDbContextFactory<MainDbContext> dbContextFactory, IMapper mapper, UserManager<User> userManager,
-        IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator
-    )
+    public UserAccountService(IDbContextFactory<MainDbContext> dbContextFactory, IMapper mapper, UserManager<User> userManager)
     {
         this.dbContextFactory = dbContextFactory;
         this.mapper = mapper;
         this.userManager = userManager;
-        this.registerUserAccountModelValidator = registerUserAccountModelValidator;
     }
 
     public async Task<bool> IsEmpty()
@@ -32,8 +28,6 @@ public class UserAccountService : IUserAccountService
 
     public async Task<UserAccountModel> Create(RegisterUserAccountModel model)
     {
-        registerUserAccountModelValidator.Check(model);
-
         var user = await userManager.FindByEmailAsync(model.Email);
         if (user != null)
         {
