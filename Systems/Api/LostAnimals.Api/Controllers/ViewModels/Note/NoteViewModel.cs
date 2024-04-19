@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using LostAnimals.Api.Controllers.Models.Comment;
 using LostAnimals.Services.Notes;
+using LostAnimals.Services.UserAccount;
 
 namespace LostAnimals.Api.Controllers.Models.Note;
 

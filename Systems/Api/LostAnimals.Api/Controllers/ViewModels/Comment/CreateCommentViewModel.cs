@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using LostAnimals.Services.Comments;
 
 namespace LostAnimals.Api.Controllers.Models.Comment;
@@ -16,6 +17,15 @@ public class CreateCommentViewModel
     public Guid? PhotoGalleryId { get; set; }
 
     public DateTime CreatedDate { get; set; } = DateTime.Now;
+
+    public class CreateCommentModelValidator : AbstractValidator<CreateCommentViewModel>
+    {
+        public CreateCommentModelValidator()
+        {
+            RuleFor(x => x.Content)
+                .NotEmpty().WithMessage("Введите текст комментария.");
+        }
+    }
 }
 
 public class CreateCommentViewModelProfile : Profile

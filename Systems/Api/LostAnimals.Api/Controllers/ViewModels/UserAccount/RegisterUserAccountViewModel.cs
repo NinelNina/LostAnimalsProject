@@ -9,20 +9,20 @@ public class RegisterUserAccountViewModel
     public string Email { get; set; }
     public string Password { get; set; }
 
-    public class RegisterUserAccountModelValidator : AbstractValidator<RegisterUserAccountModel>
+    public class RegisterUserAccountModelValidator : AbstractValidator<RegisterUserAccountViewModel>
     {
         public RegisterUserAccountModelValidator()
         {
             RuleFor(x => x.UserName)
-                .NotEmpty().WithMessage("User name is required.");
+                .NotEmpty().WithMessage("\"Имя пользователя\" - обязательное поле.");
 
             RuleFor(x => x.Email)
-                .EmailAddress().WithMessage("Email is required.");
+                .EmailAddress().WithMessage("\"Email\" - обязательное поле.");
 
             RuleFor(x => x.Password)
-                .NotEmpty().WithMessage("Password is required.")
-                .MinimumLength(6).WithMessage("Password is too short.")
-                .MaximumLength(50).WithMessage("Password is too long.");
+                .NotEmpty().WithMessage("Укажите пароль.")
+                .MinimumLength(6).WithMessage("Пароль слишком короткий.")
+                .MaximumLength(50).WithMessage("Пароль слишком длинный.");
         }
     }
 }
