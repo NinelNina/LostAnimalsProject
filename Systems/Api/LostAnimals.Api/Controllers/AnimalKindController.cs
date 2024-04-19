@@ -4,6 +4,8 @@ using LostAnimals.Services.AnimalKinds;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using LostAnimals.Common.Security;
+using AutoMapper;
+using LostAnimals.Api.Controllers.Models.AnimalKind;
 
 namespace LostAnimals.Api.Controllers;
 
@@ -16,18 +18,22 @@ public class AnimalKindController : ControllerBase
 {
     private readonly IAppLogger logger;
     private readonly IAnimalKindService animalKindService;
+    private readonly IMapper mapper;
 
-    public AnimalKindController(IAppLogger logger, IAnimalKindService animalKindService)
+    public AnimalKindController(IAppLogger logger, IAnimalKindService animalKindService, IMapper mapper)
     {
         this.logger = logger;
         this.animalKindService = animalKindService;
+        this.mapper = mapper;
     }
 
     [HttpGet("")]
     [AllowAnonymous]
-    public async Task<IEnumerable<AnimalKindModel>> GetAll()
+    public async Task<IEnumerable<AnimalKindViewModel>> GetAll()
     {
-        var result = await animalKindService.GetAll();
+        var animalKinds = await animalKindService.GetAll();
+
+        IEnumerable<AnimalKindViewModel> result = animalKinds.Select(animalKind => mapper.Map<AnimalKindViewModel>(animalKind));
 
         return result;
     }
@@ -36,28 +42,34 @@ public class AnimalKindController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> Get([FromRoute] Guid id)
     {
-        var result = await animalKindService.GetById(id);
+        var animalKind = await animalKindService.GetById(id);
 
-        if (result == null)
+        if (animalKind == null)
             return NotFound();
+
+        var result = mapper.Map<AnimalKindViewModel>(animalKind);
 
         return Ok(result);
     }
 
     [HttpPost("")]
     [Authorize(AppScopes.AnimalKindsWrite)]
-    public async Task<AnimalKindModel> Create(CreateAnimalKindModel request)
+    public async Task<AnimalKindViewModel> Create(CreateAnimalKindViewModel request)
     {
-        var result = await animalKindService.Create(request);
+        var requestModel = mapper.Map<CreateAnimalKindModel>(request);
 
-        return result;
+        var result = await animalKindService.Create(requestModel);
+
+        return mapper.Map<AnimalKindViewModel>(result);
     }
 
     [HttpPut("{id:Guid}")]
     [Authorize(AppScopes.AnimalKindsWrite)]
-    public async Task Update([FromRoute] Guid id, UpdateAnimalKindModel request)
+    public async Task Update([FromRoute] Guid id, UpdateAnimalKindViewModel request)
     {
-        await animalKindService.Update(id, request);
+        var requestModel = mapper.Map<UpdateAnimalKindModel>(request);
+
+        await animalKindService.Update(id, requestModel);
     }
 
     [HttpDelete("{id:Guid}")]
