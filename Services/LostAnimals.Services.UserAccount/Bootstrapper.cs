@@ -1,5 +1,4 @@
-﻿using LostAnimals.Services.UserAccount;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace LostAnimals.Services.UserAccount;
 

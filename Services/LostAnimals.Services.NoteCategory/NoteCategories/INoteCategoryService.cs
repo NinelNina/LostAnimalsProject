@@ -21,7 +21,7 @@ public interface INoteCategoryService
     /// <param name="model"></param>
     /// <returns></returns>
     Task<NoteCategoryModel> Create(CreateNoteCategoryModel model);
-    
+
     /// <summary>
     /// Update note category
     /// </summary>
@@ -29,7 +29,7 @@ public interface INoteCategoryService
     /// <param name="model"></param>
     /// <returns></returns>
     Task Update(Guid id, UpdateNoteCategoryModel model);
-    
+
     /// <summary>
     /// Delete note category
     /// </summary>

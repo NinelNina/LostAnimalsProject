@@ -4,7 +4,8 @@ using LostAnimals.Context.Entities;
 namespace LostAnimals.Services.AnimalKinds;
 
 public class CreateAnimalKindModel
-{    public string AnimalKindName { get; set; }
+{
+    public string AnimalKindName { get; set; }
 }
 
 public class AnimalKindCreateModelProfile : Profile
@@ -13,4 +14,4 @@ public class AnimalKindCreateModelProfile : Profile
     {
         CreateMap<CreateAnimalKindModel, AnimalKind>();
     }
-} 
+}

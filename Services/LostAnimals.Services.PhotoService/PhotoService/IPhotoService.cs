@@ -1,6 +1,4 @@
-﻿using LostAnimals.Context.Entities;
-using LostAnimals.Services.PhotoService.PhotoGalleries;
-using LostAnimals.Services.PhotoService.PhotoStorages;
+﻿using LostAnimals.Services.PhotoService.PhotoStorages;
 using Microsoft.AspNetCore.Http;
 
 namespace LostAnimals.Services.PhotoService;

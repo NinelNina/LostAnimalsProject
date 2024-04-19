@@ -9,21 +9,21 @@ public interface INoteService
     /// </summary>
     /// <returns></returns>
     Task<IEnumerable<NoteModel>> GetAll();
-    
+
     /// <summary>
     /// Get note by id
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
     Task<NoteModel> GetById(Guid id);
-    
+
     /// <summary>
     /// Create note
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
     Task<NoteModel> Create(CreateNoteModel model);
-    
+
     /// <summary>
     /// Update note
     /// </summary>
@@ -31,7 +31,7 @@ public interface INoteService
     /// <param name="model"></param>
     /// <returns></returns>
     Task Update(Guid id, UpdateNoteModel model);
-    
+
     /// <summary>
     /// Delete note
     /// </summary>

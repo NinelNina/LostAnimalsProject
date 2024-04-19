@@ -1,6 +1,6 @@
 ﻿using LostAnimals.Services.Settings;
-using Serilog.Events;
 using Serilog;
+using Serilog.Events;
 using LogLevel = LostAnimals.Services.Settings.LogLevel;
 
 namespace LostAnimals.Identity.Configuration;

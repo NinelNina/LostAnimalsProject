@@ -1,8 +1,5 @@
 ﻿using AutoMapper;
-using LostAnimals.Context;
 using LostAnimals.Context.Entities;
-using LostAnimals.Services.PhotoService.PhotoStorages;
-using Microsoft.EntityFrameworkCore;
 
 namespace LostAnimals.Services.PhotoService.PhotoGalleries;
 

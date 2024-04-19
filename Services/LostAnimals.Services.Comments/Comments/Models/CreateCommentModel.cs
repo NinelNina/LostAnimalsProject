@@ -22,7 +22,7 @@ public class CreateCommentModel
 
 public class CreateCommentModelProfile : Profile
 {
-    public CreateCommentModelProfile() 
+    public CreateCommentModelProfile()
     {
         CreateMap<CreateCommentModel, Comment>()
             .ForMember(x => x.UserID, opt => opt.Ignore())

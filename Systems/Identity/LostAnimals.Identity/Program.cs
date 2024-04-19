@@ -1,6 +1,6 @@
+using LostAnimals.Context;
 using LostAnimals.Identity;
 using LostAnimals.Identity.Configuration;
-using LostAnimals.Context;
 using LostAnimals.Services.Settings;
 using LostAnimals.Settings;
 using Microsoft.AspNetCore.Identity;

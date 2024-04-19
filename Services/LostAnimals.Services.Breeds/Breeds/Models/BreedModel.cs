@@ -15,7 +15,8 @@ public class BreedModel
 
 public class BreedModelProfile : Profile
 {
-    public BreedModelProfile() {
+    public BreedModelProfile()
+    {
         CreateMap<Breed, BreedModel>()
             .BeforeMap<BreedModelActions>()
             /*.ForMember(dest => dest.AnimalKindID, opt => opt.Ignore())

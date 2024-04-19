@@ -6,7 +6,7 @@ public static class DbContextOptionsFactory
 {
     private const string migrationProjectPrefix = "LostAnimals.Context.Migrations.";
 
-    public static DbContextOptions<MainDbContext> Create(string connectionString, DbType dbType, bool detailedLogging  = false)
+    public static DbContextOptions<MainDbContext> Create(string connectionString, DbType dbType, bool detailedLogging = false)
     {
         var builder = new DbContextOptionsBuilder<MainDbContext>();
 

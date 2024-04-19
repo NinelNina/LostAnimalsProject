@@ -13,8 +13,8 @@ public static class SwaggerConfiguration
 {
     private static string AppTitle = "Lost Animals API";
 
-    public static IServiceCollection AddAppSwagger(this IServiceCollection services, 
-        MainSettings mainSettings, 
+    public static IServiceCollection AddAppSwagger(this IServiceCollection services,
+        MainSettings mainSettings,
         SwaggerSettings swaggerSettings,
         IdentitySettings identitySettings)
     {

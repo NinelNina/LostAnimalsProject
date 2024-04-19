@@ -1,5 +1,4 @@
-﻿using Duende.IdentityServer.Models;
-using LostAnimals.Context;
+﻿using LostAnimals.Context;
 using LostAnimals.Context.Entities;
 using LostAnimals.Identity.Configuration.IS4;
 using Microsoft.AspNetCore.Identity;

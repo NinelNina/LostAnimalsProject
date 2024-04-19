@@ -1,4 +1,4 @@
-﻿namespace LostAnimals.Context;  
+﻿namespace LostAnimals.Context;
 
 public enum DbType
 {

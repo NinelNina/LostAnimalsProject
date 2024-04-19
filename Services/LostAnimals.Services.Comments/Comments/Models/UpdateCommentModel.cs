@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using LostAnimals.Context.Entities;
 using LostAnimals.Context;
+using LostAnimals.Context.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace LostAnimals.Services.Comments;

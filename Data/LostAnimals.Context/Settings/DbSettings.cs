@@ -4,7 +4,7 @@ public class DbSettings
 {
     public DbType DbType { get; private set; }
     public string ConnectionString { get; private set; }
-    public DbInitSettings Init {  get; private set; }
+    public DbInitSettings Init { get; private set; }
 }
 
 public class DbInitSettings

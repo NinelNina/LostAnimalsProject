@@ -7,17 +7,17 @@
 
         public int CategoryID { get; set; }
         public virtual NoteCategory Category { get; set; }
-        
+
         public string Title { get; set; }
         public string? AnimalName { get; set; }
-        
+
         public int BreedID { get; set; }
         public virtual Breed Breed { get; set; }
 
         public int? PhotoGalleryID { get; set; }
         public virtual PhotoGallery? PhotoGallery { get; set; }
-        
-        public string Content { get; set;}
+
+        public string Content { get; set; }
 
         public double? Latitude { get; set; }
         public double? Longtitude { get; set; }

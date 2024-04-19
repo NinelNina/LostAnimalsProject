@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using LostAnimals.Common.Exceptions;
-using LostAnimals.Context.Entities;
 using LostAnimals.Context;
-using LostAnimals.Services.Breeds;
+using LostAnimals.Context.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace LostAnimals.Services.Breeds;

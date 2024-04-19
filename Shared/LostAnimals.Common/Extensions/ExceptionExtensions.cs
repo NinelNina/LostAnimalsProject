@@ -1,9 +1,9 @@
 ﻿namespace LostAnimals.Common.Extensions;
 
 using Exceptions;
-using Responses;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Responses;
 
 public static class ErrorResponseExtensions
 {

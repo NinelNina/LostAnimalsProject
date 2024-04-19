@@ -4,7 +4,7 @@ namespace LostAnimals.Context;
 
 public class DbContextFactory
 {
-    private readonly DbContextOptions<MainDbContext> options; 
+    private readonly DbContextOptions<MainDbContext> options;
 
     public DbContextFactory(DbContextOptions<MainDbContext> options)
     {

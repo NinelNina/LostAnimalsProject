@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using LostAnimals.Context.Entities;
+﻿using LostAnimals.Context.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace LostAnimals.Context.Configuration;
 
@@ -22,15 +22,15 @@ public static class NotesContextConfiguration
         modelBuilder.Entity<Note>()
             .Property(x => x.CreatedDate)
             .IsRequired();
-        
+
         modelBuilder.Entity<Note>()
             .Property(x => x.LastSeenDate)
             .IsRequired();
-        
+
         modelBuilder.Entity<Note>()
             .Property(x => x.IsActive)
             .IsRequired();
-        
+
         modelBuilder.Entity<Note>()
             .HasOne(x => x.Category)
             .WithMany(x => x.Notes)
@@ -44,14 +44,14 @@ public static class NotesContextConfiguration
             .HasForeignKey(x => x.BreedID)
             .OnDelete(DeleteBehavior.Restrict)
             .IsRequired();
-        
+
         modelBuilder.Entity<Note>()
             .HasOne(x => x.PhotoGallery)
             .WithMany(x => x.Notes)
             .HasForeignKey(x => x.PhotoGalleryID)
             .OnDelete(DeleteBehavior.SetNull)
             .IsRequired(false);
-        
+
         modelBuilder.Entity<Note>()
             .HasOne(x => x.User)
             .WithMany(u => u.Notes)

@@ -10,7 +10,7 @@
 
         public int? ParentCommentID { get; set; }
         public virtual Comment? ParentComment { get; set; }
-        
+
         public string Content { get; set; }
         public DateTime CreatedDate { get; set; }
 

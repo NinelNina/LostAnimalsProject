@@ -1,6 +1,6 @@
-﻿using LostAnimals.Identity.Configuration.HealthChecks;
+﻿using LostAnimals.Common;
+using LostAnimals.Identity.Configuration.HealthChecks;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using LostAnimals.Common;
 
 namespace LostAnimals.Identity.Configuration;
 

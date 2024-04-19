@@ -1,13 +1,13 @@
 ﻿namespace LostAnimals.Api.Controllers;
 
 using Asp.Versioning;
-using Microsoft.AspNetCore.Mvc;
-using LostAnimals.Services.Notes;
-using LostAnimals.Services.Logger;
-using Microsoft.AspNetCore.Authorization;
-using LostAnimals.Common.Security;
 using AutoMapper;
 using LostAnimals.Api.Controllers.Models.Note;
+using LostAnimals.Common.Security;
+using LostAnimals.Services.Logger;
+using LostAnimals.Services.Notes;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [ApiVersion("1.0")]

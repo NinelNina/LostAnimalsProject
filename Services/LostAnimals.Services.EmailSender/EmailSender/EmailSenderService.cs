@@ -1,7 +1,5 @@
-﻿using LostAnimals.Services.Settings;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using LostAnimals.Services.Logger;
-using Microsoft.Extensions.Options;
+﻿using LostAnimals.Services.Logger;
+using LostAnimals.Services.Settings;
 using MailKit.Net.Smtp;
 using MimeKit;
 
@@ -22,7 +20,7 @@ public class EmailSenderService : IEmailSenderService
     public async Task SendEmail(Message message)
     {
         var emailMessage = CreateEmailMessage(message);
-        
+
         await SendAsync(emailMessage);
     }
 

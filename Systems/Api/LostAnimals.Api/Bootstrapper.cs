@@ -1,15 +1,15 @@
 ﻿namespace LostAnimals.Api;
 
-using LostAnimals.Services.Notes;
-using LostAnimals.Services.AnimalKinds;
-using LostAnimals.Services.Logger;
-using LostAnimals.Services.Settings;
-using LostAnimals.Services.Breeds;
-using LostAnimals.Services.NoteCategories;
-using LostAnimals.Services.UserAccount;
 using LostAnimals.Api.Settings;
+using LostAnimals.Services.AnimalKinds;
+using LostAnimals.Services.Breeds;
 using LostAnimals.Services.Comments;
 using LostAnimals.Services.EmailSender;
+using LostAnimals.Services.Logger;
+using LostAnimals.Services.NoteCategories;
+using LostAnimals.Services.Notes;
+using LostAnimals.Services.Settings;
+using LostAnimals.Services.UserAccount;
 
 public static class Bootstrapper
 {

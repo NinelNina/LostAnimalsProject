@@ -14,7 +14,7 @@ public class PhotoGalleryModel
 
 public class PhotoGalleryModelProfile : Profile
 {
-    public PhotoGalleryModelProfile() 
+    public PhotoGalleryModelProfile()
     {
         CreateMap<PhotoGallery, PhotoGalleryModel>()
             .BeforeMap<PhotoGalleryModelActions>()

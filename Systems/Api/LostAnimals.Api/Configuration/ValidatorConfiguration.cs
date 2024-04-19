@@ -1,8 +1,8 @@
 ﻿namespace LostAnimals.Api.Configuration;
 
+using FluentValidation.AspNetCore;
 using LostAnimals.Common.Helpers;
 using LostAnimals.Common.Validator;
-using FluentValidation.AspNetCore;
 
 public static class ValidatorConfiguration
 {

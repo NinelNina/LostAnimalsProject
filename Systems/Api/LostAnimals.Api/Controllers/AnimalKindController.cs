@@ -1,11 +1,11 @@
 ﻿using Asp.Versioning;
-using LostAnimals.Services.Logger;
-using LostAnimals.Services.AnimalKinds;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using LostAnimals.Common.Security;
 using AutoMapper;
 using LostAnimals.Api.Controllers.Models.AnimalKind;
+using LostAnimals.Common.Security;
+using LostAnimals.Services.AnimalKinds;
+using LostAnimals.Services.Logger;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LostAnimals.Api.Controllers;
 

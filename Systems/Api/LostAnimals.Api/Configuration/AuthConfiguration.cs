@@ -1,11 +1,11 @@
-﻿using LostAnimals.Common.Security;
-using LostAnimals.Context.Entities;
+﻿using IdentityServer4.AccessTokenValidation;
+using LostAnimals.Common.Security;
 using LostAnimals.Context;
+using LostAnimals.Context.Entities;
+using LostAnimals.Services.Settings;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Logging;
-using IdentityServer4.AccessTokenValidation;
 using Microsoft.IdentityModel.Tokens;
-using LostAnimals.Services.Settings;
 
 namespace LostAnimals.Api.Configuration;
 
@@ -64,7 +64,7 @@ public static class AuthConfiguration
 
         return services;
     }
-    
+
     public static IApplicationBuilder UseAppAuth(this IApplicationBuilder app)
     {
         app.UseAuthentication();

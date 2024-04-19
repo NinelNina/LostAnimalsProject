@@ -1,15 +1,10 @@
 ﻿using AutoMapper;
-using Azure.Core;
 using LostAnimals.Common.Exceptions;
 using LostAnimals.Common.Validator;
 using LostAnimals.Context;
 using LostAnimals.Context.Entities;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Text;
 
 namespace LostAnimals.Services.UserAccount;
 

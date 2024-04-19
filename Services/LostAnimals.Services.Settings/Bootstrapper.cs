@@ -6,8 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 
 public static class Bootstrapper
 {
-    public static IServiceCollection AddMainSettings(this IServiceCollection services, 
-        IConfiguration configuration = null) 
+    public static IServiceCollection AddMainSettings(this IServiceCollection services,
+        IConfiguration configuration = null)
     {
         var settings = Settings.Load<MainSettings>("Main", configuration);
         services.AddSingleton(settings);
@@ -23,7 +23,7 @@ public static class Bootstrapper
 
         return services;
     }
-    
+
     public static IServiceCollection AddLogSettings(this IServiceCollection services,
         IConfiguration configuration = null)
     {
@@ -37,15 +37,15 @@ public static class Bootstrapper
     {
         var settings = Settings.Load<IdentitySettings>("Identity", configuration);
         services.AddSingleton(settings);
-        
+
         return services;
     }
-    
+
     public static IServiceCollection AddEmailSenderSettings(this IServiceCollection services)
     {
         var settings = Settings.Load<EmailSenderSettings>("EmailSender");
         services.AddSingleton(settings);
-        
+
         return services;
     }
 }

@@ -8,7 +8,7 @@ namespace LostAnimals.Context;
 
 public class MainDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
-    public DbSet<Note> Notes {  get; set; }
+    public DbSet<Note> Notes { get; set; }
     public DbSet<NoteCategory> NoteCategories { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<PhotoStorage> PhotoStorage { get; set; }

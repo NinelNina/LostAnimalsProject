@@ -1,9 +1,9 @@
 using LostAnimals.Api;
 using LostAnimals.Api.Configuration;
+using LostAnimals.Context;
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.Settings;
 using LostAnimals.Settings;
-using LostAnimals.Context;
 
 var mainSettings = Settings.Load<MainSettings>("Main");
 var logSettings = Settings.Load<LogSettings>("Log");

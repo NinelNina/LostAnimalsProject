@@ -1,15 +1,12 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
-using LostAnimals.Services.EmailSender;
-using LostAnimals.Services.UserAccount;
-using LostAnimals.Services.Logger;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using LostAnimals.Common.Security;
 using LostAnimals.Api.Controllers.Models.Account;
-using LostAnimals.Services.Breeds;
-using LostAnimals.Api.Controllers.Models.Breed;
-using LostAnimals.Context.Entities;
+using LostAnimals.Common.Security;
+using LostAnimals.Services.EmailSender;
+using LostAnimals.Services.Logger;
+using LostAnimals.Services.UserAccount;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LostAnimals.Api.Controllers;
 
@@ -68,8 +65,8 @@ public class AccountsController : ControllerBase
         var result = mapper.Map<UserAccountViewModel>(user);
 
         return Ok(result);
-    }  
-    
+    }
+
     [HttpPost("SendConfirmationLink/{id:Guid}")]
     public async Task<IActionResult> SendConfirmationLink([FromRoute] Guid id)
     {

@@ -3,8 +3,6 @@ using AutoMapper;
 using LostAnimals.Api.Controllers.Models.Comment;
 using LostAnimals.Api.Controllers.Models.NoteCategory;
 using LostAnimals.Common.Security;
-using LostAnimals.Context.Entities;
-using LostAnimals.Services.Comments;
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.NoteCategories;
 using Microsoft.AspNetCore.Authorization;
@@ -63,12 +61,12 @@ namespace LostAnimals.Api.Controllers
             return mapper.Map<NoteCategoryViewModel>(result);
         }
 
-/*        [HttpPut("{id:Guid}")]
-        [Authorize(AppScopes.NoteCategoriesWrite)]
-        public async Task Update([FromRoute] Guid id, UpdateNoteCategoryViewModel request)
-        {
-            await noteCategoryService.Update(id, request);
-        }*/
+        /*        [HttpPut("{id:Guid}")]
+                [Authorize(AppScopes.NoteCategoriesWrite)]
+                public async Task Update([FromRoute] Guid id, UpdateNoteCategoryViewModel request)
+                {
+                    await noteCategoryService.Update(id, request);
+                }*/
 
         [HttpDelete("{id:Guid}")]
         [Authorize(AppScopes.NoteCategoriesWrite)]

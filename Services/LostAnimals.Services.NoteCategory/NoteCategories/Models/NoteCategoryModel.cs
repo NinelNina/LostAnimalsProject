@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using LostAnimals.Services.Notes;
 using LostAnimals.Context;
 using LostAnimals.Context.Entities;
+using LostAnimals.Services.Notes;
 using Microsoft.EntityFrameworkCore;
 
 namespace LostAnimals.Services.NoteCategories;

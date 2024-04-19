@@ -24,7 +24,7 @@ public class UpdateNoteModel
     public string PhoneNumber { get; set; }
 
     public DateTime LastSeenDate { get; set; }
-    public DateTime LastEditDate { get; set;}
+    public DateTime LastEditDate { get; set; }
 }
 
 public class UpdateNoteProfile : Profile
