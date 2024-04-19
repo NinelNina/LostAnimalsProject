@@ -6,9 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LostAnimals.Services.Notes;
 
-//TODO: создать модель для слоя представления в API
-//TODO: добавить фото
-
 public class NoteModel
 {
     public Guid Id { get; set; }

@@ -6,6 +6,8 @@ using LostAnimals.Services.Notes;
 using LostAnimals.Services.Logger;
 using Microsoft.AspNetCore.Authorization;
 using LostAnimals.Common.Security;
+using AutoMapper;
+using LostAnimals.Api.Controllers.Models.Note;
 
 [ApiController]
 [ApiVersion("1.0")]
@@ -15,17 +17,21 @@ public class NoteController : ControllerBase
 {
     private readonly IAppLogger logger;
     private readonly INoteService noteService;
+    private readonly IMapper mapper;
 
-    public NoteController(IAppLogger logger, INoteService noteService)
+    public NoteController(IAppLogger logger, INoteService noteService, IMapper mapper)
     {
         this.logger = logger;
         this.noteService = noteService;
+        this.mapper = mapper;
     }
 
     [HttpGet("")]
-    public async Task<IEnumerable<NoteModel>> GetAll()
+    public async Task<IEnumerable<NoteViewModel>> GetAll()
     {
-        var result = await noteService.GetAll();
+        var notes = await noteService.GetAll();
+
+        IEnumerable<NoteViewModel> result = notes.Select(mapper.Map<NoteViewModel>);
 
         return result;
     }
@@ -33,28 +39,34 @@ public class NoteController : ControllerBase
     [HttpGet("{id:Guid}")]
     public async Task<IActionResult> Get([FromRoute] Guid id)
     {
-        var result = await noteService.GetById(id);
+        var note = await noteService.GetById(id);
 
-        if (result == null)
+        if (note == null)
             return NotFound();
+
+        var result = mapper.Map<NoteViewModel>(note);
 
         return Ok(result);
     }
 
     [HttpPost("")]
     [Authorize(AppScopes.NotesWrite)]
-    public async Task<NoteModel> Create(CreateNoteModel request)
+    public async Task<NoteViewModel> Create(CreateNoteViewModel request)
     {
-        var result = await noteService.Create(request);
+        var requestModel = mapper.Map<CreateNoteModel>(request);
 
-        return result;
+        var result = await noteService.Create(requestModel);
+
+        return mapper.Map<NoteViewModel>(result);
     }
 
     [HttpPut("{id:Guid}")]
     [Authorize(AppScopes.NotesWrite)]
-    public async Task Update([FromRoute] Guid id, UpdateNoteModel request)
+    public async Task Update([FromRoute] Guid id, UpdateNoteViewModel request)
     {
-        await noteService.Update(id, request);
+        var requestModel = mapper.Map<UpdateNoteModel>(request);
+
+        await noteService.Update(id, requestModel);
     }
 
     [HttpDelete("{id:Guid}")]

@@ -7,7 +7,6 @@ namespace LostAnimals.Services.Notes;
 
 public class UpdateNoteModel
 {
-    //public Guid CategoryId { get; set; }
     public string Title { get; set; }
     public string? AnimalName { get; set; }
 
@@ -25,7 +24,7 @@ public class UpdateNoteModel
     public string PhoneNumber { get; set; }
 
     public DateTime LastSeenDate { get; set; }
-    public DateTime LastEditDate { get; set;} = DateTime.Now;
+    public DateTime LastEditDate { get; set;}
 }
 
 public class UpdateNoteProfile : Profile

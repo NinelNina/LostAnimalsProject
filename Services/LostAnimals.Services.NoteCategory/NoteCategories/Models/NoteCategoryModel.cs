@@ -10,7 +10,7 @@ public class NoteCategoryModel
 {
     public Guid Id { get; set; }
     public string CategoryName { get; set; }
-    //public ICollection<NoteModel>? Notes { get; set; }
+    public ICollection<NoteModel>? Notes { get; set; }
 }
 
 public class NoteCategoryModelProfile : Profile
