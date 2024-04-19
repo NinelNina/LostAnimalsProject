@@ -4,6 +4,8 @@ using LostAnimals.Services.Breeds;
 using Microsoft.AspNetCore.Mvc;
 using LostAnimals.Common.Security;
 using Microsoft.AspNetCore.Authorization;
+using LostAnimals.Api.Controllers.Models.Breed;
+using AutoMapper;
 
 namespace LostAnimals.Api.Controllers;
 
@@ -15,17 +17,21 @@ public class BreedController : ControllerBase
 {
     private readonly IAppLogger logger;
     private readonly IBreedService breedService;
+    private readonly IMapper mapper;
 
-    public BreedController(IAppLogger logger, IBreedService breedService)
+    public BreedController(IAppLogger logger, IBreedService breedService, IMapper mapper)
     {
         this.logger = logger;
         this.breedService = breedService;
+        this.mapper = mapper;
     }
 
     [HttpGet("")]
-    public async Task<IEnumerable<BreedModel>> GetAll()
+    public async Task<IEnumerable<BreedViewModel>> GetAll()
     {
-        var result = await breedService.GetAll();
+        var breeds = await breedService.GetAll();
+
+        IEnumerable<BreedViewModel> result = breeds.Select(breed => mapper.Map<BreedViewModel>(breed));
 
         return result;
     }
@@ -33,28 +39,34 @@ public class BreedController : ControllerBase
     [HttpGet("{id:Guid}")]
     public async Task<IActionResult> Get([FromRoute] Guid id)
     {
-        var result = await breedService.GetById(id);
+        var breed = await breedService.GetById(id);
 
-        if (result == null)
+        if (breed == null)
             return NotFound();
+
+        var result = mapper.Map<BreedViewModel>(breed);
 
         return Ok(result);
     }
 
     [HttpPost("")]
     [Authorize(AppScopes.BreedsWrite)]
-    public async Task<BreedModel> Create(CreateBreedModel request)
+    public async Task<BreedViewModel> Create(CreateBreedViewModel request)
     {
-        var result = await breedService.Create(request);
+        var requestModel = mapper.Map<CreateBreedModel>(request);
 
-        return result;
+        var result = await breedService.Create(requestModel);
+
+        return mapper.Map<BreedViewModel>(result);
     }
 
     [HttpPut("{id:Guid}")]
     [Authorize(AppScopes.BreedsWrite)]
-    public async Task Update([FromRoute] Guid id, UpdateBreedModel request)
+    public async Task Update([FromRoute] Guid id, UpdateBreedViewModel request)
     {
-        await breedService.Update(id, request);
+        var requestModel = mapper.Map<UpdateBreedModel>(request);
+
+        await breedService.Update(id, requestModel);
     }
 
     [HttpDelete("{id:Guid}")]
