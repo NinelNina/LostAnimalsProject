@@ -31,7 +31,7 @@ public class BreedController : ControllerBase
     {
         var breeds = await breedService.GetAll();
 
-        IEnumerable<BreedViewModel> result = breeds.Select(breed => mapper.Map<BreedViewModel>(breed));
+        IEnumerable<BreedViewModel> result = breeds.Select(mapper.Map<BreedViewModel>);
 
         return result;
     }

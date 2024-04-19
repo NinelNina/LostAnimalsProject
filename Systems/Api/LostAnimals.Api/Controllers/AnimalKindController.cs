@@ -33,7 +33,7 @@ public class AnimalKindController : ControllerBase
     {
         var animalKinds = await animalKindService.GetAll();
 
-        IEnumerable<AnimalKindViewModel> result = animalKinds.Select(animalKind => mapper.Map<AnimalKindViewModel>(animalKind));
+        IEnumerable<AnimalKindViewModel> result = animalKinds.Select(mapper.Map<AnimalKindViewModel>);
 
         return result;
     }
