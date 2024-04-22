@@ -1,7 +1,6 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
-using LostAnimals.Api.Controllers.Models.Comment;
-using LostAnimals.Api.Controllers.Models.NoteCategory;
+using LostAnimals.ViewModels.NoteCategory;
 using LostAnimals.Common.Security;
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.NoteCategories;
@@ -45,7 +44,7 @@ namespace LostAnimals.Api.Controllers
             if (noteCategory == null)
                 return NotFound();
 
-            var result = mapper.Map<CommentViewModel>(noteCategory);
+            var result = mapper.Map<NoteCategoryViewModel>(noteCategory);
 
             return Ok(result);
         }
@@ -60,13 +59,6 @@ namespace LostAnimals.Api.Controllers
 
             return mapper.Map<NoteCategoryViewModel>(result);
         }
-
-        /*        [HttpPut("{id:Guid}")]
-                [Authorize(AppScopes.NoteCategoriesWrite)]
-                public async Task Update([FromRoute] Guid id, UpdateNoteCategoryViewModel request)
-                {
-                    await noteCategoryService.Update(id, request);
-                }*/
 
         [HttpDelete("{id:Guid}")]
         [Authorize(AppScopes.NoteCategoriesWrite)]

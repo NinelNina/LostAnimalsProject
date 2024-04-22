@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
-using LostAnimals.Api.Controllers.Models.Comment;
+using LostAnimals.ViewModels.Comment;
 using LostAnimals.Common.Security;
 using LostAnimals.Common.Validator;
 using LostAnimals.Services.Comments;

@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
-using LostAnimals.Api.Controllers.Models.Account;
+using LostAnimals.ViewModels.Account;
 using LostAnimals.Common.Security;
 using LostAnimals.Common.Validator;
 using LostAnimals.Services.EmailSender;

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services\LostAnimals.Services.AnimalKinds\LostAnimals.Services.AnimalKinds.csproj" />
+    <ProjectReference Include="..\..\Services\LostAnimals.Services.Breeds\LostAnimals.Services.Breeds.csproj" />
+    <ProjectReference Include="..\..\Services\LostAnimals.Services.Comments\LostAnimals.Services.Comments.csproj" />
+    <ProjectReference Include="..\..\Services\LostAnimals.Services.NoteCategory\LostAnimals.Services.NoteCategories.csproj" />
+    <ProjectReference Include="..\..\Services\LostAnimals.Services.Notes\LostAnimals.Services.Notes.csproj" />
+    <ProjectReference Include="..\..\Services\LostAnimals.Services.PhotoService\LostAnimals.Services.PhotoService.csproj" />
+    <ProjectReference Include="..\..\Services\LostAnimals.Services.UserAccount\LostAnimals.Services.UserAccount.csproj" />
+  </ItemGroup>
+
+</Project>

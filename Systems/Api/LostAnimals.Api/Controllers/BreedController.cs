@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
-using LostAnimals.Api.Controllers.Models.Breed;
+using LostAnimals.ViewModels.Breed;
 using LostAnimals.Common.Security;
 using LostAnimals.Services.Breeds;
 using LostAnimals.Services.Logger;

@@ -54,6 +54,7 @@
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.Settings\LostAnimals.Services.Settings.csproj" />
     <ProjectReference Include="..\..\..\Services\LostAnimals.Services.UserAccount\LostAnimals.Services.UserAccount.csproj" />
     <ProjectReference Include="..\..\..\Shared\LostAnimals.Common\LostAnimals.Common.csproj" />
+    <ProjectReference Include="..\..\..\Shared\LostAnimals.ViewModels\LostAnimals.ViewModels.csproj" />
     <ProjectReference Include="..\LostAnimals.ApiSpecialSettings\LostAnimals.ApiSpecialSettings.csproj" />
   </ItemGroup>
 

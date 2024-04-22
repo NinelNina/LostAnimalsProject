@@ -2,7 +2,7 @@
 
 using Asp.Versioning;
 using AutoMapper;
-using LostAnimals.Api.Controllers.Models.Note;
+using LostAnimals.ViewModels.Note;
 using LostAnimals.Common.Security;
 using LostAnimals.Common.Validator;
 using LostAnimals.Services.Logger;
