@@ -19,13 +19,12 @@ COPY ["Data/LostAnimals.Context.Migrations/LostAnimals.Context.Migrations.PgSql/
 COPY ["Services/LostAnimals.Services.AnimalKinds/LostAnimals.Services.AnimalKinds.csproj", "Services/LostAnimals.Services.AnimalKinds/"]
 COPY ["Services/LostAnimals.Services.Breeds/LostAnimals.Services.Breeds.csproj", "Services/LostAnimals.Services.Breeds/"]
 COPY ["Services/LostAnimals.Services.Comments/LostAnimals.Services.Comments.csproj", "Services/LostAnimals.Services.Comments/"]
-COPY ["Services/LostAnimals.Services.PhotoService/LostAnimals.Services.PhotoService.csproj", "Services/LostAnimals.Services.PhotoService/"]
-COPY ["Services/LostAnimals.Services.EmailSender/LostAnimals.Services.EmailSender.csproj", "Services/LostAnimals.Services.EmailSender/"]
 COPY ["Services/LostAnimals.Services.Logger/LostAnimals.Services.Logger.csproj", "Services/LostAnimals.Services.Logger/"]
 COPY ["Services/LostAnimals.Services.NoteCategory/LostAnimals.Services.NoteCategories.csproj", "Services/LostAnimals.Services.NoteCategory/"]
 COPY ["Services/LostAnimals.Services.Notes/LostAnimals.Services.Notes.csproj", "Services/LostAnimals.Services.Notes/"]
+COPY ["Services/LostAnimals.Services.PhotoGallery/LostAnimals.Services.PhotoGalleries.csproj", "Services/LostAnimals.Services.PhotoGallery/"]
+COPY ["Services/LostAnimals.Services.PhotoStorage/LostAnimals.Services.PhotoStorages.csproj", "Services/LostAnimals.Services.PhotoStorage/"]
 COPY ["Services/LostAnimals.Services.UserAccount/LostAnimals.Services.UserAccount.csproj", "Services/LostAnimals.Services.UserAccount/"]
-COPY ["Shared/LostAnimals.ViewModels/LostAnimals.ViewModels.csproj", "Shared/LostAnimals.ViewModels/"]
 COPY ["Systems/Api/LostAnimals.ApiSpecialSettings/LostAnimals.ApiSpecialSettings.csproj", "Systems/Api/LostAnimals.ApiSpecialSettings/"]
 RUN dotnet restore "./Systems/Api/LostAnimals.Api/LostAnimals.Api.csproj"
 COPY . .
