@@ -1,6 +1,7 @@
 using LostAnimals.Api;
 using LostAnimals.Api.Configuration;
 using LostAnimals.Context;
+using LostAnimals.Context.Seeder.Seeds;
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.Settings;
 using LostAnimals.Settings;
@@ -56,6 +57,8 @@ app.UseAppAuth();
 app.UseAppControllerAndViews();
 
 DbInitializer.Execute(app.Services);
+
+DbSeeder.Execute(app.Services);
 
 logger.Information("LostAnimals.API has started");
 

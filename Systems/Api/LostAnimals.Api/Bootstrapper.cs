@@ -1,6 +1,7 @@
 ﻿namespace LostAnimals.Api;
 
 using LostAnimals.Api.Settings;
+using LostAnimals.Context.Seeder;
 using LostAnimals.Services.AnimalKinds;
 using LostAnimals.Services.Breeds;
 using LostAnimals.Services.Comments;
@@ -21,6 +22,7 @@ public static class Bootstrapper
             .AddLogSettings()
             .AddSwaggerSettings()
             .AddIdentitySettings()
+            .AddDbSeeder()
             .AddEmailSenderSettings()
             .AddAppEmailSender()
             .AddAppLogger()

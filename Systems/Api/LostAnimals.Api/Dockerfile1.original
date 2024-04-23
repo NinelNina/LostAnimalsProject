@@ -16,8 +16,6 @@ COPY ["Services/LostAnimals.Services.Settings/LostAnimals.Services.Settings.cspr
 COPY ["Shared/LostAnimals.Common/LostAnimals.Common.csproj", "Shared/LostAnimals.Common/"]
 COPY ["Data/LostAnimals.Context.Entities/LostAnimals.Context.Entities.csproj", "Data/LostAnimals.Context.Entities/"]
 COPY ["Data/LostAnimals.Context.Migrations/LostAnimals.Context.Migrations.PgSql/LostAnimals.Context.Migrations.PgSql.csproj", "Data/LostAnimals.Context.Migrations/LostAnimals.Context.Migrations.PgSql/"]
-COPY ["Data/LostAnimals.Context.Seeder/LostAnimals.Context.Seeder.csproj", "Data/LostAnimals.Context.Seeder/"]
-COPY ["Services/LostAnimals.Services.UserAccount/LostAnimals.Services.UserAccount.csproj", "Services/LostAnimals.Services.UserAccount/"]
 COPY ["Services/LostAnimals.Services.AnimalKinds/LostAnimals.Services.AnimalKinds.csproj", "Services/LostAnimals.Services.AnimalKinds/"]
 COPY ["Services/LostAnimals.Services.Breeds/LostAnimals.Services.Breeds.csproj", "Services/LostAnimals.Services.Breeds/"]
 COPY ["Services/LostAnimals.Services.Comments/LostAnimals.Services.Comments.csproj", "Services/LostAnimals.Services.Comments/"]
@@ -26,6 +24,8 @@ COPY ["Services/LostAnimals.Services.EmailSender/LostAnimals.Services.EmailSende
 COPY ["Services/LostAnimals.Services.Logger/LostAnimals.Services.Logger.csproj", "Services/LostAnimals.Services.Logger/"]
 COPY ["Services/LostAnimals.Services.NoteCategory/LostAnimals.Services.NoteCategories.csproj", "Services/LostAnimals.Services.NoteCategory/"]
 COPY ["Services/LostAnimals.Services.Notes/LostAnimals.Services.Notes.csproj", "Services/LostAnimals.Services.Notes/"]
+COPY ["Services/LostAnimals.Services.UserAccount/LostAnimals.Services.UserAccount.csproj", "Services/LostAnimals.Services.UserAccount/"]
+COPY ["Shared/LostAnimals.ViewModels/LostAnimals.ViewModels.csproj", "Shared/LostAnimals.ViewModels/"]
 COPY ["Systems/Api/LostAnimals.ApiSpecialSettings/LostAnimals.ApiSpecialSettings.csproj", "Systems/Api/LostAnimals.ApiSpecialSettings/"]
 RUN dotnet restore "./Systems/Api/LostAnimals.Api/LostAnimals.Api.csproj"
 COPY . .
@@ -39,5 +39,4 @@ RUN dotnet publish "./LostAnimals.Api.csproj" -c $BUILD_CONFIGURATION -o /app/pu
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY ["Data/LostAnimals.Context.Seeder/Seeds/DemoData/Breeds.csv", "."]
 ENTRYPOINT ["dotnet", "LostAnimals.Api.dll"]

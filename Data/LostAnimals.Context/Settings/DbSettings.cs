@@ -10,6 +10,7 @@ public class DbSettings
 public class DbInitSettings
 {
     public bool AddDemoData { get; private set; }
+    public string BreedsCsv { get; private set; }
     public bool AddAdministrator { get; private set; }
     public UserCredentials Administrator { get; private set; }
 }
