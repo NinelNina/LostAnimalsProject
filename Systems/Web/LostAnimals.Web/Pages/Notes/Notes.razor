@@ -1,0 +1,50 @@
+﻿<!-- Notes.razor -->
+@page "/notes"
+@using LostAnimals.Web.Pages.Notes.Services
+@using LostAnimals.Web.Pages.Notes.Models
+@using LostAnimals.Web.Pages.Photo.Models
+@using LostAnimals.Web.Pages.Photo.Services
+@using LostAnimals.Web.Components
+@using Microsoft.AspNetCore.Authorization
+@inject INoteService NoteService
+@inject IPhotoService PhotoService
+
+<MudText Typo="Typo.h3" GutterBottom="true">Объявления</MudText>
+
+@if (notes != null)
+{
+    <MudItemContainer>
+        @foreach (var note in notes)
+        {
+            <NoteCard Note="note" PhotosDictionary="photosDictionary" />
+        }
+    </MudItemContainer>
+}
+else
+{
+    <MudText>Loading...</MudText>
+}
+
+@code {
+    private IEnumerable<NoteViewModel> notes;
+    private Dictionary<Guid, IEnumerable<PhotoStorageViewModel>> photosDictionary = new Dictionary<Guid, IEnumerable<PhotoStorageViewModel>>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        notes = await NoteService.GetNotes();
+        await LoadPhotos();
+    }
+
+    private async Task LoadPhotos()
+    {
+        if (notes != null)
+        {
+            var galleryIds = notes.Where(n => n.PhotoGalleryId.HasValue).Select(n => n.PhotoGalleryId.Value).Distinct();
+            foreach (var galleryId in galleryIds)
+            {
+                var photos = await PhotoService.GetPhotosByGalleryId(galleryId);
+                photosDictionary[galleryId] = photos;
+            }
+        }
+    }
+}

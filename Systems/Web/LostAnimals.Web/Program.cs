@@ -1,6 +1,7 @@
 using Blazored.LocalStorage;
 using LostAnimals.Web;
 using LostAnimals.Web.Pages.Notes.Services;
+using LostAnimals.Web.Pages.Photo.Services;
 using LostAnimals.Web.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -17,5 +18,6 @@ builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddScoped<IConfigurationService, ConfigurationService>();
 builder.Services.AddScoped<INoteService, NoteService>();
+builder.Services.AddScoped<IPhotoService, PhotoService>();
 
 await builder.Build().RunAsync();

@@ -71,7 +71,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{B176E765-6A3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Web", "Systems\Web\LostAnimals.Web\LostAnimals.Web.csproj", "{269605A6-8C4E-4EDE-8905-E7980F89CC22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostAnimals.Context.Seeder", "Data\LostAnimals.Context.Seeder\LostAnimals.Context.Seeder.csproj", "{789DE72E-6154-49E7-8DB4-486A44B870BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LostAnimals.Context.Seeder", "Data\LostAnimals.Context.Seeder\LostAnimals.Context.Seeder.csproj", "{789DE72E-6154-49E7-8DB4-486A44B870BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
