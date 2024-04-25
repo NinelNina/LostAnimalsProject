@@ -10,18 +10,16 @@
 <MudLayout>
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@DrawerToggleAsync" />
+        <MudText Typo="Typo.h5" Class="ml-3">Lost Animals</MudText>
         <MudSpacer />
         <MudIconButton Icon="@(isDarkMode ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)" @onclick="@ToggleDarkModeAsync" Color="Color.Inherit" Edge="Edge.End" />
         <UserMenu/>
     </MudAppBar>
-    <MudDrawer @bind-Open="drawerOpen" Elevation="2">
-        <MudDrawerHeader>
-            <MudText Typo="Typo.h5" Class="mt-1">Lost Animals</MudText>
-        </MudDrawerHeader>
+    <MudDrawer @bind-Open="drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
         <NavMenu/>
     </MudDrawer>
     <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.Large">
+        <MudContainer MaxWidth="MaxWidth.Large" Class="mt-2">
             @Body
         </MudContainer>
     </MudMainContent>

@@ -1,0 +1,108 @@
+﻿@page "/note/{id}"
+@using LostAnimals.Web.Pages.Notes.Models
+@using LostAnimals.Web.Pages.Comments.Models
+@using LostAnimals.Web.Pages.Photo.Models
+@using LostAnimals.Web.Pages.Notes.Services
+@using LostAnimals.Web
+@using LostAnimals.Web.Pages.Photo.Services
+@inject INoteService NoteService
+@inject IPhotoService PhotoService
+@inject IJSRuntime JSRuntime
+
+<MudPaper Class="pa-4 mb-4" Elevation="3">
+
+    @if (NoteModel != null)
+    {
+        <MudText Typo="Typo.h5">@NoteModel.Title</MudText>
+        <MudText Typo="Typo.subtitle1" Color="Color.Primary" Class="mt-2 mb-2">@NoteModel.CategoryName</MudText>
+        <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Автор: @NoteModel.Username, @NoteModel.CreatedDate.ToShortDateString()</MudText>
+        <MudText Typo="Typo.body1" Class="mt-2">@NoteModel.Content</MudText>
+        @if (NoteModel.PhotoGalleryId != null)
+        {
+            if (Photos != null && Photos.Any())
+            {
+                foreach (var photo in Photos)
+                {
+                    <MudImage Src="@GetFullImagePath(@photo)" Alt="Animal image" Height="200" Class="mt-2 mr-2" />
+                }
+            }
+        }
+        <MudItem>
+            <div id="map" style="width: 600px; height: 400px;"></div>
+        </MudItem>
+        <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-2">Комментарии: @(NoteModel.Comments?.Count ?? 0)</MudText>
+        @if (NoteModel.Comments != null && NoteModel.Comments.Any())
+        {
+            foreach (var comment in NoteModel.Comments)
+            {
+                <MudPaper Class="pa-2 mb-2" Elevation="1">
+                    <MudText Typo="Typo.subtitle2" Color="Color.Secondary">@comment.UserName, @comment.CreatedDate.ToShortDateString()</MudText>
+                    <MudText Typo="Typo.body1" Class="mt-2">@comment.Content</MudText>
+                </MudPaper>
+            }
+        }
+    }
+    else
+    {
+        <MudProgressCircular Color="Color.Primary" Indeterminate="true" Class="align-items-center justify-content-center" />
+    }
+
+</MudPaper>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    IEnumerable<PhotoStorageViewModel> Photos { get; set; }
+
+    public NoteViewModel NoteModel { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        NoteModel = await NoteService.GetNote(Guid.Parse(Id));
+        await LoadPhotos();
+
+        if (NoteModel != null)
+        {
+            await JSRuntime.InvokeVoidAsync(
+                "initMap",
+                DotNetObjectReference.Create(this),
+                NoteModel.Latitude,
+                NoteModel.Longitude
+            );
+        }
+    }
+
+    /*protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && NoteModel != null)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Hello world");
+
+            await JSRuntime.InvokeVoidAsync(
+                "initMap",
+                DotNetObjectReference.Create(this),
+                NoteModel.Latitude,
+                NoteModel.Longitude
+            );
+        }
+
+    }*/
+
+    public string GetFullImagePath(PhotoStorageViewModel photo)
+    {
+        return Settings.ApiRoot + "/" + photo.PhotoName;
+    }
+
+    private async Task LoadPhotos()
+    {
+        if (NoteModel != null)
+        {
+            if (NoteModel.PhotoGalleryId != null)
+            {
+                var galleryId = NoteModel.PhotoGalleryId.Value;
+                Photos = await PhotoService.GetPhotosByGalleryId(galleryId);
+            }
+        }
+    }
+}

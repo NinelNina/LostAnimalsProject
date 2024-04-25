@@ -1,7 +1,23 @@
 ﻿@page "/"
+@using LostAnimals.Web.Components
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Главная</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
+<MudContainer MaxWidth="MaxWidth.False" Class="d-flex flex-column align-items-center justify-content-center pa-0">
+    <MudText Typo="Typo.h3" Style="text-align: center;" GutterBottom="true">Добро пожаловать на Lost Animals - портал для поиска пропавших домашних животных!</MudText>
+    <MudImage Src="main_page.jpg" Alt="Animals" Class="my-5" Height="400" />
+    <MudText Typo="Typo.body1" Class="mx-auto my-5" Style="max-width: 1200px; text-align: center;">
+        Мы рады приветствовать вас на нашем портале, посвященном поиску пропавших и найденных домашних животных. Наш портал создан для помощи людям и их питомцам в трудную минуту. Здесь вы можете разместить объявление о пропаже или находке животного, а также просмотреть объявления других пользователей.
+    </MudText>
+    <MudContainer Class="d-flex justify-content-center mb-10 mt-2">
+        <MudButton Color="Color.Primary" Variant="Variant.Filled" Class="mt-4 mr-2" Href="/lost">
+            <MudIcon Icon="@Icons.Material.Filled.Pets" Class="mr-1" />
+            Я потерял животное
+        </MudButton>
+        <MudButton Color="Color.Secondary" Variant="Variant.Filled" Class="mt-4" Href="/found">
+            <MudIcon Icon="@Icons.Material.Filled.Pets" Class="mr-1" />
+            Я нашел животное
+        </MudButton>
+    </MudContainer>
+    <LastAnnouncements/>
+</MudContainer>

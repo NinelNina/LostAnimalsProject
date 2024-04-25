@@ -17,9 +17,9 @@ public class NoteService(HttpClient httpClient) : INoteService
         return await response.Content.ReadFromJsonAsync<IEnumerable<NoteViewModel>>() ?? new List<NoteViewModel>();
     }
 
-    public async Task<NoteViewModel> GetNote(Guid noteId)
+    public async Task<NoteViewModel> GetNote(Guid id)
     {
-        var response = await httpClient.GetAsync($"v1/note/{noteId}");
+        var response = await httpClient.GetAsync($"v1/note/{id}");
         if (!response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();

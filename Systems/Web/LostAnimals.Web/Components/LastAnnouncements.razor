@@ -1,0 +1,72 @@
+﻿@using LostAnimals.Web.Pages.Notes.Models
+@using LostAnimals.Web.Pages.Notes.Services
+@using LostAnimals.Web.Pages.Photo.Models
+@using LostAnimals.Web.Pages.Photo.Services
+@inject INoteService NoteService
+@inject IPhotoService PhotoService
+
+<MudText Typo="Typo.h5" Class="mb-3">Последние объявления</MudText>
+
+@if (notes != null)
+{
+    <MudContainer Class="d-flex justify-content-center mb-5">
+        @foreach (var note in notes)
+        {
+            <MudPaper Class="pa-2 mr-2 mb-2" Elevation="1" Style="max-width: 300px;">
+                <MudLink Href="@($"/note/{note.Id.ToString()}")" Class="text-decoration-none">
+                <MudText Typo="Typo.h6" Class="text-center">@note.Title</MudText>
+                </MudLink>
+                @if (note.PhotoGalleryId.HasValue)
+                {
+                    Guid galleryId = note.PhotoGalleryId.Value;
+                    if (PhotosDictionary.TryGetValue(galleryId, out var photo))
+                    {
+                        <MudContainer Class="d-flex align-items-center justify-content-center">
+                            <MudImage Src="@GetFullImagePath(photo)" Alt="Animal image" Height="200" Class="mt-2" />
+                        </MudContainer>
+                    }
+                }
+                else
+                {
+                    <MudContainer Class="d-flex align-items-center justify-content-center">
+                        <MudImage Src="photo_not_found.jpg" Alt="Animal image" Height="200" Class="mt-2" />
+                    </MudContainer>
+                }
+            </MudPaper>
+        }
+    </MudContainer>
+}
+else
+{
+    <MudProgressCircular Color="Color.Primary" Indeterminate="true" Class="align-items-center justify-content-center" />
+}
+
+@code {
+    private List<NoteViewModel> notes;
+    private Dictionary<Guid, PhotoStorageViewModel> PhotosDictionary { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var allNotes = await NoteService.GetNotes();
+        notes = allNotes.OrderByDescending(n => n.CreatedDate).Take(3).ToList();
+        await LoadPhotos();
+    }
+
+    public string GetFullImagePath(PhotoStorageViewModel photo)
+    {
+        return Settings.ApiRoot + "/" + photo.PhotoName;
+    }
+
+    private async Task LoadPhotos()
+    {
+        if (notes != null)
+        {
+            var galleryIds = notes.Where(n => n.PhotoGalleryId.HasValue).Select(n => n.PhotoGalleryId.Value).Distinct();
+            foreach (var galleryId in galleryIds)
+            {
+                var photos = await PhotoService.GetPhotosByGalleryId(galleryId);
+                PhotosDictionary[galleryId] = photos.First();
+            }
+        }
+    }
+}

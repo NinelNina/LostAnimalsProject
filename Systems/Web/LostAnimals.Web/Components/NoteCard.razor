@@ -1,11 +1,22 @@
 ﻿@using LostAnimals.Web.Pages.Notes.Models
 @using LostAnimals.Web.Pages.Photo.Models
+@using LostAnimals.Web
 
 <MudPaper Class="pa-4 mb-4" Elevation="3">
+    <MudLink Href="@($"/note/{Note.Id.ToString()}")" Class="text-decoration-none">
     <MudText Typo="Typo.h6">@Note.Title</MudText>
+    </MudLink>
     <MudText Typo="Typo.subtitle1" Color="Color.Primary" Class="mt-2 mb-2">@Note.CategoryName</MudText>
-    <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Автор: @Note.Username, @Note.CreatedDate.ToShortDateString()</MudText>
-    <MudText Typo="Typo.body1" Class="mt-2">@Note.Content.Substring(0, Math.Min(Note.Content.Length, 200))...</MudText>
+    <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Автор: @Note.Username, @Note.CreatedDate.ToString()</MudText>
+    
+    @if (@Note.Content.Length > 200){
+        <MudText Typo="Typo.body1" Class="mt-2">@Note.Content.Substring(0, Math.Min(Note.Content.Length, 200))... </MudText>
+    }
+    else
+    {
+        <MudText Typo="Typo.body1" Class="mt-2">@Note.Content</MudText>
+    }
+
     @if (Note.PhotoGalleryId.HasValue)
     {
         Guid galleryId = Note.PhotoGalleryId.Value;
@@ -13,9 +24,16 @@
         {
             if (photos != null && photos.Any())
             {
-                <MudImage Src="@photos.First().PhotoName" Alt="Animal image" Height="200" Class="mt-2" />
+                foreach (var photo in photos)
+                {
+                    <MudImage Src="@GetFullImagePath(@photo)" Alt="Animal image" Height="200" Class="mt-2 mr-2" />
+                }
             }
         }
+    }
+    else
+    {
+        <MudImage Src="photo_not_found.jpg" Alt="Animal image" Height="200" Class="mt-2" />
     }
     <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-2">Комментарии: @(Note.Comments?.Count ?? 0)</MudText>
 </MudPaper>
@@ -26,4 +44,9 @@
 
     [Parameter]
     public Dictionary<Guid, IEnumerable<PhotoStorageViewModel>> PhotosDictionary { get; set; }
+
+    public string GetFullImagePath(PhotoStorageViewModel photo)
+    {
+        return Settings.ApiRoot + "/" + photo.PhotoName;
+    }
 }

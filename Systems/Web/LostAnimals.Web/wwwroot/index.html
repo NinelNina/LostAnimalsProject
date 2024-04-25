@@ -12,6 +12,7 @@
     <link href="LostAnimals.Web.styles.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=d0f1e779-0945-4e3d-8c36-96e91f551fb8&lang=ru_RU" type="text/javascript"></script>
 </head>
 
 <body>
@@ -30,6 +31,13 @@
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <script>
+        Blazor.start().then(function () {
+            var customScript = document.createElement('script');
+            customScript.setAttribute('src', 'js/yandexMap.js');
+            document.head.appendChild(customScript);
+        });
+    </script>
 </body>
 
 </html>
