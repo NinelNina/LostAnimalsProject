@@ -62,7 +62,7 @@
         NoteModel = await NoteService.GetNote(Guid.Parse(Id));
         await LoadPhotos();
 
-        if (NoteModel != null)
+        /*if (NoteModel != null)
         {
             await JSRuntime.InvokeVoidAsync(
                 "initMap",
@@ -70,7 +70,7 @@
                 NoteModel.Latitude,
                 NoteModel.Longitude
             );
-        }
+        }*/
     }
 
     /*protected override async Task OnAfterRenderAsync(bool firstRender)
