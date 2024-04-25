@@ -4,6 +4,7 @@ using LostAnimals.Context;
 using LostAnimals.Context.Entities;
 using LostAnimals.Services.PhotoService.PhotoGalleries;
 using LostAnimals.Services.PhotoService.PhotoStorages;
+using LostAnimals.Services.Settings;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -63,8 +64,9 @@ public class PhotoService : IPhotoService
                 }
 
                 var photoId = Guid.NewGuid();
-                var photoName = path + "/" + photoId + Path.GetExtension(file.FileName);
+                var photoName = photoId + Path.GetExtension(file.FileName);
                 path = Path.Combine(path, photoName);
+                photoName = Path.Combine("images", galleryId.ToString(), photoName);
 
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
@@ -161,8 +163,8 @@ public class PhotoService : IPhotoService
 
             await context.SaveChangesAsync();
 
-            var path = Path.Combine(webHostEnvironment.WebRootPath, "images", galleryId.ToString());
-            Directory.Delete(path);
+            /*var path = Path.Combine(webHostEnvironment.WebRootPath, "images", galleryId.ToString());
+            Directory.Delete(path);*/
         }
     }
 }

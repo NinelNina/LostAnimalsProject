@@ -5,6 +5,7 @@ using LostAnimals.Context.Seeder.Seeds;
 using LostAnimals.Services.Logger;
 using LostAnimals.Services.Settings;
 using LostAnimals.Settings;
+using Microsoft.Extensions.FileProviders;
 
 var mainSettings = Settings.Load<MainSettings>("Main");
 var logSettings = Settings.Load<LogSettings>("Log");
@@ -47,6 +48,19 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 var logger = app.Services.GetRequiredService<IAppLogger>();
 
 app.UseAppCors();
+
+var env = app.Services.GetRequiredService<IWebHostEnvironment>();
+string imagesPath = Path.Combine(env.WebRootPath, "images");
+if (!Directory.Exists(imagesPath))
+{
+    Directory.CreateDirectory(imagesPath);
+}
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(imagesPath),
+    RequestPath = "/images"
+});
 
 app.UseAppHealthChecks();
 

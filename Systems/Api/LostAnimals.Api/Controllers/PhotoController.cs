@@ -1,8 +1,10 @@
 ﻿using Asp.Versioning;
 using LostAnimals.Common.Security;
 using LostAnimals.Services.PhotoService;
+using LostAnimals.Services.PhotoService.PhotoStorages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace LostAnimals.Api.Controllers
 {
@@ -13,16 +15,19 @@ namespace LostAnimals.Api.Controllers
     public class PhotoController : ControllerBase
     {
         private readonly IPhotoService photoService;
+        private readonly Serilog.ILogger logger;
 
-        public PhotoController(IPhotoService photoService)
+        public PhotoController(IPhotoService photoService, Serilog.ILogger logger)
         {
             this.photoService = photoService;
+            this.logger = logger;
         }
 
         [HttpGet("{galleryId:Guid}")]
         public async Task<IActionResult> GetPhotosByGalleryId([FromRoute] Guid galleryId)
         {
             var photos = await photoService.GetPhotosByGalleryId(galleryId);
+
             return Ok(photos);
         }
 
