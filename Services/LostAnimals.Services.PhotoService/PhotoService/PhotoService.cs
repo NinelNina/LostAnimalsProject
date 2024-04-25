@@ -7,6 +7,7 @@ using LostAnimals.Services.PhotoService.PhotoStorages;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace LostAnimals.Services.PhotoService;
 
@@ -15,12 +16,14 @@ public class PhotoService : IPhotoService
     private readonly IDbContextFactory<MainDbContext> dbContextFactory;
     private readonly IWebHostEnvironment webHostEnvironment;
     private readonly IMapper mapper;
+    private readonly ILogger logger;
 
-    public PhotoService(IDbContextFactory<MainDbContext> dbContextFactory, IWebHostEnvironment webHostEnvironment, IMapper mapper)
+    public PhotoService(IDbContextFactory<MainDbContext> dbContextFactory, IWebHostEnvironment webHostEnvironment, IMapper mapper, ILogger logger)
     {
         this.dbContextFactory = dbContextFactory;
         this.webHostEnvironment = webHostEnvironment;
         this.mapper = mapper;
+        this.logger = logger;
     }
 
     public async Task<Guid?> UploadPhoto(IFormFile file, Guid? photoGalleryId)
@@ -40,10 +43,18 @@ public class PhotoService : IPhotoService
                     path = Path.Combine(webHostEnvironment.WebRootPath, "images", galleryId.ToString());
                     Directory.CreateDirectory(path);
 
-                    var galleryModel = new CreatePhotoGalleryModel { Id = galleryId };
-                    var photoGallery = mapper.Map<PhotoGallery>(galleryModel);
-                    await context.PhotoGallery.AddAsync(photoGallery);
-                    await context.SaveChangesAsync();
+                    try
+                    {
+                        var galleryModel = new CreatePhotoGalleryModel { Id = galleryId };
+                        var photoGallery = mapper.Map<PhotoGallery>(galleryModel);
+                        await context.PhotoGallery.AddAsync(photoGallery);
+                        await context.SaveChangesAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex, "Error saving photo gallery to database.");
+                        throw new ProcessException(ex);
+                    }
                 }
                 else
                 {
@@ -52,7 +63,7 @@ public class PhotoService : IPhotoService
                 }
 
                 var photoId = Guid.NewGuid();
-                var photoName = path + "\\" + photoId + Path.GetExtension(file.FileName);
+                var photoName = path + "/" + photoId + Path.GetExtension(file.FileName);
                 path = Path.Combine(path, photoName);
 
                 using (var stream = new FileStream(path, FileMode.Create))
@@ -69,20 +80,23 @@ public class PhotoService : IPhotoService
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(ex, "Error saving photo storage to database.");
                     throw new ProcessException(ex);
                 }
                 return galleryId;
             }
             else
             {
-                return null;
+                throw new ProcessException("File length is null.");
             }
         }
-        catch
+        catch (Exception ex)
         {
-            return null;
+            logger.Error(ex, "Error uploading photo.");
+            throw new ProcessException(ex);
         }
     }
+
 
     public async Task<List<PhotoStorageModel>> GetPhotosByGalleryId(Guid galleryId)
     {

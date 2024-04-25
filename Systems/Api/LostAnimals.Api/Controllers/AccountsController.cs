@@ -88,8 +88,16 @@ public class AccountsController : ControllerBase
             var confirmationLink = Url.Action(nameof(ConfirmEmail), "Accounts", new { token, email = user.Email }, Request.Scheme);
 
             var to = user.Email;
-            var subject = "Lost Animals sent user confirmation link";
-            var content = $"To confirm your account on the Lost Animals website, follow the link below. The link will be available for one day:\n{confirmationLink}";
+            var subject = "Подтверждение электронной почты на сайте Lost Animals | Email confirmation on Lost Animals website";
+            var content = $" <p>Для подтверждения Вашего аккаунта на сайте Lost Animals перейдите по ссылке ниже. Ссылка будет доступна в течение одного дня:</p>\r\n" +
+                $"    <p><a href=\"{confirmationLink}\">Подтвердить email</a></p>\r\n" +
+                $"    <p>Если вы не регистрировались на сайте Lost Animals, просто проигнорируйте это письмо.</p>\r\n" +
+                $"    <p>С уважением,<br>команда Lost Animals.</p> \r\n" +
+                $"    <hr>\r\n\r\n" +
+                $"    <p>To confirm your account on the Lost Animals website, follow the link below. The link will be available for one day:</p>\r\n" +
+                $"    <p><a href=\"{confirmationLink}\">Confirm email</a></p>\r\n" +
+                $"    <p>If you did not register on the Lost Animals website, simply ignore this email.</p>\r\n" +
+                $"    <p>Sincerely,<br>the Lost Animals team.</p>";
 
             var message = new Message(new string[] { to }, subject, content);
             try

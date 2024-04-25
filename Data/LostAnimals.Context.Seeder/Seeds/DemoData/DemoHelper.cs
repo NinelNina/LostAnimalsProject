@@ -72,11 +72,11 @@ public class DemoHelper
         {
             var user = new User
             {
-                Id = Guid.NewGuid(),
-                UserID = i,
                 UserName = $"User{i}",
                 Email = $"user{i}@example.com",
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                PhoneNumber = null,
+                PhoneNumberConfirmed = false
             };
 
             var result = await userManager.CreateAsync(user, $"password{i}");

@@ -30,7 +30,7 @@ public class EmailSenderService : IEmailSenderService
         emailMessage.From.Add(new MailboxAddress("admin", Settings.From));
         emailMessage.To.AddRange(message.To);
         emailMessage.Subject = message.Subject;
-        emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = message.Content };
+        emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = message.Content };
 
         return emailMessage;
     }

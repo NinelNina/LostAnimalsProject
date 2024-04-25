@@ -40,4 +40,9 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY ["Data/LostAnimals.Context.Seeder/Seeds/DemoData/Breeds.csv", "."]
+USER root
+RUN chown -R app:app /app/wwwroot
+RUN chmod -R 755 /app/wwwroot
+USER app
+ENV ASPNETCORE_WEBROOT=/app/wwwroot
 ENTRYPOINT ["dotnet", "LostAnimals.Api.dll"]

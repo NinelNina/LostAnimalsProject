@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using LostAnimals.Services.UserAccount;
 
 namespace LostAnimals.ViewModels.Account;
@@ -24,5 +25,13 @@ public class RegisterUserAccountViewModel
                 .MinimumLength(6).WithMessage("Пароль слишком короткий.")
                 .MaximumLength(50).WithMessage("Пароль слишком длинный.");
         }
+    }
+}
+
+public class RegisterUserAccountViewModelProfile : Profile
+{
+    public RegisterUserAccountViewModelProfile()
+    {
+        CreateMap<RegisterUserAccountViewModel, RegisterUserAccountModel>();
     }
 }
