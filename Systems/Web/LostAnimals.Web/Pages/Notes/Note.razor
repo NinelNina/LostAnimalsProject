@@ -9,6 +9,7 @@
 @inject IPhotoService PhotoService
 @inject IJSRuntime JSRuntime
 
+
 <MudPaper Class="pa-4 mb-4" Elevation="3">
 
     @if (NoteModel != null)
@@ -23,12 +24,11 @@
             {
                 foreach (var photo in Photos)
                 {
-                    <MudImage Src="@GetFullImagePath(@photo)" Alt="Animal image" Height="200" Class="mt-2 mr-2" />
+                    <MudImage Src="@GetFullImagePath(@photo)" Alt="Animal image" Style="max-height: 400px" Class="mt-2 mr-2" />
                 }
             }
         }
-        <MudItem>
-            <div id="map" style="width: 600px; height: 400px;"></div>
+        <MudItem id="map" style="max-width: 1200px; height: 400px;" Class="mb-5 mt-5">
         </MudItem>
         <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-2">Комментарии: @(NoteModel.Comments?.Count ?? 0)</MudText>
         @if (NoteModel.Comments != null && NoteModel.Comments.Any())
@@ -61,33 +61,20 @@
     {
         NoteModel = await NoteService.GetNote(Guid.Parse(Id));
         await LoadPhotos();
-
-        /*if (NoteModel != null)
-        {
-            await JSRuntime.InvokeVoidAsync(
-                "initMap",
-                DotNetObjectReference.Create(this),
-                NoteModel.Latitude,
-                NoteModel.Longitude
-            );
-        }*/
     }
 
-    /*protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender && NoteModel != null)
+        if (NoteModel != null)
         {
-            await JSRuntime.InvokeVoidAsync("alert", "Hello world");
-
             await JSRuntime.InvokeVoidAsync(
                 "initMap",
                 DotNetObjectReference.Create(this),
                 NoteModel.Latitude,
-                NoteModel.Longitude
+                NoteModel.Longtitude
             );
         }
-
-    }*/
+    }
 
     public string GetFullImagePath(PhotoStorageViewModel photo)
     {
