@@ -90,6 +90,30 @@ public class DemoHelper
         return users;
     }
 
+    public PhotoGallery GetPhotoGallery()
+    {
+        return new PhotoGallery
+        {
+            Uid = Guid.Parse("5552ceec-0574-4919-8488-e8aa47e483c0"),
+            Id = 1,
+            PhotoStorages = new List<PhotoStorage>
+            {
+                new PhotoStorage
+                {
+                    Uid = Guid.Parse("d477bd28-ec96-465f-a54a-e95ed307c210"),
+                    PhotoGalleryID = 1,
+                    PhotoName = "images\\5552ceec-0574-4919-8488-e8aa47e483c0\\d477bd28-ec96-465f-a54a-e95ed307c210.jpg"
+                },
+                new PhotoStorage
+                {
+                    Uid = Guid.Parse("e7367fdf-90c5-45e4-be16-cd56cc9b0b2f"),
+                    PhotoGalleryID = 1,
+                    PhotoName = "images\\5552ceec-0574-4919-8488-e8aa47e483c0\\e7367fdf-90c5-45e4-be16-cd56cc9b0b2f.jpg"
+                }
+            }
+        };
+    }
+
     public IEnumerable<Note> GetNotes = new List<Note>()
     {
         new Note

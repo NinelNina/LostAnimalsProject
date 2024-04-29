@@ -14,6 +14,13 @@ public interface INoteCategoryService
     /// <param name="id"></param>
     /// <returns></returns>
     Task<NoteCategoryModel> GetById(Guid id);
+    
+    /// <summary>
+    /// Get note category by name
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    Task<NoteCategoryModel> GetByName(string name);
 
     /// <summary>
     /// Create note category

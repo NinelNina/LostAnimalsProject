@@ -47,6 +47,19 @@ namespace LostAnimals.Api.Controllers
             var result = mapper.Map<NoteCategoryViewModel>(noteCategory);
 
             return Ok(result);
+        }        
+        
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetByName([FromRoute] string name)
+        {
+            var noteCategory = await noteCategoryService.GetByName(name);
+
+            if (noteCategory == null)
+                return NotFound();
+
+            var result = mapper.Map<NoteCategoryViewModel>(noteCategory);
+
+            return Ok(result);
         }
 
         [HttpPost("")]

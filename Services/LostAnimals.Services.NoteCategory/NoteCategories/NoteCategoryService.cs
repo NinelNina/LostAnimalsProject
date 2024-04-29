@@ -64,8 +64,19 @@ public class NoteCategoryService : INoteCategoryService
         using var context = await dbContextFactory.CreateDbContextAsync();
 
         var noteCategory = context.NoteCategories
-            //.Include(x => x.Notes)
             .FirstOrDefault(x => x.Uid == id);
+
+        var result = mapper.Map<NoteCategoryModel>(noteCategory);
+
+        return result;
+    }
+
+    public async Task<NoteCategoryModel> GetByName(string name)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var noteCategory = context.NoteCategories
+            .FirstOrDefault(x => x.CategoryName == name);
 
         var result = mapper.Map<NoteCategoryModel>(noteCategory);
 

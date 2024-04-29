@@ -72,6 +72,9 @@ public static class DbSeeder
         
         if (!await context.Notes.AnyAsync())
         {
+            await context.AddRangeAsync(demoHelper.GetPhotoGallery());
+            demoHelper.GetNotes.ToList()[0].PhotoGalleryID = 1;
+
             await context.AddRangeAsync(demoHelper.GetNotes);
 
             if (!await context.Comments.AnyAsync())
