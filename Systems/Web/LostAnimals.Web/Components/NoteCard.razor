@@ -6,7 +6,10 @@
     <MudLink Href="@($"/note/{Note.Id.ToString()}")" Class="text-decoration-none">
     <MudText Typo="Typo.h6">@Note.Title</MudText>
     </MudLink>
-    <MudButton Class="mt-2 mb-2 mud-theme-primary">@Note.CategoryName</MudButton>
+    <MudContainer Style="display: flex;, flex-direction: row;">
+        <CategoryButtonTemplate CategoryName="@Note.CategoryName" Class="mt-2 mb-2 mr-2 mud-theme-primary" Text="@Note.CategoryName" />
+        <MudButton Class="mt-2 mb-2 mud-theme-secondary">@Note.AnimalKind</MudButton>
+    </MudContainer>
     <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Автор: @Note.Username, @Note.CreatedDate.ToString()</MudText>
     
     @if (@Note.Content.Length > 200){

@@ -6,4 +6,5 @@ public interface INoteCategoryService
 {
     Task<IEnumerable<NoteCategoryViewModel>> GetCategories();
     Task<NoteCategoryViewModel> GetNoteCategory(Guid noteId);
+    Task<NoteCategoryViewModel> GetNoteCategoryByName(string name);
 }

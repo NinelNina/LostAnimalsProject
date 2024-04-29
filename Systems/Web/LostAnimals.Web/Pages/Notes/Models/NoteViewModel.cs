@@ -29,7 +29,7 @@ public class NoteViewModel
     public double? Latitude { get; set; }
     public double? Longtitude { get; set; }
 
-    public DateTime LastSeenDate { get; set; }
+    public DateTime? LastSeenDate { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime? LastEditDate { get; set; }
 

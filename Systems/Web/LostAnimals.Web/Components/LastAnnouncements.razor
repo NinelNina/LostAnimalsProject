@@ -16,6 +16,10 @@
                 <MudLink Href="@($"/note/{note.Id.ToString()}")" Class="text-decoration-none">
                 <MudText Typo="Typo.h6" Class="text-center">@note.Title</MudText>
                 </MudLink>
+                <MudContainer Style="display: flex;, flex-direction: row; justify-content: center;">
+                    <CategoryButtonTemplate CategoryName="@note.CategoryName" Class="mt-2 mb-2 mr-2 mud-theme-primary" Text="@note.CategoryName" />
+                    <MudButton Class="mt-2 mb-2 mud-theme-secondary">@note.AnimalKind</MudButton>
+                </MudContainer>
                 @if (note.PhotoGalleryId.HasValue)
                 {
                     Guid galleryId = note.PhotoGalleryId.Value;
@@ -38,12 +42,14 @@
 }
 else
 {
-    <MudProgressCircular Color="Color.Primary" Indeterminate="true" Class="align-items-center justify-content-center" />
+    <div style="display: flex; align-items: center; justify-content: center; height: 60vh;">
+        <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true" />
+    </div>
 }
 
 @code {
     private List<NoteViewModel> notes;
-    private Dictionary<Guid, PhotoStorageViewModel> PhotosDictionary { get; set; }
+    private Dictionary<Guid, PhotoStorageViewModel> PhotosDictionary = new Dictionary<Guid, PhotoStorageViewModel>();
 
     protected override async Task OnInitializedAsync()
     {

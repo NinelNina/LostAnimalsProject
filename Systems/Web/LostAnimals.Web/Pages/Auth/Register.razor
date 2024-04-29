@@ -1,0 +1,128 @@
+﻿@page "/register"
+@using LostAnimals.Web.Pages.Auth.Models
+@using LostAnimals.Web.Pages.Auth.Services
+@using System.ComponentModel.DataAnnotations
+@layout MainLayout
+
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+
+<MudGrid Justify="Justify.Center" Class="pa-10">
+    <MudItem xs="7" sm="4">
+        <MudPaper Class="pa-4">
+            <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+
+                <MudText Typo="Typo.h4" GutterBottom="true" Class="mb-3">Регистрация</MudText>
+
+                <MudAlert Severity="Severity.Error" Class="@(ShowErrors ? "mb-3 d-block" : "d-none")">
+                    @Error
+                    <br />
+                    @ErrorDetail
+                </MudAlert>
+
+                <MudTextField T="string"
+                              @bind-Value="model.Email" For="@(() => model.Email)"
+                              Label="Email"
+                              Required="true"
+                              RequiredError="Требуется email"
+                              HelperText="Введите email"
+                              Validation="@(new EmailAddressAttribute() { ErrorMessage = "The email address is invalid" })"/>
+
+                <MudTextField T="string"
+                              @bind-Value="model.UserName" For="@(() => model.UserName)"
+                              Label="Логин"
+                              Required="true"
+                              RequiredError="Требуется логин"
+                              HelperText="Введите имя пользователя" />
+
+                <MudTextField @bind-Value="model.Password" For="@(() => model.Password)"
+                              Label="Пароль"
+                              HelperText="Введите Ваш пароль"
+                              InputType="@PasswordInput"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@PasswordInputIcon"
+                              Required="true"
+                              RequiredError="Требуется пароль"
+                              OnAdornmentClick="TogglePasswordVisibility" />
+
+                <MudTextField @bind-Value="confirmPassword"
+                              Label="Подтверждение пароля"
+                              HelperText="Подтвердите Ваш пароль"
+                              InputType="@PasswordInput"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@PasswordInputIcon"
+                              Required="true"
+                              RequiredError="Требуется подтверждение пароля"
+                              OnAdornmentClick="TogglePasswordVisibility" />
+
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           Size="Size.Large"
+                           ButtonType="ButtonType.Submit">Зарегистрироваться</MudButton>
+            </EditForm>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+@code {
+    bool success;
+    MudForm form;
+
+    private string confirmPassword;
+
+    private RegisterModel model = new RegisterModel();
+
+    bool PasswordVisibility;
+    InputType PasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    private bool ShowErrors;
+    private string Error;
+    private string ErrorDetail;
+
+    void TogglePasswordVisibility()
+    {
+        @if (PasswordVisibility)
+        {
+            PasswordVisibility = false;
+            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            PasswordInput = InputType.Password;
+        }
+        else
+        {
+            PasswordVisibility = true;
+            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            PasswordInput = InputType.Text;
+        }
+    }
+
+    private async Task OnValidSubmit()
+    {
+        ShowErrors = false;
+        Error = "";
+        ErrorDetail = "";
+
+        if (model.Password != confirmPassword)
+        {
+            Error = "Пароли не совпадают";
+            ShowErrors = true;
+            return;
+        }
+
+        try
+        {
+            var result = await AuthService.Register(model);
+
+            if (result != null)
+            {
+                NavigationManager.NavigateTo("/confirm-email");
+            }
+        }
+        catch (Exception ex)
+        {
+            Error = "Ошибка при регистрации";
+            ErrorDetail = ex.Message;
+            ShowErrors = true;
+        }
+    }
+}

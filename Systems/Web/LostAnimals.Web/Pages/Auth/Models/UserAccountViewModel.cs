@@ -1,4 +1,4 @@
-﻿namespace LostAnimals.Web.Pages.UserAccount.Models;
+﻿namespace LostAnimals.Web.Pages.Auth.Models;
 
 public class UserAccountViewModel
 {

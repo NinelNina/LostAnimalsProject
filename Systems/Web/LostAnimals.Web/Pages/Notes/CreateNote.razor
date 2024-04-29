@@ -1,0 +1,80 @@
+﻿@page "/create-note"
+
+@using LostAnimals.Web.Pages.Breed.Models
+@using LostAnimals.Web.Pages.Breed.Services
+@using LostAnimals.Web.Pages.NoteCategory.Models
+@using LostAnimals.Web.Pages.NoteCategory.Services
+@using LostAnimals.Web.Pages.Notes.Services
+@using LostAnimals.Web.Pages.Notes.Models
+
+@inject INoteService NoteService
+@inject INoteCategoryService CategoryService
+@inject IBreedService BreedService
+
+<MudForm Model="@createNoteViewModel" OnSubmit="@HandleSubmit">
+
+    <MudSelect T="Guid" Label="Категория" For="@(() => createNoteViewModel.CategoryId)" Required="true">
+        @foreach (var category in categories)
+        {
+            <MudSelectItem Value="@category.Id">@category.CategoryName</MudSelectItem>
+        }
+    </MudSelect>
+
+    @*TODO: вид животного
+      TODO: отображение только от зарегистрированного пользователя
+      TODO: редактирование только автором
+    *@
+
+    @if (breeds != null){
+    <MudSelect T="Guid" Label="Порода" For="@(() => createNoteViewModel.BreedId)" Required="true">
+        @foreach (var breed in breeds)
+        {
+            <MudSelectItem Value="@breed.Id">@breed.BreedName</MudSelectItem>
+        }
+        </MudSelect>
+    }
+    else
+    {
+        <MudProgressCircular Color="Color.Primary" Size="Size.Small" Indeterminate="true" />
+    }
+
+    <MudTextField Label="Заголовок" For="@(() => createNoteViewModel.Title)" Required="true" />
+
+    <MudTextField Label="Кличка животного" For="@(() => createNoteViewModel.AnimalName)" />
+
+    <MudTextField Label="Текст объявления" For="@(() => createNoteViewModel.Content)" Required="true" />
+
+    <MudTextField Label="Номер телефона" For="@(() => createNoteViewModel.PhoneNumber)" Required="true" />
+
+    <MudDatePicker Label="Видели в последний раз" For="@(() => createNoteViewModel.LastSeenDate)" Required="true" />
+
+    <MudButton Type="submit" Color="Color.Primary" Class="mt-3">Submit</MudButton>
+
+</MudForm>
+
+@code {
+    private CreateNoteViewModel createNoteViewModel = new CreateNoteViewModel();
+    private List<NoteCategoryViewModel> categories = new List<NoteCategoryViewModel>();
+    private List<BreedViewModel> breeds = new List<BreedViewModel>();
+
+    protected override async void OnInitialized()
+    {
+        var categories = await CategoryService.GetCategories();
+        this.categories = categories.ToList();
+
+        var breeds = await BreedService.GetBreeds();
+        this.breeds = breeds.ToList();
+    }
+
+    private async Task HandleSubmit()
+    {
+        //TODO: кнопка не работает
+
+        //var validationResult = _validator.Validate(createNoteViewModel);
+       // if (validationResult.IsValid)
+        {
+            await NoteService.AddNote(createNoteViewModel);
+            // Here you can implement the logic for uploading photos and marking the location on the map
+        }
+    }
+}

@@ -1,4 +1,5 @@
 ﻿@page "/note/{id}"
+@using LostAnimals.Web.Components
 @using LostAnimals.Web.Pages.Notes.Models
 @using LostAnimals.Web.Pages.Comments.Models
 @using LostAnimals.Web.Pages.Photo.Models
@@ -9,59 +10,68 @@
 @inject IPhotoService PhotoService
 @inject IJSRuntime JSRuntime
 
-
-<MudPaper Class="pa-4 mb-4" Elevation="3">
-
     @if (NoteModel != null)
     {
-        <MudText Typo="Typo.h5">@NoteModel.Title</MudText>
-        <MudButton Class="mt-2 mb-2 mud-theme-primary">@NoteModel.CategoryName</MudButton>
-        <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Автор: @NoteModel.Username, @NoteModel.CreatedDate.ToString()</MudText>
-        <MudText Typo="Typo.body1" Class="mt-2">@NoteModel.Content</MudText>
-        @if (NoteModel.PhotoGalleryId != null)
-        {
-            if (Photos != null && Photos.Any())
+        <MudPaper Class="pa-4 mb-4" Elevation="3">
+            <MudContainer Style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                <MudText Typo="Typo.h5">@NoteModel.Title</MudText>
+                <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Автор: @NoteModel.Username, @NoteModel.CreatedDate.ToLongDateString() @NoteModel.CreatedDate.ToShortTimeString()</MudText>
+            </MudContainer>
+            <MudContainer Style="display: flex;, flex-direction: row;">
+                <CategoryButtonTemplate CategoryName="@NoteModel.CategoryName" Class="mt-2 mb-2 mr-2 mud-theme-primary" Text="@NoteModel.CategoryName" />
+                <MudButton Class="mt-2 mb-2 mud-theme-secondary">@NoteModel.AnimalKind</MudButton>
+            </MudContainer>
+            <MudText Class="mt-2"><strong>Порода:</strong> @NoteModel.AnimalBreed</MudText>
+            @if (NoteModel.AnimalName != null)
             {
-                <MudItem style="display: flex; justify-content: center; align-items: center;">
-                @foreach (var photo in Photos)
+                <MudText Class="mt-2"><strong>Кличка:</strong> @NoteModel.AnimalName</MudText>
+            }
+            <MudText Typo="Typo.body1" Class="mt-2">@NoteModel.Content</MudText>
+            @if (NoteModel.PhotoGalleryId != null)
+            {
+                if (Photos != null && Photos.Any())
                 {
-                    <MudImage Src="@GetFullImagePath(@photo)" Alt="Animal image" Style="max-height: 400px" Class="mt-2 mr-2" />
-                }
-                </MudItem>
-            }
-        }
-        <MudItem id="map" style="width: 100%; height: 400px; display: flex; justify-content: center; align-items: center;" Class="mb-5 mt-5">
-        </MudItem>
-        <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-2 mb-2">Комментарии: @(NoteModel.Comments?.Count ?? 0)</MudText>
-        @if (NoteModel.Comments != null && NoteModel.Comments.Any())
-        {
-            var parentComments = NoteModel.Comments.Where(c => c.ParentCommentId == null).OrderBy(c => c.CreatedDate).ToList();
-            foreach (var parentComment in parentComments)
-            {
-                <MudPaper Class="pa-2 mb-2" Elevation="1">
-                    <MudText Typo="Typo.subtitle2" Color="Color.Secondary">@parentComment.UserName, @parentComment.CreatedDate.ToString()</MudText>
-                    <MudText Typo="Typo.body1" Class="mt-2">@parentComment.Content</MudText>
-                    @if (NoteModel.Comments.Any(c => c.ParentCommentId == parentComment.Id))
+                    <MudItem style="display: flex; justify-content: center; align-items: center;">
+                    @foreach (var photo in Photos)
                     {
-                        var childComments = NoteModel.Comments.Where(c => c.ParentCommentId == parentComment.Id).OrderBy(c => c.CreatedDate).ToList();
-                        foreach (var childComment in childComments)
-                        {
-                            <MudPaper Class="pa-2 mb-2 ml-4" Elevation="1">
-                                <MudText Typo="Typo.subtitle2" Color="Color.Secondary">@childComment.UserName, @childComment.CreatedDate.ToString()</MudText>
-                                <MudText Typo="Typo.body1" Class="mt-2">@childComment.Content</MudText>
-                            </MudPaper>
-                        }
+                        <MudImage Src="@GetFullImagePath(@photo)" Alt="Animal image" Style="max-height: 400px" Class="mt-2 mr-2" />
                     }
-                </MudPaper>
+                    </MudItem>
+                }
             }
-        }
+            <MudItem id="map" style="width: 100%; height: 400px; display: flex; justify-content: center; align-items: center;" Class="mb-5 mt-5">
+            </MudItem>
+            <MudText Typo="Typo.subtitle1" Color="Color.Secondary" Class="mt-2 mb-2">Комментарии: @(NoteModel.Comments?.Count ?? 0)</MudText>
+            @if (NoteModel.Comments != null && NoteModel.Comments.Any())
+            {
+                var parentComments = NoteModel.Comments.Where(c => c.ParentCommentId == null).OrderBy(c => c.CreatedDate).ToList();
+                foreach (var parentComment in parentComments)
+                {
+                    <MudPaper Class="pa-2 mb-2" Elevation="1">
+                        <MudText Typo="Typo.subtitle2" Color="Color.Secondary">@parentComment.UserName, @parentComment.CreatedDate.ToString()</MudText>
+                        <MudText Typo="Typo.body1" Class="mt-2">@parentComment.Content</MudText>
+                        @if (NoteModel.Comments.Any(c => c.ParentCommentId == parentComment.Id))
+                        {
+                            var childComments = NoteModel.Comments.Where(c => c.ParentCommentId == parentComment.Id).OrderBy(c => c.CreatedDate).ToList();
+                            foreach (var childComment in childComments)
+                            {
+                                <MudPaper Class="pa-2 mb-2 ml-4" Elevation="1">
+                                    <MudText Typo="Typo.subtitle2" Color="Color.Secondary">@childComment.UserName, @childComment.CreatedDate.ToString()</MudText>
+                                    <MudText Typo="Typo.body1" Class="mt-2">@childComment.Content</MudText>
+                                </MudPaper>
+                            }
+                        }
+                    </MudPaper>
+                }
+            }
+        </MudPaper>
     }
     else
     {
-        <MudProgressCircular Color="Color.Primary" Indeterminate="true" Class="align-items-center justify-content-center" />
-    }
-
-</MudPaper>
+    <div style="display: flex; align-items: center; justify-content: center; height: 60vh;">
+        <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true" />
+    </div>
+}
 
 
 @code {

@@ -10,7 +10,11 @@
 <MudLayout>
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@DrawerToggleAsync" />
-        <MudText Typo="Typo.h5" Class="ml-3">Lost Animals</MudText>
+        <MudLink Href="/" Class="ml-3" Style="color: white !important; text-decoration: none;">
+            <MudText Typo="Typo.h4">Lost Animals</MudText>
+        </MudLink>
+
+
         <MudSpacer />
         <MudIconButton Icon="@(isDarkMode ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)" @onclick="@ToggleDarkModeAsync" Color="Color.Inherit" Edge="Edge.End" />
         <UserMenu/>

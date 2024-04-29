@@ -1,4 +1,21 @@
-﻿﻿<MudNavMenu>
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<MudNavMenu>
     <MudNavLink Href="/" Match="NavLinkMatch.All">Главная страница</MudNavLink>
-    <MudNavLink Href="/notes" Match="NavLinkMatch.Prefix">Объявления</MudNavLink>
+    <MudNavLink Href="/notes" Match="NavLinkMatch.All">Все объявления</MudNavLink>
+    <MudNavLink Href="/notes/lost" Match="NavLinkMatch.All">Потери</MudNavLink>
+    <MudNavLink Href="/notes/found" Match="NavLinkMatch.All">Находки</MudNavLink>
+    <MudNavLink Href="/create-note" Match="NavLinkMatch.All">Создать объявление</MudNavLink>
+    <CascadingAuthenticationState>
+        <AuthorizeView>
+            <NotAuthorized>
+                <MudNavLink Href="/login" Match="NavLinkMatch.All">Войти</MudNavLink>
+                <MudNavLink Href="/register" Match="NavLinkMatch.All">Зарегистрироваться</MudNavLink>
+            </NotAuthorized>
+            <Authorized>
+                <MudNavLink Href="/logout" Match="NavLinkMatch.All">Выйти</MudNavLink>
+            </Authorized>
+        </AuthorizeView>
+    </CascadingAuthenticationState>
 </MudNavMenu>

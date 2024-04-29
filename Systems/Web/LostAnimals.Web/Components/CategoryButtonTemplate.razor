@@ -1,0 +1,40 @@
+﻿<MudButton Href="@($"/notes/{Url}")" Class="@Class">@Text</MudButton>
+
+@code {
+    [Parameter]
+    public string? Text { get; set; }
+
+    [Parameter]
+    public string Class { get; set; } = string.Empty;
+
+
+    public string Url { get; set; } = string.Empty;
+
+    [Parameter]
+    public string CategoryName { get; set; } = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Url = GetTranslatedCategoryName(CategoryName);
+        if (Text is null)
+        {
+            Text = CategoryName;
+        }
+    }
+
+    private Dictionary<string, string> categoryTranslations = new Dictionary<string, string>
+    {
+        { "Потери", "lost" },
+        { "Находки", "found" }
+    };
+
+    private string GetTranslatedCategoryName(string categoryName)
+    {
+        if (categoryTranslations.TryGetValue(categoryName, out var translatedName))
+        {
+            return translatedName;
+        }
+
+        return string.Empty;
+    }
+}

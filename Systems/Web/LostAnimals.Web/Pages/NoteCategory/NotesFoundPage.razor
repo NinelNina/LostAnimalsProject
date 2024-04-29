@@ -1,6 +1,4 @@
-﻿@page "/notes/{categoryName}"
-
-@using LostAnimals.Web.Pages.NoteCategory.Models
+﻿@using LostAnimals.Web.Pages.NoteCategory.Models
 @using LostAnimals.Web.Pages.NoteCategory.Services
 @using LostAnimals.Web.Pages.Notes.Models
 @using LostAnimals.Web.Pages.Notes.Services
@@ -25,9 +23,7 @@
     }
     else
     {
-        <div style="display: flex; align-items: center; justify-content: center; height: 60vh;">
-            <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true" />
-        </div>
+        <MudProgressCircular Color="Color.Primary" Indeterminate="true" Class="align-items-center justify-content-center" />
     }
 }
 @code {
@@ -47,18 +43,6 @@
             await LoadPhotos();
         }
     }
-
-    protected override async Task OnParametersSetAsync()
-    {
-        noteCategory = await NoteCategoryService.GetNoteCategoryByName(GetTranslatedCategoryName(CategoryName));
-        if (noteCategory != null)
-        {
-            notes = noteCategory.Notes;
-            await LoadPhotos();
-        }
-        await base.OnParametersSetAsync();
-    }
-
 
     private Dictionary<string, string> categoryTranslations = new Dictionary<string, string>
     {

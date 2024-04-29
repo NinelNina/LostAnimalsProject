@@ -1,0 +1,113 @@
+﻿@page "/login"
+@using LostAnimals.Web.Pages.Auth.Models
+@using LostAnimals.Web.Pages.Auth.Services
+@using System.ComponentModel.DataAnnotations
+@layout MainLayout
+
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+
+<MudGrid Justify="Justify.Center" Class="pa-10">
+    <MudItem xs="7" sm="4">
+        <MudPaper Class="pa-4">
+            <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+                
+                <MudText Typo="Typo.h4" GutterBottom="true" Class="mb-3">Вход</MudText>
+
+                <MudAlert Severity="Severity.Error" Class="@(ShowErrors ? "mb-3 d-block" : "d-none")">
+                    @Error
+                    <br />
+                    @ErrorDetail
+                </MudAlert>
+
+                <MudTextField T="string"
+                                @bind-Value="model.Username" For="@(() => model.Username)"
+                                Label="Логин" 
+                                Required="true" 
+                                RequiredError="Требуется логин"
+                                HelperText="Введите имя пользователя"/>
+                <MudTextField @bind-Value="model.Password" For="@(() => model.Password)"
+                                Label="Пароль" 
+                                HelperText="Введите Ваш пароль"
+                                InputType="@PasswordInput"
+                                Adornment="Adornment.End"
+                                AdornmentIcon="@PasswordInputIcon"
+                                Required="true"
+                                RequiredError="Требуется пароль"
+                                OnAdornmentClick="TogglePasswordVisibility" />
+
+                <div class="d-flex justify-space-between align-center">
+                    <MudCheckBox For="@(() => model.RememberMe)" @bind-Checked="model.RememberMe" Label="Запомнить" Color="Color.Primary" Class="ml-n1 my-3"></MudCheckBox>
+                </div>
+
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           Size="Size.Large"
+                           ButtonType="ButtonType.Submit">Войти</MudButton>
+            </EditForm>
+        </MudPaper>
+        <MudItem Class="mt-2 d-flex flex-row justify-end align-center">
+            <MudText>Ещё не зарегистрированы?</MudText>
+            <MudLink Href="/register">Зарегистрироваться</MudLink>
+        </MudItem>
+    </MudItem>
+</MudGrid>
+
+@code {
+    bool success;
+    MudForm form;
+
+    private LoginModel model = new LoginModel();
+
+    bool PasswordVisibility;
+    InputType PasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    private bool ShowErrors;
+    private string Error;
+    private string ErrorDetail;
+
+    void TogglePasswordVisibility()
+    {
+        @if (PasswordVisibility)
+        {
+            PasswordVisibility = false;
+            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            PasswordInput = InputType.Password;
+        }
+        else
+        {
+            PasswordVisibility = true;
+            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            PasswordInput = InputType.Text;
+        }
+    }
+
+    private async Task OnValidSubmit()
+    {
+        ShowErrors = false;
+        Error = "";
+        ErrorDetail = "";
+
+        if (await AuthService.IsAccountConfirmed(model))
+        {
+            var result = await AuthService.Login(model);
+
+            if (result.Successful)
+            {
+                NavigationManager.NavigateTo("/");
+            }
+            else
+            {
+                Error = result.Error;
+                ErrorDetail = result.ErrorDescription;
+                ShowErrors = true;
+            }
+        }
+        else
+        {
+            //TODO: NavigationManager.NavigateTo("/confirm-email");
+            //TODO: страница для подтверждения емеила
+        }
+    }
+}

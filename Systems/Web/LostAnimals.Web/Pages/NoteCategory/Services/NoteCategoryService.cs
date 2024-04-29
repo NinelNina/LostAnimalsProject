@@ -28,4 +28,16 @@ public class NoteCategoryService(HttpClient httpClient) : INoteCategoryService
 
         return await response.Content.ReadFromJsonAsync<NoteCategoryViewModel>() ?? new();
     }
+    
+    public async Task<NoteCategoryViewModel> GetNoteCategoryByName(string name)
+    {
+        var response = await httpClient.GetAsync($"v1/noteCategory/{name}");
+        if (!response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            throw new Exception(content);
+        }
+
+        return await response.Content.ReadFromJsonAsync<NoteCategoryViewModel>() ?? new();
+    }
 }

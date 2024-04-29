@@ -1,6 +1,6 @@
-﻿namespace LostAnimals.Web.Pages.UserAccount.Models;
+﻿namespace LostAnimals.Web.Pages.Auth.Models;
 
-public class RegisterUserAccountViewModel
+public class RegisterModel
 {
     public string UserName { get; set; }
     public string Email { get; set; }
