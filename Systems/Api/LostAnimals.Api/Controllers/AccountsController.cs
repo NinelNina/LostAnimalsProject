@@ -8,6 +8,7 @@ using LostAnimals.Services.Logger;
 using LostAnimals.Services.UserAccount;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using LostAnimals.Common.Exceptions;
 
 namespace LostAnimals.Api.Controllers;
 
@@ -34,7 +35,7 @@ public class AccountsController : ControllerBase
     }
 
     [HttpPost("")]
-    public async Task<UserAccountViewModel> Register([FromQuery] RegisterUserAccountViewModel request)
+    public async Task<UserAccountViewModel> Register([FromBody] RegisterUserAccountViewModel request)
     {
         registerUserAccountModelValidator.Check(request);
 
@@ -47,6 +48,27 @@ public class AccountsController : ControllerBase
         var user = mapper.Map<UserAccountViewModel>(result);
 
         return user;
+    }
+
+    [HttpGet("CheckAccount/{username}")]
+    public async Task<IActionResult> CheckAccount([FromRoute] string username)
+    {
+        try
+        {
+            var isEmailConfirmed = await userAccountService.CheckAccount(username);
+            if (isEmailConfirmed)
+            {
+                return Ok(isEmailConfirmed);
+            }
+            else
+            {
+                return BadRequest("User email is not confirmed.");
+            }
+        }
+        catch (ProcessException ex)
+        {
+            return NotFound(ex.Message);
+        }
     }
 
     [HttpGet("")]
@@ -64,6 +86,19 @@ public class AccountsController : ControllerBase
     public async Task<IActionResult> Get([FromRoute] Guid id)
     {
         var user = await userAccountService.GetById(id);
+
+        if (user == null)
+            return NotFound();
+
+        var result = mapper.Map<UserAccountViewModel>(user);
+
+        return Ok(result);
+    }    
+    
+    [HttpGet("{username}")]
+    public async Task<IActionResult> GetByUsername([FromRoute] string username)
+    {
+        var user = await userAccountService.GetByUsername(username);
 
         if (user == null)
             return NotFound();

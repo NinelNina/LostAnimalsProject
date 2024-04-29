@@ -24,6 +24,13 @@ public interface IUserAccountService
     Task<UserAccountModel> GetById(Guid id);
 
     /// <summary>
+    /// Get user by username
+    /// </summary>
+    /// <param name="username"></param>
+    /// <returns></returns>
+    Task<UserAccountModel> GetByUsername(string username);
+
+    /// <summary>
     /// Create user account
     /// </summary>
     /// <param name="model"></param>
@@ -51,4 +58,12 @@ public interface IUserAccountService
     /// <param name="token"></param>
     /// <returns></returns>
     Task<IdentityResult> ConfirmEmailAsync(string email, string token);
+
+    /// <summary>
+    /// Check user account
+    /// </summary>
+    /// <param name="email"></param>
+    /// <param name="password"></param>
+    /// <returns></returns>
+    Task<bool> CheckAccount(string username);
 }

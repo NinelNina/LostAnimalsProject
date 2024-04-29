@@ -34,6 +34,14 @@ public class UserAccountService : IUserAccountService
             throw new ProcessException($"User account with email {model.Email} already exist.");
         }
 
+        using var context = await dbContextFactory.CreateDbContextAsync();
+        user = await context.Users.Where(x => x.NormalizedUserName == model.UserName.ToUpper()).FirstOrDefaultAsync();
+
+        if (user != null)
+        {
+            throw new ProcessException($"User account with username {model.UserName} already exist.");
+        }
+
         user = new User()
         {
             UserName = model.UserName,
@@ -51,6 +59,19 @@ public class UserAccountService : IUserAccountService
 
         return mapper.Map<UserAccountModel>(user);
     }
+
+    public async Task<bool> CheckAccount(string username)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+        var user = await context.Users.Where(x => x.UserName == username).FirstOrDefaultAsync();
+        if (user == null)
+        {
+            throw new ProcessException($"Invalid username.");
+        }
+
+        return user.EmailConfirmed;
+    }
+
 
     public async Task<IEnumerable<UserAccountModel>> GetAll()
     {
@@ -70,6 +91,18 @@ public class UserAccountService : IUserAccountService
 
         var user = context.Users
                 .FirstOrDefault(x => x.Id == id);
+
+        var result = mapper.Map<UserAccountModel>(user);
+
+        return result;
+    }    
+    
+    public async Task<UserAccountModel> GetByUsername(string username)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var user = context.Users
+                .FirstOrDefault(x => x.UserName == username);
 
         var result = mapper.Map<UserAccountModel>(user);
 

@@ -39,7 +39,7 @@ public static class Bootstrapper
         services.AddSingleton(settings);
 
         return services;
-    }
+    }    
 
     public static IServiceCollection AddEmailSenderSettings(this IServiceCollection services)
     {
