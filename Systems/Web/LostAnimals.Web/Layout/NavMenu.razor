@@ -6,7 +6,10 @@
     <MudNavLink Href="/notes" Match="NavLinkMatch.All">Все объявления</MudNavLink>
     <MudNavLink Href="/notes/lost" Match="NavLinkMatch.All">Потери</MudNavLink>
     <MudNavLink Href="/notes/found" Match="NavLinkMatch.All">Находки</MudNavLink>
-    <MudNavLink Href="/create-note" Match="NavLinkMatch.All">Создать объявление</MudNavLink>
+    <MudNavGroup Title="Создать объявление">
+        <MudNavLink Href="/create-note/lost" Match="NavLinkMatch.All">Потери</MudNavLink>
+        <MudNavLink Href="/create-note/found" Match="NavLinkMatch.All">Находки</MudNavLink>
+    </MudNavGroup>
     <CascadingAuthenticationState>
         <AuthorizeView>
             <NotAuthorized>

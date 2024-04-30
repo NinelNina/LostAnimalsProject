@@ -1,0 +1,242 @@
+﻿@page "/create-note/{categoryName}"
+
+@using LostAnimals.Web.Pages.AnimalKind.Models
+@using LostAnimals.Web.Pages.AnimalKind.Services
+@using LostAnimals.Web.Pages.Breed.Models
+@using LostAnimals.Web.Pages.NoteCategory.Models
+@using LostAnimals.Web.Pages.NoteCategory.Services
+@using LostAnimals.Web.Pages.Notes.Services
+@using LostAnimals.Web.Pages.Notes.Models
+@using LostAnimals.Web.Pages.Photo.Models
+@using LostAnimals.Web.Pages.Photo.Services
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+
+@inject IPhotoService PhotoService
+@inject INoteService NoteService
+@inject INoteCategoryService CategoryService
+@inject IAnimalKindService AnimalKindService
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+@attribute [Authorize]
+
+<MudText Typo="Typo.h3" GutterBottom="true">@GetTranslatedCategoryTitle(CategoryName)</MudText>
+
+<MudContainer MaxWidth="MaxWidth.Small" Class="mt-5">
+    @switch (activeStep)
+    {
+        case 0:
+            <MudText Style="display: flex; justify-content: center; align-items: center;" Typo="Typo.h6" GutterBottom="true">Выберите вид животного:</MudText>
+            <MudContainer Style="display: flex; flex-direction: row; justify-content: space-between;">
+                @if (animalKinds != null)
+                {
+                    @foreach (var animalKind in animalKinds)
+                    {
+                        <MudButton Class="mt-3 mr-2 mud-theme-secondary" OnClick="@(() => { chosenAnimalKind = animalKind; breeds = chosenAnimalKind.Breeds.ToList(); noteModel.BreedId = breeds[0].Id;  NextStep(); })">@animalKind.AnimalKindName</MudButton>
+                    }
+                } 
+                else
+                {
+                    <MudProgressCircular Color="Color.Primary" Size="Size.Small" Indeterminate="true" />
+                }
+            </MudContainer>
+            break;
+        case 1:
+            <MudForm Model="@noteModel">
+                <MudTextField @bind-Value="noteModel.Title" Label="Заголовок" For="@(() => noteModel.Title)" Required="true" />
+                <MudTextField @bind-Value="noteModel.AnimalName" Label="Кличка животного" For="@(() => noteModel.AnimalName)" />
+                <MudSelect @bind-Value="noteModel.BreedId" Label="Порода" For="@(() => noteModel.BreedId)" Required="true" >
+                    @foreach (var breed in breeds)
+                    {
+                        <MudSelectItem Value="@breed.Id" >@breed.BreedName</MudSelectItem>
+                    }
+                </MudSelect>
+                <MudTextField @bind-Value="noteModel.Content" Label="Текст объявления" For="@(() => noteModel.Content)" Required="true" />
+                <MudTextField @bind-Value=noteModel.PhoneNumber Label="Номер телефона" For="@(() => noteModel.PhoneNumber)" Required="true" />
+                <MudDatePicker @bind-Date="noteModel.LastSeenDate" Label="Видели в последний раз" For="@(() => noteModel.LastSeenDate)" Required="true" />
+                <MudButton Color="Color.Secondary" Class="mt-3 ml-2" OnClick="@PreviousStep">Назад</MudButton>
+                <MudButton Color="Color.Primary" Class="mt-3" OnClick="@NextStep">Далее</MudButton>
+            </MudForm>
+            break;
+        case 2:
+            <MudText Typo="Typo.h6" GutterBottom="true">Выберите точку на карте, где в последний раз видели животное:</MudText>
+            <MudItem id="map" style="width: 100%; height: 400px; display: flex; justify-content: center; align-items: center;" Class="mb-5 mt-5">
+            </MudItem>
+            <MudButton Color="Color.Secondary" Class="mt-3 ml-2" OnClick="@PreviousStep">Назад</MudButton>
+            <MudButton Color="Color.Primary" Class="mt-3" OnClick="@(async () => { await SaveNote(); NextStep(); })">Далее</MudButton>
+            break;
+        case 3:
+            <MudText Typo="Typo.h6" GutterBottom="true">Загрузите фотографии:</MudText>
+            <InputFile OnChange="@(async (InputFileChangeEventArgs e) => { await HandleFileSelected(e); })" />
+            @if (createdNote != null)
+            {
+                @if (createdNote.PhotoGalleryId != null)
+                {
+                    if (Photos != null && Photos.Any())
+                    {
+                        <MudItem style="display: flex; justify-content: center; align-items: center;">
+                            @foreach (var photo in Photos)
+                            {
+                                <MudImage Src="@GetFullImagePath(@photo)" Alt="Animal image" Style="max-height: 100px" Class="mt-2 mr-2" />
+                            }
+                        </MudItem>
+                    }
+                }
+            }
+            <MudButton Color="Color.Primary" Class="mt-3" OnClick="@HandleSubmit">Создать объявление</MudButton>
+            break;
+    }
+</MudContainer>
+@* } *@
+
+@code {
+    [Parameter]
+    public string CategoryName { get; set; }
+
+    private Dictionary<string, string> categoryTitle = new Dictionary<string, string>
+    {
+        { "lost", "Я потерял животное" },
+        { "found", "Я нашёл животное" }
+    };
+
+    private Dictionary<string, string> categoryTranslations = new Dictionary<string, string>
+    {
+        { "lost", "Потери" },
+        { "found", "Находки" }
+    };
+    private int activeStep = 0;
+    private List<AnimalKindViewModel> animalKinds = new List<AnimalKindViewModel>();
+    private IBrowserFile file;
+
+    private AnimalKindViewModel chosenAnimalKind = new AnimalKindViewModel();
+    private CreateNoteViewModel noteModel = new CreateNoteViewModel();
+    private List<NoteCategoryViewModel> categories = new List<NoteCategoryViewModel>();
+    private List<BreedViewModel> breeds = new List<BreedViewModel>();
+    private NoteCategoryViewModel category;
+    private ClaimsPrincipal user;
+    private NoteViewModel createdNote;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        user = authState.User;
+
+        if (user.Identity.IsAuthenticated)
+        {
+            var userIdString = user.FindFirst(c => c.Type == "sub")?.Value;
+
+            if (Guid.TryParse(userIdString, out Guid userId))
+            {
+                noteModel.UserId = userId;
+            }
+        }
+
+        var categories = await CategoryService.GetCategories();
+        this.categories = categories.ToList();
+
+        var category = categories.Where(x => x.CategoryName == GetTranslatedCategoryName(CategoryName)).FirstOrDefault();
+        if (category != null)
+        {
+            noteModel.CategoryId = category.Id;
+        }
+        var animalKinds = await AnimalKindService.GetAnimalKinds();
+        this.animalKinds = animalKinds.ToList();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("setPoint", DotNetObjectReference.Create(this));
+
+    }
+
+    [JSInvokable]
+    public void SetCoordinates(double latitude, double longitude)
+    {
+        noteModel.Latitude = latitude;
+        noteModel.Longitude = longitude;
+        StateHasChanged();
+    }
+
+    private void NextStep()
+    {
+        activeStep++;
+        StateHasChanged();
+    }
+
+    private void PreviousStep()
+    {
+        activeStep--;
+        StateHasChanged();
+    }
+
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.GetMultipleFiles(1);
+
+        if (file == null)
+        {
+            return;
+        }
+        this.file = file.ToArray()[0];
+
+        var response = await NoteService.UploadPhotoAsync(createdNote.Id, this.file);
+
+        if (response)
+        {
+            createdNote = await NoteService.GetNote(createdNote.Id);
+            await LoadPhotos();
+        }
+    }
+
+    private string GetTranslatedCategoryName(string categoryName)
+    {
+        if (categoryTranslations.TryGetValue(categoryName, out var translatedName))
+        {
+            return translatedName;
+        }
+
+        return string.Empty;
+    }    
+
+    private string GetTranslatedCategoryTitle(string categoryName)
+    {
+        if (categoryTitle.TryGetValue(categoryName, out var translatedName))
+        {
+            return translatedName;
+        }
+
+        return string.Empty;
+    }
+
+    private async Task SaveNote()
+    {
+        createdNote = await NoteService.AddNote(noteModel);
+    }
+
+    private async Task HandleSubmit()
+    {
+        NavigationManager.NavigateTo($"/note/{createdNote.Id}");
+    }
+    IEnumerable<PhotoStorageViewModel> Photos { get; set; }
+
+    private async Task LoadPhotos()
+    {
+        if (createdNote != null)
+        {
+            if (createdNote.PhotoGalleryId != null)
+            {
+                var galleryId = createdNote.PhotoGalleryId.Value;
+                Photos = await PhotoService.GetPhotosByGalleryId(galleryId);
+            }
+        }
+    }
+
+    public string GetFullImagePath(PhotoStorageViewModel photo)
+    {
+        return Settings.ApiRoot + "/" + photo.PhotoName;
+    }
+}

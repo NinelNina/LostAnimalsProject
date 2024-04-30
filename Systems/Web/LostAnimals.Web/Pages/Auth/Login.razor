@@ -88,26 +88,29 @@
         ShowErrors = false;
         Error = "";
         ErrorDetail = "";
+        try {
+            var isConfirmed = await AuthService.IsAccountConfirmed(model);
 
-        if (await AuthService.IsAccountConfirmed(model))
-        {
-            var result = await AuthService.Login(model);
+            if (isConfirmed)
+            {
+                var result = await AuthService.Login(model);
 
-            if (result.Successful)
-            {
-                NavigationManager.NavigateTo("/");
-            }
-            else
-            {
-                Error = result.Error;
-                ErrorDetail = result.ErrorDescription;
-                ShowErrors = true;
+                if (result.Successful)
+                {
+                    NavigationManager.NavigateTo("/");
+                }
+                else
+                {
+                    Error = result.Error;
+                    ErrorDetail = result.ErrorDescription;
+                    ShowErrors = true;
+                }
             }
         }
-        else
+        catch (Exception ex)
         {
-            //TODO: NavigationManager.NavigateTo("/confirm-email");
-            //TODO: страница для подтверждения емеила
+            Error = ex.Message;
+            ShowErrors = true;
         }
     }
 }

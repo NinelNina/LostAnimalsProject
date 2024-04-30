@@ -1,5 +1,6 @@
 using Blazored.LocalStorage;
 using LostAnimals.Web;
+using LostAnimals.Web.Pages.AnimalKind.Services;
 using LostAnimals.Web.Pages.Auth.Services;
 using LostAnimals.Web.Pages.Breed.Services;
 using LostAnimals.Web.Pages.NoteCategory.Services;
@@ -28,6 +29,7 @@ builder.Services.AddScoped<INoteService, NoteService>();
 builder.Services.AddScoped<INoteCategoryService, NoteCategoryService>();
 builder.Services.AddScoped<IPhotoService, PhotoService>();
 builder.Services.AddScoped<IBreedService, BreedService>();
+builder.Services.AddScoped<IAnimalKindService, AnimalKindService>();
 
 builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
 builder.Services.AddScoped<IAuthService, AuthService>();

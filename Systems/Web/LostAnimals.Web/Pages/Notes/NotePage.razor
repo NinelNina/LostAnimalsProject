@@ -15,7 +15,7 @@
         <MudPaper Class="pa-4 mb-4" Elevation="3">
             <MudContainer Style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
                 <MudText Typo="Typo.h5">@NoteModel.Title</MudText>
-                <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Автор: @NoteModel.Username, @NoteModel.CreatedDate.ToLongDateString() @NoteModel.CreatedDate.ToShortTimeString()</MudText>
+                <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Автор: @NoteModel.Username, @NoteModel.CreatedDate.ToShortDateString() @NoteModel.CreatedDate.ToShortTimeString()</MudText>
             </MudContainer>
             <MudContainer Style="display: flex;, flex-direction: row;">
                 <CategoryButtonTemplate CategoryName="@NoteModel.CategoryName" Class="mt-2 mb-2 mr-2 mud-theme-primary" Text="@NoteModel.CategoryName" />

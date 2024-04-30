@@ -59,7 +59,7 @@ public class AuthService : IAuthService
                 var user = await userResponse.Content.ReadFromJsonAsync<UserAccountViewModel>();
                 if (user != null)
                 {
-                    await _httpClient.GetAsync($"v1/accounts//SendConfirmationLink/{user.Id}");
+                    await _httpClient.GetAsync($"v1/accounts/SendConfirmationLink/{user.Id}");
                     return false;
                 }
             }

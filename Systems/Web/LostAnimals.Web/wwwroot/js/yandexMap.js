@@ -51,3 +51,45 @@
         });
     });
 }
+
+var myMap;
+
+function setPoint(dotNetHelper) {
+    ymaps.ready(function () {
+        if (!myMap) {
+            myMap = new ymaps.Map('map', {
+                center: [55.751574, 37.573856],
+                zoom: 10
+            });
+        }
+
+        myMap.events.add('click', function (e) {
+            var coords = e.get('coords');
+
+            if (myMap.geoObjects.getLength() > 0) {
+                myMap.geoObjects.removeAll();
+            }
+
+            var placemark = new ymaps.Placemark(coords, {}, {
+                hintContent: 'Координаты',
+                balloonContent: 'Широта: ' + coords[0] + ', Долгота: ' + coords[1]
+            });
+
+            myMap.geoObjects.add(placemark);
+
+            var coordinates = [placemark.geometry.getCoordinates()[0], placemark.geometry.getCoordinates()[1]];
+            dotNetHelper.invokeMethodAsync('SetCoordinates', placemark.geometry.getCoordinates()[0], placemark.geometry.getCoordinates()[1]);
+        });
+    });
+}
+
+
+
+
+
+
+
+
+
+
+

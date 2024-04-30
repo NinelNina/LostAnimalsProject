@@ -44,6 +44,7 @@
         if (noteCategory != null)
         {
             notes = noteCategory.Notes;
+            notes = notes.OrderByDescending(n => n.CreatedDate);
             await LoadPhotos();
         }
     }
@@ -54,6 +55,7 @@
         if (noteCategory != null)
         {
             notes = noteCategory.Notes;
+            notes = notes.OrderByDescending(n => n.CreatedDate);
             await LoadPhotos();
         }
         await base.OnParametersSetAsync();
