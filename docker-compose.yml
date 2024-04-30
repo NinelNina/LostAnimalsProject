@@ -21,3 +21,12 @@ services:
     depends_on:
       - lostanimals_postgresql
       - lostanimals_api
+
+  lostanimals_web:
+    image: ${DOCKER_REGISTRY-}lostanimalsweb
+    build:
+      context: .
+      dockerfile: Systems/Web/LostAnimals.Web/Dockerfile
+    depends_on:
+      - lostanimals_postgresql
+      - lostanimals_api

@@ -28,6 +28,11 @@ services:
       - shared_lostanimals_net
     env_file:
       - env.identity
+  lostanimals_web:
+    ports:
+      - "10002:80"
+    networks:
+      - shared_lostanimals_net
 
 networks:
   shared_lostanimals_net:

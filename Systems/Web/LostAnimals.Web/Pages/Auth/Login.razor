@@ -2,16 +2,19 @@
 @using LostAnimals.Web.Pages.Auth.Models
 @using LostAnimals.Web.Pages.Auth.Services
 @using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
 @layout MainLayout
 
 @inject IAuthService AuthService
 @inject NavigationManager NavigationManager
 
+
 <MudGrid Justify="Justify.Center" Class="pa-10">
     <MudItem xs="7" sm="4">
         <MudPaper Class="pa-4">
             <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
-                
+
                 <MudText Typo="Typo.h4" GutterBottom="true" Class="mb-3">Вход</MudText>
 
                 <MudAlert Severity="Severity.Error" Class="@(ShowErrors ? "mb-3 d-block" : "d-none")">
@@ -21,20 +24,20 @@
                 </MudAlert>
 
                 <MudTextField T="string"
-                                @bind-Value="model.Username" For="@(() => model.Username)"
-                                Label="Логин" 
-                                Required="true" 
-                                RequiredError="Требуется логин"
-                                HelperText="Введите имя пользователя"/>
+                              @bind-Value="model.Username" For="@(() => model.Username)"
+                              Label="Логин"
+                              Required="true"
+                              RequiredError="Требуется логин"
+                              HelperText="Введите имя пользователя" />
                 <MudTextField @bind-Value="model.Password" For="@(() => model.Password)"
-                                Label="Пароль" 
-                                HelperText="Введите Ваш пароль"
-                                InputType="@PasswordInput"
-                                Adornment="Adornment.End"
-                                AdornmentIcon="@PasswordInputIcon"
-                                Required="true"
-                                RequiredError="Требуется пароль"
-                                OnAdornmentClick="TogglePasswordVisibility" />
+                              Label="Пароль"
+                              HelperText="Введите Ваш пароль"
+                              InputType="@PasswordInput"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@PasswordInputIcon"
+                              Required="true"
+                              RequiredError="Требуется пароль"
+                              OnAdornmentClick="TogglePasswordVisibility" />
 
                 <div class="d-flex justify-space-between align-center">
                     <MudCheckBox For="@(() => model.RememberMe)" @bind-Checked="model.RememberMe" Label="Запомнить" Color="Color.Primary" Class="ml-n1 my-3"></MudCheckBox>
@@ -88,7 +91,8 @@
         ShowErrors = false;
         Error = "";
         ErrorDetail = "";
-        try {
+        try
+        {
             var isConfirmed = await AuthService.IsAccountConfirmed(model);
 
             if (isConfirmed)
@@ -113,4 +117,4 @@
             ShowErrors = true;
         }
     }
-}
+            }

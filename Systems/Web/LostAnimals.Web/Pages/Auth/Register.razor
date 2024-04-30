@@ -2,10 +2,14 @@
 @using LostAnimals.Web.Pages.Auth.Models
 @using LostAnimals.Web.Pages.Auth.Services
 @using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
 @layout MainLayout
 
 @inject IAuthService AuthService
 @inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
 
 <MudGrid Justify="Justify.Center" Class="pa-10">
     <MudItem xs="7" sm="4">
@@ -26,7 +30,7 @@
                               Required="true"
                               RequiredError="Требуется email"
                               HelperText="Введите email"
-                              Validation="@(new EmailAddressAttribute() { ErrorMessage = "The email address is invalid" })"/>
+                              Validation="@(new EmailAddressAttribute() { ErrorMessage = "The email address is invalid" })" />
 
                 <MudTextField T="string"
                               @bind-Value="model.UserName" For="@(() => model.UserName)"
@@ -125,4 +129,4 @@
             ShowErrors = true;
         }
     }
-}
+            }
