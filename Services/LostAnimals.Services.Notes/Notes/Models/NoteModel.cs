@@ -27,7 +27,6 @@ public class NoteModel
     public string Content { get; set; }
 
     public Guid? PhotoGalleryId { get; set; }
-    //public ICollection<PhotoStorage>? PhotoStorages { get; set; }
 
     public string PhoneNumber { get; set; }
 

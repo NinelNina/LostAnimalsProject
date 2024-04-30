@@ -10,13 +10,13 @@ public class DemoHelper
         new AnimalKind()
         {
             Uid = Guid.NewGuid(),
-            Id = 1,
+            //Id = 1,
             AnimalKindName = "Собака"
         },
         new AnimalKind()
         {
             Uid = Guid.NewGuid(),
-            Id = 2,
+            //Id = 2,
             AnimalKindName = "Кошка"
         }
     };
@@ -26,13 +26,13 @@ public class DemoHelper
         new NoteCategory()
         {
             Uid = Guid.NewGuid(),
-            Id = 1,
+            //Id = 1,
             CategoryName = "Потери"
         },
         new NoteCategory()
         {
             Uid = Guid.NewGuid(),
-            Id = 2,
+            //Id = 2,
             CategoryName = "Находки"
         }
     };
@@ -51,7 +51,7 @@ public class DemoHelper
                 var breed = new Breed
                 {
                     Uid = Guid.NewGuid(),
-                    Id = i,
+                    //Id = i,
                     AnimalKindID = int.Parse(values[0]),
                     BreedName = values[1]
                 };
@@ -95,7 +95,7 @@ public class DemoHelper
         return new PhotoGallery
         {
             Uid = Guid.Parse("5552ceec-0574-4919-8488-e8aa47e483c0"),
-            Id = 1,
+            //Id = 1,
             PhotoStorages = new List<PhotoStorage>
             {
                 new PhotoStorage
@@ -119,7 +119,7 @@ public class DemoHelper
         new Note
         {
             Uid = Guid.NewGuid(),
-            Id = 1,
+            //Id = 1,
             UserID = 1,
             CategoryID = 1,
             Title = "Пропала собака породы лабрадор",
@@ -136,7 +136,7 @@ public class DemoHelper
         new Note
         {
             Uid = Guid.NewGuid(),
-            Id = 2,
+            //Id = 2,
             UserID = 1,
             CategoryID = 2,
             Title = "Найдена собака породы хаски",
@@ -152,7 +152,7 @@ public class DemoHelper
         new Note
         {
             Uid = Guid.NewGuid(),
-            Id = 3,
+            //Id = 3,
             UserID = 2,
             CategoryID = 1,
             Title = "Пропала кошка породы британская",
@@ -169,7 +169,7 @@ public class DemoHelper
         new Note
         {
             Uid = Guid.NewGuid(),
-            Id = 4,
+            //Id = 4,
             UserID = 3,
             CategoryID = 1,
             Title = "Пропала кошка породы сиамская",
@@ -186,7 +186,7 @@ public class DemoHelper
         new Note
         {
             Uid = Guid.NewGuid(),
-            Id = 5,
+            //Id = 5,
             UserID = 4,
             CategoryID = 1,
             Title = "Пропала собака породы бульдог",
@@ -207,7 +207,7 @@ public class DemoHelper
          new Comment
          {
              Uid = Guid.NewGuid(),
-             Id = 1,
+             //Id = 1,
              UserID = 1,
              NoteID = 1,
              Content = "Я видел эту собаку вчера в парке. Она была с человеком в красной куртке.",
@@ -216,7 +216,7 @@ public class DemoHelper
          new Comment
          {
              Uid = Guid.NewGuid(),
-             Id = 2,
+             //Id = 2,
              UserID = 2,
              NoteID = 1,
              Content = "Я тоже видел эту собаку. Она была без поводка и бежала по парку.",
@@ -225,7 +225,7 @@ public class DemoHelper
          new Comment
          {
              Uid = Guid.NewGuid(),
-             Id = 3,
+             //Id = 3,
              UserID = 3,
              NoteID = 3,
              Content = "Я нашел эту кошку вчера вечером. Она была мокрой и испуганной. Я оставил ее у себя на ночь и сегодня привезу к ветеринару.",
@@ -234,7 +234,7 @@ public class DemoHelper
          new Comment
          {
              Uid = Guid.NewGuid(),
-             Id = 4,
+             //Id = 4,
              UserID = 4,
              NoteID = 2,
              Content = "Я видел эту собаку сегодня утром. Она была в автобусе и ехала одна.",
@@ -243,7 +243,7 @@ public class DemoHelper
          new Comment
          {
              Uid = Guid.NewGuid(),
-             Id = 5,
+             //Id = 5,
              UserID = 5,
              NoteID = 2,
              ParentCommentID = 4,
@@ -253,7 +253,7 @@ public class DemoHelper
          new Comment
          {
              Uid = Guid.NewGuid(),
-             Id = 6,
+             //Id = 6,
              UserID = 6,
              NoteID = 4,
              Content = "Я нашел эту кошку вчера вечером. Она была мокрой и испуганной. Я оставил ее у себя на ночь и сегодня привезу к ветеринару.",
@@ -262,7 +262,7 @@ public class DemoHelper
          new Comment
          {
              Uid = Guid.NewGuid(),
-             Id = 7,
+             //Id = 7,
              UserID = 7,
              NoteID = 5,
              Content = "Я видел эту собаку вчера в парке. Она была с человеком в красной куртке.",
@@ -271,7 +271,7 @@ public class DemoHelper
          new Comment
          {
              Uid = Guid.NewGuid(),
-             Id = 8,
+             //Id = 8,
              UserID = 8,
              NoteID = 5,
              Content = "Я тоже видел эту собаку. Она была без поводка и бежала по парку.",
@@ -280,7 +280,7 @@ public class DemoHelper
          new Comment
          {
              Uid = Guid.NewGuid(),
-             Id = 9,
+             //Id = 9,
              UserID = 9,
              NoteID = 5,
              Content = "Я видел эту собаку вчера, но не успел поймать.",
@@ -289,7 +289,7 @@ public class DemoHelper
          new Comment
          {
              Uid = Guid.NewGuid(),
-             Id = 10,
+             //Id = 10,
              UserID = 10,
              NoteID = 5,
              Content = "Я видел похожую собаку вчера в парке, вроде бы с хозяином.",

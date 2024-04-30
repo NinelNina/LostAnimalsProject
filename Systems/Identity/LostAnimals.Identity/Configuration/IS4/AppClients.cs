@@ -53,13 +53,13 @@ public static class AppClients
                 SlidingRefreshTokenLifetime = 1296000, // 15 days
 
                 AllowedScopes = {
-                    AppScopes.AnimalKindsWrite,
-                    AppScopes.BreedsWrite,
+                    //AppScopes.AnimalKindsWrite,
+                    //AppScopes.BreedsWrite,
                     AppScopes.NotesWrite,
                     AppScopes.PhotosWrite,
-                    AppScopes.NoteCategoriesWrite,
+                    //AppScopes.NoteCategoriesWrite,
                     AppScopes.CommentsWrite,
-                    AppScopes.UsersRead
+                    //AppScopes.UsersRead
                 }
             }
         };

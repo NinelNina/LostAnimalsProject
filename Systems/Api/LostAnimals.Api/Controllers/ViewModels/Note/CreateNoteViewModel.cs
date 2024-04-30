@@ -22,7 +22,7 @@ public class CreateNoteViewModel
 
     public double? Latitude { get; set; }
 
-    public double? Longitude { get; set; }
+    public double? Longtitude { get; set; }
 
     public string PhoneNumber { get; set; }
 
@@ -30,7 +30,7 @@ public class CreateNoteViewModel
 
     public DateTime CreatedDate { get; set; } = DateTime.Now;
 
-    public class CreateNoteModelValidator : AbstractValidator<CreateNoteViewModel>
+/*    public class CreateNoteModelValidator : AbstractValidator<CreateNoteViewModel>
     {
         public CreateNoteModelValidator()
         {
@@ -53,13 +53,13 @@ public class CreateNoteViewModel
             RuleFor(x => x.LastSeenDate)
                 .NotEmpty().WithMessage("Укажите дату пропажи/находки животного.");
         }
-    }
+    }*/
 }
 
 public class CreateNoteViewModelProfile : Profile
 {
     public CreateNoteViewModelProfile()
     {
-        CreateMap<CreateNoteViewModel, NoteModel>();
+        CreateMap<CreateNoteViewModel, CreateNoteModel>();
     }
 }
