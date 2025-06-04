@@ -19,22 +19,23 @@ public class AuthService : IAuthService
     private const string LocalStorageAuthTokenKey = "authToken";
     private const string LocalStorageRefreshTokenKey = "refreshToken";
 
-    private readonly HttpClient _httpClient;
+    private readonly IHttpClientFactory httpClientFactory;
     private readonly AuthenticationStateProvider _authenticationStateProvider;
     private readonly ILocalStorageService _localStorage;
 
-    public AuthService(HttpClient httpClient,
+    public AuthService(IHttpClientFactory httpClientFactory,
                        AuthenticationStateProvider authenticationStateProvider,
                        ILocalStorageService localStorage)
     {
-        _httpClient = httpClient;
+        this.httpClientFactory = httpClientFactory;
         _authenticationStateProvider = authenticationStateProvider;
         _localStorage = localStorage;
     }
 
     public async Task<Result> ConfirmEmailAsync(string email, string token)
     {
-        var response = await _httpClient.GetAsync($"v1/accounts/confirmemail?token={token}&email={email}");
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.GetAsync($"v1/accounts/confirmemail?token={token}&email={email}");
 
         if (response.IsSuccessStatusCode)
         {
@@ -50,16 +51,17 @@ public class AuthService : IAuthService
 
     public async Task<bool> IsAccountConfirmed(LoginModel model)
     {
-        var response = await _httpClient.GetAsync($"v1/accounts/checkaccount/{model.Username}");
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.GetAsync($"v1/accounts/checkaccount/{model.Username}");
         if (!response.IsSuccessStatusCode)
         {
             if (response.StatusCode.Equals(HttpStatusCode.BadRequest))
             {
-                var userResponse = await _httpClient.GetAsync($"v1/accounts/{model.Username}");
+                var userResponse = await client.GetAsync($"v1/accounts/{model.Username}");
                 var user = await userResponse.Content.ReadFromJsonAsync<UserAccountViewModel>();
                 if (user != null)
                 {
-                    await _httpClient.GetAsync($"v1/accounts/SendConfirmationLink/{user.Id}");
+                    await client.GetAsync($"v1/accounts/SendConfirmationLink/{user.Id}");
                     return false;
                 }
             }
@@ -71,8 +73,9 @@ public class AuthService : IAuthService
 
     public async Task<UserAccountViewModel> Register(RegisterModel registerModel)
     {
+        var client = httpClientFactory.CreateClient("ApiClient");
         var httpContent = new StringContent(JsonConvert.SerializeObject(registerModel), Encoding.UTF8, "application/json");
-        var response = await _httpClient.PostAsync($"v1/accounts/", httpContent);
+        var response = await client.PostAsync($"v1/accounts/", httpContent);
 
         if (!response.IsSuccessStatusCode)
         {
@@ -99,7 +102,8 @@ public class AuthService : IAuthService
 
         var requestContent = new FormUrlEncodedContent(request_body);
 
-        var response = await _httpClient.PostAsync(url, requestContent);
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.PostAsync(url, requestContent);
 
         var content = await response.Content.ReadAsStringAsync();
 
@@ -116,7 +120,7 @@ public class AuthService : IAuthService
 
         ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(loginModel.Username!);
 
-        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", loginResult.AccessToken);
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", loginResult.AccessToken);
 
         return loginResult;
     }
@@ -127,7 +131,9 @@ public class AuthService : IAuthService
         await _localStorage.RemoveItemAsync(LocalStorageRefreshTokenKey);
 
         ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsLoggedOut();
+        
+        var client = httpClientFactory.CreateClient("ApiClient");
 
-        _httpClient.DefaultRequestHeaders.Authorization = null;
+        client.DefaultRequestHeaders.Authorization = null;
     }
 }

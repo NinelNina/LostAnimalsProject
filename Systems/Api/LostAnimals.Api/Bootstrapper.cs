@@ -11,6 +11,7 @@ using LostAnimals.Services.NoteCategories;
 using LostAnimals.Services.Notes;
 using LostAnimals.Services.Settings;
 using LostAnimals.Services.UserAccount;
+using LostAnimals.Services.RabbitMqService;
 
 public static class Bootstrapper
 {
@@ -22,6 +23,7 @@ public static class Bootstrapper
             .AddLogSettings()
             .AddSwaggerSettings()
             .AddIdentitySettings()
+            .AddRabbitMq()
             .AddDbSeeder()
             .AddEmailSenderSettings()
             .AddAppEmailSender()

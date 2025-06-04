@@ -1,299 +1,246 @@
 ﻿using LostAnimals.Context.Entities;
 using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace LostAnimals.Context.Seeder;
-
-public class DemoHelper
+namespace LostAnimals.Context.Seeder
 {
-    public IEnumerable<AnimalKind> GetAnimalKinds = new List<AnimalKind>()
+    public class DemoHelper
     {
-        new AnimalKind()
+        // Виды животных
+        public IEnumerable<AnimalKind> GetAnimalKinds => new List<AnimalKind>()
         {
-            Uid = Guid.NewGuid(),
-            //Id = 1,
-            AnimalKindName = "Собака"
-        },
-        new AnimalKind()
-        {
-            Uid = Guid.NewGuid(),
-            //Id = 2,
-            AnimalKindName = "Кошка"
-        }
-    };
+            new AnimalKind { Uid = Guid.NewGuid(), AnimalKindName = "Собака" },
+            new AnimalKind { Uid = Guid.NewGuid(), AnimalKindName = "Кошка" }
+        };
 
-    public IEnumerable<NoteCategory> GetNotesCategories = new List<NoteCategory>()
-    {
-        new NoteCategory()
+        // Категории объявлений
+        public IEnumerable<NoteCategory> GetNotesCategories => new List<NoteCategory>()
         {
-            Uid = Guid.NewGuid(),
-            //Id = 1,
-            CategoryName = "Потери"
-        },
-        new NoteCategory()
-        {
-            Uid = Guid.NewGuid(),
-            //Id = 2,
-            CategoryName = "Находки"
-        }
-    };
+            new NoteCategory { Uid = Guid.NewGuid(), CategoryName = "Потери" },
+            new NoteCategory { Uid = Guid.NewGuid(), CategoryName = "Находки" }
+        };
 
-    public List<Breed> ReadBreedsFromCsv(string filePath)
-    {
-        var breeds = new List<Breed>();
-
-        using (var reader = new StreamReader(filePath))
+        // Породы животных из Breeds.csv
+        public List<Breed> GetBreeds()
         {
-            int i = 1;
-            while (!reader.EndOfStream)
+            var dogKind = GetAnimalKinds.First(k => k.AnimalKindName == "Собака");
+            var catKind = GetAnimalKinds.First(k => k.AnimalKindName == "Кошка");
+            var breeds = new List<Breed>();
+
+            // Чтение файла Breeds.csv
+            var breedLines = File.ReadAllLines("Breeds.csv").Skip(1); // Пропускаем заголовок
+            foreach (var line in breedLines)
             {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                var breed = new Breed
+                var parts = line.Split(',');
+                if (parts.Length >= 2)
                 {
-                    Uid = Guid.NewGuid(),
-                    //Id = i,
-                    AnimalKindID = int.Parse(values[0]),
-                    BreedName = values[1]
-                };
-                i++;
-
-                breeds.Add(breed);
-            }
-        }
-
-        return breeds;
-    }
-
-    public async Task<IEnumerable<User>> GetUsersAsync(UserManager<User> userManager)
-    {
-        var users = new List<User>();
-
-        for (int i = 1; i <= 10; i++)
-        {
-            var user = new User
-            {
-                UserName = $"User{i}",
-                Email = $"user{i}@example.com",
-                EmailConfirmed = true,
-                PhoneNumber = null,
-                PhoneNumberConfirmed = false
-            };
-
-            var result = await userManager.CreateAsync(user, $"password{i}");
-
-            if (result.Succeeded)
-            {
-                users.Add(user);
-            }
-        }
-
-        return users;
-    }
-
-    public PhotoGallery GetPhotoGallery()
-    {
-        return new PhotoGallery
-        {
-            Uid = Guid.Parse("5552ceec-0574-4919-8488-e8aa47e483c0"),
-            //Id = 1,
-            PhotoStorages = new List<PhotoStorage>
-            {
-                new PhotoStorage
-                {
-                    Uid = Guid.Parse("d477bd28-ec96-465f-a54a-e95ed307c210"),
-                    PhotoGalleryID = 1,
-                    PhotoName = "images\\5552ceec-0574-4919-8488-e8aa47e483c0\\d477bd28-ec96-465f-a54a-e95ed307c210.jpg"
-                },
-                new PhotoStorage
-                {
-                    Uid = Guid.Parse("e7367fdf-90c5-45e4-be16-cd56cc9b0b2f"),
-                    PhotoGalleryID = 1,
-                    PhotoName = "images\\5552ceec-0574-4919-8488-e8aa47e483c0\\e7367fdf-90c5-45e4-be16-cd56cc9b0b2f.jpg"
+                    int animalKind = int.Parse(parts[0]);
+                    string breedName = parts[1].Trim();
+                    var kind = animalKind == 1 ? dogKind : catKind;
+                    breeds.Add(new Breed
+                    {
+                        Uid = Guid.NewGuid(),
+                        AnimalKind = kind,
+                        BreedName = breedName
+                    });
                 }
             }
-        };
-    }
 
-    public IEnumerable<Note> GetNotes = new List<Note>()
-    {
-        new Note
-        {
-            Uid = Guid.NewGuid(),
-            //Id = 1,
-            UserID = 1,
-            CategoryID = 1,
-            Title = "Пропала собака породы лабрадор",
-            AnimalName = "Бонни",
-            BreedID = 212,
-            Content = "Пропала собака породы лабрадор чёрного цвета. Возраст 3 года. Отличительные особенности: белый окрас на груди и лапах. Пропала 5 апреля в районе парка.",
-            Latitude = 55.751244,
-            Longtitude = 37.618423,
-            LastSeenDate = DateTime.Parse("2023-04-05"),
-            CreatedDate = DateTime.Now.AddDays(-1),
-            IsActive = true,
-            PhoneNumber = "+79991234567"
-        },
-        new Note
-        {
-            Uid = Guid.NewGuid(),
-            //Id = 2,
-            UserID = 1,
-            CategoryID = 2,
-            Title = "Найдена собака породы хаски",
-            BreedID = 323,
-            Content = "Найдена взрослая собака, предположительно хаски. Отличительные особенности: голубые глаза. Найдена сегодня в районе жилого комплекса.",
-            Latitude = 55.751244,
-            Longtitude = 35.618423,
-            LastSeenDate = DateTime.Now,
-            CreatedDate = DateTime.Now.AddDays(1),
-            IsActive = true,
-            PhoneNumber = "+79991234568"
-        },
-        new Note
-        {
-            Uid = Guid.NewGuid(),
-            //Id = 3,
-            UserID = 2,
-            CategoryID = 1,
-            Title = "Пропала кошка породы британская",
-            AnimalName = "Мурзик",
-            BreedID = 433,
-            Content = "Пропала кошка породы британская. Возраст 1 год. Отличительные особенности: серый окрас, короткая шерсть. Пропала 1 апреля в районе дома.",
-            Latitude = 56.751244,
-            Longtitude = 36.618423,
-            LastSeenDate = DateTime.Parse("2023-04-01"),
-            CreatedDate = DateTime.Now.AddHours(1),
-            IsActive = true,
-            PhoneNumber = "+79991234569"
-        },
-        new Note
-        {
-            Uid = Guid.NewGuid(),
-            //Id = 4,
-            UserID = 3,
-            CategoryID = 1,
-            Title = "Пропала кошка породы сиамская",
-            AnimalName = "Клеопатра",
-            BreedID = 487,
-            Content = "Пропала кошка породы сиамская. Возраст 3 года. Отличительные особенности: голубые глаза, длинная шерсть. Пропала 4 апреля в районе парка.",
-            Latitude = 54.751244,
-            Longtitude = 35.618423,
-            LastSeenDate = DateTime.Parse("2023-04-04"),
-            CreatedDate = DateTime.Now.AddHours(-1),
-            IsActive = true,
-            PhoneNumber = "+79991234570"
-         },
-        new Note
-        {
-            Uid = Guid.NewGuid(),
-            //Id = 5,
-            UserID = 4,
-            CategoryID = 1,
-            Title = "Пропала собака породы бульдог",
-            AnimalName = "Бобик",
-            BreedID = 27,
-            Content = "Пропала собака породы бульдог. Возраст 4 года. Отличительные особенности: коричневый окрас, короткая шерсть. Пропала 2 апреля в районе магазина.",
-            Latitude = 54.751244,
-            Longtitude = 36.618423,
-            LastSeenDate = DateTime.Parse("2023-04-02"),
-            CreatedDate = DateTime.Now.AddHours(3),
-            IsActive = true,
-            PhoneNumber = "+79991234571"
+            return breeds;
         }
-    };
 
-    public IEnumerable<Comment> GetComments = new List<Comment>()
-    {
-         new Comment
-         {
-             Uid = Guid.NewGuid(),
-             //Id = 1,
-             UserID = 1,
-             NoteID = 1,
-             Content = "Я видел эту собаку вчера в парке. Она была с человеком в красной куртке.",
-             CreatedDate = DateTime.Now,
-         },
-         new Comment
-         {
-             Uid = Guid.NewGuid(),
-             //Id = 2,
-             UserID = 2,
-             NoteID = 1,
-             Content = "Я тоже видел эту собаку. Она была без поводка и бежала по парку.",
-             CreatedDate = DateTime.Now,
-         },
-         new Comment
-         {
-             Uid = Guid.NewGuid(),
-             //Id = 3,
-             UserID = 3,
-             NoteID = 3,
-             Content = "Я нашел эту кошку вчера вечером. Она была мокрой и испуганной. Я оставил ее у себя на ночь и сегодня привезу к ветеринару.",
-             CreatedDate = DateTime.Now.AddDays(1),
-         },
-         new Comment
-         {
-             Uid = Guid.NewGuid(),
-             //Id = 4,
-             UserID = 4,
-             NoteID = 2,
-             Content = "Я видел эту собаку сегодня утром. Она была в автобусе и ехала одна.",
-             CreatedDate = DateTime.Now.AddDays(1).AddHours(6),
-         },
-         new Comment
-         {
-             Uid = Guid.NewGuid(),
-             //Id = 5,
-             UserID = 5,
-             NoteID = 2,
-             ParentCommentID = 4,
-             Content = "Вы уверены, что она была одна? Может быть, у нее был хозяин?",
-             CreatedDate = DateTime.Now.AddHours(12),
-         },
-         new Comment
-         {
-             Uid = Guid.NewGuid(),
-             //Id = 6,
-             UserID = 6,
-             NoteID = 4,
-             Content = "Я нашел эту кошку вчера вечером. Она была мокрой и испуганной. Я оставил ее у себя на ночь и сегодня привезу к ветеринару.",
-             CreatedDate = DateTime.Now.AddDays(1),
-         },
-         new Comment
-         {
-             Uid = Guid.NewGuid(),
-             //Id = 7,
-             UserID = 7,
-             NoteID = 5,
-             Content = "Я видел эту собаку вчера в парке. Она была с человеком в красной куртке.",
-             CreatedDate = DateTime.Now.AddDays(1),
-         },
-         new Comment
-         {
-             Uid = Guid.NewGuid(),
-             //Id = 8,
-             UserID = 8,
-             NoteID = 5,
-             Content = "Я тоже видел эту собаку. Она была без поводка и бежала по парку.",
-             CreatedDate = DateTime.Now.AddHours(14),
-         },
-         new Comment
-         {
-             Uid = Guid.NewGuid(),
-             //Id = 9,
-             UserID = 9,
-             NoteID = 5,
-             Content = "Я видел эту собаку вчера, но не успел поймать.",
-             CreatedDate = DateTime.Now.AddDays(1),
-         },
-         new Comment
-         {
-             Uid = Guid.NewGuid(),
-             //Id = 10,
-             UserID = 10,
-             NoteID = 5,
-             Content = "Я видел похожую собаку вчера в парке, вроде бы с хозяином.",
-             CreatedDate = DateTime.Now.AddDays(1)
-         }
-    };
+        // Создание пользователей
+        public async Task<IEnumerable<User>> GetUsersAsync(UserManager<User> userManager)
+        {
+            var users = new List<User>();
+            for (int i = 1; i <= 10; i++)
+            {
+                var user = new User
+                {
+                    UserName = $"User{i}",
+                    Email = $"user{i}@example.com",
+                    EmailConfirmed = true,
+                };
+                var result = await userManager.CreateAsync(user, $"password{i}");
+                if (result.Succeeded)
+                {
+                    users.Add(user);
+                }
+            }
+            return users;
+        }
+
+        // Список городов России с координатами
+        private List<(string City, double Latitude, double Longitude)> GetRussianCities()
+        {
+            return new List<(string, double, double)>
+            {
+                ("Санкт-Петербург", 59.9342802, 30.3350986),
+                ("Новосибирск", 55.0083526, 82.9357327),
+                ("Екатеринбург", 56.8389261, 60.6057025),
+                ("Казань", 55.8304307, 49.0660806),
+                ("Нижний Новгород", 56.2965039, 43.936059),
+                ("Челябинск", 55.1644419, 61.4368432),
+                ("Самара", 53.2415041, 50.2212463),
+                ("Омск", 54.9920442, 73.3242361),
+                ("Ростов-на-Дону", 47.2357137, 39.701505),
+                ("Уфа", 54.7387621, 55.9720554),
+                ("Красноярск", 56.01839, 92.8671656),
+                ("Воронеж", 51.6607812, 39.2002695),
+                ("Пермь", 58.0103211, 56.2294436),
+                ("Волгоград", 48.708048, 44.5133035),
+                ("Краснодар", 45.0392674, 38.987221)
+            };
+        }
+
+        // Получение списка фотографий из папки датасета
+        private List<string> GetPhotosForAnimalKind(string animalKind)
+        {
+            string folder = animalKind == "Собака" ? "dogs" : "cats";
+            string datasetPath = Path.Combine("/app/images/dataset", folder);
+            string pattern = animalKind == "Собака" ? "dog.*.jpg" : "cat.*.jpg";
+
+            if (!Directory.Exists(datasetPath))
+            {
+                Console.WriteLine($"Папка {datasetPath} не найдена.");
+                return new List<string>();
+            }
+
+            try
+            {
+                return Directory
+                    .GetFiles(datasetPath, pattern, SearchOption.TopDirectoryOnly)
+                    .Select(Path.GetFileName)
+                    .OrderBy(x => Guid.NewGuid()) // Случайная сортировка
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при чтении файлов из {datasetPath}: {ex.Message}");
+                return new List<string>();
+            }
+        }
+
+        // Создание объявлений
+        public IEnumerable<Note> GetNotes(IEnumerable<User> users, IEnumerable<NoteCategory> categories, IEnumerable<Breed> breeds)
+        {
+            var notes = new List<Note>();
+            var random = new Random();
+            var cities = GetRussianCities();
+
+            // Ограничим до 30 случайных пород
+            var selectedBreeds = breeds.OrderBy(x => random.Next()).Take(30).ToList();
+
+            for (int i = 0; i < 30; i++)
+            {
+                var user = users.ElementAt(random.Next(users.Count()));
+                var category = categories.ElementAt(random.Next(categories.Count()));
+                var breed = selectedBreeds[i];
+                var city = cities[random.Next(cities.Count)];
+                string animalKindName = breed.AnimalKind.AnimalKindName;
+
+                // Получаем список фотографий для данного вида животного
+                var availablePhotos = GetPhotosForAnimalKind(animalKindName);
+                var photoCount = availablePhotos.Any() ? random.Next(1, 3) : 0; // 1-2 фото, если есть
+                var selectedPhotos = availablePhotos.Take(photoCount).ToList(); // Выбираем первые 1-2 после случайной сортировки
+
+                var note = new Note
+                {
+                    Uid = Guid.NewGuid(),
+                    User = user,
+                    Category = category,
+                    Title = category.CategoryName == "Потери"
+                        ? $"Пропал(а) {animalKindName} породы {breed.BreedName}"
+                        : $"Найден(а) {animalKindName} породы {breed.BreedName}",
+                    AnimalName = category.CategoryName == "Потери" ? $"Питомец{i + 1}" : null,
+                    Breed = breed,
+                    Content = category.CategoryName == "Потери"
+                        ? $"Пропал(а) {animalKindName} породы {breed.BreedName}. Возраст {random.Next(1, 10)} лет. Особые приметы: {GetRandomFeature()}. Пропал(а) {random.Next(1, 30)} апреля в районе {city.City}."
+                        : $"Найден(а) {animalKindName} породы {breed.BreedName}. Возраст примерно {random.Next(1, 10)} лет. Особые приметы: {GetRandomFeature()}. Найден(а) {random.Next(1, 30)} апреля в районе {city.City}.",
+                    Latitude = city.Latitude + random.NextDouble() * 0.01,
+                    Longtitude = city.Longitude + random.NextDouble() * 0.01,
+                    LastSeenDate = DateTime.Now.AddDays(-random.Next(1, 30)),
+                    CreatedDate = DateTime.Now.AddDays(-random.Next(1, 30)),
+                    IsActive = true,
+                    PhoneNumber = $"+7999{random.Next(1000000, 9999999)}",
+                    PhotoGallery = new PhotoGallery
+                    {
+                        Uid = Guid.NewGuid(),
+                        PhotoStorages = selectedPhotos.Select(photo => new PhotoStorage
+                        {
+                            Uid = Guid.NewGuid(),
+                            PhotoName = Path.Combine("images", "dataset", animalKindName == "Собака" ? "dogs" : "cats", photo).Replace("\\", "/")
+                        }).ToList()
+                    }
+                };
+
+                notes.Add(note);
+            }
+
+            return notes;
+        }
+
+        // Создание комментариев
+        public IEnumerable<Comment> GetComments(IEnumerable<User> users, IEnumerable<Note> notes)
+        {
+            var comments = new List<Comment>();
+            var random = new Random();
+
+            foreach (var note in notes)
+            {
+                int commentCount = random.Next(0, 4); // 0-3 комментария
+                for (int i = 0; i < commentCount; i++)
+                {
+                    var user = users.ElementAt(random.Next(users.Count()));
+                    var comment = new Comment
+                    {
+                        Uid = Guid.NewGuid(),
+                        User = user,
+                        Note = note,
+                        Content = GetRandomComment(),
+                        CreatedDate = note.CreatedDate.AddDays(random.Next(1, 10))
+                    };
+                    comments.Add(comment);
+                }
+            }
+
+            return comments;
+        }
+
+        // Вспомогательные методы
+        private string GetRandomFeature()
+        {
+            var features = new List<string>
+            {
+                "белое пятно на груди",
+                "длинный пушистый хвост",
+                "короткая блестящая шерсть",
+                "голубые глаза",
+                "хромает на заднюю лапу",
+                "чёрные уши",
+                "пятнистый окрас",
+                "белая шерсть с рыжими пятнами"
+            };
+            return features[new Random().Next(features.Count)];
+        }
+
+        private string GetRandomComment()
+        {
+            var comments = new List<string>
+            {
+                "Видел похожее животное вчера в парке.",
+                "Похоже, знаю, где оно может быть.",
+                "Оставил еду у подъезда, проверяйте.",
+                "Животное было с человеком в синей куртке.",
+                "Попробую поискать его сегодня вечером.",
+                "Позвоните мне, кажется, видел его!",
+                "Он гулял возле школы."
+            };
+            return comments[new Random().Next(comments.Count)];
+        }
+    }
 }

@@ -31,13 +31,25 @@ public class NoteController : ControllerBase
     }
 
     [HttpGet("")]
-    public async Task<IEnumerable<NoteViewModel>> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
-        var notes = await noteService.GetAll();
+        if (page < 1 || pageSize < 1)
+        {
+            return BadRequest("Page и PageSize должны быть больше 0.");
+        }
 
-        IEnumerable<NoteViewModel> result = notes.Select(mapper.Map<NoteViewModel>);
+        var notes = await noteService.GetAll(page, pageSize);
+        var totalCount = await noteService.GetTotalCount();
 
-        return result;
+        var result = new PagedResult<NoteViewModel>
+        {
+            Items = notes.Select(mapper.Map<NoteViewModel>),
+            TotalCount = totalCount,
+            Page = page,
+            PageSize = pageSize
+        };
+
+        return Ok(result);
     }
 
     [HttpGet("{id:Guid}")]

@@ -1,147 +1,168 @@
 ﻿using LostAnimals.Common.Exceptions;
-using LostAnimals.Services.Settings;
+using LostAnimals.Settings;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 
-namespace LostAnimals.Services.RabbitMqService;
-
-public class RabbitMqService : IMessageQueueService
+namespace LostAnimals.Services.RabbitMqService
 {
-    private const int ConnectRetriesCount = 10;
-    private readonly RabbitMqSettings settings;
-    private readonly IConnection connection;
-    private readonly IChannel channel;
-    private bool disposed;
-
-    public RabbitMqService(RabbitMqSettings settings)
+    public class RabbitMqService : IMessageQueueService
     {
-        settings = settings ?? throw new ArgumentNullException(nameof(settings));
-        (connection, channel) = InitializeConnectionAsync().GetAwaiter().GetResult();
-    }
+        private readonly RabbitMqSettings _settings;
+        private readonly ILogger<RabbitMqService> _logger;
+        private IConnection _connection;
+        private readonly SemaphoreSlim _connectionLock = new(1, 1);
+        private bool _isInitialized;
 
-    private readonly SemaphoreSlim connectionSemaphore = new SemaphoreSlim(1, 1);
-
-    private async Task<(IConnection, IChannel)> InitializeConnectionAsync()
-    {
-        await connectionSemaphore.WaitAsync();
-        try
+        public RabbitMqService(RabbitMqSettings settings, ILogger<RabbitMqService> logger)
         {
-            var factory = new ConnectionFactory
-            {
-                HostName = settings.Host,
-                Port = settings.Port,
-                UserName = settings.Username,
-                Password = settings.Password,
-                AutomaticRecoveryEnabled = true,
-                NetworkRecoveryInterval = TimeSpan.FromSeconds(5)
-            };
+            _settings = settings ?? throw new ArgumentNullException(nameof(settings));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
-            IConnection connection = null;
-            IChannel channel = null;
-
-            for (var i = 0; i < ConnectRetriesCount; i++)
-            {
-                try
-                {
-                    connection = await factory.CreateConnectionAsync();
-                    channel = await connection.CreateChannelAsync();
-                    await channel.BasicQosAsync(0, 1, false);
-                    return (connection, channel);
-                }
-                catch (BrokerUnreachableException)
-                {
-                    await Task.Delay(500);
-                    connection?.Dispose();
-                    channel?.Dispose();
-                }
-            }
-
-            throw new InvalidOperationException("Failed to connect to RabbitMQ after retries");
+            if (string.IsNullOrEmpty(_settings.Host))
+                throw new ArgumentException("RabbitMQ Host cannot be null or empty.", nameof(_settings.Host));
+            if (string.IsNullOrEmpty(_settings.Username))
+                throw new ArgumentException("RabbitMQ UserName cannot be null or empty.", nameof(_settings.Username));
+            if (string.IsNullOrEmpty(_settings.Password))
+                throw new ArgumentException("RabbitMQ Password cannot be null or empty.", nameof(_settings.Password));
         }
-        finally
+
+        private async Task EnsureConnectionAsync()
         {
-            connectionSemaphore.Release();
-        }
-    }
+            if (_isInitialized && _connection?.IsOpen == true)
+                return;
 
-    public async Task PushAsync<T>(string queueName, T data)
-    {
-        if (disposed)
-            throw new ObjectDisposedException(nameof(RabbitMqService));
-
-        try
-        {
-            await EnsureQueueExistsAsync(queueName);
-
-            var json = JsonSerializer.Serialize(data);
-            var body = Encoding.UTF8.GetBytes(json);
-
-            await channel.BasicPublishAsync(
-                exchange: string.Empty,
-                routingKey: queueName,
-                body: body);
-        }
-        catch (Exception ex)
-        {
-            throw new MessageQueueException("Failed to publish message", ex);
-        }
-    }
-
-    public async Task Subscribe<T>(string queueName, OnDataReceiveEvent<T> onReceive)
-    {
-        if (disposed)
-            throw new ObjectDisposedException(nameof(RabbitMqService));
-
-        if (onReceive == null)
-            return;
-
-        await EnsureQueueExistsAsync(queueName);
-
-        var consumer = new AsyncEventingBasicConsumer(channel);
-        consumer.ReceivedAsync += async (_, eventArgs) =>
-        {
+            await _connectionLock.WaitAsync();
             try
             {
-                var message = Encoding.UTF8.GetString(eventArgs.Body.Span);
-                var obj = JsonSerializer.Deserialize<T>(message);
+                if (_isInitialized && _connection?.IsOpen == true)
+                    return;
 
-                await onReceive(obj);
-                await channel.BasicAckAsync(eventArgs.DeliveryTag, false);
+                const int maxRetries = 5;
+                int attempt = 0;
+
+                while (attempt < maxRetries)
+                {
+                    try
+                    {
+                        var factory = new ConnectionFactory
+                        {
+                            HostName = _settings.Host,
+                            UserName = _settings.Username,
+                            Password = _settings.Password,
+                            AutomaticRecoveryEnabled = true
+                        };
+
+                        _connection = await factory.CreateConnectionAsync();
+                        _isInitialized = true;
+                        _logger.LogInformation("Successfully connected to RabbitMQ at {Host}", _settings.Host);
+                        return;
+                    }
+                    catch (Exception ex)
+                    {
+                        attempt++;
+                        _logger.LogWarning(ex, "Failed to connect to RabbitMQ (attempt {Attempt}/{MaxRetries})", attempt, maxRetries);
+                        if (attempt == maxRetries)
+                            throw new MessageQueueException("Failed to connect to RabbitMQ after maximum retries.", ex);
+
+                        await Task.Delay(2000 * attempt);
+                    }
+                }
+            }
+            finally
+            {
+                _connectionLock.Release();
+            }
+        }
+
+        private async Task<IChannel> CreateChannelAsync()
+        {
+            await EnsureConnectionAsync();
+            if (_connection == null || !_connection.IsOpen)
+                throw new MessageQueueException("RabbitMQ connection is not open.");
+
+            try
+            {
+                var channel = await _connection.CreateChannelAsync();
+                _logger.LogDebug("Created RabbitMQ channel.");
+                return channel;
             }
             catch (Exception ex)
             {
-                await channel.BasicNackAsync(eventArgs.DeliveryTag, false, false);
-                throw new MessageQueueException("Failed to process message", ex);
+                _logger.LogError(ex, "Failed to create RabbitMQ channel.");
+                throw new MessageQueueException("Failed to create RabbitMQ channel.", ex);
             }
-        };
+        }
 
-        await channel.BasicConsumeAsync(
-            queue: queueName,
-            autoAck: false,
-            consumer: consumer);
-    }
+        private async Task EnsureQueueExistsAsync(string queueName)
+        {
+            if (string.IsNullOrEmpty(queueName))
+                throw new ArgumentNullException(nameof(queueName));
 
-    private async Task EnsureQueueExistsAsync(string queueName)
-    {
-        await channel.QueueDeclareAsync(
-            queue: queueName,
-            durable: true,
-            exclusive: false,
-            autoDelete: false,
-            arguments: null);
-    }
+            try
+            {
+                var channel = await CreateChannelAsync();
+                await using (channel.ConfigureAwait(false))
+                {
+                    await channel.QueueDeclareAsync(queue: queueName,
+                                                    durable: true,
+                                                    exclusive: false,
+                                                    autoDelete: false,
+                                                    arguments: null);
+                    _logger.LogInformation("Declared queue {QueueName}", queueName);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to declare queue {QueueName}", queueName);
+                throw new MessageQueueException($"Failed to declare queue {queueName}.", ex);
+            }
+        }
 
-    public void Dispose()
-    {
-        if (disposed) return;
+        public async Task PushAsync<T>(string queueName, T data)
+        {
+            if (string.IsNullOrEmpty(queueName))
+                throw new ArgumentNullException(nameof(queueName));
+            if (data == null)
+                throw new ArgumentNullException(nameof(data));
 
-        disposed = true;
-        channel?.CloseAsync();
-        connection?.CloseAsync();
-        channel?.Dispose();
-        connection?.Dispose();
+            try
+            {
+                await EnsureQueueExistsAsync(queueName);
+
+                var channel = await CreateChannelAsync();
+                await using (channel.ConfigureAwait(false))
+                {
+                    var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(data));
+
+                    var properties = new BasicProperties
+                    {
+                        Persistent = true,
+                        Headers = new Dictionary<string, object>(),
+                        MessageId = Guid.NewGuid().ToString(),
+                        Timestamp = new AmqpTimestamp(DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+                    };
+
+                    // Исправленный вызов BasicPublishAsync
+                    await channel.BasicPublishAsync(
+                        exchange: "",
+                        routingKey: queueName,
+                        mandatory: false, // Добавляем обязательный параметр
+                        basicProperties: properties,
+                        body: new ReadOnlyMemory<byte>(body)); // Конвертируем в ReadOnlyMemory
+
+                    _logger.LogInformation("Published message to queue {QueueName}", queueName);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to publish message to queue {QueueName}", queueName);
+                throw new MessageQueueException("Failed to publish message.", ex);
+            }
+        }
     }
 }

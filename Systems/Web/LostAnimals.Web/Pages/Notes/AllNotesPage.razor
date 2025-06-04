@@ -9,43 +9,92 @@
 
 <MudText Typo="Typo.h3" GutterBottom="true">Объявления</MudText>
 
-@if (notes != null)
-{
-    <MudContainer>
-        @foreach (var note in notes)
-        {
-            <NoteCard Note="note" PhotosDictionary="photosDictionary" />
-        }
-    </MudContainer>
-}
-else
+@if (isLoading)
 {
     <div style="display: flex; align-items: center; justify-content: center; height: 60vh;">
         <MudProgressCircular Color="Color.Primary" Size="Size.Large" Indeterminate="true" />
     </div>
 }
+else if (notes != null)
+{
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <MudAlert Severity="Severity.Error">@errorMessage</MudAlert>
+    }
+    <MudContainer>
+        @foreach (var note in notes.Items)
+        {
+            <NoteCard Note="note" PhotosDictionary="photosDictionary" />
+        }
+    </MudContainer>
+
+    <MudContainer Class="mt-4" Style="display: flex; justify-content: center; align-items: center;">
+        <MudButton OnClick="PreviousPage" Disabled="@(currentPage <= 1)" Class="mr-2">Предыдущая</MudButton>
+        <MudText>Страница @currentPage из @notes.TotalPages</MudText>
+        <MudButton OnClick="NextPage" Disabled="@(currentPage >= notes.TotalPages)" Class="ml-2">Следующая</MudButton>
+    </MudContainer>
+}
 
 @code {
-    private IEnumerable<NoteViewModel> notes;
+    private PagedResult<NoteViewModel> notes;
     private Dictionary<Guid, IEnumerable<PhotoStorageViewModel>> photosDictionary = new Dictionary<Guid, IEnumerable<PhotoStorageViewModel>>();
+    private int currentPage = 1;
+    private int pageSize = 10;
+    private bool isLoading = false;
+    private string errorMessage = null;
 
     protected override async Task OnInitializedAsync()
     {
-        notes = await NoteService.GetNotes();
-        notes = notes.OrderByDescending(n => n.CreatedDate);
-        await LoadPhotos();
+        await LoadNotes();
+    }
+
+    private async Task LoadNotes()
+    {
+        isLoading = true;
+        try
+        {
+            notes = await NoteService.GetNotes(currentPage, pageSize);
+            await LoadPhotos();
+            errorMessage = null;
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Ошибка при загрузке объявлений: " + ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
     }
 
     private async Task LoadPhotos()
     {
-        if (notes != null)
+        if (notes != null && notes.Items != null)
         {
-            var galleryIds = notes.Where(n => n.PhotoGalleryId.HasValue).Select(n => n.PhotoGalleryId.Value).Distinct();
+            var galleryIds = notes.Items.Where(n => n.PhotoGalleryId.HasValue).Select(n => n.PhotoGalleryId.Value).Distinct();
             foreach (var galleryId in galleryIds)
             {
                 var photos = await PhotoService.GetPhotosByGalleryId(galleryId);
                 photosDictionary[galleryId] = photos;
             }
+        }
+    }
+
+    private async Task PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage--;
+            await LoadNotes();
+        }
+    }
+
+    private async Task NextPage()
+    {
+        if (notes != null && currentPage < notes.TotalPages)
+        {
+            currentPage++;
+            await LoadNotes();
         }
     }
 }

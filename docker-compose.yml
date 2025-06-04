@@ -1,10 +1,15 @@
-version: '3.4'
+version: '3.8'
 
 services:
-
   lostanimals_postgresql:
     image: postgres:14.1
-    
+
+  rabbitmq:
+    image: rabbitmq:3.9-management
+
+  milvus:
+    image: milvusdb/milvus:v2.3.0
+
   lostanimals_api:
     image: ${DOCKER_REGISTRY-}lostanimalsapi
     build:
@@ -12,7 +17,8 @@ services:
       dockerfile: Systems/Api/LostAnimals.Api/Dockerfile
     depends_on:
       - lostanimals_postgresql
- 
+      - rabbitmq
+
   lostanimals_identity:
     image: ${DOCKER_REGISTRY-}lostanimalsidentity
     build:
@@ -30,3 +36,22 @@ services:
     depends_on:
       - lostanimals_postgresql
       - lostanimals_api
+
+  animal_photosearch_api:
+    image: ${DOCKER_REGISTRY-}animalphotosearchapi
+    build:
+      context: .
+      dockerfile: Systems/PhotoSearch/LostAnimals.PhotoSearch/Dockerfile
+    depends_on:
+      - rabbitmq
+      - milvus
+
+volumes:
+  pgdata:
+  milvusdata:
+  storage:
+
+networks:
+  shared_lostanimals_net:
+    name: lostanimals
+    driver: bridge

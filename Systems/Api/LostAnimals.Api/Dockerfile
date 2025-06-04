@@ -26,6 +26,7 @@ COPY ["Services/LostAnimals.Services.EmailSender/LostAnimals.Services.EmailSende
 COPY ["Services/LostAnimals.Services.Logger/LostAnimals.Services.Logger.csproj", "Services/LostAnimals.Services.Logger/"]
 COPY ["Services/LostAnimals.Services.NoteCategory/LostAnimals.Services.NoteCategories.csproj", "Services/LostAnimals.Services.NoteCategory/"]
 COPY ["Services/LostAnimals.Services.Notes/LostAnimals.Services.Notes.csproj", "Services/LostAnimals.Services.Notes/"]
+COPY ["LostAnimals.Services.RabbitMqService/LostAnimals.Services.RabbitMqService.csproj", "LostAnimals.Services.RabbitMqService/"]
 COPY ["Systems/Api/LostAnimals.ApiSpecialSettings/LostAnimals.ApiSpecialSettings.csproj", "Systems/Api/LostAnimals.ApiSpecialSettings/"]
 RUN dotnet restore "./Systems/Api/LostAnimals.Api/LostAnimals.Api.csproj"
 COPY . .
@@ -40,6 +41,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY ["Data/LostAnimals.Context.Seeder/Seeds/DemoData/Breeds.csv", "."]
+COPY images/dataset /app/images/dataset
 USER root
 RUN chown -R app:app /app/wwwroot
 RUN chmod -R 755 /app/wwwroot

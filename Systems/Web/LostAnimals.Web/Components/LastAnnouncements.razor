@@ -54,7 +54,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         var allNotes = await NoteService.GetNotes();
-        notes = allNotes.OrderByDescending(n => n.CreatedDate).Take(3).ToList();
+        notes = allNotes.Items.OrderByDescending(n => n.CreatedDate).Take(3).ToList();
         await LoadPhotos();
     }
 

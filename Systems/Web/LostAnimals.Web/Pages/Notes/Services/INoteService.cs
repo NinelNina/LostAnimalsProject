@@ -5,7 +5,7 @@ namespace LostAnimals.Web.Pages.Notes.Services;
 
 public interface INoteService
 {
-    Task<IEnumerable<NoteViewModel>> GetNotes();
+    Task<PagedResult<NoteViewModel>> GetNotes(int page = 1, int pageSize = 10);
     Task<NoteViewModel> GetNote(Guid noteId);
     Task<NoteViewModel> AddNote(CreateNoteViewModel model);
     Task EditNote(Guid noteId, UpdateNoteViewModel model);

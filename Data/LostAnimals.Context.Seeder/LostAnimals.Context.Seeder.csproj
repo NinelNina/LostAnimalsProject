@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\LostAnimals.Services.RabbitMqService\LostAnimals.Services.RabbitMqService.csproj" />
     <ProjectReference Include="..\..\Services\LostAnimals.Services.UserAccount\LostAnimals.Services.UserAccount.csproj" />
     <ProjectReference Include="..\LostAnimals.Context.Entities\LostAnimals.Context.Entities.csproj" />
     <ProjectReference Include="..\LostAnimals.Context\LostAnimals.Context.csproj" />

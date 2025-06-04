@@ -3,11 +3,19 @@ using System.Net.Http.Json;
 
 namespace LostAnimals.Web.Pages.AnimalKind.Services;
 
-public class AnimalKindService(HttpClient httpClient) : IAnimalKindService
+public class AnimalKindService : IAnimalKindService
 {
+    private readonly IHttpClientFactory httpClientFactory;
+
+    public AnimalKindService(IHttpClientFactory httpClientFactory)
+    {
+        this.httpClientFactory = httpClientFactory;
+    }
+
     public async Task<IEnumerable<AnimalKindViewModel>> GetAnimalKinds()
     {
-        var response = await httpClient.GetAsync("v1/AnimalKind");
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.GetAsync("v1/AnimalKind");
         if (!response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();

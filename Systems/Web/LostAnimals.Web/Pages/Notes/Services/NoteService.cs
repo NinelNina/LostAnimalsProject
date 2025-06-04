@@ -5,23 +5,31 @@ using Microsoft.AspNetCore.Components.Forms;
 
 namespace LostAnimals.Web.Pages.Notes.Services;
 
-public class NoteService(HttpClient httpClient) : INoteService
+public class NoteService : INoteService
 {
-    public async Task<IEnumerable<NoteViewModel>> GetNotes()
+    private IHttpClientFactory httpClientFactory;
+
+    public NoteService(IHttpClientFactory httpClientFactory)
     {
-        var response = await httpClient.GetAsync("v1/note");
+        this.httpClientFactory = httpClientFactory;
+    }
+
+    public async Task<PagedResult<NoteViewModel>> GetNotes(int page = 1, int pageSize = 10)
+    {
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.GetAsync($"v1/note?page={page}&pageSize={pageSize}");
         if (!response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();
             throw new Exception(content);
         }
-
-        return await response.Content.ReadFromJsonAsync<IEnumerable<NoteViewModel>>() ?? new List<NoteViewModel>();
+        return await response.Content.ReadFromJsonAsync<PagedResult<NoteViewModel>>() ?? new PagedResult<NoteViewModel>();
     }
 
     public async Task<NoteViewModel> GetNote(Guid id)
     {
-        var response = await httpClient.GetAsync($"v1/note/{id}");
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.GetAsync($"v1/note/{id}");
         if (!response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();
@@ -35,7 +43,8 @@ public class NoteService(HttpClient httpClient) : INoteService
     {
 
         var requestContent = JsonContent.Create(model);
-        var response = await httpClient.PostAsync("v1/note", requestContent);
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.PostAsync("v1/note", requestContent);
 
         if (!response.IsSuccessStatusCode)
         {
@@ -49,7 +58,8 @@ public class NoteService(HttpClient httpClient) : INoteService
     public async Task EditNote(Guid noteId, UpdateNoteViewModel model)
     {
         var requestContent = JsonContent.Create(model);
-        var response = await httpClient.PutAsync($"v1/note/{noteId}", requestContent);
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.PutAsync($"v1/note/{noteId}", requestContent);
 
         var content = await response.Content.ReadAsStringAsync();
 
@@ -61,7 +71,8 @@ public class NoteService(HttpClient httpClient) : INoteService
 
     public async Task DeleteNote(Guid noteId)
     {
-        var response = await httpClient.DeleteAsync($"v1/note/{noteId}");
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.DeleteAsync($"v1/note/{noteId}");
 
         var content = await response.Content.ReadAsStringAsync();
 
@@ -84,7 +95,8 @@ public class NoteService(HttpClient httpClient) : INoteService
         var fileContent = new StreamContent(stream);
         content.Add(fileContent, "file", file.Name);
 
-        var response = await httpClient.PostAsync($"/v1/Note/{noteId}/Photo/upload", content);
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.PostAsync($"/v1/Note/{noteId}/Photo/upload", content);
 
         return response.IsSuccessStatusCode;
     }

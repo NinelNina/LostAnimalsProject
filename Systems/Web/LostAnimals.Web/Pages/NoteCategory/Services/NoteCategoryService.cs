@@ -3,11 +3,19 @@ using LostAnimals.Web.Pages.NoteCategory.Models;
 
 namespace LostAnimals.Web.Pages.NoteCategory.Services;
 
-public class NoteCategoryService(HttpClient httpClient) : INoteCategoryService
+public class NoteCategoryService : INoteCategoryService
 {
+    private IHttpClientFactory httpClientFactory;
+
+    public NoteCategoryService(IHttpClientFactory httpClientFactory)
+    {
+        this.httpClientFactory = httpClientFactory;
+    }
+
     public async Task<IEnumerable<NoteCategoryViewModel>> GetCategories()
     {
-        var response = await httpClient.GetAsync("v1/noteCategory");
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.GetAsync("v1/noteCategory");
         if (!response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();
@@ -19,7 +27,8 @@ public class NoteCategoryService(HttpClient httpClient) : INoteCategoryService
 
     public async Task<NoteCategoryViewModel> GetNoteCategory(Guid id)
     {
-        var response = await httpClient.GetAsync($"v1/noteCategory/{id}");
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.GetAsync($"v1/noteCategory/{id}");
         if (!response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();
@@ -31,7 +40,8 @@ public class NoteCategoryService(HttpClient httpClient) : INoteCategoryService
     
     public async Task<NoteCategoryViewModel> GetNoteCategoryByName(string name)
     {
-        var response = await httpClient.GetAsync($"v1/noteCategory/{name}");
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.GetAsync($"v1/noteCategory/{name}");
         if (!response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();

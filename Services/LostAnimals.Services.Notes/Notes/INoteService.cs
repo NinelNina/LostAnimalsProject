@@ -7,8 +7,16 @@ public interface INoteService
     /// <summary>
     /// Get all notes
     /// </summary>
+    /// <param name="page"></param>
+    /// <param name="pageSize"></param>
     /// <returns></returns>
-    Task<IEnumerable<NoteModel>> GetAll();
+    Task<IEnumerable<NoteModel>> GetAll(int page, int pageSize);
+
+    /// <summary>
+    /// Get all notes count
+    /// </summary>
+    /// <returns></returns>
+    Task<int> GetTotalCount();
 
     /// <summary>
     /// Get note by id

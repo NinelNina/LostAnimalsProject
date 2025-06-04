@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.8'
 
 services:
   lostanimals_postgresql:
@@ -10,8 +10,24 @@ services:
       - "45432:5432"
     networks:
       - shared_lostanimals_net
-    volumes:      
+    volumes:
       - ~/.docker-conf/postgresql/data/:/var/lib/postgresql/data
+
+  rabbitmq:
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - shared_lostanimals_net
+
+  milvus:
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    volumes:
+      - milvusdata:/var/lib/milvus
+    networks:
+      - shared_lostanimals_net
 
   lostanimals_api:
     ports:
@@ -20,6 +36,9 @@ services:
       - shared_lostanimals_net
     env_file:
       - env.api
+    volumes:
+      - ./images/dataset:/app/images/dataset
+      - storage:/app/storage
 
   lostanimals_identity:
     ports:
@@ -28,13 +47,20 @@ services:
       - shared_lostanimals_net
     env_file:
       - env.identity
+
   lostanimals_web:
     ports:
       - "10002:80"
     networks:
       - shared_lostanimals_net
 
-networks:
-  shared_lostanimals_net:
-    name: lostanimals
-    driver: bridge
+  animal_photosearch_api:
+    ports:
+      - "10003:8000"
+    networks:
+      - shared_lostanimals_net
+    env_file:
+      - env.photosearch
+    volumes:
+      - ./images/dataset:/app/images/dataset
+      - storage:/app/storage

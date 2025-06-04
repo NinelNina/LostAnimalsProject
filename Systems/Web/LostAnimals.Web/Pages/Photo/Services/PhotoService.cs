@@ -5,11 +5,11 @@ namespace LostAnimals.Web.Pages.Photo.Services;
 
 public class PhotoService : IPhotoService
 {
-    private readonly HttpClient httpClient;
+    private readonly IHttpClientFactory httpClientFactory;
 
-    public PhotoService(HttpClient httpClient)
+    public PhotoService(IHttpClientFactory httpClientFactory)
     {
-        this.httpClient = httpClient;
+        this.httpClientFactory = httpClientFactory;
     }
 
     public async Task DeletePhoto(Guid photoId)
@@ -19,7 +19,9 @@ public class PhotoService : IPhotoService
 
     public async Task<IEnumerable<PhotoStorageViewModel>> GetPhotosByGalleryId(Guid galleryId)
     {
-        var response = await httpClient.GetAsync($"v1/photo/{galleryId}");
+        var client = httpClientFactory.CreateClient("ApiClient");
+        var response = await client.GetAsync($"v1/photo/{galleryId}");
+
         if (!response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();

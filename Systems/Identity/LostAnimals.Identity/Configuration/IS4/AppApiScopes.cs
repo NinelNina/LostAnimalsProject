@@ -16,5 +16,5 @@ public static class AppApiScopes
             new ApiScope(AppScopes.NoteCategoriesWrite, "NoteCategoriesWrite"),
             new ApiScope(AppScopes.CommentsWrite, "CommentsWrite"),
             new ApiScope(AppScopes.UsersRead, "UsersRead"),
-};
+    };
 }

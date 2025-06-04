@@ -1,0 +1,64 @@
+﻿@page "/photo-search"
+@using LostAnimals.Web.Pages.Notes.Models
+@using LostAnimals.Web.Pages.Notes.Services
+@using LostAnimals.Web.Pages.Photo.Models
+@using LostAnimals.Web.Pages.PhotoSearch.Services
+@inject IPhotoSearchService PhotoSearchService
+@inject INoteService NoteService
+
+<h3>Поиск по фото</h3>
+
+<MudFileUpload T="IBrowserFile" Accept="image/*" FilesChanged="OnFileSelected">
+    <ButtonTemplate>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary">Выбрать фото</MudButton>
+    </ButtonTemplate>
+</MudFileUpload>
+
+@if (notes != null)
+{
+    <h4>Результаты поиска:</h4>
+    @foreach (var note in notes)
+    {
+        <NoteCard Note="note" PhotosDictionary="PhotosDictionary" />
+    }
+}
+else if (isLoading)
+{
+    <p>Загрузка...</p>
+}
+
+@code {
+    private List<NoteViewModel> notes;
+    private bool isLoading;
+    [Parameter] public Dictionary<Guid, IEnumerable<PhotoStorageViewModel>> PhotosDictionary { get; set; }
+
+    private async Task OnFileSelected(IBrowserFile file)
+    {
+        if (file != null)
+        {
+            isLoading = true;
+            try
+            {
+                // Отправляем фото на поиск
+                var searchResults = await PhotoSearchService.SearchByPhotoAsync(file);
+                notes = new List<NoteViewModel>();
+
+                // Загружаем детали объявлений по note_id
+                foreach (var result in searchResults)
+                {
+                    var note = await NoteService.GetNote(Guid.Parse(result.NoteId));
+                    notes.Add(note);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Здесь можно добавить отображение ошибки пользователю
+                Console.WriteLine($"Ошибка: {ex.Message}");
+            }
+            finally
+            {
+                isLoading = false;
+            }
+        }
+    }
+}

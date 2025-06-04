@@ -26,7 +26,19 @@
             {
                 <MudText Class="mt-2"><strong>Кличка:</strong> @NoteModel.AnimalName</MudText>
             }
+
             <MudText Typo="Typo.body1" Class="mt-2">@NoteModel.Content</MudText>
+
+            <MudText Class="mt-2">
+                <strong>Видели в последний раз: </strong>
+                @if (NoteModel.LastSeenDate.HasValue)
+                {
+                    @NoteModel.LastSeenDate.Value.ToShortDateString()
+                }
+            </MudText>
+
+            <MudText Class="mt-2"><strong>Контакты:</strong> @NoteModel.PhoneNumber</MudText>
+
             @if (NoteModel.PhotoGalleryId != null)
             {
                 if (Photos != null && Photos.Any())
