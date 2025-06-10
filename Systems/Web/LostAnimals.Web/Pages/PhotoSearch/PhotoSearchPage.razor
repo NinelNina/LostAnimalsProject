@@ -1,20 +1,31 @@
-﻿@page "/photo-search"
+﻿@page "/photosearch"
+@using LostAnimals.Web.Components
 @using LostAnimals.Web.Pages.Notes.Models
 @using LostAnimals.Web.Pages.Notes.Services
 @using LostAnimals.Web.Pages.Photo.Models
 @using LostAnimals.Web.Pages.PhotoSearch.Services
 @inject IPhotoSearchService PhotoSearchService
 @inject INoteService NoteService
+@inject IJSRuntime JSRuntime
 
 <h3>Поиск по фото</h3>
 
-<MudFileUpload T="IBrowserFile" Accept="image/*" FilesChanged="OnFileSelected">
-    <ButtonTemplate>
-        <MudButton Variant="Variant.Filled" Color="Color.Primary">Выбрать фото</MudButton>
-    </ButtonTemplate>
-</MudFileUpload>
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <MudAlert Severity="Severity.Error">@errorMessage</MudAlert>
+}
 
-@if (notes != null)
+<div class="drop-zone" @ondragover:preventDefault>
+    Перетащите фото сюда или
+    <InputFile id="fileInput" @ref="fileInput" OnChange="@HandleFileSelected" Accept="image/*" hidden />
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@TriggerFileInput">Выбрать фото</MudButton>
+</div>
+
+@if (isLoading)
+{
+    <p>Загрузка...</p>
+}
+else if (notes != null && notes.Any())
 {
     <h4>Результаты поиска:</h4>
     @foreach (var note in notes)
@@ -22,28 +33,41 @@
         <NoteCard Note="note" PhotosDictionary="PhotosDictionary" />
     }
 }
-else if (isLoading)
+else if (notes != null)
 {
-    <p>Загрузка...</p>
+    <p>Ничего не найдено.</p>
 }
 
 @code {
-    private List<NoteViewModel> notes;
+    private List<NoteViewModel>? notes;
     private bool isLoading;
-    [Parameter] public Dictionary<Guid, IEnumerable<PhotoStorageViewModel>> PhotosDictionary { get; set; }
+    private string? errorMessage;
+    private InputFile? fileInput;
+    [Parameter] public Dictionary<Guid, IEnumerable<PhotoStorageViewModel>> PhotosDictionary { get; set; } = new();
 
-    private async Task OnFileSelected(IBrowserFile file)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("handleDragAndDrop.init", DotNetObjectReference.Create(this), "fileInput");
+        }
+    }
+
+    private async Task TriggerFileInput()
+    {
+        await JSRuntime.InvokeVoidAsync("eval", $"document.getElementById('fileInput').click();");
+    }
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
         if (file != null)
         {
             isLoading = true;
             try
             {
-                // Отправляем фото на поиск
                 var searchResults = await PhotoSearchService.SearchByPhotoAsync(file);
                 notes = new List<NoteViewModel>();
-
-                // Загружаем детали объявлений по note_id
                 foreach (var result in searchResults)
                 {
                     var note = await NoteService.GetNote(Guid.Parse(result.NoteId));
@@ -52,12 +76,12 @@ else if (isLoading)
             }
             catch (Exception ex)
             {
-                // Здесь можно добавить отображение ошибки пользователю
-                Console.WriteLine($"Ошибка: {ex.Message}");
+                errorMessage = $"Ошибка при поиске: {ex.Message}";
             }
             finally
             {
                 isLoading = false;
+                StateHasChanged();
             }
         }
     }

@@ -1,14 +1,10 @@
 import io
-import json
-import os
 from typing import Optional, List, Dict
 
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
-from fastapi.responses import JSONResponse
 from PIL import Image
 
 from api.dependencies import get_detector, get_embedder, get_vector_db
-from config import settings
 from services.detection import PetDetector
 from services.embedding import EmbeddingGenerator
 from services.milvus import VectorDBService

@@ -4,7 +4,6 @@ import json
 import aio_pika
 from typing import Optional, Dict, Any
 from PIL import Image
-from pymilvus import Collection
 import logging
 from datetime import datetime
 from services.embedding import EmbeddingGenerator
@@ -72,12 +71,12 @@ class RabbitMQConsumer:
             queue = await self.channel.declare_queue(
                 self.queue_name,
                 durable=True,
-                arguments={
-                    "x-message-ttl": 86400000,
-                    "x-max-length": 10000,
-                    "x-dead-letter-exchange": "",
-                    "x-dead-letter-routing-key": self.dead_letter_queue
-                }
+                # arguments={
+                #     "x-message-ttl": 86400000,
+                #     "x-max-length": 10000,
+                #     "x-dead-letter-exchange": "",
+                #     "x-dead-letter-routing-key": self.dead_letter_queue
+                # }
             )
 
             logger.info(f"Started consuming queue: {self.queue_name}")
@@ -96,19 +95,19 @@ class RabbitMQConsumer:
 
     async def process_message(self, message: aio_pika.IncomingMessage):
         """Обработка сообщения с улучшенной валидацией"""
-        async with message.process():
+        async with message.process(requeue=True):  # Enable requeue for unhandled exceptions
             try:
                 start_time = datetime.now()
                 data = self._validate_message(message)
 
                 # Логирование начала обработки
                 logger.info(
-                    f"Processing photo {data['photo_id']} "
-                    f"from note {data['note_id']}"
+                    f"Processing photo {data['PhotoId']} "
+                    f"from note {data['NoteId']}"
                 )
 
                 # Генерация эмбеддинга
-                embedding = await self._generate_embedding(data['image_path'])
+                embedding = await self._generate_embedding(data['ImagePath'])
 
                 # Сохранение в Milvus
                 await self._save_to_milvus(data, embedding)
@@ -116,30 +115,26 @@ class RabbitMQConsumer:
                 # Логирование успешной обработки
                 processing_time = (datetime.now() - start_time).total_seconds()
                 logger.info(
-                    f"Successfully processed photo {data['photo_id']} "
+                    f"Successfully processed photo {data['PhotoId']} "
                     f"in {processing_time:.2f} seconds"
                 )
 
-            except (ValueError, FileNotFoundError) as e:
+            except (ValueError, FileNotFoundError, json.JSONDecodeError) as e:
                 logger.error(f"Validation error: {e}")
-                await message.reject(requeue=False)
-            except json.JSONDecodeError as e:
-                logger.error(f"Invalid JSON: {e}")
-                await message.reject(requeue=False)
+                raise  # Let message.process() handle NACK with requeue=True
             except Exception as e:
                 logger.error(f"Processing failed: {e}")
-                await message.reject(requeue=True)
-                raise
+                raise  # Let message.process() handle NACK with requeue=True
 
     def _validate_message(self, message: aio_pika.IncomingMessage) -> Dict[str, Any]:
         """Валидация входящего сообщения"""
         data = json.loads(message.body.decode())
 
         required_fields = {
-            'image_path': str,
-            'note_id': str,
-            'photo_id': str,
-            'animal_type': str
+            'ImagePath': str,
+            'NoteId': str,
+            'PhotoId': str,
+            'AnimalType': str
         }
 
         missing_fields = [
@@ -153,13 +148,13 @@ class RabbitMQConsumer:
         # Проверка существования файла
         full_path = os.path.join(
             os.getenv("STORAGE_ROOT", "/storage"),
-            data['image_path'].lstrip('/')
+            data['ImagePath'].lstrip('/')
         )
 
         if not os.path.exists(full_path):
             raise FileNotFoundError(f"Image file not found: {full_path}")
 
-        data['full_path'] = full_path
+        #data['full_path'] = full_path
         return data
 
     async def _generate_embedding(self, image_path: str) -> list:
@@ -176,11 +171,11 @@ class RabbitMQConsumer:
             await asyncio.wait_for(
                 self.db.insert(
                     embedding=embedding,
-                    animal_type=data['animal_type'],
-                    image_path=data['image_path'],
-                    note_id=data['note_id'],
-                    photo_id=data['photo_id'],
-                    metadata=data.get('metadata', {})
+                    animal_type=data['AnimalType'],
+                    image_path=data['ImagePath'],
+                    note_id=data['NoteId'],
+                    photo_id=data['PhotoId'],
+                    metadata=data.get('Metadata', {})
                 ),
                 timeout=10.0
             )

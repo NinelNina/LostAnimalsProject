@@ -7,8 +7,14 @@ services:
   rabbitmq:
     image: rabbitmq:3.9-management
 
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.5
+
+  minio:
+    image: minio/minio:RELEASE.2023-03-20T20-16-18Z
+
   milvus:
-    image: milvusdb/milvus:v2.3.0
+    image: milvusdb/milvus:v2.4.15
 
   lostanimals_api:
     image: ${DOCKER_REGISTRY-}lostanimalsapi
@@ -45,11 +51,15 @@ services:
     depends_on:
       - rabbitmq
       - milvus
+      - etcd
+      - minio
 
 volumes:
   pgdata:
   milvusdata:
   storage:
+  etcd_data:
+  minio_data:
 
 networks:
   shared_lostanimals_net:

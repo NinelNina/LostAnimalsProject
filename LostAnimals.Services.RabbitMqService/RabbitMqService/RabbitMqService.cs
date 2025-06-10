@@ -23,8 +23,8 @@ namespace LostAnimals.Services.RabbitMqService
             _settings = settings ?? throw new ArgumentNullException(nameof(settings));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
-            if (string.IsNullOrEmpty(_settings.Host))
-                throw new ArgumentException("RabbitMQ Host cannot be null or empty.", nameof(_settings.Host));
+            if (string.IsNullOrEmpty(_settings.Url))
+                throw new ArgumentException("RabbitMQ Host cannot be null or empty.", nameof(_settings.Url));
             if (string.IsNullOrEmpty(_settings.Username))
                 throw new ArgumentException("RabbitMQ UserName cannot be null or empty.", nameof(_settings.Username));
             if (string.IsNullOrEmpty(_settings.Password))
@@ -51,15 +51,16 @@ namespace LostAnimals.Services.RabbitMqService
                     {
                         var factory = new ConnectionFactory
                         {
-                            HostName = _settings.Host,
+                            Uri = new Uri(_settings.Url),
                             UserName = _settings.Username,
                             Password = _settings.Password,
-                            AutomaticRecoveryEnabled = true
+                            AutomaticRecoveryEnabled = true,
+                            NetworkRecoveryInterval = TimeSpan.FromSeconds(5)
                         };
 
                         _connection = await factory.CreateConnectionAsync();
                         _isInitialized = true;
-                        _logger.LogInformation("Successfully connected to RabbitMQ at {Host}", _settings.Host);
+                        _logger.LogInformation("Successfully connected to RabbitMQ at {Uri}", _settings.Url);
                         return;
                     }
                     catch (Exception ex)
@@ -147,13 +148,12 @@ namespace LostAnimals.Services.RabbitMqService
                         Timestamp = new AmqpTimestamp(DateTimeOffset.UtcNow.ToUnixTimeSeconds())
                     };
 
-                    // Исправленный вызов BasicPublishAsync
                     await channel.BasicPublishAsync(
                         exchange: "",
                         routingKey: queueName,
-                        mandatory: false, // Добавляем обязательный параметр
+                        mandatory: false,
                         basicProperties: properties,
-                        body: new ReadOnlyMemory<byte>(body)); // Конвертируем в ReadOnlyMemory
+                        body: new ReadOnlyMemory<byte>(body));
 
                     _logger.LogInformation("Published message to queue {QueueName}", queueName);
                 }

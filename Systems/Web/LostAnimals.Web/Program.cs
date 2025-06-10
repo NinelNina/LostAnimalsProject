@@ -1,5 +1,6 @@
 using Blazored.LocalStorage;
 using LostAnimals.Web;
+using LostAnimals.Web.Handlers;
 using LostAnimals.Web.Pages.AnimalKind.Services;
 using LostAnimals.Web.Pages.Auth.Services;
 using LostAnimals.Web.Pages.Breed.Services;
@@ -19,16 +20,16 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+builder.Services.AddScoped<CustomAuthHandler>();
+
 builder.Services.AddHttpClient("ApiClient", client =>
 {
     client.BaseAddress = new Uri(Settings.ApiRoot);
-    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-});
+}).AddHttpMessageHandler<CustomAuthHandler>();
 
 builder.Services.AddHttpClient("PhotoSearchClient", client =>
 {
     client.BaseAddress = new Uri(Settings.SearchPhotoRoot);
-    //client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
 
 builder.Services.AddMudServices();

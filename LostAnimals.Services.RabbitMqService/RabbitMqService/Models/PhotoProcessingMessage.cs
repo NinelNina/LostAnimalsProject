@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace LostAnimals.Services.RabbitMqService;
+﻿namespace LostAnimals.Services.RabbitMqService;
 
 public class PhotoProcessingMessage : IMessage
 {
@@ -10,8 +7,12 @@ public class PhotoProcessingMessage : IMessage
     public string MessageType => "PhotoProcessing";
 
     public Guid NoteId { get; set; }
+
     public Guid PhotoId { get; set; }
+
     public string ImagePath { get; set; }
+
     public string AnimalType { get; set; }
+
     public Dictionary<string, object> Metadata { get; set; } = new();
 }

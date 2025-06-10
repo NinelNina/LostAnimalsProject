@@ -70,21 +70,19 @@
             break;
         case 3:
             <MudText Typo="Typo.h6" GutterBottom="true">Загрузите фотографии:</MudText>
-            <InputFile OnChange="@(async (InputFileChangeEventArgs e) => { await HandleFileSelected(e); })" />
-            @if (createdNote != null)
+            <div class="drop-zone" @ondragover:preventDefault>
+                Перетащите фото сюда или
+                <InputFile id="fileInput" @ref="fileInput" OnChange="@HandleFileSelected" multiple hidden />
+                <MudButton Color="Color.Primary" OnClick="@TriggerFileInput">Выбрать файлы</MudButton>
+            </div>
+            @if (createdNote != null && createdNote.PhotoGalleryId != null && Photos != null && Photos.Any())
             {
-                @if (createdNote.PhotoGalleryId != null)
-                {
-                    if (Photos != null && Photos.Any())
+                <MudItem style="display: flex; justify-content: center; align-items: center;">
+                    @foreach (var photo in Photos)
                     {
-                        <MudItem style="display: flex; justify-content: center; align-items: center;">
-                            @foreach (var photo in Photos)
-                            {
-                                <MudImage Src="@GetFullImagePath(@photo)" Alt="Animal image" Style="max-height: 100px" Class="mt-2 mr-2" />
-                            }
-                        </MudItem>
+                        <MudImage Src="@GetFullImagePath(photo)" Alt="Animal image" Style="max-height: 100px" Class="mt-2 mr-2" />
                     }
-                }
+                </MudItem>
             }
             <MudButton Color="Color.Primary" Class="mt-3" OnClick="@HandleSubmit">Создать объявление</MudButton>
             break;
@@ -95,6 +93,11 @@
 @code {
     [Parameter]
     public string CategoryName { get; set; }
+
+    private async Task TriggerFileInput()
+    {
+        await JSRuntime.InvokeVoidAsync("eval", $"document.getElementById('fileInput').click();");
+    }
 
     private Dictionary<string, string> categoryTitle = new Dictionary<string, string>
     {
@@ -118,6 +121,8 @@
     private NoteCategoryViewModel category;
     private ClaimsPrincipal user;
     private NoteViewModel createdNote;
+    private string? errorMessage;
+    private InputFile? fileInput;
 
     protected override async Task OnInitializedAsync()
     {
@@ -175,20 +180,26 @@
 
     private async Task HandleFileSelected(InputFileChangeEventArgs e)
     {
-        var file = e.GetMultipleFiles(1);
-
-        if (file == null)
+        var files = e.GetMultipleFiles();
+        if (files.Any())
         {
-            return;
-        }
-        this.file = file.ToArray()[0];
-
-        var response = await NoteService.UploadPhotoAsync(createdNote.Id, this.file);
-
-        if (response)
-        {
-            createdNote = await NoteService.GetNote(createdNote.Id);
-            await LoadPhotos();
+            foreach (var file in files)
+            {
+                try
+                {
+                    var response = await NoteService.UploadPhotoAsync(createdNote.Id, file);
+                    if (response)
+                    {
+                        createdNote = await NoteService.GetNote(createdNote.Id);
+                        await LoadPhotos();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    errorMessage = $"Ошибка при загрузке фото: {ex.Message}";
+                }
+            }
+            StateHasChanged();
         }
     }
 
@@ -214,24 +225,49 @@
 
     private async Task SaveNote()
     {
-        createdNote = await NoteService.AddNote(noteModel);
+        try
+        {
+            if (string.IsNullOrEmpty(noteModel.Title) || noteModel.CategoryId == Guid.Empty || noteModel.BreedId == Guid.Empty)
+            {
+                errorMessage = "Заполните все обязательные поля.";
+                return;
+            }
+            createdNote = await NoteService.AddNote(noteModel);
+            if (createdNote == null)
+            {
+                errorMessage = "Не удалось создать объявление.";
+            }
+            else
+            {
+                NextStep();
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Ошибка при создании объявления: {ex.Message}";
+        }
+        StateHasChanged();
     }
 
     private async Task HandleSubmit()
     {
-        NavigationManager.NavigateTo($"/note/{createdNote.Id}");
+        if (createdNote != null)
+        {
+            NavigationManager.NavigateTo($"/note/{createdNote.Id}");
+        }
+        else
+        {
+            errorMessage = "Объявление не создано.";
+        }
     }
+
     IEnumerable<PhotoStorageViewModel> Photos { get; set; }
 
     private async Task LoadPhotos()
     {
-        if (createdNote != null)
+        if (createdNote?.PhotoGalleryId != null)
         {
-            if (createdNote.PhotoGalleryId != null)
-            {
-                var galleryId = createdNote.PhotoGalleryId.Value;
-                Photos = await PhotoService.GetPhotosByGalleryId(galleryId);
-            }
+            Photos = await PhotoService.GetPhotosByGalleryId(createdNote.PhotoGalleryId.Value);
         }
     }
 

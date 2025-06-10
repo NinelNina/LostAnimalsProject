@@ -20,6 +20,7 @@ public class AuthService : IAuthService
     private const string LocalStorageRefreshTokenKey = "refreshToken";
 
     private readonly IHttpClientFactory httpClientFactory;
+    private readonly HttpClient _httpClient; 
     private readonly AuthenticationStateProvider _authenticationStateProvider;
     private readonly ILocalStorageService _localStorage;
 
@@ -28,14 +29,14 @@ public class AuthService : IAuthService
                        ILocalStorageService localStorage)
     {
         this.httpClientFactory = httpClientFactory;
+        _httpClient = httpClientFactory.CreateClient("ApiClient");
         _authenticationStateProvider = authenticationStateProvider;
         _localStorage = localStorage;
     }
 
     public async Task<Result> ConfirmEmailAsync(string email, string token)
     {
-        var client = httpClientFactory.CreateClient("ApiClient");
-        var response = await client.GetAsync($"v1/accounts/confirmemail?token={token}&email={email}");
+        var response = await _httpClient.GetAsync($"v1/accounts/confirmemail?token={token}&email={email}");
 
         if (response.IsSuccessStatusCode)
         {
@@ -51,17 +52,16 @@ public class AuthService : IAuthService
 
     public async Task<bool> IsAccountConfirmed(LoginModel model)
     {
-        var client = httpClientFactory.CreateClient("ApiClient");
-        var response = await client.GetAsync($"v1/accounts/checkaccount/{model.Username}");
+        var response = await _httpClient.GetAsync($"v1/accounts/checkaccount/{model.Username}");
         if (!response.IsSuccessStatusCode)
         {
             if (response.StatusCode.Equals(HttpStatusCode.BadRequest))
             {
-                var userResponse = await client.GetAsync($"v1/accounts/{model.Username}");
+                var userResponse = await _httpClient.GetAsync($"v1/accounts/{model.Username}");
                 var user = await userResponse.Content.ReadFromJsonAsync<UserAccountViewModel>();
                 if (user != null)
                 {
-                    await client.GetAsync($"v1/accounts/SendConfirmationLink/{user.Id}");
+                    await _httpClient.GetAsync($"v1/accounts/SendConfirmationLink/{user.Id}");
                     return false;
                 }
             }
@@ -73,9 +73,8 @@ public class AuthService : IAuthService
 
     public async Task<UserAccountViewModel> Register(RegisterModel registerModel)
     {
-        var client = httpClientFactory.CreateClient("ApiClient");
         var httpContent = new StringContent(JsonConvert.SerializeObject(registerModel), Encoding.UTF8, "application/json");
-        var response = await client.PostAsync($"v1/accounts/", httpContent);
+        var response = await _httpClient.PostAsync($"v1/accounts/", httpContent);
 
         if (!response.IsSuccessStatusCode)
         {
@@ -102,8 +101,7 @@ public class AuthService : IAuthService
 
         var requestContent = new FormUrlEncodedContent(request_body);
 
-        var client = httpClientFactory.CreateClient("ApiClient");
-        var response = await client.PostAsync(url, requestContent);
+        var response = await _httpClient.PostAsync(url, requestContent);
 
         var content = await response.Content.ReadAsStringAsync();
 
@@ -120,7 +118,7 @@ public class AuthService : IAuthService
 
         ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(loginModel.Username!);
 
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", loginResult.AccessToken);
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", loginResult.AccessToken);
 
         return loginResult;
     }
@@ -131,9 +129,7 @@ public class AuthService : IAuthService
         await _localStorage.RemoveItemAsync(LocalStorageRefreshTokenKey);
 
         ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsLoggedOut();
-        
-        var client = httpClientFactory.CreateClient("ApiClient");
 
-        client.DefaultRequestHeaders.Authorization = null;
+        _httpClient.DefaultRequestHeaders.Authorization = null;
     }
 }

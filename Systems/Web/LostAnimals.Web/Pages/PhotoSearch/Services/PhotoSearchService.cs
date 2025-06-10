@@ -28,7 +28,7 @@ public class PhotoSearchService : IPhotoSearchService
 
         var client = _httpClientFactory.CreateClient("PhotoSearchClient");
 
-        var response = await client.PostAsync("search", content);
+        var response = await client.PostAsync("/api/search", content);
 
         if (!response.IsSuccessStatusCode)
         {

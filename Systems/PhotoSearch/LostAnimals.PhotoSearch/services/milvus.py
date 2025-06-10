@@ -15,7 +15,8 @@ class VectorDBService:
         connections.connect(
             alias="default",
             host=settings.milvus_host,
-            port=settings.milvus_port
+            port=int(settings.milvus_port),
+            connect_timeout=10
         )
 
     def _setup_collection(self):
@@ -33,7 +34,7 @@ class VectorDBService:
             FieldSchema(name="image_path", dtype=DataType.VARCHAR, max_length=255),
             FieldSchema(name="note_id", dtype=DataType.VARCHAR, max_length=36),
             FieldSchema(name="photo_id", dtype=DataType.VARCHAR, max_length=36),
-            FieldSchema(name="metadata", dtype=DataType.JSON)  # Добавлено поле metadata
+            FieldSchema(name="metadata", dtype=DataType.JSON)
         ]
 
         schema = CollectionSchema(fields, description="Animal search collection")

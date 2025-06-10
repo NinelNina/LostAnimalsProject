@@ -41,10 +41,18 @@
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+
     <script>
 		var customScript = document.createElement('script');
         customScript.setAttribute('src', 'js/yandexMap.js');
         document.head.appendChild(customScript);
+    </script>
+
+    <script>
+        var dragAndDrop = document
+            .createElement('script');
+        dragAndDrop.setAttribute('src', 'js/dragAndDrop.js');
+        document.head.appendChild(dragAndDrop);
     </script>
 </body>
 

@@ -31,6 +31,9 @@ class Settings(BaseSettings):
     lost_animals_api_url: str = Field(..., env="LOST_ANIMALS_API_URL")
 
     class Config:
-        env_file = ".env"
+        env_file = "env.photosearch"
         env_file_encoding = "utf-8"
         case_sensitive = False
+
+
+settings = Settings()

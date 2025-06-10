@@ -1,5 +1,6 @@
 ﻿using LostAnimals.Context.Entities;
 using Microsoft.AspNetCore.Identity;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,11 +12,13 @@ namespace LostAnimals.Context.Seeder
     public class DemoHelper
     {
         // Виды животных
-        public IEnumerable<AnimalKind> GetAnimalKinds => new List<AnimalKind>()
+        private static readonly List<AnimalKind> AnimalKinds = new List<AnimalKind>
         {
             new AnimalKind { Uid = Guid.NewGuid(), AnimalKindName = "Собака" },
             new AnimalKind { Uid = Guid.NewGuid(), AnimalKindName = "Кошка" }
         };
+
+        public IEnumerable<AnimalKind> GetAnimalKinds => AnimalKinds;
 
         // Категории объявлений
         public IEnumerable<NoteCategory> GetNotesCategories => new List<NoteCategory>()
@@ -115,7 +118,7 @@ namespace LostAnimals.Context.Seeder
                 return Directory
                     .GetFiles(datasetPath, pattern, SearchOption.TopDirectoryOnly)
                     .Select(Path.GetFileName)
-                    .OrderBy(x => Guid.NewGuid()) // Случайная сортировка
+                    .OrderBy(x => Guid.NewGuid())
                     .ToList();
             }
             catch (Exception ex)
@@ -147,6 +150,37 @@ namespace LostAnimals.Context.Seeder
                 var availablePhotos = GetPhotosForAnimalKind(animalKindName);
                 var photoCount = availablePhotos.Any() ? random.Next(1, 3) : 0; // 1-2 фото, если есть
                 var selectedPhotos = availablePhotos.Take(photoCount).ToList(); // Выбираем первые 1-2 после случайной сортировки
+                var photoGalleryUid = Guid.NewGuid();
+
+                // Путь к директории галереи
+                string galleryDir = Path.Combine("/app/wwwroot/images", photoGalleryUid.ToString());
+                Directory.CreateDirectory(galleryDir); // Создаем директорию, если она не существует
+
+                var photoStorages = new List<PhotoStorage>();
+                foreach (var photo in selectedPhotos)
+                {
+                    string sourcePath = Path.Combine("/app/images/dataset", animalKindName == "Собака" ? "dogs" : "cats", photo);
+                    var photoUid = Guid.NewGuid();
+                    var extension = Path.GetExtension(photo); // Сохраняем расширение
+                    string destFileName = photoUid + extension; // Имя файла: photoUid + расширение
+                    string destPath = Path.Combine(galleryDir, destFileName);
+                    string dbPhotoName = Path.Combine("images", photoGalleryUid.ToString(), destFileName).Replace("\\", "/");
+
+                    try
+                    {
+                        File.Copy(sourcePath, destPath, true); // Копируем файл
+                        photoStorages.Add(new PhotoStorage
+                        {
+                            Uid = photoUid,
+                            PhotoName = dbPhotoName
+                        });
+                        Log.Information($"Скопировано фото из {sourcePath} в {destPath}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex, $"Ошибка при копировании файла {sourcePath} в {destPath}");
+                    }
+                }
 
                 var note = new Note
                 {
@@ -169,12 +203,8 @@ namespace LostAnimals.Context.Seeder
                     PhoneNumber = $"+7999{random.Next(1000000, 9999999)}",
                     PhotoGallery = new PhotoGallery
                     {
-                        Uid = Guid.NewGuid(),
-                        PhotoStorages = selectedPhotos.Select(photo => new PhotoStorage
-                        {
-                            Uid = Guid.NewGuid(),
-                            PhotoName = Path.Combine("images", "dataset", animalKindName == "Собака" ? "dogs" : "cats", photo).Replace("\\", "/")
-                        }).ToList()
+                        Uid = photoGalleryUid,
+                        PhotoStorages = photoStorages
                     }
                 };
 
@@ -192,7 +222,7 @@ namespace LostAnimals.Context.Seeder
 
             foreach (var note in notes)
             {
-                int commentCount = random.Next(0, 4); // 0-3 комментария
+                int commentCount = random.Next(0, 4);
                 for (int i = 0; i < commentCount; i++)
                 {
                     var user = users.ElementAt(random.Next(users.Count()));
@@ -233,7 +263,7 @@ namespace LostAnimals.Context.Seeder
             var comments = new List<string>
             {
                 "Видел похожее животное вчера в парке.",
-                "Похоже, знаю, где оно может быть.",
+                "Похоже, знаю, где он может быть.",
                 "Оставил еду у подъезда, проверяйте.",
                 "Животное было с человеком в синей куртке.",
                 "Попробую поискать его сегодня вечером.",
