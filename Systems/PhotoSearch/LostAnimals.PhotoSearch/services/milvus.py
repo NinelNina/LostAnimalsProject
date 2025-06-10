@@ -126,14 +126,15 @@ class VectorDBService:
         return [self._format_result(hit) for hits in results for hit in hits]
 
     def _format_result(self, hit) -> Dict:
+        entity = hit.entity
         return {
-            "id": str(hit.id),
-            "score": float(hit.score),
-            "animal_type": hit.entity.get("animal_type"),
-            "image_path": hit.entity.get("image_path"),
-            "note_id": hit.entity.get("note_id"),
-            "photo_id": hit.entity.get("photo_id"),
-            "metadata": hit.entity.get("metadata", {})
+            "Id": str(hit.id),
+            "Score": float(hit.score),
+            "AnimalType": entity.get("animal_type") or "",
+            "ImagePath": entity.get("image_path") or "",
+            "NoteId": entity.get("note_id") or "",
+            "PhotoId": entity.get("photo_id") or "",
+            "Metadata": entity.get("metadata") or {}
         }
 
     def get_by_photo_id(self, photo_id: str) -> Optional[Dict]:

@@ -1,7 +1,9 @@
 import asyncio
+import io
 import os
 import json
 import aio_pika
+import aiohttp
 from typing import Optional, Dict, Any
 from PIL import Image
 import logging
@@ -21,15 +23,6 @@ class RabbitMQConsumer:
             rabbitmq_url: Optional[str] = None,
             dead_letter_queue: Optional[str] = None
     ):
-        """
-        Улучшенный потребитель RabbitMQ
-
-        :param embedder: Сервис генерации эмбеддингов
-        :param db: Коллекция Milvus
-        :param queue_name: Название основной очереди
-        :param rabbitmq_url: URL подключения к RabbitMQ
-        :param dead_letter_queue: Очередь для ошибочных сообщений
-        """
         self.embedder = embedder
         self.db = db
         self.queue_name = queue_name
@@ -39,9 +32,9 @@ class RabbitMQConsumer:
         self.channel = None
         self._should_reconnect = True
         self._reconnect_delay = 5
+        self.api_base_url = os.getenv("LOST_ANIMALS_API_URL", "http://host.docker.internal:10000")
 
     async def connect(self):
-        """Установка соединения с автоматическим переподключением"""
         while self._should_reconnect:
             try:
                 self.connection = await aio_pika.connect_robust(
@@ -50,13 +43,7 @@ class RabbitMQConsumer:
                 )
                 self.channel = await self.connection.channel()
                 await self.channel.set_qos(prefetch_count=1)
-
-                # Объявляем DLQ
-                await self.channel.declare_queue(
-                    self.dead_letter_queue,
-                    durable=True
-                )
-
+                await self.channel.declare_queue(self.dead_letter_queue, durable=True)
                 logger.info("Successfully connected to RabbitMQ")
                 return
             except Exception as e:
@@ -64,23 +51,10 @@ class RabbitMQConsumer:
                 await asyncio.sleep(self._reconnect_delay)
 
     async def start_consuming(self):
-        """Основной цикл обработки сообщений"""
         await self.connect()
-
         try:
-            queue = await self.channel.declare_queue(
-                self.queue_name,
-                durable=True,
-                # arguments={
-                #     "x-message-ttl": 86400000,
-                #     "x-max-length": 10000,
-                #     "x-dead-letter-exchange": "",
-                #     "x-dead-letter-routing-key": self.dead_letter_queue
-                # }
-            )
-
+            queue = await self.channel.declare_queue(self.queue_name, durable=True)
             logger.info(f"Started consuming queue: {self.queue_name}")
-
             async with queue.iterator() as queue_iter:
                 async for message in queue_iter:
                     try:
@@ -94,73 +68,55 @@ class RabbitMQConsumer:
             await self.close()
 
     async def process_message(self, message: aio_pika.IncomingMessage):
-        """Обработка сообщения с улучшенной валидацией"""
-        async with message.process(requeue=True):  # Enable requeue for unhandled exceptions
+        async with message.process(requeue=True):
             try:
                 start_time = datetime.now()
-                data = self._validate_message(message)
-
-                # Логирование начала обработки
-                logger.info(
-                    f"Processing photo {data['PhotoId']} "
-                    f"from note {data['NoteId']}"
-                )
-
-                # Генерация эмбеддинга
-                embedding = await self._generate_embedding(data['ImagePath'])
-
-                # Сохранение в Milvus
+                data = await self._validate_message(message)
+                logger.info(f"Processing photo {data['PhotoId']} from note {data['NoteId']}")
+                embedding = await self._generate_embedding(f"{self.api_base_url}/{data['ImagePath'].lstrip('/')}")
                 await self._save_to_milvus(data, embedding)
-
-                # Логирование успешной обработки
                 processing_time = (datetime.now() - start_time).total_seconds()
-                logger.info(
-                    f"Successfully processed photo {data['PhotoId']} "
-                    f"in {processing_time:.2f} seconds"
-                )
-
+                logger.info(f"Successfully processed photo {data['PhotoId']} in {processing_time:.2f} seconds")
             except (ValueError, FileNotFoundError, json.JSONDecodeError) as e:
                 logger.error(f"Validation error: {e}")
-                raise  # Let message.process() handle NACK with requeue=True
+                raise
             except Exception as e:
                 logger.error(f"Processing failed: {e}")
-                raise  # Let message.process() handle NACK with requeue=True
+                raise
 
-    def _validate_message(self, message: aio_pika.IncomingMessage) -> Dict[str, Any]:
+    async def _validate_message(self, message: aio_pika.IncomingMessage) -> Dict[str, Any]:
         """Валидация входящего сообщения"""
         data = json.loads(message.body.decode())
-
         required_fields = {
             'ImagePath': str,
             'NoteId': str,
             'PhotoId': str,
             'AnimalType': str
         }
-
         missing_fields = [
             field for field, field_type in required_fields.items()
             if field not in data or not isinstance(data[field], field_type)
         ]
-
         if missing_fields:
             raise ValueError(f"Missing or invalid fields: {missing_fields}")
-
-        # Проверка существования файла
-        full_path = os.path.join(
-            os.getenv("STORAGE_ROOT", "/storage"),
-            data['ImagePath'].lstrip('/')
-        )
-
-        if not os.path.exists(full_path):
-            raise FileNotFoundError(f"Image file not found: {full_path}")
-
-        #data['full_path'] = full_path
+        image_url = f"{self.api_base_url}/{data['ImagePath'].lstrip('/')}"
+        logger.info(f"Checking image availability at: {image_url}")
+        async with aiohttp.ClientSession() as session:
+            async with session.head(image_url) as response:
+                if response.status != 200:
+                    raise FileNotFoundError(f"Image not available: {image_url}")
+        #data['ImageUrl'] = image_url
         return data
 
-    async def _generate_embedding(self, image_path: str) -> list:
-        """Генерация векторного эмбеддинга"""
+    async def _generate_embedding(self, image_url: str) -> list:
+        """Генерация векторного эмбеддинга по URL"""
         try:
-            image = Image.open(image_path)
+            async with aiohttp.ClientSession() as session:
+                async with session.get(image_url) as response:
+                    if response.status != 200:
+                        raise FileNotFoundError(f"Failed to download image: {image_url}")
+                    image_data = await response.read()
+            image = Image.open(io.BytesIO(image_data)).convert("RGB")
             return self.embedder.generate(image)
         except Exception as e:
             logger.error(f"Embedding generation failed: {e}")
@@ -177,7 +133,7 @@ class RabbitMQConsumer:
                     photo_id=data['PhotoId'],
                     metadata=data.get('Metadata', {})
                 ),
-                timeout=10.0
+                timeout=30.0
             )
         except asyncio.TimeoutError:
             logger.error("Milvus insert timed out")
@@ -187,7 +143,6 @@ class RabbitMQConsumer:
             raise
 
     async def close(self):
-        """Закрытие соединения"""
         if self.connection:
             try:
                 await self.connection.close()

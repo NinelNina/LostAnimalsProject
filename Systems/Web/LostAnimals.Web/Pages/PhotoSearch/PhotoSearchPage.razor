@@ -1,11 +1,14 @@
 ﻿@page "/photosearch"
 @using LostAnimals.Web.Components
+@using LostAnimals.Web.Pages.Notes
 @using LostAnimals.Web.Pages.Notes.Models
 @using LostAnimals.Web.Pages.Notes.Services
 @using LostAnimals.Web.Pages.Photo.Models
+@using LostAnimals.Web.Pages.Photo.Services
 @using LostAnimals.Web.Pages.PhotoSearch.Services
 @inject IPhotoSearchService PhotoSearchService
 @inject INoteService NoteService
+@inject IPhotoService PhotoService
 @inject IJSRuntime JSRuntime
 
 <h3>Поиск по фото</h3>
@@ -15,11 +18,21 @@
     <MudAlert Severity="Severity.Error">@errorMessage</MudAlert>
 }
 
-<div class="drop-zone" @ondragover:preventDefault>
-    Перетащите фото сюда или
-    <InputFile id="fileInput" @ref="fileInput" OnChange="@HandleFileSelected" Accept="image/*" hidden />
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@TriggerFileInput">Выбрать фото</MudButton>
-</div>
+@if (selectedImageData != null)
+{
+    <div class="image-preview">
+        <MudImage Src="@selectedImageData" Alt="Selected image" Height="200" Class="mt-2 mb-2" ObjectFit="ObjectFit.Contain" />
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@ClearSelectedImage">Загрузить другое фото</MudButton>
+    </div>
+}
+else
+{
+    <div class="drop-zone" @ondragover:preventDefault>
+        Перетащите фото сюда или
+        <InputFile id="fileInput" @ref="fileInput" OnChange="@HandleFileSelected" Accept="image/*" hidden />
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@TriggerFileInput">Выбрать фото</MudButton>
+    </div>
+}
 
 @if (isLoading)
 {
@@ -42,8 +55,9 @@ else if (notes != null)
     private List<NoteViewModel>? notes;
     private bool isLoading;
     private string? errorMessage;
+    private string? selectedImageData;
     private InputFile? fileInput;
-    [Parameter] public Dictionary<Guid, IEnumerable<PhotoStorageViewModel>> PhotosDictionary { get; set; } = new();
+    private Dictionary<Guid, IEnumerable<PhotoStorageViewModel>> PhotosDictionary { get; set; } = new(); // Initialize to avoid null
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -66,12 +80,28 @@ else if (notes != null)
             isLoading = true;
             try
             {
+                // Convert file to base64 for display
+                using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024); // 10 MB limit
+                using var memoryStream = new MemoryStream();
+                await stream.CopyToAsync(memoryStream);
+                var buffer = memoryStream.ToArray();
+                selectedImageData = $"data:{file.ContentType};base64,{Convert.ToBase64String(buffer)}";
+
+                // Perform search
                 var searchResults = await PhotoSearchService.SearchByPhotoAsync(file);
                 notes = new List<NoteViewModel>();
+                PhotosDictionary.Clear(); // Clear previous photos
                 foreach (var result in searchResults)
                 {
                     var note = await NoteService.GetNote(Guid.Parse(result.NoteId));
                     notes.Add(note);
+
+                    // Load photos for the note's gallery
+                    if (note.PhotoGalleryId.HasValue)
+                    {
+                        var photos = await PhotoService.GetPhotosByGalleryId(note.PhotoGalleryId.Value);
+                        PhotosDictionary[note.PhotoGalleryId.Value] = photos;
+                    }
                 }
             }
             catch (Exception ex)
@@ -84,5 +114,13 @@ else if (notes != null)
                 StateHasChanged();
             }
         }
+    }
+
+    private void ClearSelectedImage()
+    {
+        selectedImageData = null;
+        notes = null;
+        PhotosDictionary.Clear(); // Clear photos when resetting
+        StateHasChanged();
     }
 }
